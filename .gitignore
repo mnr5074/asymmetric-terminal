@@ -5,6 +5,8 @@ data/*.db-*
 !data/analysis.json
 !data/screener.json
 !data/macro_events.json
+!data/options.json
+!data/airdrops.json
 __pycache__/
 *.pyc
 .env

@@ -3,6 +3,7 @@
 'use strict';
 const http = require('http');
 const fs = require('fs');
+const { spawn } = require('child_process');
 const path = require('path');
 const scanner = require('./lib/scanner');
 const { cached, getJSON, postJSON } = require('./lib/util');
@@ -382,6 +383,16 @@ const routes = {
   },
 
   async '/api/macro'() { return macro.snapshot(); },
+
+  // Options screener (research/options.py -> data/options.json); refreshed in the background when older than 30 min
+  async '/api/options'() { return withRefresh('options.json', 'options.py', 30 * 60e3); },
+  // Airdrop / points campaigns (research/airdrops.py -> data/airdrops.json); refreshed when older than 6 h
+  async '/api/airdrops'() { return withRefresh('airdrops.json', 'airdrops.py', 6 * 3600e3); },
+  // Recent Solana blockhash for transactions the USER builds and signs in Phantom (server never sees keys or signs)
+  async '/api/sol/blockhash'(q, req) {
+    const r = await rpcFor(req).call('getLatestBlockhash', [{ commitment: 'finalized' }]);
+    return { blockhash: r.value.blockhash, lastValidBlockHeight: r.value.lastValidBlockHeight };
+  },
   async '/api/news'() { return macro.news(); },
   async '/api/macro/events'() { return readData('macro_events.json'); },
 
@@ -441,6 +452,20 @@ const routes = {
   },
 };
 
+const refreshing = new Set();
+function withRefresh(file, script, maxAge) {
+  let st = null; try { st = fs.statSync(path.join(DATA_DIR, file)); } catch {}
+  const stale = !st || Date.now() - st.mtimeMs > maxAge;
+  if (stale && !refreshing.has(script) && process.env.NO_AUTO_REFRESH !== '1') {
+    refreshing.add(script);
+    const ch = spawn('python3', [script], { cwd: path.join(__dirname, 'research'), env: { ...process.env, DATA_DIR }, stdio: 'ignore' });
+    ch.on('exit', () => refreshing.delete(script)); ch.on('error', () => refreshing.delete(script));
+  }
+  if (!st) throw Object.assign(new Error(`${file} is being generated (first run takes a few minutes), try again shortly`), { status: 503 });
+  const d = readData(file);
+  d.refreshing = refreshing.has(script); d.ageSec = Math.round((Date.now() - st.mtimeMs) / 1000);
+  return d;
+}
 function readData(f) {
   try { return JSON.parse(fs.readFileSync(path.join(DATA_DIR, f), 'utf8')); }
   catch { throw Object.assign(new Error(f + ' not generated yet — run research/run.sh'), { status: 404 }); }
