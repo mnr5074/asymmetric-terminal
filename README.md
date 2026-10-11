@@ -171,3 +171,35 @@ The app is deploy-ready: zero-dependency Node server, honours `PORT`/`HOST`, hea
 - *Hosted DB alternative:* move the dataset to Postgres (Render Postgres, Neon or Supabase free tiers) if you need several instances or a separate worker. That means porting `research/common.py` from sqlite3 to psycopg, and the web tier only reads JSON outputs, so it barely changes.
 - *Other hosts:* the same Dockerfile runs on Railway (volume support, usage-based billing at about $5/mo), Fly.io (volumes, needs a card), or any VPS (`docker build -t asymmetric-terminal . && docker run -p 80:8000 asymmetric-terminal`).
 - *Public traffic:* all users share the free upstream limits (public Solana RPC, DexScreener, GeckoTerminal, RugCheck). Expect 429s under load. A Helius key ($0 tier / $49 per month) used server-side is the first upgrade to make.
+
+## Command Center (default view)
+One dense page fed by backend **desks**, each running its own loop and writing a ranked digest plus a rule-based "what changed in the last hour" summary (templates, no LLM):
+- **Crypto Desk** – live alpha feed (`lib/livefeed.js`): discovery on 13 chains → scanner → Asymmetry Score/grade, with the **Rug Risk Forecast** (`lib/rugrisk.js`) applied as veto (≥70) or penalty (≥45: −10 pts, A capped at B). Every graded pick is logged and tracked (`lib/calls.js`).
+- **Stocks & Options Desk** – best A pick per underlying + unusual volume (`research/options.py`).
+- **Macro/Fed Desk** – FRED, FOMC calendar, Kalshi/Polymarket odds (`lib/macro.js`).
+- **News Desk** – RSS headlines with keyword-lexicon sentiment and ticker/token mentions linked to the live feed and the options universe.
+- **Airdrop Desk** and **Sleeper Desk**.
+Click any token (feed, watchlist, slow-rug list) for the scanner detail. API: `/api/desks`, `/api/live`, `/api/rug/watch`, `/api/rug/token`, `/api/reportcard`, `/api/sleepers`, `/api/alerts`.
+
+## Text alerts
+`lib/alerts.js` texts new A-grade tokens (<160 chars: grade, score, ticker, chain, mcap, dump-risk flag, link), dedupes per token for 24h, caps at `ALERT_MAX_PER_HOUR`, respects quiet hours, and sends a periodic follow-up digest. It speaks plain SMTP (STARTTLS/TLS, AUTH LOGIN) to an email-to-SMS gateway. **Default is DRY RUN**: every would-be text is written to `data/alerts.log` and visible at `/api/alerts`. To go live set `ALERTS_LIVE=1` and `SMTP_HOST/SMTP_USER/SMTP_PASS/ALERT_TO` (see `.env.example`).
+
+## Revival lab (Sleepers: lookalikes + accumulation)
+`research/revival_lab.py` (runs after `sleepers.py`) adds, from CoinGecko 365-day daily history:
+- **Accumulation-phase detector**: ≥3 of flat 30d price, tight 60d range, compressed volatility, rising volume → flag, with a backtested base rate.
+- **Lookalike engine**: pre-breakout fingerprints (features averaged 30–90 days before each breakout) and nearest-neighbour matching ("looks like X before its run, similarity N%") with a leave-one-out backtest.
+- **Holder distribution (free)**: GoPlus holder count, top-10 share, Gini of top holders, share in contracts (EVM only), and our own holder-count snapshots over time.
+**Needs a key / paid** (not implemented): holding-period buckets, cost basis / share in profit, wallet age, funding-source clustering, active-address history — Etherscan v2 (free key), Helius/Birdeye (Solana), Bitquery/Dune (free tier with key), Glassnode/IntoTheBlock (paid). Public RPCs are not archive nodes, so this history can't be rebuilt keylessly.
+
+## Options: full universe, signals, trade plan, explanations
+- **Universe** (`research/opt_universe.py`, weekly): OCC product directory (every optionable underlying, 6,091) ∩ NASDAQ Trader `nasdaqtraded.txt` listings on NASDAQ / NYSE / NYSE American / NYSE Arca / Cboe BZX ∩ value filter (stocks: market cap ≥ $300M and ≥ $5M/day traded via the Nasdaq screener; ETFs: all optionable) → ~4,950 symbols. `options.py` scans the 64 core tickers every run plus a rotating batch (`OPT_BATCH`, default 250): never-seen first, then high-OI symbols (total OI ≥ 5,000) hourly, low-OI symbols weekly; chains with < 1,000 total OI are skipped. Picks from earlier rotations are reused for up to 3 days (marked with their age).
+- **Ticker signals** (`research/stock_signals.py`, keyless): pre-market/after-hours price (Yahoo chart `includePrePost`; the v7 quote endpoint is now Unauthorized), up/down volume over 10 sessions, Yahoo per-ticker RSS headlines + lexicon tone, SEC EDGAR 8-Ks and Form 4 open-market buys/sales with cluster-buying detection (set `SEC_USER_AGENT` with a contact), call/put volume and premium from the CBOE chain. They adjust the score by at most ±6 and never lift a capped grade. Not free: 13F per-issuer changes (WhaleWisdom/Fintel), real-time order flow/sweeps (Tradier, Unusual Whales, ThetaData, Polygon). CBOE quotes are ~15 min delayed; a real-time provider can replace `stock_contracts()`' CBOE fetch (same contract dict format).
+- **Chance of profit** (finish beyond breakeven) and **chance of hitting 2x / 3x before the time stop** (21-DTE rule, touch approximation with realized vol) on every pick.
+- **Trade plan** per pick (model estimate, not advice): limit price (mid, shaded to the bid on wide spreads, not above fair value), entry timing (earnings / IV vs RV), sizing from your budget and max-%-at-risk (saved in the browser), take-profit levels, time stop, stop-loss guidance, exercise-vs-sell with the cash needed.
+- **Plain-English ⓘ** popups on every column/metric (tap on mobile; examples use that row's numbers), a one-line summary per pick, and a **Guide** page (glossary + how every grade works).
+
+## Nansen (optional, `NANSEN_API_KEY`, server-side only)
+Pro plan = 2,000 credits/month top-up. `lib/nansen.js` enforces a daily cap (`NANSEN_DAILY_CREDITS`, 60) and monthly cap (`NANSEN_MONTHLY_CREDITS`, 1800) plus per-purpose sub-caps, caches every response long-term (re-reads are free), and stops if fewer than 20 credits remain. Used: `account` (free, credits left), `smart-money/netflow` (5 cr, ≤2×/day, 500 tokens on Solana/Ethereum/Base/BNB), `tgm/flow-intelligence` (1 cr, A/B live candidates and top sleepers only, cached 6–24 h), `tgm/who-bought-sold` (1 cr, alerted tokens only). Address labels (100 cr) are deliberately not used. Low-credit warning (< 20% of the monthly budget, or projected to run out before the 1st) shows a banner and sends one text alert.
+
+## X API (optional, `X_BEARER_TOKEN`)
+Posts Read only ($0.005 per post returned; counts and User Read are not used). `lib/xapi.js` samples ~20 recent posts per item (`X_SAMPLE`) for text-alert tokens first, then the top live picks and top option underlyings, every 30 min with a 6 h cache; hard caps `X_DAILY_POSTS` (330) and `X_MONTHLY_CAP_USD` ($50 ≈ 10,000 posts). Features (posts/hour, average tone, engagement) are written into each live call so `/api/x` reports whether positive X tone actually separated 2x winners. Without a token the panel is hidden.
