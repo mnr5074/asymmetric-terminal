@@ -9,7 +9,7 @@
 <body>
 <header class="topbar">
   <div class="brand">ASYMMETRIC<span>·</span>TERMINAL <em class="ro">READ-ONLY</em></div>
-  <nav id="viewNav" class="viewnav"><button data-v="command" class="on">Command</button><button data-v="terminal">Terminal</button><button data-v="options">Options</button><button data-v="airdrops">Airdrops</button><button data-v="glossary">Guide</button><button data-v="tax" title="Private tax desk: gains/losses, wash sales, Form 8949">Tax</button></nav>
+  <nav id="viewNav" class="viewnav"><button data-v="command" class="on">Command</button><button data-v="terminal">Terminal</button><button data-v="options">Options</button><button data-v="airdrops">Airdrops</button><button data-v="derive" title="Derive.xyz options desk: OI/IV/greeks, defined-risk strategies, IV rank, DRV farming">Derive</button><button data-v="glossary">Guide</button><button data-v="tax" title="Private tax desk: gains/losses, wash sales, Form 8949">Tax</button></nav>
   <select id="chainSel" class="mini chainsel" title="Chain for search, trending/new and research"><option value="solana">Solana</option></select>
   <div class="ticker" id="solTicker">SOL —</div>
   <div class="searchwrap">
@@ -100,14 +100,15 @@
       <div class="panel"><div class="phead"><span>TOP OPTIONS <span class="muted small">best A per underlying</span></span></div><div id="ccOpt" class="pbody scroll"></div></div>
       <div class="panel"><div class="phead"><span>TOP AIRDROPS</span></div><div id="ccAir" class="pbody scroll"></div></div>
       <div class="panel"><div class="phead"><span>SLEEPERS</span></div><div id="ccSleep" class="pbody scroll"></div></div>
-      <div class="panel"><div class="phead"><span>PATTERN DETECTORS <span class="muted small">hours · fresh wallets · CEX · stocks · bridges</span></span></div><div id="ccPatterns" class="pbody scroll"></div></div>
+      <div class="panel"><div class="phead"><span>PATTERN DETECTORS <span class="muted small">hours · fresh wallets · CEX · stocks · bridges · aging · LP · concentration · bridge-hop</span></span></div><div id="ccPatterns" class="pbody scroll"></div></div>
       <div class="panel hidden"><div class="phead"><span>X MENTIONS</span></div><div id="ccX" class="pbody scroll small"></div></div>
     </div>
   </div>
-  <div class="panel" id="perpDesk"><div class="phead"><span>PERP DESK <span class="muted small">funding · OI · composite A–F · unlocks · setups (not financial advice)</span></span><span id="pdTabs" class="subtabs"><button data-t="flags" class="on">Funding flags</button><button data-t="setups">Setups</button><button data-t="composite">Composite grades</button><button data-t="unlocks">Unlocks</button><button data-t="venues">Venues</button></span></div><div id="pdMeta" class="muted small" style="padding:0 8px"></div><div id="pdBody" class="pbody"><div class="empty">Loading perp data…</div></div></div>
+  <div class="panel" id="perpDesk"><div class="phead"><span>PERP DESK <span class="muted small">funding · OI · composite A–F · unlocks · setups (not financial advice)</span></span><span id="pdTabs" class="subtabs"><button data-t="flags" class="on">Funding flags</button><button data-t="setups">Setups</button><button data-t="composite">Composite grades</button><button data-t="unlocks">Unlocks</button><button data-t="liq">Liquidations</button><button data-t="gaps">Price gaps</button><button data-t="fdiv">Funding divergence</button><button data-t="ob">Order book</button><button data-t="venues">Venues</button></span></div><div id="pdMeta" class="muted small" style="padding:0 8px"></div><div id="pdBody" class="pbody"><div class="empty">Loading perp data…</div></div></div>
   <div class="nfa small">Automated estimates from free public data · not financial advice · nothing here trades or signs for you</div>
 </section>
 <section id="viewTax" class="view"><div id="taxRoot" style="display:flex;flex:1;min-height:0"></div></section>
+<section id="viewDerive" class="view"><div id="dvOut" style="flex:1;min-height:0"><div class="empty">Open the Derive tab to load.</div></div></section>
 <section id="viewGlossary" class="view"><div class="panel"><div class="phead"><h2>Glossary / How grades work</h2></div><div id="glossOut" class="scroll"></div></div></section>
 <section id="viewOptions" class="view">
   <div class="panel">
@@ -172,9 +173,26 @@
 <script src="/command.js"></script>
 <script src="/tax.js"></script>
 <script src="/narratives.js"></script>
+<script src="/agents.js"></script>
+<script src="/research_desks.js"></script><!-- Developer activity + Insider-privilege scan / Velvet exposé panels -->
+<script src="/sentiment.js"></script>
+<script src="/copytrade.js"></script>
+<script src="/birthphase.js"></script>
+<script src="/priority.js"></script>
 <script src="/swap.js"></script>
 <script src="/portfolio.js"></script>
 <script src="/perps.js"></script>
+<script src="/grok.js"></script>
 <script src="/patterns.js"></script>
+<script src="/seasonality.js"></script>
+<script src="/airdrops.js"></script>
+<script src="/stables.js"></script>
+<script src="/regradar.js"></script>
+<script src="/derive.js"></script>
+<script src="/riskinfra.js"></script>
+<script src="/validation.js"></script>
+<script src="/patternlab.js"></script>
+<script src="/patternlab_ext.js"></script>
+<script src="/provenance.js"></script><!-- data provenance (Alt-click / long-press numbers) + key-health badge -->
 </body>
 </html>

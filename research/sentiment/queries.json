@@ -1,0 +1,249 @@
+{
+ "version": 1,
+ "notes": "Token query list for the free X read tools (namespace 'x'). 'q' is the token clause only; the collector appends the shared exclusion suffix (counts) or the sample suffix (samples). Keep each full query under 512 chars. Ambiguous words are only used inside quotes or with a cashtag. Tiers: P = priority watchlist (every wake), W = browser watchlist / majors, C = top composite tokens. See COLLECTOR.md.",
+ "suffix_counts": "-is:retweet lang:en -giveaway -giveaways -airdrop -\"free mint\" -whitelist -presale -\"dm me\" -\"join now\" -\"claim now\" -\"claim your\"",
+ "suffix_samples": "-is:retweet -is:reply lang:en -giveaway -giveaways -airdrop -\"free mint\" -whitelist -presale -\"dm me\" -\"join now\" -\"claim now\" -\"claim your\"",
+ "tokens": [
+  {
+   "sym": "NEAR",
+   "tier": "P",
+   "q": "($NEAR OR \"NEAR Protocol\" OR nearprotocol OR \"NEAR Intents\")",
+   "price": {
+    "binance_spot": "NEARUSDT"
+   },
+   "cgId": "near",
+   "news_q": "NEAR Protocol"
+  },
+  {
+   "sym": "ZEC",
+   "tier": "P",
+   "q": "($ZEC OR zcash)",
+   "price": {
+    "binance_spot": "ZECUSDT"
+   },
+   "cgId": "zcash",
+   "news_q": "Zcash"
+  },
+  {
+   "sym": "STRK",
+   "tier": "P",
+   "q": "($STRK OR starknet)",
+   "price": {
+    "binance_spot": "STRKUSDT"
+   },
+   "cgId": "starknet",
+   "note": "Starknet token; the watchlist holds the Solana SPL wrapper HsRp...SCoz which tracks the same asset",
+   "news_q": "Starknet"
+  },
+  {
+   "sym": "QCAT",
+   "tier": "P",
+   "q": "($QCAT OR qcat)",
+   "price": {
+    "geckoterminal_token": "solana:EosbW31T1WAQSiHUErogcaNHd8FBZDbjPPgQMJzXARNV"
+   },
+   "key": "solana:EosbW31T1WAQSiHUErogcaNHd8FBZDbjPPgQMJzXARNV",
+   "note": "StonkFun reward coin; tiny mention volume expected"
+  },
+  {
+   "sym": "BTC",
+   "tier": "W",
+   "q": "($BTC OR bitcoin)",
+   "price": {
+    "binance_spot": "BTCUSDT"
+   },
+   "news_q": "Bitcoin"
+  },
+  {
+   "sym": "ETH",
+   "tier": "W",
+   "q": "($ETH OR ethereum)",
+   "price": {
+    "binance_spot": "ETHUSDT"
+   },
+   "news_q": "Ethereum"
+  },
+  {
+   "sym": "SOL",
+   "tier": "W",
+   "q": "($SOL OR solana)",
+   "price": {
+    "binance_spot": "SOLUSDT"
+   },
+   "news_q": "Solana"
+  },
+  {
+   "sym": "JUP",
+   "tier": "W",
+   "q": "($JUP OR \"jupiter exchange\" OR jupiterexchange)",
+   "price": {
+    "binance_spot": "JUPUSDT"
+   },
+   "cgId": "jupiter-exchange-solana"
+  },
+  {
+   "sym": "BONK",
+   "tier": "W",
+   "q": "($BONK OR bonkcoin OR \"bonk coin\")",
+   "price": {
+    "binance_spot": "BONKUSDT"
+   },
+   "cgId": "bonk"
+  },
+  {
+   "sym": "WIF",
+   "tier": "W",
+   "q": "($WIF OR dogwifhat)",
+   "price": {
+    "binance_spot": "WIFUSDT"
+   },
+   "cgId": "dogwifcoin"
+  },
+  {
+   "sym": "TROLL",
+   "tier": "W",
+   "q": "($TROLL)",
+   "price": {
+    "geckoterminal_token": "solana:5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2"
+   },
+   "key": "solana:5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2"
+  },
+  {
+   "sym": "PEPE",
+   "tier": "W",
+   "q": "($PEPE OR pepecoin)",
+   "price": {
+    "binance_spot": "PEPEUSDT"
+   },
+   "cgId": "pepe"
+  },
+  {
+   "sym": "BRETT",
+   "tier": "W",
+   "q": "($BRETT)",
+   "price": {
+    "binance_fapi": "BRETTUSDT"
+   },
+   "cgId": "based-brett"
+  },
+  {
+   "sym": "CAKE",
+   "tier": "W",
+   "q": "($CAKE OR pancakeswap)",
+   "price": {
+    "binance_spot": "CAKEUSDT"
+   },
+   "cgId": "pancakeswap-token"
+  },
+  {
+   "sym": "NOT",
+   "tier": "W",
+   "q": "($NOT OR notcoin)",
+   "price": {
+    "binance_spot": "NOTUSDT"
+   },
+   "cgId": "notcoin"
+  },
+  {
+   "sym": "MINA",
+   "tier": "C",
+   "q": "($MINA OR \"Mina Protocol\")",
+   "price": {
+    "binance_spot": "MINAUSDT"
+   },
+   "cgId": "mina-protocol"
+  },
+  {
+   "sym": "FARTCOIN",
+   "tier": "C",
+   "q": "($FARTCOIN OR fartcoin)",
+   "price": {
+    "binance_fapi": "FARTCOINUSDT"
+   },
+   "cgId": "fartcoin"
+  },
+  {
+   "sym": "JELLYJELLY",
+   "tier": "C",
+   "q": "($JELLYJELLY OR jellyjelly)",
+   "price": {
+    "binance_fapi": "JELLYJELLYUSDT"
+   },
+   "cgId": "jelly-my-jelly"
+  },
+  {
+   "sym": "PNUT",
+   "tier": "C",
+   "q": "($PNUT)",
+   "price": {
+    "binance_spot": "PNUTUSDT"
+   },
+   "cgId": "peanut-the-squirrel"
+  },
+  {
+   "sym": "ROBO",
+   "tier": "C",
+   "q": "($ROBO OR \"Fabric Protocol\")",
+   "price": {
+    "binance_fapi": "ROBOUSDT"
+   },
+   "cgId": "robo-token-2"
+  },
+  {
+   "sym": "SWARMS",
+   "tier": "C",
+   "q": "($SWARMS)",
+   "price": {
+    "binance_fapi": "SWARMSUSDT"
+   },
+   "cgId": "swarms"
+  },
+  {
+   "sym": "ZEREBRO",
+   "tier": "C",
+   "q": "($ZEREBRO OR zerebro)",
+   "price": {
+    "binance_fapi": "ZEREBROUSDT"
+   },
+   "cgId": "zerebro"
+  },
+  {
+   "sym": "MOODENG",
+   "tier": "C",
+   "q": "($MOODENG)",
+   "price": {
+    "binance_fapi": "MOODENGUSDT"
+   },
+   "cgId": "moo-deng",
+   "note": "name query 'moo deng' excluded: mostly the hippo, not the coin"
+  },
+  {
+   "sym": "GOAT",
+   "tier": "C",
+   "q": "($GOAT OR goatseus)",
+   "price": {
+    "binance_fapi": "GOATUSDT"
+   },
+   "cgId": "goatseus-maximus"
+  },
+  {
+   "sym": "CLANKER",
+   "tier": "C",
+   "q": "($CLANKER)",
+   "price": {
+    "binance_fapi": "CLANKERUSDT"
+   },
+   "cgId": "tokenbot-2",
+   "note": "bare 'clanker' is slang for robots; cashtag only"
+  },
+  {
+   "sym": "CHILLGUY",
+   "tier": "C",
+   "q": "($CHILLGUY)",
+   "price": {
+    "binance_fapi": "CHILLGUYUSDT"
+   },
+   "cgId": "chill-guy"
+  }
+ ]
+}

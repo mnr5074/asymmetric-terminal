@@ -40,6 +40,8 @@ services:
         value: "1800"
       - key: LIVE_FEED          # full | lite | off  (lite = Solana/Base/BSC, fewer scans: fits the free plan)
         value: lite
+      - key: ALERTS_ENABLED     # master alert switch. 0 = Render never pushes/texts (the box already sends phone alerts: avoids duplicates). 1 = send
+        value: "0"
       - key: ALERTS_LIVE        # 1 = really send texts (needs the SMTP_* vars); anything else = dry run
         value: "0"
       - key: SMTP_HOST
