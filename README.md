@@ -203,3 +203,12 @@ Pro plan = 2,000 credits/month top-up. `lib/nansen.js` enforces a daily cap (`NA
 
 ## X API (optional, `X_BEARER_TOKEN`)
 Posts Read only ($0.005 per post returned; counts and User Read are not used). `lib/xapi.js` samples ~20 recent posts per item (`X_SAMPLE`) for text-alert tokens first, then the top live picks and top option underlyings, every 30 min with a 6 h cache; hard caps `X_DAILY_POSTS` (330) and `X_MONTHLY_CAP_USD` ($50 ≈ 10,000 posts). Features (posts/hour, average tone, engagement) are written into each live call so `/api/x` reports whether positive X tone actually separated 2x winners. Without a token the panel is hidden.
+
+## Crash catalog, inverse detector and launchpad leaderboard (research, free data only)
+- `research/crash_lab.py`: crash catalog (CoinGecko launchpad categories, research DB, Binance archive) + pre-crash fingerprints and kNN crash odds used live by `lib/crashmatch.js`.
+- `research/crash_eco.py`, `research/launchpad_extra.py`, `research/stockpads_base.py`: StonkFun, Robinhood Chain (GeckoTerminal dexes + PONS factory logs over public RPC), Hooked, Seven, stock-paired memecoins (x7 / StonkFun / Base Stonks Exchange / BaseStonk), GeckoTerminal launchpad dex sweeps.
+- `research/catalog_build.py`: **bad-tick filter** (a peak counts only if daily closes confirm it: max close within +-3 days of the claimed ATH must be >= 50% of it; otherwise the peak is replaced by the max daily close and flagged `bad_tick`) and the ranked launchpad leaderboard -> `data/crash_catalog_final.json`.
+- `research/macro_overlay.py`: FRED backdrop (fed funds, 2y/10y/30y, mortgage, credit-card and auto APRs, WALCL, federal debt and interest outlays; MOVE proxy = 20d realized vol of 10y changes) for every crash + base rates; `research/macro_knn_eval.py` tests macro features in the detector.
+- `research/forensics_cases.json`: wallet-level crash forensics (SIREN, VELVET, STONK, ALLINU, LAB) used by `lib/precedents.js` as "this happened before" examples on the Exit Plan card triggers.
+- `lib/whalewatch.js`: free whale-exit tracking: snapshots top holders on every live-feed scan (no extra API calls) and flags top holders cutting 2%+ of supply within 72h (Exit Plan trigger).
+All research scripts block Nansen and X hosts and keep a per-host call counter.

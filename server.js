@@ -18,6 +18,14 @@ const { createAlerts } = require('./lib/alerts');
 const { createDesks } = require('./lib/desks');
 const { createNansen } = require('./lib/nansen');
 const { createX } = require('./lib/xapi');
+const { exitPlan, atrFromMarket } = require('./lib/exitplan');
+const crashmatch = require('./lib/crashmatch');
+const { createNarratives } = require('./lib/narratives');
+const { createPerps } = require('./lib/perps'); // Perp Desk (funding/OI, setups)
+const { createComposite } = require('./lib/composite');
+const { createUnlocks } = require('./lib/unlocks');
+const tradeapi = require('./lib/tradeapi'); // wallet-approved swaps + sandwich log (never holds keys)
+const taxapi = require('./lib/tax/api'); // Tax desk: private ledger in data/tax (lib/tax/*)
 
 const PORT = +process.env.PORT || 8000;
 const HOST = process.env.HOST || '0.0.0.0';
@@ -490,17 +498,59 @@ async function xHousekeeping() {
 if (LIVE !== 'off') { setTimeout(xHousekeeping, 60000); setInterval(xHousekeeping, 30 * 60e3).unref(); }
 if (LIVE !== 'off') { setTimeout(nansenHousekeeping, 15000); setInterval(nansenHousekeeping, 3600e3).unref(); }
 if (LIVE !== 'off') { live.start(+(process.env.LIVE_INTERVAL_MS || 60e3)); desks.start(); }
+// QCAT/STRK pool monitor (lib/poolwatch.js -> data/poolwatch.json): reserves, LP supply, LP deposits every 15 min
+const poolwatch = require('./lib/poolwatch').createPoolWatch({ DATA_DIR, log: L, intervalMs: +(process.env.POOLWATCH_MS || 15 * 60e3) });
+if (LIVE !== 'off' && process.env.POOLWATCH !== 'off') poolwatch.start();
+routes['/api/poolwatch'] = async () => poolwatch.status();
 Object.assign(routes, {
   async '/api/live'(q) { const f = live.feed(); const g = q.get('grade'), ch = q.get('chain'); let items = f.items; if (g) items = items.filter((x) => g.split(',').includes(x.grade)); if (ch && ch !== 'all') items = items.filter((x) => x.chain === ch); return { ...f, items: items.slice(0, +(q.get('limit') || 150)), status: live.status() }; },
   async '/api/live/token'(q) { const k = q.get('key') || ''; const r = live.token(k); if (!r) throw Object.assign(new Error('not in live universe'), { status: 404 }); return { record: r, calls: calls.forKey(k) }; },
   async '/api/calls'(q) { return { calls: calls.list({ grade: q.get('grade'), limit: +(q.get('limit') || 200) }), total: calls.count() }; },
   async '/api/reportcard'() { const r = calls.reportCard(); for (const [f, k] of [['calls_options.json', 'options'], ['calls_airdrops.json', 'airdrops'], ['calls_sleepers.json', 'sleepers']]) { try { r[k] = readData(f).summary || null; } catch { r[k] = null; } } return { ...r, missed: calls.missedWinners(), recal: calls.recalState(), weights: live.getWeights() }; },
-  async '/api/rug/cases'() { return readData('rug_cases.json'); },
+  async '/api/rug/cases'() { const d = readData('rug_cases.json') || {}; return { ...d, forensics: require('./lib/precedents').all() }; },
   async '/api/rug/watch'() { const f = live.feed(); return { generatedAt: f.generatedAt, items: f.items.filter((x) => x.rug && (x.rug.score >= 25 || x.rug.dump30)).sort((a, b) => b.rug.score - a.rug.score).slice(0, 60) }; },
   async '/api/rug/token'(q) { const chain = CHAINS.has(q.get('chain')) ? q.get('chain') : 'solana'; const a = (q.get('address') || '').trim(); if (!chains.validAddr(chain, a)) throw Object.assign(new Error('bad address'), { status: 400 });
     const rec = live.token(chain + ':' + a) || { chain, address: a, m: {}, snaps: [], holdersHist: [] };
     if (!rec.scan) { try { const s = await routes['/api/scan'](new URLSearchParams({ chain, address: a }), { headers: {} }); rec.scan = s; const p = s.market?.pair || s.pairs?.[0]; if (p) rec.m = { mc: p.marketCap, fdv: p.fdv, liq: p.liquidity, px: p.priceUsd }; } catch {} }
     return rug.established(chain, a, rec); },
+  // Exit Plan / Rug Warning card for any token (watchlist / held): live record if tracked, else on-demand scan + rug assessment
+  async '/api/exitplan'(q) {
+    const chain = CHAINS.has(q.get('chain')) ? q.get('chain') : 'solana'; const a = (q.get('address') || '').trim();
+    if (!chains.validAddr(chain, a)) throw Object.assign(new Error('bad address'), { status: 400 });
+    const li = live.feed().items.find((x) => x.key === chain + ':' + a);
+    if (li?.exit) return { source: 'live feed', symbol: li.symbol, rug: li.rug, exit: li.exit };
+    return cached('exitplan:' + chain + ':' + a, 10 * 60e3, async () => {
+      const rr = await routes['/api/rug/token'](new URLSearchParams({ chain, address: a }));
+      const pairs = await dsAllPairs(chain, a).catch(() => []); const p = (pairs || []).sort((x, y) => (y.liquidity?.usd || 0) - (x.liquidity?.usd || 0))[0];
+      if (!p) throw Object.assign(new Error('no trading pair found'), { status: 404 });
+      const m = { px: +p.priceUsd, mc: p.marketCap, fdv: p.fdv, liq: p.liquidity?.usd, ch: p.priceChange || {} };
+      const ch30 = rr.fundamentals?.coingecko?.ch30; const ath = rr.fundamentals?.coingecko?.ath;
+      // inverse detector: daily GeckoTerminal candles (free: last 180 days) vs pre-crash fingerprints
+      let crash = null;
+      try { const net = C[chain]?.gt; if (net) { const pool = String(p.pairAddress).split(':')[0];
+        const d = await cached(`gtday:${chain}:${pool}`, 6 * 3600e3, () => gtGet(`https://api.geckoterminal.com/api/v2/networks/${net}/pools/${encodeURIComponent(pool)}/ohlcv/day?aggregate=1&limit=180&currency=usd`));
+        const L = (d?.data?.attributes?.ohlcv_list || []).slice().sort((x, y) => x[0] - y[0]);
+        crash = crashmatch.match(DATA_DIR, L.map((x) => +x[4]), L.map((x) => +x[5] || 0)); } } catch (e) { crash = { ok: false, why: 'daily candles unavailable' }; }
+      const bump = crashmatch.riskBump(crash); if (bump) rr.score = Math.min(100, (rr.score || 0) + bump);
+      const ex = exitPlan({ symbol: p.baseToken?.symbol, price: m.px, crash, high: Math.max(m.px, m.px / (1 + (m.ch.h24 || 0) / 100) * (1 + Math.max(0, m.ch.h24 || 0) / 100)), atrPct: atrFromMarket(m), rug: rr,
+        facts: { circRatio: rr.fundamentals?.circRatio ?? (m.mc && m.fdv && m.fdv > m.mc * 1.05 ? m.mc / m.fdv : null), runMultiple: ch30 != null ? 1 + ch30 / 100 : null, runDays: ch30 != null ? 30 : null,
+          insiderToExchanges: (rr.signals || []).find((x) => /exchanges/.test(x.why))?.why || null } });
+      return { source: 'on-demand', symbol: p.baseToken?.symbol, rug: { score: rr.score, level: rr.level, dump30: rr.dump30, crashBump: bump }, exit: ex, ath, crash };
+    });
+  },
+  async '/api/exitplan/replays'() { return readData('exit_replays.json'); },
+  async '/api/crash/catalog'() {
+    const d = readData('crash_catalog.json'); if (!d) return { ok: false };
+    const fin = readData('crash_catalog_final.json'); const st = new Map((fin?.coingecko_coins || []).map((c) => [c.id, c]));
+    const catalog = (d.catalog || []).map((x) => { const c = st.get(x.id); return c ? { ...x, peak_status: c.status, peak_mcap_confirmed: c.peak_mcap ?? null, peak_date_confirmed: c.peak_date ?? null } : x; });
+    return { ...d, catalog, bad_tick_rule: fin?.bad_tick_rule, fingerprints: d.fingerprints.map(({ fp, ...r }) => r) };
+  },
+  async '/api/crash/leaderboard'() {
+    const fin = readData('crash_catalog_final.json'); const mo = readData('macro_overlay.json');
+    if (!fin) return { ok: false };
+    return { ok: true, generatedAt: fin.generatedAt, since: fin.window_since, rule: fin.bad_tick_rule, leaderboard: fin.leaderboard, forensics: fin.forensics, eco_counts: fin.eco_counts,
+      macro: mo ? { now: mo.now, base_rates: mo.base_rates, note: mo.note } : null, label: 'Research summary from free data. Not financial advice.' };
+  },
   async '/api/sleepers'() { return withRefresh('sleepers.json', 'sleepers.py', 24 * 3600e3); },
   async '/api/desks'() { return { ...desks.all(), nansen: nansen.status(), x: xapi.enabled ? { status: xapi.status(), items: xapi.all() } : { enabled: false } }; },
   async '/api/x'() { return xapi.enabled ? { ...xapi.status(), items: xapi.all(), predictive: calls.featureSplit('xTone') } : { enabled: false }; },
@@ -513,6 +563,47 @@ Object.assign(routes, {
   async '/api/alerts/test'() { return alerts.test('Asymmetric Terminal test alert (dry run unless ALERTS_LIVE=1)'); },
 });
 
+// ---------- Perp Desk: funding/OI flags, composite A–F grade, unlocks, perp setups (lib/perps.js, lib/composite.js, lib/unlocks.js) ----------
+const perps = createPerps({ DATA_DIR, log: L });
+const unlocksMod = createUnlocks({ DATA_DIR, log: L });
+const composite = createComposite({ DATA_DIR, perps, unlocks: unlocksMod, macro, live, log: L });
+if (process.env.PERPS !== 'off') perps.start();
+async function compositeCached() { return cached('composite:all', 60e3, () => composite.compute()); }
+Object.assign(routes, {
+  async '/api/perps'(q) {
+    const wl = (q.get('wl') || '').split(',').filter(Boolean).slice(0, 60).map((x) => { const [sym, px] = x.split(':'); return { sym, price: +px || null }; });
+    if (wl.length) perps.addWatch(wl);
+    const s = perps.snapshot(); if (!s.generatedAt) throw Object.assign(new Error('perp snapshot warming up (first fetch takes ~10s), try again shortly'), { status: 503 });
+    let comp = null; try { comp = await compositeCached(); } catch {}
+    const cBy = new Map((comp?.tokens || []).filter((t) => t.kind === 'perp').map((t) => [t.sym, t]));
+    const mac = comp?.macro;
+    const setups = s.tokens.map((t) => { const ua = unlocksMod.assess(unlocksMod.find({ sym: t.sym, cgId: t.cgId, price: t.mark })); return perps.setupFor(t, { composite: cBy.get(t.sym), macro: mac?.within ? { within: true, text: mac.near.map((x) => `${x.label} ${x.date}`).join(', ') } : null, unlock: ua }); }).filter(Boolean)
+      .map((x) => ({ ...x, grade: cBy.get(x.sym)?.grade || null }))
+      .sort((a, b) => (a.type === 'composite tilt') - (b.type === 'composite tilt') || Math.abs(b.funding.annPct) - Math.abs(a.funding.annPct));
+    const flagged = s.tokens.filter((t) => t.flags.length).sort((a, b) => Math.abs(b.fAnn) - Math.abs(a.fAnn));
+    return { ...s, flaggedCount: flagged.length, flagged: flagged.map((t) => t.sym), setups, nfa: 'Model estimates from public exchange data. Not financial advice. Nothing here trades.' };
+  },
+  async '/api/composite'(q) { const c = await compositeCached(); const k = q.get('kind'); return k ? { ...c, tokens: c.tokens.filter((t) => t.kind === k) } : c; },
+  async '/api/unlocks'(q) { return { ...unlocksMod.status(), days: 30, tokens: unlocksMod.list({ universeOnly: q.get('all') !== '1', days: +(q.get('days') || 30) }), netSupply: unlocksMod.netSupply() }; },
+});
+
+// Derive Desk (lib/derive.js + research/derive_desk.py): every Derive option (OI/vol/IV/greeks), defined-risk strategy scanner,
+// IV rank/skew, DRV farming math, cross-flags vs composite/perps. Polls api.derive.xyz/v3 every ~3 min (DERIVE=off disables).
+const deriveDesk = require('./lib/derive').createDerive({ DATA_DIR, log: L, composite: compositeCached, perps, root: __dirname });
+if (process.env.DERIVE !== 'off') deriveDesk.start();
+Object.assign(routes, deriveDesk.routes());
+
+// Developer activity desk (lib/devactivity.js; data from research/devactivity.py): GitHub commit frequency / silence / burst flags
+const devactivity = require('./lib/devactivity').createDevActivity({ DATA_DIR, log: L });
+routes['/api/devactivity'] = async (q) => devactivity.api(q);
+
+// Pattern detectors 1-5 (crash hours, fresh-wallet clusters, CEX + bridge flows, stock pairs) — lib/patterns.js, additive routes
+Object.assign(routes, require('./lib/patterns').routes({ DATA_DIR, live }));
+
+// Narratives Desk (lib/narratives.js; data from research/narratives.py). narratives.boostFor(chain, address, symbol) for composite grades.
+const narratives = createNarratives({ DATA_DIR, root: __dirname, log: L });
+routes['/api/narratives'] = async (q) => narratives.api(q);
+routes['/api/narratives/boost'] = async () => narratives.boosts();
 const refreshing = new Set();
 function withRefresh(file, script, maxAge) {
   let st = null; try { st = fs.statSync(path.join(DATA_DIR, file)); } catch {}
@@ -551,6 +642,8 @@ const server = http.createServer(async (req, res) => {
   if (u.pathname.startsWith('/api/')) {
     const deep = u.pathname === '/api/scan' && u.searchParams.get('deep') === '1';
     if (limited(req, 'api', 240, 60e3) || (deep && limited(req, 'deep', 4, 60e3))) { res.writeHead(429, { 'content-type': 'application/json' }); return res.end('{"error":"rate limited, slow down"}'); }
+    if (taxapi.owns(u.pathname)) return taxapi.handle(req, res, u); // Tax desk (lib/tax/api.js)
+    if (tradeapi.owns(u.pathname)) return tradeapi.handle(req, res, u); // swaps / MEV log / portfolio (lib/tradeapi.js)
     const h = routes[u.pathname];
     if (!h) { res.writeHead(404, { 'content-type': 'application/json' }); return res.end('{"error":"not found"}'); }
     if (req.method !== 'GET') { res.writeHead(405); return res.end(); }

@@ -16,6 +16,11 @@ data/cg_series/
 !data/rug_cases.json
 !data/unlocks.json
 !data/opt_universe.json
+!data/crash_catalog.json
+!data/crash_fingerprints.json
+!data/crash_catalog_final.json
+!data/macro_overlay.json
+!data/exit_replays.json
 __pycache__/
 *.pyc
 .env
@@ -23,3 +28,6 @@ screenshot*.png
 tunnel.log
 PUBLIC_URL.txt
 watchdog.log
+
+# Tax desk: private ledger, uploads, exports (never commit)
+data/tax/
