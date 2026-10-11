@@ -1,0 +1,139 @@
+{
+ "generatedAt": 1791719253471,
+ "cases": [
+  {
+   "id": "lab",
+   "symbol": "LAB",
+   "flag_date": "2026-05-11",
+   "price_at_flag": 4.744644566081671,
+   "card": {
+    "text": "Elevated dump risk (rug risk 50/100). Reasons: top 10 wallets hold 62%, price up 41x in 87 days, 11.1x in 30 days (parabolic), price rising on falling volume, at all-time highs after a run. Take profits in steps: sell 25% at 5.338 (+13%), sell 25% at 5.931 (+25%), sell 25% at 6.822 (+44%), sell 25% at 7.712 (+63%). Trailing stop: sell the rest if it falls 40% from the high (2.847).",
+    "sms": "LAB rug risk 50: take profits above 5.338; trail stop 2.847",
+    "ladder": [
+     {
+      "pct": 25,
+      "price": 5.3380421925419,
+      "gain": 13
+     },
+     {
+      "pct": 25,
+      "price": 5.931439819002129,
+      "gain": 25
+     },
+     {
+      "pct": 25,
+      "price": 6.821536258692472,
+      "gain": 44
+     },
+     {
+      "pct": 25,
+      "price": 7.711632698382815,
+      "gain": 63
+     }
+    ],
+    "trailPct": 40,
+    "trail": 2.8467867396490028,
+    "atrPct": 25,
+    "level": "elevated",
+    "label": "Model estimate, not financial advice. Levels come from recent volatility and highs; low-liquidity tokens can gap through any level."
+   },
+   "outcome": {
+    "fills": [
+     {
+      "date": "2026-05-14",
+      "what": "limit sell 25% filled at 5.338 (daily close 6.003)"
+     },
+     {
+      "date": "2026-05-14",
+      "what": "limit sell 25% filled at 5.931 (daily close 6.003)"
+     },
+     {
+      "date": "2026-05-31",
+      "what": "limit sell 25% filled at 6.822 (daily close 7.981)"
+     },
+     {
+      "date": "2026-05-31",
+      "what": "limit sell 25% filled at 7.712 (daily close 7.981)"
+     }
+    ],
+    "avg_exit_price": 6.4506627421548295,
+    "avg_exit_vs_flag_pct": 35.956711874037396,
+    "peak_after_flag": 19.7797780064336,
+    "peak_date": "2026-06-27",
+    "peak_vs_flag_pct": 316.8864017303741,
+    "hold_to_collapse_price": 1.2519246015422547,
+    "hold_to_collapse_vs_flag_pct": -73.61394338172423,
+    "price_now": 0.05201293214914515,
+    "now_vs_flag_pct": -98.90375492990617
+   },
+   "caveats": "Limit sells assumed filled at the target price (conservative); daily closes only (intraday spikes and crashes are not visible, so real fills differ); float and top-10 share are today's values applied to the flag date."
+  },
+  {
+   "id": "velvet",
+   "symbol": "VELVET",
+   "flag_date": "2026-06-11",
+   "price_at_flag": 0.9037896237143153,
+   "card": {
+    "text": "Elevated dump risk (rug risk 50/100). Reasons: only 46% of supply circulating, top 10 wallets hold 88%, price up 14x in 63 days, 10.1x in 30 days (parabolic), at all-time highs after a run. Take profits in steps: sell 25% at 1.002 (+11%), sell 25% at 1.099 (+22%), sell 25% at 1.246 (+38%), sell 25% at 1.393 (+54%). Trailing stop: sell the rest if it falls 40% from the high (0.542).",
+    "sms": "VELVET rug risk 50: take profits above 1.002; trail stop 0.542",
+    "ladder": [
+     {
+      "pct": 25,
+      "price": 1.0016039672884849,
+      "gain": 11
+     },
+     {
+      "pct": 25,
+      "price": 1.099418310862654,
+      "gain": 22
+     },
+     {
+      "pct": 25,
+      "price": 1.2461398262239085,
+      "gain": 38
+     },
+     {
+      "pct": 25,
+      "price": 1.3928613415851625,
+      "gain": 54
+     }
+    ],
+    "trailPct": 40,
+    "trail": 0.5422737742285891,
+    "atrPct": 21.6,
+    "level": "elevated",
+    "label": "Model estimate, not financial advice. Levels come from recent volatility and highs; low-liquidity tokens can gap through any level."
+   },
+   "outcome": {
+    "fills": [
+     {
+      "date": "2026-06-12",
+      "what": "limit sell 25% filled at 1.002 (daily close 1.538)"
+     },
+     {
+      "date": "2026-06-12",
+      "what": "limit sell 25% filled at 1.099 (daily close 1.538)"
+     },
+     {
+      "date": "2026-06-12",
+      "what": "limit sell 25% filled at 1.246 (daily close 1.538)"
+     },
+     {
+      "date": "2026-06-12",
+      "what": "limit sell 25% filled at 1.393 (daily close 1.538)"
+     }
+    ],
+    "avg_exit_price": 1.1850058614900525,
+    "avg_exit_vs_flag_pct": 31.115231951880507,
+    "peak_after_flag": 1.8822925213782926,
+    "peak_date": "2026-06-29",
+    "peak_vs_flag_pct": 108.26666648844805,
+    "hold_to_collapse_price": 0.4695599831898997,
+    "hold_to_collapse_vs_flag_pct": -48.04543326574792,
+    "price_now": 0.07440896066709869,
+    "now_vs_flag_pct": -91.767004321061
+   },
+   "caveats": "Limit sells assumed filled at the target price (conservative); daily closes only (intraday spikes and crashes are not visible, so real fills differ); float and top-10 share are today's values applied to the flag date."
+  }
+ ]
+}
