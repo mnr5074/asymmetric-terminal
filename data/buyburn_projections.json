@@ -1,0 +1,1890 @@
+{
+ "generated": "2026-10-11",
+ "method": "net_supply = circ_now - burned_tokens + unlocked_tokens; burn at trailing-90d rate (constant token rate); unlocks from DefiLlama emissions schedule when available else trailing-90d realized unlock/issuance rate. bought_not_burned = treasury buybacks (not subtracted from net_supply; see net_float_ex_treasury_buys).",
+ "windows": [
+  "1m",
+  "3m",
+  "6m",
+  "9m",
+  "1y",
+  "2y",
+  "3y"
+ ],
+ "tokens": {
+  "HYPE": {
+   "sym": "HYPE",
+   "type": "burn",
+   "circ_now": 222445714.07414138,
+   "total_now": 955307079.4341414,
+   "price_now": 85.17,
+   "flags": [
+    "Base case uses DefiLlama-documented realized unlocks (core-contributor monthly + validator rewards, trailing 90d). Hyperliquid API (tokenDetails) lists 237.9M HYPE at non-circulating 0x43e9..a251 and futureEmissions 410.8M; if 237.9M vested linearly to end-2027 (DefiLlama note) unlocks would be ~0.53M/day = ~20x the base case. Treat base case as LOWER bound for dilution."
+   ],
+   "burn_per_day": 26357.05486287,
+   "buyback_not_burned_per_day": 0.0,
+   "burn_basis": "DefiLlama holdersRevenue last-90d avg / daily price",
+   "burn_pct_circ_per_year": 4.32479676,
+   "unlock_basis": "DefiLlama emissions: no forward schedule -> trailing-90d realized unlock rate extrapolated",
+   "emis_unlocked_now": 390867246.98746365,
+   "unlock_per_day_trailing90": 51293.81111111,
+   "cg_circ_change_per_day_90d": -195.9718234,
+   "scenario_upper_unlock_per_day": 533411.83183857,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 790711.64588601,
+     "unlocked_tokens": 1538814.33333333,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 223193816.76158872,
+     "net_change_pct": 0.33630798,
+     "net_float_ex_treasury_buys": 223193816.76158872,
+     "total_supply_after_burn": 954516367.7882553,
+     "scenario_upper_unlocked_tokens": 16002354.95515695,
+     "scenario_upper_net_change_pct": 6.83836206
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 2398491.9925209,
+     "unlocked_tokens": 4667736.81111111,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 224714958.8927316,
+     "net_change_pct": 1.02013421,
+     "net_float_ex_treasury_buys": 224714958.8927316,
+     "total_supply_after_burn": 952908587.4416205,
+     "scenario_upper_unlocked_tokens": 48540476.69730942,
+     "scenario_upper_net_change_pct": 20.74303157
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 4796983.98504179,
+     "unlocked_tokens": 9335473.62222222,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 226984203.7113218,
+     "net_change_pct": 2.04026841,
+     "net_float_ex_treasury_buys": 226984203.7113218,
+     "total_supply_after_burn": 950510095.4490997,
+     "scenario_upper_unlocked_tokens": 97080953.39461884,
+     "scenario_upper_net_change_pct": 41.48606315
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 7195475.97756269,
+     "unlocked_tokens": 14003210.43333333,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 229253448.52991202,
+     "net_change_pct": 3.06040262,
+     "net_float_ex_treasury_buys": 229253448.52991202,
+     "total_supply_after_burn": 948111603.4565787,
+     "scenario_upper_unlocked_tokens": 145621430.09192827,
+     "scenario_upper_net_change_pct": 62.22909472
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 9620325.02494645,
+     "unlocked_tokens": 18722241.05555556,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 231547630.10475048,
+     "net_change_pct": 4.09174709,
+     "net_float_ex_treasury_buys": 231547630.10475048,
+     "total_supply_after_burn": 945686754.409195,
+     "scenario_upper_unlocked_tokens": 194695318.62107626,
+     "scenario_upper_net_change_pct": 83.2000717
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 19240650.04989291,
+     "unlocked_tokens": 37444482.11111111,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 240649546.1353596,
+     "net_change_pct": 8.18349418,
+     "net_float_ex_treasury_buys": 240649546.1353596,
+     "total_supply_after_burn": 936066429.3842485,
+     "scenario_upper_unlocked_tokens": 237901677,
+     "scenario_upper_net_change_pct": 98.29860191
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 28860975.07483936,
+     "unlocked_tokens": 56166723.16666667,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 249751462.16596872,
+     "net_change_pct": 12.27524127,
+     "net_float_ex_treasury_buys": 249751462.16596872,
+     "total_supply_after_burn": 926446104.359302,
+     "scenario_upper_unlocked_tokens": 237901677,
+     "scenario_upper_net_change_pct": 93.97380516
+    }
+   }
+  },
+  "PUMP": {
+   "sym": "PUMP",
+   "type": "treasury->burn",
+   "circ_now": 463188950137.3236,
+   "total_now": 828700770872.379,
+   "price_now": 0.0056081,
+   "flags": [
+    "PUMP 50%-revenue burn contract committed for 1y from 2026-04-28; projection beyond ~Apr-2027 assumes renewal"
+   ],
+   "burn_per_day": 241217234.43248525,
+   "buyback_not_burned_per_day": 0.0,
+   "burn_basis": "DefiLlama holdersRevenue last-90d avg / daily price",
+   "burn_pct_circ_per_year": 19.0082882,
+   "unlock_basis": "DefiLlama emissions schedule (defillama-datasets.llama.fi/emissions/pump)",
+   "emis_unlocked_now": 526250000000.0,
+   "unlock_per_day_trailing90": 152777777.7777778,
+   "cg_circ_change_per_day_90d": 682029647.141019,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 7236517032.974558,
+     "unlocked_tokens": 6875000000.0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 462827433104.34906,
+     "net_change_pct": -0.07804958,
+     "net_float_ex_treasury_buys": 462827433104.34906,
+     "total_supply_after_burn": 821464253839.4044
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 21950768333.35616,
+     "unlocked_tokens": 20625000000.0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 461863181803.96747,
+     "net_change_pct": -0.28622624,
+     "net_float_ex_treasury_buys": 461863181803.96747,
+     "total_supply_after_burn": 806750002539.0228
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 43901536666.71232,
+     "unlocked_tokens": 41250000000.0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 460537413470.61127,
+     "net_change_pct": -0.57245249,
+     "net_float_ex_treasury_buys": 460537413470.61127,
+     "total_supply_after_burn": 784799234205.6667
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 65852305000.068474,
+     "unlocked_tokens": 61875000000.00012,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 459211645137.25525,
+     "net_change_pct": -0.85867873,
+     "net_float_ex_treasury_buys": 459211645137.25525,
+     "total_supply_after_burn": 762848465872.3105
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 88044290567.85712,
+     "unlocked_tokens": 82500000000.00012,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 457644659569.4666,
+     "net_change_pct": -1.19698248,
+     "net_float_ex_treasury_buys": 457644659569.4666,
+     "total_supply_after_burn": 740656480304.522
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 176088581135.71423,
+     "unlocked_tokens": 165000000000.0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 452100369001.6094,
+     "net_change_pct": -2.39396495,
+     "net_float_ex_treasury_buys": 452100369001.6094,
+     "total_supply_after_burn": 652612189736.6648
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 264132871703.57135,
+     "unlocked_tokens": 233749999999.99976,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 432806078433.752,
+     "net_change_pct": -6.55949838,
+     "net_float_ex_treasury_buys": 432806078433.752,
+     "total_supply_after_burn": 564567899168.8076
+    }
+   }
+  },
+  "UNI": {
+   "sym": "UNI",
+   "type": "burn",
+   "circ_now": 624968422.4808736,
+   "total_now": 887216418.7867086,
+   "price_now": 7.59,
+   "flags": [],
+   "burn_per_day": 62267.40598415,
+   "buyback_not_burned_per_day": 0.0,
+   "burn_basis": "DefiLlama holdersRevenue last-90d avg / daily price",
+   "burn_pct_circ_per_year": 3.63660025,
+   "unlock_basis": "DefiLlama emissions: no forward schedule -> trailing-90d realized unlock rate extrapolated",
+   "emis_unlocked_now": 1005405781.5136375,
+   "unlock_per_day_trailing90": 549.10708454,
+   "cg_circ_change_per_day_90d": 44454.01029996,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 1868022.17952454,
+     "unlocked_tokens": 16473.21253626,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 623116873.5138853,
+     "net_change_pct": -0.2962628,
+     "net_float_ex_treasury_buys": 623116873.5138853,
+     "total_supply_after_burn": 885348396.607184
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 5666333.94455778,
+     "unlocked_tokens": 49968.74469331,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 619352057.2810091,
+     "net_change_pct": -0.89866384,
+     "net_float_ex_treasury_buys": 619352057.2810091,
+     "total_supply_after_burn": 881550084.8421508
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 11332667.88911556,
+     "unlocked_tokens": 99937.48938662,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 613735692.0811446,
+     "net_change_pct": -1.79732767,
+     "net_float_ex_treasury_buys": 613735692.0811446,
+     "total_supply_after_burn": 875883750.897593
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 16999001.83367334,
+     "unlocked_tokens": 149906.23407993,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 608119326.8812802,
+     "net_change_pct": -2.69599151,
+     "net_float_ex_treasury_buys": 608119326.8812802,
+     "total_supply_after_burn": 870217416.9530352
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 22727603.18421528,
+     "unlocked_tokens": 200424.08585778,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 602441243.382516,
+     "net_change_pct": -3.60453077,
+     "net_float_ex_treasury_buys": 602441243.382516,
+     "total_supply_after_burn": 864488815.6024933
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 45455206.36843055,
+     "unlocked_tokens": 400848.17171555,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 579914064.2841585,
+     "net_change_pct": -7.20906154,
+     "net_float_ex_treasury_buys": 579914064.2841585,
+     "total_supply_after_burn": 841761212.418278
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 68182809.55264583,
+     "unlocked_tokens": 601272.25757333,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 557386885.1858011,
+     "net_change_pct": -10.81359231,
+     "net_float_ex_treasury_buys": 557386885.1858011,
+     "total_supply_after_burn": 819033609.2340628
+    }
+   }
+  },
+  "SKY": {
+   "sym": "SKY",
+   "type": "mixed",
+   "circ_now": 23433248349.0524,
+   "total_now": 23459804203.605965,
+   "price_now": 0.076983,
+   "flags": [
+    "negative trailing unlock rate (-21,219/d) clamped to 0"
+   ],
+   "burn_per_day": 0.0,
+   "buyback_not_burned_per_day": 1666090.95510192,
+   "burn_basis": "bought back (NOT burned) last-90d avg",
+   "burn_pct_circ_per_year": 0.0,
+   "unlock_basis": "DefiLlama emissions: no forward schedule -> trailing-90d realized unlock rate extrapolated",
+   "emis_unlocked_now": 23549872050.04825,
+   "unlock_per_day_trailing90": 0.0,
+   "cg_circ_change_per_day_90d": 1144888.49135136,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 49982728.65305769,
+     "net_supply": 23433248349.0524,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 23383265620.39934,
+     "total_supply_after_burn": 23459804203.605965
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 151614276.914275,
+     "net_supply": 23433248349.0524,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 23281634072.138123,
+     "total_supply_after_burn": 23459804203.605965
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 303228553.82855,
+     "net_supply": 23433248349.0524,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 23130019795.22385,
+     "total_supply_after_burn": 23459804203.605965
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 454842830.7428249,
+     "net_supply": 23433248349.0524,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 22978405518.309574,
+     "total_supply_after_burn": 23459804203.605965
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 608123198.6122018,
+     "net_supply": 23433248349.0524,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 22825125150.440197,
+     "total_supply_after_burn": 23459804203.605965
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 1216246397.2244036,
+     "net_supply": 23433248349.0524,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 22217001951.827995,
+     "total_supply_after_burn": 23459804203.605965
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 1824369595.8366055,
+     "net_supply": 23433248349.0524,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 21608878753.215794,
+     "total_supply_after_burn": 23459804203.605965
+    }
+   }
+  },
+  "BONK": {
+   "sym": "BONK",
+   "type": "mixed",
+   "circ_now": 87994363928177.55,
+   "total_now": 87994363928177.55,
+   "price_now": 3.43e-06,
+   "flags": [],
+   "burn_per_day": 0.0,
+   "buyback_not_burned_per_day": 20548802811.909035,
+   "burn_basis": "bought back (NOT burned) last-90d avg",
+   "burn_pct_circ_per_year": 0.0,
+   "cg_circ_change_per_day_90d": -2672882.70190972,
+   "unlock_basis": "CoinGecko 90d net circ change (+burn) used as unlock proxy",
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 616464084357.271,
+     "net_supply": 87994363928177.55,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 87377899843820.28,
+     "total_supply_after_burn": 87994363928177.55
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 1869941055883.7222,
+     "net_supply": 87994363928177.55,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 86124422872293.83,
+     "total_supply_after_burn": 87994363928177.55
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 3739882111767.4443,
+     "net_supply": 87994363928177.55,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 84254481816410.11,
+     "total_supply_after_burn": 87994363928177.55
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 5609823167651.166,
+     "net_supply": 87994363928177.55,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 82384540760526.38,
+     "total_supply_after_burn": 87994363928177.55
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 7500313026346.798,
+     "net_supply": 87994363928177.55,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 80494050901830.75,
+     "total_supply_after_burn": 87994363928177.55
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 15000626052693.596,
+     "net_supply": 87994363928177.55,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 72993737875483.95,
+     "total_supply_after_burn": 87994363928177.55
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 22500939079040.395,
+     "net_supply": 87994363928177.55,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 65493424849137.16,
+     "total_supply_after_burn": 87994363928177.55
+    }
+   }
+  },
+  "LINK": {
+   "sym": "LINK",
+   "type": "treasury",
+   "circ_now": 766849970.424884,
+   "total_now": 1000000000.0,
+   "price_now": 12.94,
+   "flags": [],
+   "burn_per_day": 0.0,
+   "buyback_not_burned_per_day": 15718.76387148,
+   "burn_basis": "bought back (NOT burned) last-90d avg",
+   "burn_pct_circ_per_year": 0.0,
+   "unlock_basis": "DefiLlama emissions: no forward schedule -> trailing-90d realized unlock rate extrapolated",
+   "emis_unlocked_now": 766759578.99,
+   "unlock_per_day_trailing90": 208333.33333333,
+   "cg_circ_change_per_day_90d": 208603.22343369,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 6250000.0,
+     "bought_not_burned_tokens": 471562.91614454,
+     "net_supply": 773099970.424884,
+     "net_change_pct": 0.81502253,
+     "net_float_ex_treasury_buys": 772628407.5087395,
+     "total_supply_after_burn": 1000000000.0
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 18958333.33333334,
+     "bought_not_burned_tokens": 1430407.5123051,
+     "net_supply": 785808303.7582173,
+     "net_change_pct": 2.472235,
+     "net_float_ex_treasury_buys": 784377896.2459122,
+     "total_supply_after_burn": 1000000000.0
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 37916666.66666667,
+     "bought_not_burned_tokens": 2860815.02461021,
+     "net_supply": 804766637.0915506,
+     "net_change_pct": 4.94446999,
+     "net_float_ex_treasury_buys": 801905822.0669404,
+     "total_supply_after_burn": 1000000000.0
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 56875000.0,
+     "bought_not_burned_tokens": 4291222.53691531,
+     "net_supply": 823724970.424884,
+     "net_change_pct": 7.41670499,
+     "net_float_ex_treasury_buys": 819433747.8879687,
+     "total_supply_after_burn": 1000000000.0
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 76041666.66666667,
+     "bought_not_burned_tokens": 5737348.8130919,
+     "net_supply": 842891637.0915506,
+     "net_change_pct": 9.9161074,
+     "net_float_ex_treasury_buys": 837154288.2784587,
+     "total_supply_after_burn": 1000000000.0
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 152083333.33333334,
+     "bought_not_burned_tokens": 11474697.62618381,
+     "net_supply": 918933303.7582173,
+     "net_change_pct": 19.8322148,
+     "net_float_ex_treasury_buys": 907458606.1320336,
+     "total_supply_after_burn": 1000000000.0
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 228125000.0,
+     "bought_not_burned_tokens": 17212046.43927571,
+     "net_supply": 994974970.424884,
+     "net_change_pct": 29.7483222,
+     "net_float_ex_treasury_buys": 977762923.9856082,
+     "total_supply_after_burn": 1000000000.0
+    }
+   }
+  },
+  "RAY": {
+   "sym": "RAY",
+   "type": "treasury",
+   "circ_now": 269863589.046313,
+   "total_now": 555000000.0,
+   "price_now": 2.33,
+   "flags": [
+    "DefiLlama emissions series ends 2024-02-25 (stale/complete) -> future unlocks assumed 0 (UNCERTAIN)"
+   ],
+   "burn_per_day": 0.0,
+   "buyback_not_burned_per_day": 62608.18701455,
+   "burn_basis": "bought back (NOT burned) last-90d avg",
+   "burn_pct_circ_per_year": 0.0,
+   "unlock_basis": "DefiLlama emissions: no forward schedule -> trailing-90d realized unlock rate extrapolated",
+   "emis_unlocked_now": 431872961.29367006,
+   "unlock_per_day_trailing90": 0.0,
+   "cg_circ_change_per_day_90d": 5276.7829835,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 1878245.61043641,
+     "net_supply": 269863589.046313,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 267985343.43587658,
+     "total_supply_after_burn": 555000000.0
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 5697345.01832379,
+     "net_supply": 269863589.046313,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 264166244.0279892,
+     "total_supply_after_burn": 555000000.0
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 11394690.03664757,
+     "net_supply": 269863589.046313,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 258468899.00966543,
+     "total_supply_after_burn": 555000000.0
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 17092035.05497136,
+     "net_supply": 269863589.046313,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 252771553.99134162,
+     "total_supply_after_burn": 555000000.0
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 22851988.26030969,
+     "net_supply": 269863589.046313,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 247011600.7860033,
+     "total_supply_after_burn": 555000000.0
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 45703976.52061938,
+     "net_supply": 269863589.046313,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 224159612.5256936,
+     "total_supply_after_burn": 555000000.0
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 68555964.78092907,
+     "net_supply": 269863589.046313,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 201307624.2653839,
+     "total_supply_after_burn": 555000000.0
+    }
+   }
+  },
+  "CAKE": {
+   "sym": "CAKE",
+   "type": "burn",
+   "circ_now": 357617116.3523936,
+   "total_now": 369209300.11606944,
+   "price_now": 2.25,
+   "flags": [],
+   "burn_per_day": 66641.76554812,
+   "buyback_not_burned_per_day": 0.0,
+   "burn_basis": "DefiLlama holdersRevenue last-90d avg / daily price",
+   "burn_pct_circ_per_year": 6.80175621,
+   "unlock_basis": "DefiLlama emissions: no forward schedule -> trailing-90d realized unlock rate extrapolated",
+   "emis_unlocked_now": 49343040.60373314,
+   "unlock_per_day_trailing90": 20241.89103587,
+   "cg_circ_change_per_day_90d": 382427.9561861,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 1999252.96644352,
+     "unlocked_tokens": 607256.73107608,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 356225120.11702615,
+     "net_change_pct": -0.38924206,
+     "net_float_ex_treasury_buys": 356225120.11702615,
+     "total_supply_after_burn": 367210047.1496259
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 6064400.66487867,
+     "unlocked_tokens": 1842012.08426412,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 353394727.77177906,
+     "net_change_pct": -1.18070092,
+     "net_float_ex_treasury_buys": 353394727.77177906,
+     "total_supply_after_burn": 363144899.45119077
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 12128801.32975733,
+     "unlocked_tokens": 3684024.16852824,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 349172339.19116455,
+     "net_change_pct": -2.36140184,
+     "net_float_ex_treasury_buys": 349172339.19116455,
+     "total_supply_after_burn": 357080498.7863121
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 18193201.994636,
+     "unlocked_tokens": 5526036.25279236,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 344949950.61055,
+     "net_change_pct": -3.54210276,
+     "net_float_ex_treasury_buys": 344949950.61055,
+     "total_supply_after_burn": 351016098.12143344
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 24324244.42506279,
+     "unlocked_tokens": 7388290.22809236,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 340681162.1554232,
+     "net_change_pct": -4.73577841,
+     "net_float_ex_treasury_buys": 340681162.1554232,
+     "total_supply_after_burn": 344885055.69100666
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 48648488.85012557,
+     "unlocked_tokens": 14776580.45618471,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 323745207.95845276,
+     "net_change_pct": -9.47155683,
+     "net_float_ex_treasury_buys": 323745207.95845276,
+     "total_supply_after_burn": 320560811.2659439
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 72972733.27518836,
+     "unlocked_tokens": 22164870.68427707,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 306809253.76148236,
+     "net_change_pct": -14.20733524,
+     "net_float_ex_treasury_buys": 306809253.76148236,
+     "total_supply_after_burn": 296236566.8408811
+    }
+   }
+  },
+  "ASTER": {
+   "sym": "ASTER",
+   "type": "matched_reserve_burn",
+   "circ_now": 2713596421.7797318,
+   "total_now": 7792632672.998623,
+   "price_now": 0.712918,
+   "flags": [
+    "ASTER: bought tokens go to stakers (stay circulating); equal amount burned from team reserve -> reduces TOTAL supply & future unlocks, not current circ"
+   ],
+   "reserve_burn_per_day": 190765.04326845,
+   "burn_per_day": 0.0,
+   "buyback_not_burned_per_day": 190765.04326845,
+   "burn_basis": "bought back (NOT burned) last-90d avg",
+   "burn_pct_circ_per_year": 0.0,
+   "unlock_basis": "DefiLlama emissions schedule (defillama-datasets.llama.fi/emissions/aster)",
+   "emis_unlocked_now": 2967175554.944125,
+   "unlock_per_day_trailing90": 169951.15493472,
+   "cg_circ_change_per_day_90d": 371810.6918808,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 12110312.24322081,
+     "bought_not_burned_tokens": 5722951.29805359,
+     "net_supply": 2725706734.0229526,
+     "net_change_pct": 0.44628273,
+     "net_float_ex_treasury_buys": 2719983782.724899,
+     "total_supply_after_burn": 7792632672.998623
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 36659613.80443668,
+     "bought_not_burned_tokens": 17359618.93742921,
+     "net_supply": 2750256035.5841684,
+     "net_change_pct": 1.35096043,
+     "net_float_ex_treasury_buys": 2732896416.646739,
+     "total_supply_after_burn": 7792632672.998623
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 73319227.60887432,
+     "bought_not_burned_tokens": 34719237.87485842,
+     "net_supply": 2786915649.388606,
+     "net_change_pct": 2.70192085,
+     "net_float_ex_treasury_buys": 2752196411.5137477,
+     "total_supply_after_burn": 7792632672.998623
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 109978841.41331196,
+     "bought_not_burned_tokens": 52078856.81228763,
+     "net_supply": 2823575263.1930437,
+     "net_change_pct": 4.05288128,
+     "net_float_ex_treasury_buys": 2771496406.380756,
+     "total_supply_after_burn": 7792632672.998623
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 146967132.29252338,
+     "bought_not_burned_tokens": 69629240.79298529,
+     "net_supply": 2860563554.072255,
+     "net_change_pct": 5.41595394,
+     "net_float_ex_treasury_buys": 2790934313.2792697,
+     "total_supply_after_burn": 7792632672.998623
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 293934264.5850439,
+     "bought_not_burned_tokens": 139258481.58597058,
+     "net_supply": 3007530686.3647757,
+     "net_change_pct": 10.83190788,
+     "net_float_ex_treasury_buys": 2868272204.7788053,
+     "total_supply_after_burn": 7792632672.998623
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 440901396.8775635,
+     "bought_not_burned_tokens": 208887722.3789559,
+     "net_supply": 3154497818.657295,
+     "net_change_pct": 16.24786182,
+     "net_float_ex_treasury_buys": 2945610096.2783394,
+     "total_supply_after_burn": 7792632672.998623
+    }
+   }
+  },
+  "ORE": {
+   "sym": "ORE",
+   "type": "mixed",
+   "circ_now": 505014.67028123,
+   "total_now": 505014.67028123,
+   "price_now": 109.89,
+   "flags": [],
+   "burn_per_day": 0.0,
+   "buyback_not_burned_per_day": 1228.59430056,
+   "burn_basis": "bought back (NOT burned) last-90d avg",
+   "burn_pct_circ_per_year": 0.0,
+   "unlock_basis": "DefiLlama emissions: no forward schedule -> trailing-90d realized unlock rate extrapolated",
+   "emis_unlocked_now": 586502.2,
+   "unlock_per_day_trailing90": 1390.30666667,
+   "cg_circ_change_per_day_90d": 325.46286863,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 41709.2,
+     "bought_not_burned_tokens": 36857.82901687,
+     "net_supply": 546723.87028123,
+     "net_change_pct": 8.2590076,
+     "net_float_ex_treasury_buys": 509866.04126436,
+     "total_supply_after_burn": 505014.67028123
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 126517.90666667,
+     "bought_not_burned_tokens": 111802.08135116,
+     "net_supply": 631532.5769479,
+     "net_change_pct": 25.05232305,
+     "net_float_ex_treasury_buys": 519730.49559673,
+     "total_supply_after_burn": 505014.67028123
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 253035.81333333,
+     "bought_not_burned_tokens": 223604.16270232,
+     "net_supply": 758050.48361456,
+     "net_change_pct": 50.10464611,
+     "net_float_ex_treasury_buys": 534446.32091224,
+     "total_supply_after_burn": 505014.67028123
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 379553.72,
+     "bought_not_burned_tokens": 335406.24405349,
+     "net_supply": 884568.39028123,
+     "net_change_pct": 75.15696916,
+     "net_float_ex_treasury_buys": 549162.14622774,
+     "total_supply_after_burn": 505014.67028123
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 507461.93333333,
+     "bought_not_burned_tokens": 448436.91970521,
+     "net_supply": 1012476.60361456,
+     "net_change_pct": 100.48459247,
+     "net_float_ex_treasury_buys": 564039.68390935,
+     "total_supply_after_burn": 505014.67028123
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 1014923.86666667,
+     "bought_not_burned_tokens": 896873.83941042,
+     "net_supply": 1519938.5369479,
+     "net_change_pct": 200.96918494,
+     "net_float_ex_treasury_buys": 623064.69753748,
+     "total_supply_after_burn": 505014.67028123
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 1522385.8,
+     "bought_not_burned_tokens": 1345310.75911563,
+     "net_supply": 2027400.47028123,
+     "net_change_pct": 301.4537774,
+     "net_float_ex_treasury_buys": 682089.7111656,
+     "total_supply_after_burn": 505014.67028123
+    }
+   }
+  },
+  "JUP": {
+   "sym": "JUP",
+   "type": "treasury",
+   "circ_now": 3319369204.37,
+   "total_now": 6861486282.738614,
+   "price_now": 0.365044,
+   "flags": [
+    "DefiLlama emissions series ends 2026-02-25 (stale/complete) -> future unlocks assumed 0 (UNCERTAIN)"
+   ],
+   "burn_per_day": 0.0,
+   "buyback_not_burned_per_day": 403173.57662426,
+   "burn_basis": "bought back (NOT burned) last-90d avg",
+   "burn_pct_circ_per_year": 0.0,
+   "unlock_basis": "DefiLlama emissions: no forward schedule -> trailing-90d realized unlock rate extrapolated",
+   "emis_unlocked_now": 3457074114.26,
+   "unlock_per_day_trailing90": 0.0,
+   "cg_circ_change_per_day_90d": 92.48357807,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 12095207.2987277,
+     "net_supply": 3319369204.37,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 3307273997.0712724,
+     "total_supply_after_burn": 6861486282.738614
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 36688795.47280737,
+     "net_supply": 3319369204.37,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 3282680408.8971925,
+     "total_supply_after_burn": 6861486282.738614
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 73377590.94561474,
+     "net_supply": 3319369204.37,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 3245991613.424385,
+     "total_supply_after_burn": 6861486282.738614
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 110066386.4184221,
+     "net_supply": 3319369204.37,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 3209302817.9515777,
+     "total_supply_after_burn": 6861486282.738614
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 147158355.46785372,
+     "net_supply": 3319369204.37,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 3172210848.9021463,
+     "total_supply_after_burn": 6861486282.738614
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 294316710.93570745,
+     "net_supply": 3319369204.37,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 3025052493.4342923,
+     "total_supply_after_burn": 6861486282.738614
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 441475066.4035612,
+     "net_supply": 3319369204.37,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 2877894137.966439,
+     "total_supply_after_burn": 6861486282.738614
+    }
+   }
+  },
+  "LIT": {
+   "sym": "LIT",
+   "type": "treasury->burn",
+   "circ_now": 250000000.0,
+   "total_now": 1000000000.0,
+   "price_now": 3.58,
+   "flags": [
+    "LIT: 100% fees -> buy&burn since Jul-2026; daily series = DefiLlama buybacks"
+   ],
+   "burn_per_day": 26160.8796258,
+   "buyback_not_burned_per_day": 0.0,
+   "burn_basis": "DefiLlama holdersRevenue last-90d avg / daily price",
+   "burn_pct_circ_per_year": 3.81948843,
+   "unlock_basis": "DefiLlama emissions schedule (defillama-datasets.llama.fi/emissions/lighter)",
+   "emis_unlocked_now": 250000000.0,
+   "unlock_per_day_trailing90": 0.0,
+   "cg_circ_change_per_day_90d": 57.07163732,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 784826.38877386,
+     "unlocked_tokens": 0.0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 249215173.61122614,
+     "net_change_pct": -0.31393056,
+     "net_float_ex_treasury_buys": 249215173.61122614,
+     "total_supply_after_burn": 999215173.6112262
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 2380640.04594737,
+     "unlocked_tokens": 5475818.52554333,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 253095178.47959596,
+     "net_change_pct": 1.23807139,
+     "net_float_ex_treasury_buys": 253095178.47959596,
+     "total_supply_after_burn": 997619359.9540527
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 4761280.09189473,
+     "unlocked_tokens": 47000775.67758024,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 292239495.5856855,
+     "net_change_pct": 16.89579823,
+     "net_float_ex_treasury_buys": 292239495.5856855,
+     "total_supply_after_burn": 995238719.9081053
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 7141920.1378421,
+     "unlocked_tokens": 88525732.8296172,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 331383812.6917751,
+     "net_change_pct": 32.55352508,
+     "net_float_ex_treasury_buys": 331383812.6917751,
+     "total_supply_after_burn": 992858079.862158
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 9548721.06341526,
+     "unlocked_tokens": 130507008.19211608,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 370958287.12870085,
+     "net_change_pct": 48.38331485,
+     "net_float_ex_treasury_buys": 370958287.12870085,
+     "total_supply_after_burn": 990451278.9365847
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 19097442.12683051,
+     "unlocked_tokens": 297063155.01072633,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 527965712.8838958,
+     "net_change_pct": 111.18628515,
+     "net_float_ex_treasury_buys": 527965712.8838958,
+     "total_supply_after_burn": 980902557.8731695
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 28646163.19024577,
+     "unlocked_tokens": 463619301.8293359,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 684973138.6390902,
+     "net_change_pct": 173.98925546,
+     "net_float_ex_treasury_buys": 684973138.6390902,
+     "total_supply_after_burn": 971353836.8097543
+    }
+   }
+  },
+  "LDO": {
+   "sym": "LDO",
+   "type": "treasury",
+   "circ_now": 829567764.2043006,
+   "total_now": 1000000000.0,
+   "price_now": 0.427591,
+   "flags": [
+    "DefiLlama emissions series ends 2026-08-17 (stale/complete) -> future unlocks assumed 0 (UNCERTAIN)"
+   ],
+   "burn_per_day": 0.0,
+   "buyback_not_burned_per_day": 80508.53361527,
+   "burn_basis": "bought back (NOT burned) last-90d avg",
+   "burn_pct_circ_per_year": 0.0,
+   "unlock_basis": "DefiLlama emissions: no forward schedule -> trailing-90d realized unlock rate extrapolated",
+   "emis_unlocked_now": 1008838521.902051,
+   "unlock_per_day_trailing90": 0.0,
+   "cg_circ_change_per_day_90d": -75205.5410568,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 2415256.00845798,
+     "net_supply": 829567764.2043006,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 827152508.1958426,
+     "total_supply_after_burn": 1000000000.0
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 7326276.55898922,
+     "net_supply": 829567764.2043006,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 822241487.6453115,
+     "total_supply_after_burn": 1000000000.0
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 14652553.11797843,
+     "net_supply": 829567764.2043006,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 814915211.0863222,
+     "total_supply_after_burn": 1000000000.0
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 21978829.67696765,
+     "net_supply": 829567764.2043006,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 807588934.527333,
+     "total_supply_after_burn": 1000000000.0
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 29385614.76957214,
+     "net_supply": 829567764.2043006,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 800182149.4347285,
+     "total_supply_after_burn": 1000000000.0
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 58771229.53914427,
+     "net_supply": 829567764.2043006,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 770796534.6651564,
+     "total_supply_after_burn": 1000000000.0
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 88156844.3087164,
+     "net_supply": 829567764.2043006,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 741410919.8955842,
+     "total_supply_after_burn": 1000000000.0
+    }
+   }
+  },
+  "EDGE": {
+   "sym": "EDGE",
+   "type": "burn",
+   "circ_now": 350000000.0,
+   "total_now": 1000000000.0,
+   "price_now": 0.352138,
+   "flags": [],
+   "burn_per_day": 48340.72407852,
+   "buyback_not_burned_per_day": 0.0,
+   "burn_basis": "DefiLlama holdersRevenue last-90d avg / daily price",
+   "burn_pct_circ_per_year": 5.04124694,
+   "unlock_basis": "DefiLlama emissions schedule (defillama-datasets.llama.fi/emissions/edgex)",
+   "emis_unlocked_now": 350000000.0,
+   "unlock_per_day_trailing90": 0.0,
+   "cg_circ_change_per_day_90d": -42.1876928,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 1450221.72235549,
+     "unlocked_tokens": 0.0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 348549778.2776445,
+     "net_change_pct": -0.41434906,
+     "net_float_ex_treasury_buys": 348549778.2776445,
+     "total_supply_after_burn": 998549778.2776445
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 4399005.89114498,
+     "unlocked_tokens": 0.0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 345600994.108855,
+     "net_change_pct": -1.25685883,
+     "net_float_ex_treasury_buys": 345600994.108855,
+     "total_supply_after_burn": 995600994.108855
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 8798011.78228995,
+     "unlocked_tokens": 4166666.66666663,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 345368654.88437665,
+     "net_change_pct": -1.32324146,
+     "net_float_ex_treasury_buys": 345368654.88437665,
+     "total_supply_after_burn": 991201988.21771
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 13197017.67343493,
+     "unlocked_tokens": 16666666.66666663,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 353469648.9932317,
+     "net_change_pct": 0.99132828,
+     "net_float_ex_treasury_buys": 353469648.9932317,
+     "total_supply_after_burn": 986802982.326565
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 17644364.28865843,
+     "unlocked_tokens": 41666666.66666663,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 374022302.3780082,
+     "net_change_pct": 6.86351497,
+     "net_float_ex_treasury_buys": 374022302.3780082,
+     "total_supply_after_burn": 982355635.7113416
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 35288728.57731685,
+     "unlocked_tokens": 314583333.33333325,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 629294604.7560164,
+     "net_change_pct": 79.7984585,
+     "net_float_ex_treasury_buys": 629294604.7560164,
+     "total_supply_after_burn": 964711271.4226831
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 52933092.86597527,
+     "unlocked_tokens": 597916666.6666666,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 894983573.8006914,
+     "net_change_pct": 155.70959251,
+     "net_float_ex_treasury_buys": 894983573.8006914,
+     "total_supply_after_burn": 947066907.1340247
+    }
+   }
+  },
+  "GMX": {
+   "sym": "GMX",
+   "type": "treasury/distrib",
+   "circ_now": 10470917.72428958,
+   "total_now": 10470917.72428958,
+   "price_now": 8.35,
+   "flags": [],
+   "burn_per_day": 0.0,
+   "buyback_not_burned_per_day": 0.0,
+   "burn_basis": "",
+   "burn_pct_circ_per_year": 0.0,
+   "unlock_basis": "DefiLlama emissions: no forward schedule -> trailing-90d realized unlock rate extrapolated",
+   "emis_unlocked_now": 12561975.31374037,
+   "unlock_per_day_trailing90": 393.01363227,
+   "cg_circ_change_per_day_90d": 358.53147499,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 11790.40896799,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 10482708.13325757,
+     "net_change_pct": 0.11260149,
+     "net_float_ex_treasury_buys": 10482708.13325757,
+     "total_supply_after_burn": 10470917.72428958
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 35764.24053623,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 10506681.96482581,
+     "net_change_pct": 0.34155784,
+     "net_float_ex_treasury_buys": 10506681.96482581,
+     "total_supply_after_burn": 10470917.72428958
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 71528.48107246,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 10542446.20536204,
+     "net_change_pct": 0.68311568,
+     "net_float_ex_treasury_buys": 10542446.20536204,
+     "total_supply_after_burn": 10470917.72428958
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 107292.72160869,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 10578210.44589827,
+     "net_change_pct": 1.02467352,
+     "net_float_ex_treasury_buys": 10578210.44589827,
+     "total_supply_after_burn": 10470917.72428958
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 143449.97577719,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 10614367.70006677,
+     "net_change_pct": 1.36998475,
+     "net_float_ex_treasury_buys": 10614367.70006677,
+     "total_supply_after_burn": 10470917.72428958
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 286899.95155437,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 10757817.67584395,
+     "net_change_pct": 2.7399695,
+     "net_float_ex_treasury_buys": 10757817.67584395,
+     "total_supply_after_burn": 10470917.72428958
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 0.0,
+     "unlocked_tokens": 430349.92733156,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 10901267.65162114,
+     "net_change_pct": 4.10995424,
+     "net_float_ex_treasury_buys": 10901267.65162114,
+     "total_supply_after_burn": 10470917.72428958
+    }
+   }
+  },
+  "ETH": {
+   "sym": "ETH",
+   "type": "burn(protocol)",
+   "circ_now": 122124805.03090109,
+   "total_now": 122124805.03090109,
+   "price_now": 2504.28,
+   "flags": [],
+   "burn_per_day": 50.76976919,
+   "buyback_not_burned_per_day": 0.0,
+   "burn_basis": "DefiLlama holdersRevenue last-90d avg / daily price",
+   "burn_pct_circ_per_year": 0.01517379,
+   "cg_circ_change_per_day_90d": 16019.74272963,
+   "unlock_basis": "PoS issuance estimate = 940.87*sqrt(validators)/yr with 44.28M ETH staked (ultrasound.money beaconBalancesSum) = theoretical max (~perfect participation)",
+   "staked_eth": 44284821.82662797,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 1523.09307572,
+     "unlocked_tokens": 90972.57193507,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 122214254.50976044,
+     "net_change_pct": 0.07324432,
+     "net_float_ex_treasury_buys": 122214254.50976044,
+     "total_supply_after_burn": 122123281.93782537
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 4620.04899636,
+     "unlocked_tokens": 275950.13486971,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 122396135.11677444,
+     "net_change_pct": 0.22217443,
+     "net_float_ex_treasury_buys": 122396135.11677444,
+     "total_supply_after_burn": 122120184.98190473
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 9240.09799272,
+     "unlocked_tokens": 551900.26973942,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 122667465.20264779,
+     "net_change_pct": 0.44434885,
+     "net_float_ex_treasury_buys": 122667465.20264779,
+     "total_supply_after_burn": 122115564.93290837
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 13860.14698908,
+     "unlocked_tokens": 827850.40460913,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 122938795.28852114,
+     "net_change_pct": 0.66652328,
+     "net_float_ex_treasury_buys": 122938795.28852114,
+     "total_supply_after_burn": 122110944.88391201
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 18530.96575463,
+     "unlocked_tokens": 1106832.95854334,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 123213107.0236898,
+     "net_change_pct": 0.89113919,
+     "net_float_ex_treasury_buys": 123213107.0236898,
+     "total_supply_after_burn": 122106274.06514646
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 37061.93150927,
+     "unlocked_tokens": 2213665.91708668,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 124301409.0164785,
+     "net_change_pct": 1.78227837,
+     "net_float_ex_treasury_buys": 124301409.0164785,
+     "total_supply_after_burn": 122087743.09939182
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 55592.8972639,
+     "unlocked_tokens": 3320498.87563002,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 125389711.00926721,
+     "net_change_pct": 2.67341756,
+     "net_float_ex_treasury_buys": 125389711.00926721,
+     "total_supply_after_burn": 122069212.13363719
+    }
+   }
+  },
+  "TRX": {
+   "sym": "TRX",
+   "type": "burn(protocol)",
+   "circ_now": 94991264224.08649,
+   "total_now": 94992217791.5373,
+   "price_now": 0.33042,
+   "flags": [],
+   "burn_per_day": 2521811.95993449,
+   "buyback_not_burned_per_day": 0.0,
+   "burn_basis": "DefiLlama holdersRevenue last-90d avg / daily price",
+   "burn_pct_circ_per_year": 0.9689958,
+   "cg_circ_change_per_day_90d": 1442233.7769499,
+   "unlock_basis": "gross issuance inferred = CoinGecko 90d net circ change + burn (protocol issuance)",
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 75654358.79803483,
+     "unlocked_tokens": 118921372.10653195,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 95034531237.39499,
+     "net_change_pct": 0.04554841,
+     "net_float_ex_treasury_buys": 95034531237.39499,
+     "total_supply_after_burn": 94916563432.73926
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 229484888.35403898,
+     "unlocked_tokens": 360728162.0564802,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 95122507497.78893,
+     "net_change_pct": 0.13816352,
+     "net_float_ex_treasury_buys": 95122507497.78893,
+     "total_supply_after_burn": 94762732903.18326
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 458969776.70807797,
+     "unlocked_tokens": 721456324.1129605,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 95253750771.49136,
+     "net_change_pct": 0.27632704,
+     "net_float_ex_treasury_buys": 95253750771.49136,
+     "total_supply_after_burn": 94533248014.82921
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 688454665.062117,
+     "unlocked_tokens": 1082184486.1694407,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 95384994045.1938,
+     "net_change_pct": 0.41449056,
+     "net_float_ex_treasury_buys": 95384994045.1938,
+     "total_supply_after_burn": 94303763126.47517
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 920461365.3760905,
+     "unlocked_tokens": 1446876693.9628055,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 95517679552.6732,
+     "net_change_pct": 0.55417236,
+     "net_float_ex_treasury_buys": 95517679552.6732,
+     "total_supply_after_burn": 94071756426.16121
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 1840922730.752181,
+     "unlocked_tokens": 2893753387.925611,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 96044094881.25992,
+     "net_change_pct": 1.10834472,
+     "net_float_ex_treasury_buys": 96044094881.25992,
+     "total_supply_after_burn": 93151295060.78511
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 2761384096.1282716,
+     "unlocked_tokens": 4340630081.888416,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 96570510209.84663,
+     "net_change_pct": 1.66251707,
+     "net_float_ex_treasury_buys": 96570510209.84663,
+     "total_supply_after_burn": 92230833695.40903
+    }
+   }
+  },
+  "BNB": {
+   "sym": "BNB",
+   "type": "burn",
+   "circ_now": 133158728.41,
+   "total_now": 133158727.92,
+   "price_now": 749.16,
+   "flags": [
+    "BNB auto-burn stops once total supply reaches 100M"
+   ],
+   "burn_per_day": 16516.39102062,
+   "buyback_not_burned_per_day": 0.0,
+   "burn_basis": "last 4 quarterly auto-burns (5,998,220 BNB/yr) + BEP-95 gas burn (DefiLlama bsc holdersRevenue)",
+   "burn_pct_circ_per_year": 4.5272907,
+   "cg_circ_change_per_day_90d": -17914.19574378,
+   "unlock_basis": "no emissions (all supply circulating)",
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 495491.73061849,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 132663236.6793815,
+     "net_change_pct": -0.37210608,
+     "net_float_ex_treasury_buys": 132663236.6793815,
+     "total_supply_after_burn": 132663236.18938151
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 1502991.5828761,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 131655736.8271239,
+     "net_change_pct": -1.12872179,
+     "net_float_ex_treasury_buys": 131655736.8271239,
+     "total_supply_after_burn": 131655736.3371239
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 3005983.16575219,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 130152745.24424781,
+     "net_change_pct": -2.25744358,
+     "net_float_ex_treasury_buys": 130152745.24424781,
+     "total_supply_after_burn": 130152744.75424781
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 4508974.74862829,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 128649753.66137171,
+     "net_change_pct": -3.38616537,
+     "net_float_ex_treasury_buys": 128649753.66137171,
+     "total_supply_after_burn": 128649753.17137171
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 6028482.722525,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 127130245.687475,
+     "net_change_pct": -4.5272907,
+     "net_float_ex_treasury_buys": 127130245.687475,
+     "total_supply_after_burn": 127130245.197475
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 12056965.44505001,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 121101762.96495,
+     "net_change_pct": -9.05458139,
+     "net_float_ex_treasury_buys": 121101762.96495,
+     "total_supply_after_burn": 121101762.47494999
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 18085448.16757501,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 115073280.24242498,
+     "net_change_pct": -13.58187209,
+     "net_float_ex_treasury_buys": 115073280.24242498,
+     "total_supply_after_burn": 115073279.75242499
+    }
+   }
+  },
+  "OKB": {
+   "sym": "OKB",
+   "type": "burn(ended)",
+   "circ_now": 21000000.0,
+   "total_now": 21000000.0,
+   "price_now": 123.75,
+   "flags": [],
+   "burn_per_day": 0,
+   "buyback_not_burned_per_day": 0.0,
+   "burn_basis": "program ended 2025-08 (supply fixed 21M)",
+   "burn_pct_circ_per_year": 0.0,
+   "cg_circ_change_per_day_90d": 17.70031558,
+   "unlock_basis": "fixed 21M supply",
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 21000000.0,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 21000000.0,
+     "total_supply_after_burn": 21000000.0
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 21000000.0,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 21000000.0,
+     "total_supply_after_burn": 21000000.0
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 21000000.0,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 21000000.0,
+     "total_supply_after_burn": 21000000.0
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 21000000.0,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 21000000.0,
+     "total_supply_after_burn": 21000000.0
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 21000000.0,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 21000000.0,
+     "total_supply_after_burn": 21000000.0
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 21000000.0,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 21000000.0,
+     "total_supply_after_burn": 21000000.0
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 21000000.0,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 21000000.0,
+     "total_supply_after_burn": 21000000.0
+    }
+   }
+  },
+  "BGB": {
+   "sym": "BGB",
+   "type": "burn",
+   "circ_now": 699992029.6481037,
+   "total_now": 910920874.6481037,
+   "price_now": 1.94,
+   "flags": [
+    "2026 BGB burns paid from locked Morph treasury -> reduce TOTAL not circulating"
+   ],
+   "burn_per_day": 33224.90842491,
+   "buyback_not_burned_per_day": 0.0,
+   "burn_basis": "avg of 2026 quarterly burns (~3M/qtr)",
+   "burn_pct_circ_per_year": 1.73246138,
+   "cg_circ_change_per_day_90d": -159.09639063,
+   "unlock_basis": "CoinGecko 90d net circ change (+burn) used as unlock proxy",
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 996747.25274725,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 699992029.6481037,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 699992029.6481037,
+     "total_supply_after_burn": 909924127.3953564
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 3023466.66666667,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 699992029.6481037,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 699992029.6481037,
+     "total_supply_after_burn": 907897407.9814371
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 6046933.33333333,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 699992029.6481037,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 699992029.6481037,
+     "total_supply_after_burn": 904873941.3147703
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 9070400.0,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 699992029.6481037,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 699992029.6481037,
+     "total_supply_after_burn": 901850474.6481037
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 12127091.57509158,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 699992029.6481037,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 699992029.6481037,
+     "total_supply_after_burn": 898793783.0730121
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 24254183.15018315,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 699992029.6481037,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 699992029.6481037,
+     "total_supply_after_burn": 886666691.4979205
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 36381274.72527473,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 699992029.6481037,
+     "net_change_pct": 0.0,
+     "net_float_ex_treasury_buys": 699992029.6481037,
+     "total_supply_after_burn": 874539599.922829
+    }
+   }
+  },
+  "SUN": {
+   "sym": "SUN",
+   "type": "burn",
+   "circ_now": 19222181989.37517,
+   "total_now": 19900730000.000004,
+   "price_now": 0.01681855,
+   "flags": [
+    "DefiLlama emissions series ends 2024-09-07 (stale/complete) -> future unlocks assumed 0 (UNCERTAIN)"
+   ],
+   "burn_per_day": 99176.12527473,
+   "buyback_not_burned_per_day": 0.0,
+   "burn_basis": "51st quarterly burn (9.03M SUN / 91d)",
+   "burn_pct_circ_per_year": 0.18832038,
+   "unlock_basis": "DefiLlama emissions: no forward schedule -> trailing-90d realized unlock rate extrapolated",
+   "emis_unlocked_now": 19900930450.899666,
+   "unlock_per_day_trailing90": 0.0,
+   "cg_circ_change_per_day_90d": -147932.46398926,
+   "windows": {
+    "1m": {
+     "days": 30,
+     "burned_tokens": 2975283.75824176,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 19219206705.61693,
+     "net_change_pct": -0.01547839,
+     "net_float_ex_treasury_buys": 19219206705.61693,
+     "total_supply_after_burn": 19897754716.24176
+    },
+    "3m": {
+     "days": 91,
+     "burned_tokens": 9025027.4,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 19213156961.97517,
+     "net_change_pct": -0.04695111,
+     "net_float_ex_treasury_buys": 19213156961.97517,
+     "total_supply_after_burn": 19891704972.600002
+    },
+    "6m": {
+     "days": 182,
+     "burned_tokens": 18050054.8,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 19204131934.575172,
+     "net_change_pct": -0.09390222,
+     "net_float_ex_treasury_buys": 19204131934.575172,
+     "total_supply_after_burn": 19882679945.200005
+    },
+    "9m": {
+     "days": 273,
+     "burned_tokens": 27075082.2,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 19195106907.17517,
+     "net_change_pct": -0.14085332,
+     "net_float_ex_treasury_buys": 19195106907.17517,
+     "total_supply_after_burn": 19873654917.800003
+    },
+    "1y": {
+     "days": 365,
+     "burned_tokens": 36199285.72527473,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 19185982703.6499,
+     "net_change_pct": -0.18832038,
+     "net_float_ex_treasury_buys": 19185982703.6499,
+     "total_supply_after_burn": 19864530714.27473
+    },
+    "2y": {
+     "days": 730,
+     "burned_tokens": 72398571.45054945,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 19149783417.92462,
+     "net_change_pct": -0.37664076,
+     "net_float_ex_treasury_buys": 19149783417.92462,
+     "total_supply_after_burn": 19828331428.549454
+    },
+    "3y": {
+     "days": 1095,
+     "burned_tokens": 108597857.17582418,
+     "unlocked_tokens": 0,
+     "bought_not_burned_tokens": 0.0,
+     "net_supply": 19113584132.19935,
+     "net_change_pct": -0.56496113,
+     "net_float_ex_treasury_buys": 19113584132.19935,
+     "total_supply_after_burn": 19792132142.82418
+    }
+   }
+  }
+ }
+}

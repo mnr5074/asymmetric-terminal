@@ -1,0 +1,2805 @@
+{
+ "runs": [
+  {
+   "startedAt": "2026-10-11T14:16:28.790Z",
+   "calls": [
+    {
+     "t": 1791728189123,
+     "ep": "account",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {}
+    },
+    {
+     "t": 1791728189722,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Wintermute"
+     }
+    },
+    {
+     "t": 1791728190249,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "GSR"
+     }
+    },
+    {
+     "t": 1791728190800,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Jump"
+     }
+    },
+    {
+     "t": 1791728191373,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "DWF"
+     }
+    },
+    {
+     "t": 1791728191912,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Amber"
+     }
+    },
+    {
+     "t": 1791728192437,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Flowdesk"
+     }
+    },
+    {
+     "t": 1791728193022,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Cumberland"
+     }
+    },
+    {
+     "t": 1791728193600,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "B2C2"
+     }
+    },
+    {
+     "t": 1791728194121,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Keyrock"
+     }
+    },
+    {
+     "t": 1791728194636,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Auros"
+     }
+    },
+    {
+     "t": 1791728195159,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Kairon"
+     }
+    },
+    {
+     "t": 1791728195737,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Selini"
+     }
+    },
+    {
+     "t": 1791728196333,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Presto"
+     }
+    },
+    {
+     "t": 1791728196872,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Folkvang"
+     }
+    },
+    {
+     "t": 1791728197426,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "QCP"
+     }
+    },
+    {
+     "t": 1791728197981,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Galaxy"
+     }
+    },
+    {
+     "t": 1791728198547,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Alameda"
+     }
+    },
+    {
+     "t": 1791728199111,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Gravity Team"
+     }
+    },
+    {
+     "t": 1791728199632,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "a16z"
+     }
+    },
+    {
+     "t": 1791728200162,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Paradigm"
+     }
+    },
+    {
+     "t": 1791728200691,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Polychain"
+     }
+    },
+    {
+     "t": 1791728201212,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Multicoin"
+     }
+    },
+    {
+     "t": 1791728201730,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Pantera"
+     }
+    },
+    {
+     "t": 1791728202299,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Dragonfly"
+     }
+    },
+    {
+     "t": 1791728202838,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Delphi"
+     }
+    },
+    {
+     "t": 1791728203447,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Spartan"
+     }
+    },
+    {
+     "t": 1791728203988,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Hashed"
+     }
+    },
+    {
+     "t": 1791728204514,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Binance Labs"
+     }
+    },
+    {
+     "t": 1791728205079,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "YZi"
+     }
+    },
+    {
+     "t": 1791728205588,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Coinbase Ventures"
+     }
+    },
+    {
+     "t": 1791728206121,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "DeFiance"
+     }
+    },
+    {
+     "t": 1791728206664,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Mechanism"
+     }
+    },
+    {
+     "t": 1791728207200,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Arrington"
+     }
+    },
+    {
+     "t": 1791728207720,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Animoca"
+     }
+    },
+    {
+     "t": 1791728208248,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Fenbushi"
+     }
+    },
+    {
+     "t": 1791728208772,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Mirana"
+     }
+    },
+    {
+     "t": 1791728209307,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Blockchain Capital"
+     }
+    },
+    {
+     "t": 1791728209819,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Electric Capital"
+     }
+    },
+    {
+     "t": 1791728210371,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Variant"
+     }
+    },
+    {
+     "t": 1791728210913,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Hack VC"
+     }
+    },
+    {
+     "t": 1791728211460,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Outlier"
+     }
+    },
+    {
+     "t": 1791728211992,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "LD Capital"
+     }
+    },
+    {
+     "t": 1791728212676,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "CMS Holdings"
+     }
+    },
+    {
+     "t": 1791728213194,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Fasanara"
+     }
+    },
+    {
+     "t": 1791728213715,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "ParaFi"
+     }
+    },
+    {
+     "t": 1791728214242,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Hypersphere"
+     }
+    },
+    {
+     "t": 1791728214764,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Sigil"
+     }
+    },
+    {
+     "t": 1791728215288,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Robot Ventures"
+     }
+    },
+    {
+     "t": 1791728215816,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Maven 11"
+     }
+    },
+    {
+     "t": 1791728216396,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Big Brain"
+     }
+    },
+    {
+     "t": 1791728216912,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Symbolic"
+     }
+    },
+    {
+     "t": 1791728217434,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Abraxas"
+     }
+    },
+    {
+     "t": 1791728217952,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "OKX Ventures"
+     }
+    },
+    {
+     "t": 1791728218466,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Laser Digital"
+     }
+    },
+    {
+     "t": 1791728219005,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "FalconX"
+     }
+    },
+    {
+     "t": 1791728219530,
+     "ep": "search/entity-name",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {
+      "search_query": "Matrixport"
+     }
+    },
+    {
+     "t": 1791728220714,
+     "ep": "funds/holdings",
+     "status": 200,
+     "used": 5,
+     "remaining": 1996,
+     "body": {
+      "chains": [
+       "ethereum",
+       "base",
+       "bnb",
+       "solana",
+       "robinhood"
+      ],
+      "filters": {
+       "market_cap_usd": {
+        "max": 100000000
+       },
+       "token_age_days": {
+        "max": 365
+       },
+       "value_usd": {
+        "min": 10000
+       }
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 100
+      },
+      "order_by": [
+       {
+        "field": "balance_24h_percent_change",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728221769,
+     "ep": "funds/holdings",
+     "status": 200,
+     "used": 5,
+     "remaining": 1991,
+     "body": {
+      "chains": [
+       "ethereum",
+       "base",
+       "bnb",
+       "solana",
+       "robinhood"
+      ],
+      "filters": {
+       "market_cap_usd": {
+        "max": 100000000
+       },
+       "token_age_days": {
+        "max": 365
+       },
+       "value_usd": {
+        "min": 10000
+       }
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 100
+      },
+      "order_by": [
+       {
+        "field": "holders_count",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728222549,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1990,
+     "body": {
+      "chain": "base",
+      "token_address": "0xb3846fd356c2149ee8d30b0449088dc74e265459",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund",
+        "Smart Trader",
+        "30D Smart Trader",
+        "90D Smart Trader",
+        "180D Smart Trader"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728223332,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1989,
+     "body": {
+      "chain": "base",
+      "token_address": "0x9126236476efba9ad8ab77855c60eb5bf37586eb",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund",
+        "Smart Trader",
+        "30D Smart Trader",
+        "90D Smart Trader",
+        "180D Smart Trader"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    }
+   ],
+   "used": 12,
+   "remaining": 1989,
+   "stopped": "run cap 12 reached",
+   "balanceBefore": 2001,
+   "balanceAfter": 1989,
+   "finishedAt": "2026-10-11T14:17:03.826Z"
+  },
+  {
+   "startedAt": "2026-10-11T14:17:18.074Z",
+   "calls": [
+    {
+     "t": 1791728238350,
+     "ep": "account",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {}
+    },
+    {
+     "t": 1791728239217,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1988,
+     "body": {
+      "chain": "base",
+      "token_address": "0xb3846fd356c2149ee8d30b0449088dc74e265459",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728240025,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1987,
+     "body": {
+      "chain": "base",
+      "token_address": "0x9126236476efba9ad8ab77855c60eb5bf37586eb",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728241149,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1986,
+     "body": {
+      "chain": "bnb",
+      "token_address": "0xe0620abea429a66ba69d9a0cde9ab93dc15bb9c4",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728242159,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1985,
+     "body": {
+      "chain": "bnb",
+      "token_address": "0xea37a8de1de2d9d10772eeb569e28bfa5cb17707",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728243220,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1984,
+     "body": {
+      "chain": "base",
+      "token_address": "0x9b5e262cf9bb04869ab40b19af91d2dc85761722",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728244046,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1983,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x51250b135174ca09450ec01c4aff73cf69dbb590",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728245156,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1982,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x4d14284afe559b7c6b9e6fad6ebaeaa0f6051818",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728246089,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1981,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x2e8c31162b855a2ffa90f6f8634643ad6f111e18",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728247254,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1980,
+     "body": {
+      "chain": "solana",
+      "token_address": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728248129,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1979,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x020bfc650a365f8bb26819deaabf3e21291018b4",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728248997,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1978,
+     "body": {
+      "chain": "base",
+      "token_address": "0xb095274743941e953c746f9c228da9c18bb6ec29",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728250118,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1977,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x0b7c6c138dc75622f4200d157b13fb93e6bd94fa",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728251090,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1976,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0xa20baf0c1176cccab01c1db0a9c53a822cb418b4",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728252080,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1975,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0xaa07a0e9209e16ac99708c3ec70159c6ef3128a3",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728252972,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1974,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0xe934e36a439c94017b64a3fece66af12099abf50",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728254076,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1972,
+     "body": {
+      "chain": "base",
+      "token_address": "0xb2000000000000000000004c27f6523082f41d01",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728255047,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1971,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x56910d4409f3a0c78c64dd8d0545ff0705389870",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728256007,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1969,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x98096d17e191b3da1d5f99a6d7b3584351b11e18",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728256936,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1968,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x0339f5459fc690ac85f1782e15782a151b4a9e1b",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728257736,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1967,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0xaa07f927b255756e947eafb2778db2c3fc9a28a3",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728259340,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1965,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0xe59d493540a5b467fda09299a62c64c97db28972",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728260581,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1964,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x7dbf38976f6d3b9c529e7d9484a71898b409ee6a",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728261695,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1962,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x0e0d2c89a5a019fe1cf762e5e33187631dacc21b",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728262788,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1961,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x5cb6f181081301b44905f3ae15419112ecabd8a6",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728264054,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1960,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0xd5f1afea47b1a9eab414d2ee740cf1d6d039e725",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728264833,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1959,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0xd8098154e30f9f4ee5a411d294f65fe2d6e01e18",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728265772,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1958,
+     "body": {
+      "chain": "solana",
+      "token_address": "DEW9dSN6QpWyNthphCpMmAbZP1Q4cEKR9xQXAri98WDP",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    }
+   ],
+   "used": 27,
+   "remaining": 1958,
+   "stopped": null,
+   "balanceBefore": 1989
+  },
+  {
+   "startedAt": "2026-10-11T14:18:57.967Z",
+   "calls": [
+    {
+     "t": 1791728338251,
+     "ep": "account",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {}
+    },
+    {
+     "t": 1791728339319,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1942,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0xab093def657f15df31b33922a95e047add645b29",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728340546,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1941,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x812486eaea648819853f8e372dc9f1516c7868bd",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728341867,
+     "ep": "tgm/who-bought-sold",
+     "status": 200,
+     "used": 1,
+     "remaining": 1940,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x91a2dae9699f0b82540b5886b0d8759c22820ba3",
+      "buy_or_sell": "BUY",
+      "date": {
+       "from": "2026-09-11",
+       "to": "2026-10-11"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 50
+      },
+      "order_by": [
+       {
+        "field": "bought_volume_usd",
+        "direction": "DESC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728345451,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1939,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "base"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0xb3846fd356c2149ee8d30b0449088dc74e265459"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728347369,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1938,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "base"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x9126236476efba9ad8ab77855c60eb5bf37586eb"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728350537,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1937,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "bnb"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0xe0620abea429a66ba69d9a0cde9ab93dc15bb9c4"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728353945,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1936,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "bnb"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0xea37a8de1de2d9d10772eeb569e28bfa5cb17707"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728356733,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1935,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "base"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x9b5e262cf9bb04869ab40b19af91d2dc85761722"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728358220,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1934,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x51250b135174ca09450ec01c4aff73cf69dbb590"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728359332,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1933,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x4d14284afe559b7c6b9e6fad6ebaeaa0f6051818"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728360597,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1932,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x2e8c31162b855a2ffa90f6f8634643ad6f111e18"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728362609,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1931,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "solana"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728363926,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1930,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x020bfc650a365f8bb26819deaabf3e21291018b4"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728365814,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1928,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "base"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0xb095274743941e953c746f9c228da9c18bb6ec29"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728367044,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1926,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x0b7c6c138dc75622f4200d157b13fb93e6bd94fa"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728367997,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1925,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0xa20baf0c1176cccab01c1db0a9c53a822cb418b4"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728369055,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1924,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0xaa07a0e9209e16ac99708c3ec70159c6ef3128a3"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728370445,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1917,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0xe934e36a439c94017b64a3fece66af12099abf50"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728372392,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1915,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "base"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0xb2000000000000000000004c27f6523082f41d01"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728373556,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1914,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x56910d4409f3a0c78c64dd8d0545ff0705389870"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728374554,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1913,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x98096d17e191b3da1d5f99a6d7b3584351b11e18"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728375719,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1912,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x0339f5459fc690ac85f1782e15782a151b4a9e1b"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728376788,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1911,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0xaa07f927b255756e947eafb2778db2c3fc9a28a3"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728377788,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1910,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0xe59d493540a5b467fda09299a62c64c97db28972"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728378945,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1909,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x7dbf38976f6d3b9c529e7d9484a71898b409ee6a"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728380062,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1908,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x0e0d2c89a5a019fe1cf762e5e33187631dacc21b"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728381114,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1907,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x5cb6f181081301b44905f3ae15419112ecabd8a6"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728382222,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1906,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0xd5f1afea47b1a9eab414d2ee740cf1d6d039e725"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728383242,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1905,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0xd8098154e30f9f4ee5a411d294f65fe2d6e01e18"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728384926,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1904,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "solana"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "DEW9dSN6QpWyNthphCpMmAbZP1Q4cEKR9xQXAri98WDP"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728386217,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1903,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0xab093def657f15df31b33922a95e047add645b29"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728387205,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1902,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x812486eaea648819853f8e372dc9f1516c7868bd"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    },
+    {
+     "t": 1791728388384,
+     "ep": "smart-money/historical-holdings",
+     "status": 200,
+     "used": 1,
+     "remaining": 1901,
+     "body": {
+      "date_range": {
+       "from": "2025-10-11",
+       "to": "2026-10-11"
+      },
+      "chains": [
+       "robinhood"
+      ],
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ],
+       "token_address": "0x91a2dae9699f0b82540b5886b0d8759c22820ba3"
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 400
+      },
+      "order_by": [
+       {
+        "field": "date",
+        "direction": "ASC"
+       }
+      ]
+     }
+    }
+   ],
+   "used": 33,
+   "remaining": 1901,
+   "stopped": null,
+   "balanceBefore": 1943,
+   "balanceAfter": 1901,
+   "finishedAt": "2026-10-11T14:19:48.872Z"
+  },
+  {
+   "startedAt": "2026-10-11T14:21:39.659Z",
+   "calls": [
+    {
+     "t": 1791728510265,
+     "ep": "account",
+     "status": "timeout",
+     "used": null,
+     "body": null
+    },
+    {
+     "t": 1791728515459,
+     "ep": "account",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {}
+    }
+   ],
+   "used": 0,
+   "remaining": 1787,
+   "stopped": null,
+   "balanceBefore": 1787
+  },
+  {
+   "startedAt": "2026-10-11T14:21:59.251Z",
+   "calls": [
+    {
+     "t": 1791728529842,
+     "ep": "account",
+     "status": "timeout",
+     "used": null,
+     "body": null
+    },
+    {
+     "t": 1791728535033,
+     "ep": "account",
+     "status": 200,
+     "used": 0,
+     "remaining": null,
+     "body": {}
+    },
+    {
+     "t": 1791728536584,
+     "ep": "tgm/holders",
+     "status": 200,
+     "used": 5,
+     "remaining": 1782,
+     "body": {
+      "chain": "base",
+      "token_address": "0x9eadbe35f3ee3bf3e28180070c429298a1b02f93",
+      "label_type": "smart_money",
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 25
+      }
+     }
+    },
+    {
+     "t": 1791728537885,
+     "ep": "tgm/holders",
+     "status": 200,
+     "used": 5,
+     "remaining": 1777,
+     "body": {
+      "chain": "solana",
+      "token_address": "PAYmo6moDF3Ro3X6bU2jwe2UdBnBhv8YjLgL1j4DxGu",
+      "label_type": "smart_money",
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 25
+      }
+     }
+    },
+    {
+     "t": 1791728538567,
+     "ep": "tgm/holders",
+     "status": 200,
+     "used": 5,
+     "remaining": 1772,
+     "body": {
+      "chain": "base",
+      "token_address": "0xb3846fd356c2149ee8d30b0449088dc74e265459",
+      "label_type": "smart_money",
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 25
+      }
+     }
+    },
+    {
+     "t": 1791728539385,
+     "ep": "tgm/holders",
+     "status": 200,
+     "used": 5,
+     "remaining": 1767,
+     "body": {
+      "chain": "ethereum",
+      "token_address": "0xe172e9b6cfbeeb5593bdce3f077356fdb33af904",
+      "label_type": "smart_money",
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 25
+      }
+     }
+    },
+    {
+     "t": 1791728540401,
+     "ep": "tgm/holders",
+     "status": 200,
+     "used": 5,
+     "remaining": 1762,
+     "body": {
+      "chain": "base",
+      "token_address": "0x9126236476efba9ad8ab77855c60eb5bf37586eb",
+      "label_type": "smart_money",
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 25
+      }
+     }
+    },
+    {
+     "t": 1791728541427,
+     "ep": "tgm/holders",
+     "status": 200,
+     "used": 5,
+     "remaining": 1757,
+     "body": {
+      "chain": "base",
+      "token_address": "0xed664536023d8e4b1640c394777d34abaff1df8f",
+      "label_type": "smart_money",
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 25
+      }
+     }
+    },
+    {
+     "t": 1791728542449,
+     "ep": "tgm/holders",
+     "status": 200,
+     "used": 5,
+     "remaining": 1752,
+     "body": {
+      "chain": "bnb",
+      "token_address": "0xe0620abea429a66ba69d9a0cde9ab93dc15bb9c4",
+      "label_type": "smart_money",
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 25
+      }
+     }
+    },
+    {
+     "t": 1791728543532,
+     "ep": "tgm/holders",
+     "status": 200,
+     "used": 5,
+     "remaining": 1747,
+     "body": {
+      "chain": "bnb",
+      "token_address": "0xea37a8de1de2d9d10772eeb569e28bfa5cb17707",
+      "label_type": "smart_money",
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 25
+      }
+     }
+    },
+    {
+     "t": 1791728544517,
+     "ep": "tgm/holders",
+     "status": 200,
+     "used": 5,
+     "remaining": 1742,
+     "body": {
+      "chain": "robinhood",
+      "token_address": "0x98096d17e191b3da1d5f99a6d7b3584351b11e18",
+      "label_type": "smart_money",
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 25
+      }
+     }
+    },
+    {
+     "t": 1791728545328,
+     "ep": "tgm/holders",
+     "status": 200,
+     "used": 5,
+     "remaining": 1737,
+     "body": {
+      "chain": "base",
+      "token_address": "0x9b5e262cf9bb04869ab40b19af91d2dc85761722",
+      "label_type": "smart_money",
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 25
+      }
+     }
+    },
+    {
+     "t": 1791728546189,
+     "ep": "tgm/holders",
+     "status": 200,
+     "used": 5,
+     "remaining": 1732,
+     "body": {
+      "chain": "ethereum",
+      "token_address": "0x4647e1fe715c9e23959022c2416c71867f5a6e80",
+      "label_type": "smart_money",
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 25
+      }
+     }
+    },
+    {
+     "t": 1791728547636,
+     "ep": "tgm/holders",
+     "status": 200,
+     "used": 5,
+     "remaining": 1727,
+     "body": {
+      "chain": "solana",
+      "token_address": "7ssJZGFT3twGqeYA1kvpoMWwZYvMZvrMEbjRaWgg46BL",
+      "label_type": "smart_money",
+      "filters": {
+       "include_smart_money_labels": [
+        "Fund"
+       ]
+      },
+      "pagination": {
+       "page": 1,
+       "per_page": 25
+      }
+     }
+    }
+   ],
+   "used": 60,
+   "remaining": 1727,
+   "stopped": null,
+   "balanceBefore": 1787,
+   "balanceAfter": 1727,
+   "finishedAt": "2026-10-11T14:22:28.130Z"
+  }
+ ]
+}

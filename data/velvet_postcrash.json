@@ -1,0 +1,4036 @@
+{
+ "generated": "2026-10-11",
+ "token": "0x8b194370825e37b33373e74a41009161808c1488",
+ "chain": "BSC",
+ "nansen_credits_used": 0,
+ "data_range_blocks": [
+  53404174,
+  127028941
+ ],
+ "price_timeline": {
+  "jun_peak_1": {
+   "t": "2026-06-12T09:00Z",
+   "high": 2.146
+  },
+  "jun_crash_1_low": {
+   "t": "2026-06-12T21:00Z",
+   "px": 0.35
+  },
+  "jun_peak_2": {
+   "t": "2026-06-29T02:00Z",
+   "high": 2.158
+  },
+  "crash_2": {
+   "date": "2026-07-02",
+   "from": 1.52,
+   "low": 0.456
+  },
+  "epoch11_snapshot": "2026-08-10",
+  "aug_pump_start": "2026-08-11T09:00Z",
+  "aug_peak": {
+   "t": "2026-08-15T06:00Z",
+   "high": 1.3074
+  },
+  "crash_3": {
+   "t": "2026-08-24",
+   "low": 0.1381
+  },
+  "sep14_low": 0.051,
+  "now": 0.073
+ },
+ "holdings_now": {
+  "0xd19dce537125dfb5e76d7131668c4d5e4172b56c": {
+   "name": "Safe #1",
+   "30d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "7d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "balance_now": 376633704
+  },
+  "0x75e7488ac067f07948739bfb550213b47db094bb": {
+   "name": "Safe #2",
+   "30d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "7d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "balance_now": 160324313
+  },
+  "0x6e0bad2c077d699841f1929b45bfb93fafbed395": {
+   "name": "Sablier 2025",
+   "30d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "7d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "balance_now": 159283473
+  },
+  "0x6cd06aaf06506bc3ff382d83023354e2b80eed22": {
+   "name": "Sablier new",
+   "30d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "7d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "balance_now": 40391150
+  },
+  "0x150c8a0aff9caefe3ce92658afa302e0172d1056": {
+   "name": "150c8a (72.67M TGE tranche)",
+   "30d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "7d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "balance_now": 33381151
+  },
+  "0xe2e8fa23dda79231e4bd237321fd843fd7e9e0a7": {
+   "name": "e2e8fa (35M TGE tranche)",
+   "30d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "7d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "balance_now": 35000000
+  },
+  "0xb5893a55965a4a01c239f852d93ac47942415231": {
+   "name": "b5893a (32M TGE tranche)",
+   "30d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "7d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "balance_now": 23105601
+  },
+  "0x80952ba07edf0b100a3aa724d113a6de9992d70c": {
+   "name": "80952b (from 50M LP alloc)",
+   "30d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "7d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "balance_now": 14195964
+  },
+  "0x3cf3d6318b7fabae8e2b3d1e851aa60c94445385": {
+   "name": "3cf3d6 (10M)",
+   "30d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "7d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "balance_now": 10000000
+  },
+  "0x515c18e68a563095817a9119a2bb91bad9186ec4": {
+   "name": "515c18 (5.33M)",
+   "30d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "7d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "balance_now": 5333333
+  },
+  "0x579d36cce78af5664e26d6b858119625e1b9116a": {
+   "name": "deployer",
+   "30d": {
+    "out": 16360,
+    "n_out": 2,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": [
+     [
+      "0x6e74c2a17fb723998ddfd1e21815e9b3932e13fd",
+      16360,
+      ""
+     ],
+     [
+      "0x6e749f4838f4aec2e0b0ebdda00690983c8933fd",
+      0,
+      ""
+     ]
+    ]
+   },
+   "7d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "balance_now": 176265
+  },
+  "0xa3277d68d05f4d6dfcef01081ce228908d300493": {
+   "name": "a3277d (50M LP alloc)",
+   "30d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "7d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "balance_now": 0
+  },
+  "0x93deb693b170d56bdde1b0a5222b14c0f885d976": {
+   "name": "93deb6",
+   "30d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "7d": {
+    "out": 0,
+    "n_out": 0,
+    "inn": 0,
+    "n_in": 0,
+    "top_dest": []
+   },
+   "balance_now": 15400
+  }
+ },
+ "cluster_150c8a": {
+  "funding": [
+   "0x579d36 deployer -> 0x6bff1c 72,666,667 (txs 0x1dfe7b0d..., 0x6fcbe41c...) Jul 10 2025",
+   "0x6bff1c -> 0x150c8a 72,666,667 Mar 4 2026"
+  ],
+  "to_cex_total": 39285516,
+  "by_cex": {
+   "Gate": 21170675,
+   "KuCoin": 13841005,
+   "Bitget": 4273836
+  },
+  "direct": 14167421,
+  "via_relays": 25118095,
+  "jun6_12": 39035516,
+  "aug3": 250000,
+  "usd_at_hourly_px": 17242112,
+  "transfers": [
+   {
+    "block": 102699787,
+    "time": "2026-06-06T18:57:34.060540+00:00",
+    "tx": "0xffab4371a174a95745e2b1fbf1cd355ad1a77d211d0769b25997331847a7868d",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0x1fa6d25f4605ad2ad1fb5042555880e965a4045b",
+    "dest": "Gate",
+    "tokens": 12.0,
+    "route": "direct",
+    "px_hour": 0.192929696670731
+   },
+   {
+    "block": 102699918,
+    "time": "2026-06-06T18:58:33.065560+00:00",
+    "tx": "0xd0f0bbfd8eceb99b52012f7985a392ac298e0a0d68e2ee1c8d696566dd1d77aa",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0xea3f9da3cae892a8d0a3cdddb4eceb1658722ebf",
+    "dest": "Gate",
+    "tokens": 95.0,
+    "route": "direct",
+    "px_hour": 0.192929696670731
+   },
+   {
+    "block": 102700270,
+    "time": "2026-06-06T19:01:11.570200+00:00",
+    "tx": "0x75e368c9c83745972e7d0bb5c1ecf4b369afad5d4d9396c68f83a8d394e722ba",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0xf103c2b7f45a7cfd930fef18b7f676ad4ed13a05",
+    "dest": "Gate",
+    "tokens": 76.0,
+    "route": "direct",
+    "px_hour": 0.187153056879692
+   },
+   {
+    "block": 102700721,
+    "time": "2026-06-06T19:04:34.637460+00:00",
+    "tx": "0xe1460c9a16e7b8c7c74213844cbf28a730898481570ce6897aff2711e846a4ae",
+    "from_": "0xfb1cad25d88263dbed272f5be7ca3d6c3863b0c1",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 58.0,
+    "route": "via 1 hop",
+    "px_hour": 0.187153056879692
+   },
+   {
+    "block": 102700722,
+    "time": "2026-06-06T19:04:35.087720+00:00",
+    "tx": "0xa7380aaa49253f56d5df676d480959aa3c3340c22fe77abb3971ba4bcc9d042a",
+    "from_": "0xd4081d45e8c2687f2211dba68dab50769fbcf65b",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 24.0,
+    "route": "via 1 hop",
+    "px_hour": 0.187153056879692
+   },
+   {
+    "block": 102701020,
+    "time": "2026-06-06T19:06:49.265200+00:00",
+    "tx": "0x9e0ef1ca447fcddbbd43e4661b8e723d6f96034412d116461167cde524db96aa",
+    "from_": "0xc0457e0cb065e0433fca3f8e79465ae53bded03c",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 28.0,
+    "route": "via 1 hop",
+    "px_hour": 0.187153056879692
+   },
+   {
+    "block": 102701020,
+    "time": "2026-06-06T19:06:49.265200+00:00",
+    "tx": "0xa77d6d933f26638b3f7f4d6bcaa84e84b51ebe95ae3d8ec1e37ae2ed150650a1",
+    "from_": "0x1071b7ef62cf5efcf7c94ce4469d45ac84dce8ba",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 51.0,
+    "route": "via 1 hop",
+    "px_hour": 0.187153056879692
+   },
+   {
+    "block": 102701020,
+    "time": "2026-06-06T19:06:49.265200+00:00",
+    "tx": "0xd112ffd574207100d1997eb2f8c90dea8d2634aa534938733e68c0010e42420c",
+    "from_": "0xfb65b0aa38d5c410d14a8c8280a46efe2834d7da",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 72.0,
+    "route": "via 1 hop",
+    "px_hour": 0.187153056879692
+   },
+   {
+    "block": 102701021,
+    "time": "2026-06-06T19:06:49.715460+00:00",
+    "tx": "0x03f9a6d87f33b35a63cb2647ced0b5a06125ae86c6f29c9c6a6c24a5bc10a39c",
+    "from_": "0x5366d632be8282337d4a38495e97bf885e10e154",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 97.0,
+    "route": "via 1 hop",
+    "px_hour": 0.187153056879692
+   },
+   {
+    "block": 102701120,
+    "time": "2026-06-06T19:07:34.291200+00:00",
+    "tx": "0x13fd82a767402652dade1aee1c5c1f41be8b859fd155e64c63f65ffff4989c75",
+    "from_": "0xfae9feec3c25ba3ada7296fd1327d3f37b809971",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 39.0,
+    "route": "via 1 hop",
+    "px_hour": 0.187153056879692
+   },
+   {
+    "block": 102701121,
+    "time": "2026-06-06T19:07:34.741460+00:00",
+    "tx": "0x32aa80ccf1f8492d2866142ca1aac3a3971310e954d5607691a69dcd3cf274f9",
+    "from_": "0x24d92dde617761842fa211c13caf9586dc1aa086",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 91.0,
+    "route": "via 1 hop",
+    "px_hour": 0.187153056879692
+   },
+   {
+    "block": 102701122,
+    "time": "2026-06-06T19:07:35.191720+00:00",
+    "tx": "0x17906a1461956c9ddea8b20e7365e2be6b52075f5a2dd055fe97a038a6081fe5",
+    "from_": "0xa767691b64e34fb0b3a2736add990f0170db71b4",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 14.0,
+    "route": "via 1 hop",
+    "px_hour": 0.187153056879692
+   },
+   {
+    "block": 102701122,
+    "time": "2026-06-06T19:07:35.191720+00:00",
+    "tx": "0xe53a896eb29055cc79ec691c05cc6e82ce8552359be8e7e6cf93094a6518125f",
+    "from_": "0xb7ae2a54afdc5adcc2832e8307c4a00e5ff2f8c8",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 83.0,
+    "route": "via 1 hop",
+    "px_hour": 0.187153056879692
+   },
+   {
+    "block": 102701419,
+    "time": "2026-06-06T19:09:48.918940+00:00",
+    "tx": "0x085e218015e61e77c5396fd8f2bcc2a6a52af8b6673053e165c6cf5d5c0958ec",
+    "from_": "0xf515a0758677172edd7657fe7c52adffc1d7a4d2",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 46.0,
+    "route": "via 1 hop",
+    "px_hour": 0.187153056879692
+   },
+   {
+    "block": 102701419,
+    "time": "2026-06-06T19:09:48.918940+00:00",
+    "tx": "0xf698efa3e177bf12c5b7c8d12fe0b3e7f78508c773ef276f9ca9d1b3f6c0ec0b",
+    "from_": "0x6cf0cbcef318e79df9c7a2a9f00ff7d8deba912e",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 63.0,
+    "route": "via 1 hop",
+    "px_hour": 0.187153056879692
+   },
+   {
+    "block": 102783050,
+    "time": "2026-06-07T05:22:35.330000+00:00",
+    "tx": "0x4bb7f86effd2e95d5aebdce685e224573c332814969ce2bbaa69e3e84b33d3e3",
+    "from_": "0xfb1cad25d88263dbed272f5be7ca3d6c3863b0c1",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 456820.0,
+    "route": "via 1 hop",
+    "px_hour": 0.194643183478046
+   },
+   {
+    "block": 102783050,
+    "time": "2026-06-07T05:22:35.330000+00:00",
+    "tx": "0x69213e9816b019ecc871753479f6b53a63b5cac24c14b0c9465077a7269c7ad3",
+    "from_": "0xfae9feec3c25ba3ada7296fd1327d3f37b809971",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 509140.0,
+    "route": "via 1 hop",
+    "px_hour": 0.194643183478046
+   },
+   {
+    "block": 102788640,
+    "time": "2026-06-07T06:04:34.184000+00:00",
+    "tx": "0x30a1c30e1a8627d5f1b5c436d367914a6a2a52881ee4b9b39c77e922b2566cef",
+    "from_": "0x361c228b722241356d49022ebb153c64c31370b7",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 25.0,
+    "route": "via 1 hop",
+    "px_hour": 0.195500864284585
+   },
+   {
+    "block": 102788640,
+    "time": "2026-06-07T06:04:34.184000+00:00",
+    "tx": "0xae5a38edbc006875cf5ea8a19d9579a242650f779c39fc2aa7df83d6586ce9b4",
+    "from_": "0x455b0eae285bd4bcc4d524fdf60cda9c663b5884",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 11.0,
+    "route": "via 1 hop",
+    "px_hour": 0.195500864284585
+   },
+   {
+    "block": 102789039,
+    "time": "2026-06-07T06:07:33.973400+00:00",
+    "tx": "0x645b2cb3c84ce3431f14b4988c36823afe6ac31615a7073a9bb63c6265e87d87",
+    "from_": "0x1f0e7add5e077a2a8e984603acd22c56ae452e20",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 82.0,
+    "route": "via 1 hop",
+    "px_hour": 0.195500864284585
+   },
+   {
+    "block": 102789268,
+    "time": "2026-06-07T06:09:17.160800+00:00",
+    "tx": "0xf4d60f32e36b00039cbe87446c6f2d20c1952f4c85eee3cb3ba08eceabe94404",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0x1fa6d25f4605ad2ad1fb5042555880e965a4045b",
+    "dest": "Gate",
+    "tokens": 918435.0,
+    "route": "direct",
+    "px_hour": 0.195500864284585
+   },
+   {
+    "block": 102789392,
+    "time": "2026-06-07T06:10:13.035200+00:00",
+    "tx": "0xd90c40beeae55f2390f859284a106fd56fe0fa941533815d73412410c6b144e7",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0xea3f9da3cae892a8d0a3cdddb4eceb1658722ebf",
+    "dest": "Gate",
+    "tokens": 1043615.0,
+    "route": "direct",
+    "px_hour": 0.195500864284585
+   },
+   {
+    "block": 102789701,
+    "time": "2026-06-07T06:12:32.270600+00:00",
+    "tx": "0xaec84cd8aec47899014972cabee557c659b4457db0df176892cc3b3434715f89",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0xf103c2b7f45a7cfd930fef18b7f676ad4ed13a05",
+    "dest": "Gate",
+    "tokens": 1073705.0,
+    "route": "direct",
+    "px_hour": 0.195500864284585
+   },
+   {
+    "block": 102790237,
+    "time": "2026-06-07T06:16:33.792200+00:00",
+    "tx": "0xed9de6a2352e40f6ace5eef2ff407088e7dafef9264536ad8cb287fc3a5ebd2b",
+    "from_": "0xb7ae2a54afdc5adcc2832e8307c4a00e5ff2f8c8",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 488635.00000000006,
+    "route": "via 1 hop",
+    "px_hour": 0.195500864284585
+   },
+   {
+    "block": 102790535,
+    "time": "2026-06-07T06:18:48.071000+00:00",
+    "tx": "0xc43540932196cd32b9a441a022d0c037693e3c0cc08b094dd565f4e262912d87",
+    "from_": "0x1071b7ef62cf5efcf7c94ce4469d45ac84dce8ba",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 998730.0,
+    "route": "via 1 hop",
+    "px_hour": 0.195500864284585
+   },
+   {
+    "block": 102790535,
+    "time": "2026-06-07T06:18:48.071000+00:00",
+    "tx": "0xe243cd907bc3d8934baa75879d34e2bc8d41296d7a1b28325eecc00aa8c1c60b",
+    "from_": "0xfb65b0aa38d5c410d14a8c8280a46efe2834d7da",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 952845.0,
+    "route": "via 1 hop",
+    "px_hour": 0.195500864284585
+   },
+   {
+    "block": 102790536,
+    "time": "2026-06-07T06:18:48.521600+00:00",
+    "tx": "0x14010e90bccf224c994da74c62c8bf0c03eba1e016d669e34e96eebf8be8a1d1",
+    "from_": "0x5366d632be8282337d4a38495e97bf885e10e154",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 1000128.0,
+    "route": "via 1 hop",
+    "px_hour": 0.195500864284585
+   },
+   {
+    "block": 102790536,
+    "time": "2026-06-07T06:18:48.521600+00:00",
+    "tx": "0x848ac28a013b40f8da184cd61519dc5c24a1eb5a55216d7dc3a783a4abf0e324",
+    "from_": "0xc0457e0cb065e0433fca3f8e79465ae53bded03c",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 967415.0,
+    "route": "via 1 hop",
+    "px_hour": 0.195500864284585
+   },
+   {
+    "block": 102802621,
+    "time": "2026-06-07T07:49:33.970180+00:00",
+    "tx": "0x0ccb7432cf5c821ef52a1b0b87b65b4a2113faf9c3d1d171160b093c631b5fcc",
+    "from_": "0x1f0e7add5e077a2a8e984603acd22c56ae452e20",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 193621.0,
+    "route": "via 1 hop",
+    "px_hour": 0.194556514993508
+   },
+   {
+    "block": 102802621,
+    "time": "2026-06-07T07:49:33.970180+00:00",
+    "tx": "0x3657900655d88823ba15278fae9d85ba51344bbeab7877bed2b92754ce37f268",
+    "from_": "0x361c228b722241356d49022ebb153c64c31370b7",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 171290.0,
+    "route": "via 1 hop",
+    "px_hour": 0.194556514993508
+   },
+   {
+    "block": 102802623,
+    "time": "2026-06-07T07:49:34.871340+00:00",
+    "tx": "0xb251c6366a790bc972fcd579aa037366d8b01e3ed9ff4b8609810c73c7292f38",
+    "from_": "0x455b0eae285bd4bcc4d524fdf60cda9c663b5884",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 203475.0,
+    "route": "via 1 hop",
+    "px_hour": 0.194556514993508
+   },
+   {
+    "block": 102819301,
+    "time": "2026-06-07T09:54:49.644580+00:00",
+    "tx": "0x611ccc8ce375b1787c8f28eb6e1fbf5db2aedc0778b09771a40bdfc7bf564e77",
+    "from_": "0x2e2b6eba2dcee0428d40affb60a340191e9b7e3f",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 89.0,
+    "route": "via 1 hop",
+    "px_hour": 0.200280419834683
+   },
+   {
+    "block": 102819301,
+    "time": "2026-06-07T09:54:49.644580+00:00",
+    "tx": "0xbc7e6434a0a7449797408631f19cf18b6cfb1c949d30a3b9a8150ba329ffdef1",
+    "from_": "0x02b75f4de8d7166b4c648298263b35cd725e16e9",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 13.0,
+    "route": "via 1 hop",
+    "px_hour": 0.200280419834683
+   },
+   {
+    "block": 102819301,
+    "time": "2026-06-07T09:54:49.644580+00:00",
+    "tx": "0xfb0f46edd8368273036f03a01b7896cd84f1cf47521ac754ff616bacd3c6ff22",
+    "from_": "0x2f8a79345e75b9f9065325455f78f2ef7cff8300",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 42.0,
+    "route": "via 1 hop",
+    "px_hour": 0.200280419834683
+   },
+   {
+    "block": 102819302,
+    "time": "2026-06-07T09:54:50.095160+00:00",
+    "tx": "0x1d8c61b6cc0002e0ce1022dab23399e4ea9d22937d67e2d969377f860fb54f0e",
+    "from_": "0x397933ea31740176411bf103449245667436bbc9",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 97.0,
+    "route": "via 1 hop",
+    "px_hour": 0.200280419834683
+   },
+   {
+    "block": 102819302,
+    "time": "2026-06-07T09:54:50.095160+00:00",
+    "tx": "0xf8813ff279e8232a9bb241fffd34fbf6af4d34ad09691160e01fc17b3d78401b",
+    "from_": "0x30f3955bd55d4da49435266c8cf7f9e82f3a045e",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 26.0,
+    "route": "via 1 hop",
+    "px_hour": 0.200280419834683
+   },
+   {
+    "block": 102823292,
+    "time": "2026-06-07T10:24:47.909360+00:00",
+    "tx": "0x7bd9fc9069d1c99f4288410bc9ac1fc5c31ccb0c18018f33a835b501b85a387b",
+    "from_": "0x2f8a79345e75b9f9065325455f78f2ef7cff8300",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 789260.0,
+    "route": "via 1 hop",
+    "px_hour": 0.217583406535719
+   },
+   {
+    "block": 102823292,
+    "time": "2026-06-07T10:24:47.909360+00:00",
+    "tx": "0x97b91a5a4868dfe9fa5c9fb7aa3585dd90125946609095ed4c103d66dd6424f8",
+    "from_": "0x2e2b6eba2dcee0428d40affb60a340191e9b7e3f",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 841730.0,
+    "route": "via 1 hop",
+    "px_hour": 0.217583406535719
+   },
+   {
+    "block": 102823690,
+    "time": "2026-06-07T10:27:47.240200+00:00",
+    "tx": "0x75719797b6ecdce1b787cfce649c9098d4e26b1c3794f9f59c06a32c74f37e29",
+    "from_": "0x397933ea31740176411bf103449245667436bbc9",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 824904.9999999999,
+    "route": "via 1 hop",
+    "px_hour": 0.217583406535719
+   },
+   {
+    "block": 102823690,
+    "time": "2026-06-07T10:27:47.240200+00:00",
+    "tx": "0xfc3fe64910cb678a350e6ba87de45a5bcd3350b6ce55c25ebd689c5983c7275d",
+    "from_": "0x30f3955bd55d4da49435266c8cf7f9e82f3a045e",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 771580.0,
+    "route": "via 1 hop",
+    "px_hour": 0.217583406535719
+   },
+   {
+    "block": 102846863,
+    "time": "2026-06-07T13:21:48.530540+00:00",
+    "tx": "0x3b7e9b6448413525840bf43772c1a6b006e4c66cccc8512df9cf4e14d1c9eb9b",
+    "from_": "0x02b75f4de8d7166b4c648298263b35cd725e16e9",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 762415.0,
+    "route": "via 1 hop",
+    "px_hour": 0.223793435159229
+   },
+   {
+    "block": 103033481,
+    "time": "2026-06-08T12:43:25.234800+00:00",
+    "tx": "0x0b36b449f075568f2c13b581853d1690805ed3d861130aa9914c8b6aea147127",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0xf7f60b5b13d3f1e84d0f65241a9b7c8daf5b2934",
+    "dest": "Gate",
+    "tokens": 17.0,
+    "route": "direct",
+    "px_hour": 0.322281278263637
+   },
+   {
+    "block": 103033531,
+    "time": "2026-06-08T12:43:47.774800+00:00",
+    "tx": "0x4fa467232b3ec3888595a00bc10c8e2ac0a040251cd2a1bdf67931511a367eb8",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0xf6eac07e28e6a71625b7942cec4e142b02a2e496",
+    "dest": "Gate",
+    "tokens": 138.0,
+    "route": "direct",
+    "px_hour": 0.322281278263637
+   },
+   {
+    "block": 103033573,
+    "time": "2026-06-08T12:44:06.708400+00:00",
+    "tx": "0xbad931af02321b1dabd10a89324476af26ef455c7d126d689252a73722e784d7",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0xb72fe65ef26024c2a220c49ab8d1eee94bd782f8",
+    "dest": "Gate",
+    "tokens": 64.0,
+    "route": "direct",
+    "px_hour": 0.322281278263637
+   },
+   {
+    "block": 103033634,
+    "time": "2026-06-08T12:44:34.207200+00:00",
+    "tx": "0x644972723948fe5e3dd575f60be6c45677e180e9bdac1e3cc6f24ed5c32ff5bc",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0x38a60b1b121ba5a27898d6ca3518eb3869fa91d3",
+    "dest": "Gate",
+    "tokens": 43.0,
+    "route": "direct",
+    "px_hour": 0.322281278263637
+   },
+   {
+    "block": 103039932,
+    "time": "2026-06-08T13:31:53.345600+00:00",
+    "tx": "0x4b60e3f3d0eaa69c58a66bc071df77517806d986e40bfe9c25e2dfcc8b2b6ae0",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0x63d14cdc8408499eb3601e7dcd8718042ff94537",
+    "dest": "Gate",
+    "tokens": 121.0,
+    "route": "direct",
+    "px_hour": 0.341957005482731
+   },
+   {
+    "block": 103042493,
+    "time": "2026-06-08T13:51:07.844400+00:00",
+    "tx": "0x8b130f7d54521104ea9fb9e0a0308d63230ac5d3643da9a94af8e38168640afa",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0xf7f60b5b13d3f1e84d0f65241a9b7c8daf5b2934",
+    "dest": "Gate",
+    "tokens": 1163845.0,
+    "route": "direct",
+    "px_hour": 0.341957005482731
+   },
+   {
+    "block": 103042690,
+    "time": "2026-06-08T13:52:36.652000+00:00",
+    "tx": "0x25fc4c2c1be42521b09db1c5461e971d0865d24f7cc404d85e047d0dd26193a5",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0xb72fe65ef26024c2a220c49ab8d1eee94bd782f8",
+    "dest": "Gate",
+    "tokens": 1187415.0,
+    "route": "direct",
+    "px_hour": 0.341957005482731
+   },
+   {
+    "block": 103042778,
+    "time": "2026-06-08T13:53:16.322400+00:00",
+    "tx": "0xe206294d8a7360917d7d07d14eb0080a14836979244e8638fd3533d14aec9034",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0xf6eac07e28e6a71625b7942cec4e142b02a2e496",
+    "dest": "Gate",
+    "tokens": 1241730.0000000002,
+    "route": "direct",
+    "px_hour": 0.341957005482731
+   },
+   {
+    "block": 103043058,
+    "time": "2026-06-08T13:55:22.546400+00:00",
+    "tx": "0x5e85cd0d9a0bf9d66597475a5be6503b01714c21d17ff2f8ab1efb7e866624dc",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0x38a60b1b121ba5a27898d6ca3518eb3869fa91d3",
+    "dest": "Gate",
+    "tokens": 1228960.0,
+    "route": "direct",
+    "px_hour": 0.341957005482731
+   },
+   {
+    "block": 103043199,
+    "time": "2026-06-08T13:56:26.109200+00:00",
+    "tx": "0x69260771904e5dc077a99cce3589f34db74aea7b8b7226455ea539297cc896f2",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0x63d14cdc8408499eb3601e7dcd8718042ff94537",
+    "dest": "Gate",
+    "tokens": 1172580.0,
+    "route": "direct",
+    "px_hour": 0.341957005482731
+   },
+   {
+    "block": 103167065,
+    "time": "2026-06-09T05:26:23.195500+00:00",
+    "tx": "0x31538faab58c84929c00d28264eaac97fd475709c1b5e0fa46815770522e63c0",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0xf7f60b5b13d3f1e84d0f65241a9b7c8daf5b2934",
+    "dest": "Gate",
+    "tokens": 962845.0,
+    "route": "direct",
+    "px_hour": 0.343379009108456
+   },
+   {
+    "block": 103167195,
+    "time": "2026-06-09T05:27:21.786500+00:00",
+    "tx": "0x147a758b8612afac30fcb4db96a6f6b66f9b543fe81139e7ee430100ab46c373",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0xf6eac07e28e6a71625b7942cec4e142b02a2e496",
+    "dest": "Gate",
+    "tokens": 1087320.0,
+    "route": "direct",
+    "px_hour": 0.343379009108456
+   },
+   {
+    "block": 103167318,
+    "time": "2026-06-09T05:28:17.222600+00:00",
+    "tx": "0xfc40c4c39b55dd606c021a9674867d920ff736d5708df6987e3874daccc6ed9e",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0xb72fe65ef26024c2a220c49ab8d1eee94bd782f8",
+    "dest": "Gate",
+    "tokens": 1014675.0,
+    "route": "direct",
+    "px_hour": 0.343379009108456
+   },
+   {
+    "block": 103167457,
+    "time": "2026-06-09T05:29:19.869900+00:00",
+    "tx": "0x485407474ca5efc36f6881f6b968fe80c721b6db7826c4cab77b31e0fd45a68d",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0x63d14cdc8408499eb3601e7dcd8718042ff94537",
+    "dest": "Gate",
+    "tokens": 1098140.0,
+    "route": "direct",
+    "px_hour": 0.343379009108456
+   },
+   {
+    "block": 103167516,
+    "time": "2026-06-09T05:29:46.461200+00:00",
+    "tx": "0x5df3aae4c5123baa043ec1ac0c8764588cfdaea6aa394df50140a0724b823a44",
+    "from_": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "to": "0x38a60b1b121ba5a27898d6ca3518eb3869fa91d3",
+    "dest": "Gate",
+    "tokens": 973590.0,
+    "route": "direct",
+    "px_hour": 0.343379009108456
+   },
+   {
+    "block": 103180837,
+    "time": "2026-06-09T07:09:50.235900+00:00",
+    "tx": "0xd6e62421fc9db731f38153f05b082b0a50521d2dc805084ebe99f5e5a4428ed2",
+    "from_": "0x1aa848b99673f68771fc7768578c18b5ced15be6",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 57.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103181237,
+    "time": "2026-06-09T07:12:50.515900+00:00",
+    "tx": "0x79901048849a01adf5add119f07b02695b74eb16e3e2929ceb1714b9b19db071",
+    "from_": "0x9bb0dc028ed54d7fe39dc9cdcfba9a0adf545bd7",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 12.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103181238,
+    "time": "2026-06-09T07:12:50.966600+00:00",
+    "tx": "0xec6ebd3cf82fc802c166761452c742d0180047036e9547f4c069fcc5d59dd62e",
+    "from_": "0xdc1597590095c3f44ac254149d157ea6fb305b79",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 143.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103181336,
+    "time": "2026-06-09T07:13:35.135200+00:00",
+    "tx": "0xab357943f2b23c4e646304487a89f847af8f40c85d23e693630da5941e8b474b",
+    "from_": "0x7942c7d1958fbed5099be8ecef1d9c8c09556ace",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 98.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103181337,
+    "time": "2026-06-09T07:13:35.585900+00:00",
+    "tx": "0x205532ee6f7b63e57dd3870106e12b3015fba31b7792dd8cd1f11c26e0b63bad",
+    "from_": "0x97fc18cffa2acc750e75faf10ef1afa0e8638a23",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 21.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103181337,
+    "time": "2026-06-09T07:13:35.585900+00:00",
+    "tx": "0x80a32b6725b24af2cdf9ad57907c421786336381965805b35eba046e49a9512b",
+    "from_": "0x4002f45eb2095833347409ae2edfcf925f91012c",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 149.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103181337,
+    "time": "2026-06-09T07:13:35.585900+00:00",
+    "tx": "0xb981600fdf6e40e65a707a859227f5eab1efe49491dab9945eb62c48ff9080f5",
+    "from_": "0x11b3fcac1a80bbb655e36103caa7f826555e3e2e",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 34.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103181337,
+    "time": "2026-06-09T07:13:35.585900+00:00",
+    "tx": "0xc45a94ed0d622a09401768a0842be4d82e1a51d03d75312d30ab532d82bd8007",
+    "from_": "0x7154301aa535dde66df7c164525b121fdb485d68",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 126.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103183767,
+    "time": "2026-06-09T07:31:50.786900+00:00",
+    "tx": "0xb50d5b17c089827a3f1acdae6e132ab764bea216a62636b801e296c06ad1c8bd",
+    "from_": "0x1aa848b99673f68771fc7768578c18b5ced15be6",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 1021780.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103184133,
+    "time": "2026-06-09T07:34:35.743100+00:00",
+    "tx": "0x20a74e1bd65366b2eca1d846c7ee9b89cdaeca39de1fcce1f0a21c09fbbb3d83",
+    "from_": "0x11b3fcac1a80bbb655e36103caa7f826555e3e2e",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 418730.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103184133,
+    "time": "2026-06-09T07:34:35.743100+00:00",
+    "tx": "0xc3446c9555f5706a5923657f902d69fdcbf02e1fd20eeeb68243a5ef215b795b",
+    "from_": "0x4002f45eb2095833347409ae2edfcf925f91012c",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 406920.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103184134,
+    "time": "2026-06-09T07:34:36.193800+00:00",
+    "tx": "0x34d634a780abfa0bef2f5dd6c6ae190ccfc1a79ef4f9d59b7493d65a17294160",
+    "from_": "0x7942c7d1958fbed5099be8ecef1d9c8c09556ace",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 389415.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103184134,
+    "time": "2026-06-09T07:34:36.193800+00:00",
+    "tx": "0xb76a587061e61849ecf166dea882fa6dec31b95b41930d310165559a8abaccd2",
+    "from_": "0x7154301aa535dde66df7c164525b121fdb485d68",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 372845.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103184432,
+    "time": "2026-06-09T07:36:50.502400+00:00",
+    "tx": "0xe5987bf44de81f4de4f0589dd65e44c9e6e1993758926724a8919801c859f7f9",
+    "from_": "0x9bb0dc028ed54d7fe39dc9cdcfba9a0adf545bd7",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 968539.9999999999,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103184434,
+    "time": "2026-06-09T07:36:51.403800+00:00",
+    "tx": "0xd2cb72057a351341e19131ae1d2ab23728ae38d04bbd9bb1608d0ce6e00f64d2",
+    "from_": "0xdc1597590095c3f44ac254149d157ea6fb305b79",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 1092315.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103184533,
+    "time": "2026-06-09T07:37:36.023100+00:00",
+    "tx": "0x761dfafb0b25a1092c33ee0a5efe73adc7f71edc2edc5edae45a92dd62a67572",
+    "from_": "0x97fc18cffa2acc750e75faf10ef1afa0e8638a23",
+    "to": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23",
+    "dest": "Bitget",
+    "tokens": 412090.0,
+    "route": "via 1 hop",
+    "px_hour": 0.289420700495431
+   },
+   {
+    "block": 103574276,
+    "time": "2026-06-11T08:24:48.765600+00:00",
+    "tx": "0x433863aa3feb36a3e86f517c069d1956ac073ac3bfed91d13db43ad0a0243efb",
+    "from_": "0xd14ba15222db90f1e9c961f8e85e612b290ae2d0",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 14.0,
+    "route": "via 1 hop",
+    "px_hour": 0.815452697790766
+   },
+   {
+    "block": 103574276,
+    "time": "2026-06-11T08:24:48.765600+00:00",
+    "tx": "0xb816a2f51331234f59fb0d014b8aac321a8c82e8563037547e64cd69ad397e87",
+    "from_": "0x95a1d285b69fd2db3d4685dc58b01c41ea8f7bc3",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 137.0,
+    "route": "via 1 hop",
+    "px_hour": 0.815452697790766
+   },
+   {
+    "block": 103574675,
+    "time": "2026-06-11T08:27:48.555000+00:00",
+    "tx": "0x6715605921af90e97532de05524d9b16c69002f0dc14dca19bc4fd5ec11ca08a",
+    "from_": "0x8596c7abea7e9825a6b86df773aeb8e9daa1b1fe",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 33.0,
+    "route": "via 1 hop",
+    "px_hour": 0.815452697790766
+   },
+   {
+    "block": 103574675,
+    "time": "2026-06-11T08:27:48.555000+00:00",
+    "tx": "0x771c99eda608ad7df7255ffb3486e43ffdfa358d1d0e081d508c397b1d9a4107",
+    "from_": "0xa6d5f203ed41cf9a2a6ac580214fe42c29e0a951",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 121.0,
+    "route": "via 1 hop",
+    "px_hour": 0.815452697790766
+   },
+   {
+    "block": 103574675,
+    "time": "2026-06-11T08:27:48.555000+00:00",
+    "tx": "0x87f1296948ad5c52001d74b793045f6488abe1347c7625d794c725baa0a6962e",
+    "from_": "0x288ebb1c4e5e3938f8b67b9480df8de629c0b85b",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 148.0,
+    "route": "via 1 hop",
+    "px_hour": 0.815452697790766
+   },
+   {
+    "block": 103574675,
+    "time": "2026-06-11T08:27:48.555000+00:00",
+    "tx": "0xe7d454f9c194c68f0f2735627f3cc3dbb993d8b783d366d44aea0ebb3ffae060",
+    "from_": "0xed4b6f734439cea6ac0ffcd17a828c251ced8854",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 52.0,
+    "route": "via 1 hop",
+    "px_hour": 0.815452697790766
+   },
+   {
+    "block": 103574675,
+    "time": "2026-06-11T08:27:48.555000+00:00",
+    "tx": "0xfb045e96abf0ff0a2f9eb367205757cf4a3f5b7a219d410dc052fca696a6bdc9",
+    "from_": "0x6ece9c26050fd55e880c5b0ada8c665238bea232",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 96.0,
+    "route": "via 1 hop",
+    "px_hour": 0.815452697790766
+   },
+   {
+    "block": 103579470,
+    "time": "2026-06-11T09:03:49.182000+00:00",
+    "tx": "0x0ea643eef502b0f6240556b14fd314b3cbf68374fc2f964f7ad36d636accb7ac",
+    "from_": "0x6ece9c26050fd55e880c5b0ada8c665238bea232",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 448125.0,
+    "route": "via 1 hop",
+    "px_hour": 0.793991281118891
+   },
+   {
+    "block": 103579470,
+    "time": "2026-06-11T09:03:49.182000+00:00",
+    "tx": "0x1785dba89b1b1783c38fa901a9d40fc3dc59777803755ad18c75a3e8836d0cc3",
+    "from_": "0x95a1d285b69fd2db3d4685dc58b01c41ea8f7bc3",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 442730.0,
+    "route": "via 1 hop",
+    "px_hour": 0.793991281118891
+   },
+   {
+    "block": 103579470,
+    "time": "2026-06-11T09:03:49.182000+00:00",
+    "tx": "0x27cb39722e1f28a4b34f0b47815831965d7a4241bdae9e65c0f1d2bf1207ba52",
+    "from_": "0xd14ba15222db90f1e9c961f8e85e612b290ae2d0",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 361845.0,
+    "route": "via 1 hop",
+    "px_hour": 0.793991281118891
+   },
+   {
+    "block": 103579470,
+    "time": "2026-06-11T09:03:49.182000+00:00",
+    "tx": "0x306c99617871a9a8552e6a5d89b8c973ee72b677a266a6a906ea1200ad452301",
+    "from_": "0xa6d5f203ed41cf9a2a6ac580214fe42c29e0a951",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 427960.0,
+    "route": "via 1 hop",
+    "px_hour": 0.793991281118891
+   },
+   {
+    "block": 103579470,
+    "time": "2026-06-11T09:03:49.182000+00:00",
+    "tx": "0xa0e435f38ee9bd24a0f495597d7c0128ab1f08f6cb19701659e1e53c8e7c64b9",
+    "from_": "0xed4b6f734439cea6ac0ffcd17a828c251ced8854",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 389415.0,
+    "route": "via 1 hop",
+    "px_hour": 0.793991281118891
+   },
+   {
+    "block": 103579470,
+    "time": "2026-06-11T09:03:49.182000+00:00",
+    "tx": "0xed334cb9c30a0a8cbf9e15c811818e0f275a319a157e0394c496fb1625b4c9ce",
+    "from_": "0x8596c7abea7e9825a6b86df773aeb8e9daa1b1fe",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 374580.0,
+    "route": "via 1 hop",
+    "px_hour": 0.793991281118891
+   },
+   {
+    "block": 103579870,
+    "time": "2026-06-11T09:06:49.422000+00:00",
+    "tx": "0x469d5d032e856735e4877364dc4625d384b7e7d1a620f3d0add701216ecc1652",
+    "from_": "0x288ebb1c4e5e3938f8b67b9480df8de629c0b85b",
+    "to": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "dest": "KuCoin",
+    "tokens": 403270.0,
+    "route": "via 1 hop",
+    "px_hour": 0.793991281118891
+   },
+   {
+    "block": 103831967,
+    "time": "2026-06-12T16:39:46.986040+00:00",
+    "tx": "0xef480cb12b3a29f4b33837382cc9485f5c2092457438cbecdec882551167def7",
+    "from_": "0xd748cac4e8ecfb409419df385d4ec264afc8af80",
+    "to": "0x0d0707963952f2fba59dd06f2b425ace40b492fe",
+    "dest": "Gate",
+    "tokens": 1098408.0,
+    "route": "via 1 hop",
+    "px_hour": 0.994961803596088
+   },
+   {
+    "block": 103831969,
+    "time": "2026-06-12T16:39:47.886280+00:00",
+    "tx": "0x3501e607dc2511da7163f3237f1d99aadd748d41901fd1af9f52a07ce5e80f3e",
+    "from_": "0xe061c898e063192bd7987329a710e45949817e9d",
+    "to": "0x0d0707963952f2fba59dd06f2b425ace40b492fe",
+    "dest": "Gate",
+    "tokens": 1088007.0,
+    "route": "via 1 hop",
+    "px_hour": 0.994961803596088
+   },
+   {
+    "block": 103831974,
+    "time": "2026-06-12T16:39:50.136880+00:00",
+    "tx": "0x34959646d1e19616f9f01c79c637e4098d8bd46a8f2468157272750bdfe466f0",
+    "from_": "0xda952eaa7b0071781418c29a9b7050f448458445",
+    "to": "0x0d0707963952f2fba59dd06f2b425ace40b492fe",
+    "dest": "Gate",
+    "tokens": 1021989.0,
+    "route": "via 1 hop",
+    "px_hour": 0.994961803596088
+   },
+   {
+    "block": 103831976,
+    "time": "2026-06-12T16:39:51.037120+00:00",
+    "tx": "0xa21fd11a7d408ff04852faf8e7b1ea9966b1695c05c2587e6d374281dd8ba76a",
+    "from_": "0x458b32a75c485206015054cc76b7fdee35cb338c",
+    "to": "0x0d0707963952f2fba59dd06f2b425ace40b492fe",
+    "dest": "Gate",
+    "tokens": 986568.0,
+    "route": "via 1 hop",
+    "px_hour": 0.994961803596088
+   },
+   {
+    "block": 103831987,
+    "time": "2026-06-12T16:39:55.988440+00:00",
+    "tx": "0xee16617b8b8f1f7eae43db01e8c8c69f4388693bbb5445bc691b9aa5119383bd",
+    "from_": "0x172b205dc1ebec7730159f659685e8db6ba3e894",
+    "to": "0x0d0707963952f2fba59dd06f2b425ace40b492fe",
+    "dest": "Gate",
+    "tokens": 964814.0,
+    "route": "via 1 hop",
+    "px_hour": 0.994961803596088
+   },
+   {
+    "block": 103831990,
+    "time": "2026-06-12T16:39:57.338800+00:00",
+    "tx": "0x99729de9c8c745988f1dbcdc16455e11513be92a942da1015b52f60ff7335a45",
+    "from_": "0x94f465e1bf1a81b41336bb6b4f6839dbcaa2657e",
+    "to": "0x0d0707963952f2fba59dd06f2b425ace40b492fe",
+    "dest": "Gate",
+    "tokens": 941277.0,
+    "route": "via 1 hop",
+    "px_hour": 0.994961803596088
+   },
+   {
+    "block": 103832003,
+    "time": "2026-06-12T16:40:03.190360+00:00",
+    "tx": "0xc5aa25a939a7c098fc55b6dbe06cad3f44d62cdfb050715fef33e8252aaac799",
+    "from_": "0x174493067c4f1cf7e21795966dc673a6478aa611",
+    "to": "0x0d0707963952f2fba59dd06f2b425ace40b492fe",
+    "dest": "Gate",
+    "tokens": 902191.0,
+    "route": "via 1 hop",
+    "px_hour": 0.994961803596088
+   },
+   {
+    "block": 113773060,
+    "time": "2026-08-03T11:53:52.306000+00:00",
+    "tx": "0xa47cbb9d62f8daa8dd55790c664a9ef4f95a70a1d3d9b498742a06a29039ddba",
+    "from_": "0x7031e87f7c7b5f06815b5c5cb3c8c6b8d777e451",
+    "to": "0xb631ea0d88921382249b25041393e066ed5aa557",
+    "dest": "Bitget",
+    "tokens": 250000.0,
+    "route": "via 1 hop",
+    "px_hour": 0.402057328247382
+   },
+   {
+    "block": 113773930,
+    "time": "2026-08-03T12:00:23.893000+00:00",
+    "tx": "0xaf64897dfa4dddada24c8804e6c68b81f64f0d4abafe4463af3bb1465ff08d9f",
+    "from_": "0x7031e87f7c7b5f06815b5c5cb3c8c6b8d777e451",
+    "to": "0xb6318be603e2f83bda7cf2f783312f9b59afa557",
+    "dest": "other:0xb6318be6",
+    "tokens": 0.0,
+    "route": "via 1 hop",
+    "px_hour": 0.406778086256992
+   }
+  ]
+ },
+ "vesting": {
+  "cancel_refunds_to_safe1": 312051691,
+  "team_stream_442_cancel_tx": "0x6b393738e1b32a8d0bb79d25af362890921e4b02986c0ce776689083f5ff8e96",
+  "restreamed_2026_08_22": 40391150,
+  "restream_start": "2027-01-10",
+  "streams_2025": [
+   {
+    "id": 437,
+    "rec": "0x75e7488ac067f07948739bfb550213b47db094bb",
+    "dep": 1.0,
+    "wd": 0.0,
+    "st": "2025-07-10",
+    "en": "2029-04-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 1.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 438,
+    "rec": "0x75e7488ac067f07948739bfb550213b47db094bb",
+    "dep": 44999999.0,
+    "wd": 10768928.226016488,
+    "st": "2025-07-10",
+    "en": "2029-04-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 15060002.893555632,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     0.0,
+     1000000.0
+    ]
+   },
+   {
+    "id": 439,
+    "rec": "0x0d81b1f99d65ac1d34ffc3bfe0d206a9c7b25778",
+    "dep": 5333333.0,
+    "wd": 2242663.8079016204,
+    "st": "2025-07-10",
+    "en": "2027-09-10",
+    "cl": "2025-10-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 2242663.8079016204,
+    "canc": false,
+    "was": true,
+    "ref": 3090669.1920983796,
+    "unl": [
+     266666.0,
+     1.0
+    ]
+   },
+   {
+    "id": 440,
+    "rec": "0x75e7488ac067f07948739bfb550213b47db094bb",
+    "dep": 165000000.0,
+    "wd": 50000000.0,
+    "st": "2025-07-10",
+    "en": "2028-04-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 75000000.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 441,
+    "rec": "0x75e7488ac067f07948739bfb550213b47db094bb",
+    "dep": 110000000.0,
+    "wd": 100000000.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 110000000.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 442,
+    "rec": "0x75e7488ac067f07948739bfb550213b47db094bb",
+    "dep": 200000000.0,
+    "wd": 0.0,
+    "st": "2026-07-10",
+    "en": "2029-06-09",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 200000000.0,
+    "unl": null
+   },
+   {
+    "id": 443,
+    "rec": "0x9e468606e7d2ec6c6f6c02ca59082c1fff773018",
+    "dep": 177778.0,
+    "wd": 177778.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 177778.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     26667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 444,
+    "rec": "0x4a8b51d13abae933e5d28e75acdc7121a4216c77",
+    "dep": 111111.0,
+    "wd": 111111.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 111111.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     16667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 445,
+    "rec": "0xd2e7e14d5b09e8b39565f39d4217044b6baa2c1b",
+    "dep": 111111.0,
+    "wd": 111111.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 111111.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     16667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 446,
+    "rec": "0xfb4334a5704e29df37efc9f16255759670018d9a",
+    "dep": 177778.0,
+    "wd": 177778.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 177778.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     26667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 447,
+    "rec": "0xec310c289851b38643734d19dc8a965e3a3220c6",
+    "dep": 222222.0,
+    "wd": 222013.8805752884,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 222222.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     33333.0,
+     1.0
+    ]
+   },
+   {
+    "id": 448,
+    "rec": "0x89b974c8108eb81f5974ca2fa9468b7ef74978c1",
+    "dep": 22222.0,
+    "wd": 22222.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 22222.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     3332.9999999999995,
+     1.0
+    ]
+   },
+   {
+    "id": 449,
+    "rec": "0xe96d964ecd8c8bfefd68da3d2970687a21d0f69b",
+    "dep": 177778.0,
+    "wd": 177778.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 177778.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     26667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 450,
+    "rec": "0x425100b73a4cb80a6327e7b98cb18e8eb70fc2ab",
+    "dep": 133333.0,
+    "wd": 133333.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 133333.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     20000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 451,
+    "rec": "0xb7c7a9fa2ec34eeb05a282f03ca83faa5c3c61cf",
+    "dep": 133333.0,
+    "wd": 133333.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 133333.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     20000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 452,
+    "rec": "0x99ede7fec7ca75b461dc4f3693b06054e3a95ae0",
+    "dep": 111111.0,
+    "wd": 111111.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 111111.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     16667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 453,
+    "rec": "0xdac9ba5e956890eff7ce9c6e62a68635864d23f4",
+    "dep": 66667.0,
+    "wd": 66667.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 66667.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     10000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 454,
+    "rec": "0xa7ac9e3920eb64400bc7dd562f540f4927546638",
+    "dep": 44444.0,
+    "wd": 44444.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 44444.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     6667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 455,
+    "rec": "0x0b21f41d9b873947a7508199ab2cb1206b839841",
+    "dep": 177778.0,
+    "wd": 177778.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 177778.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     26667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 456,
+    "rec": "0x7df3f1d191bf76702edb445ac5b5f9d0241ee3f7",
+    "dep": 22222.0,
+    "wd": 22222.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 22222.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     3332.9999999999995,
+     1.0
+    ]
+   },
+   {
+    "id": 457,
+    "rec": "0x8175fbbadebb294fe4e8175e180943a86008b06b",
+    "dep": 444444.0,
+    "wd": 444444.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 444444.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     66667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 458,
+    "rec": "0x52611c224e44867ca611cfa0d05535d7ba07dc55",
+    "dep": 44444.0,
+    "wd": 44116.16647723133,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 44444.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     6667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 459,
+    "rec": "0xc3d9b70eea17523669d1c06885e496ba1c594367",
+    "dep": 66667.0,
+    "wd": 66667.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 66667.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     10000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 460,
+    "rec": "0x9d9167849eb0946656ff85ff9e40a7b0b7a30549",
+    "dep": 111111.0,
+    "wd": 111111.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 111111.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     16667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 461,
+    "rec": "0xcefb7801fe092aae7964751d2a408dc29c4ec56d",
+    "dep": 177778.0,
+    "wd": 177251.87892759562,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 177778.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     26667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 462,
+    "rec": "0x2b2c3b7eaf7898f03971f3559e2cfa7114e71aae",
+    "dep": 66667.0,
+    "wd": 66667.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 66667.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     10000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 463,
+    "rec": "0x92fe6cf1564d8059e86b93ccddc992f81a4ae3cc",
+    "dep": 111111.0,
+    "wd": 111111.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 111111.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     16667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 464,
+    "rec": "0x2ca1b812cc2c282486528c7d7b41d9a023568c05",
+    "dep": 177778.0,
+    "wd": 177388.63600068304,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 177778.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     26667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 465,
+    "rec": "0x22c0b697303bdc6bdec75be8428e1b72d38d5ddf",
+    "dep": 177778.0,
+    "wd": 177778.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 177778.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     26667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 466,
+    "rec": "0x62be7492765780d82e4c1c7d39960625327d5c82",
+    "dep": 111111.0,
+    "wd": 111111.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 111111.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     16667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 467,
+    "rec": "0x07ed979791704cc128617c746891f4fb9e8da9ff",
+    "dep": 111111.0,
+    "wd": 111111.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 111111.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     16667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 468,
+    "rec": "0x64fabc4b88e5674e9d9b7dc4c56074d438d2481a",
+    "dep": 924444.0,
+    "wd": 924444.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 924444.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     138667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 469,
+    "rec": "0x5b46677d0bfa57b82e36bc8d60e92c87abc89074",
+    "dep": 175556.0,
+    "wd": 175556.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 175556.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     26333.0,
+     1.0
+    ]
+   },
+   {
+    "id": 470,
+    "rec": "0x749b857e0fafaff3e4c672ee998938150568fd8a",
+    "dep": 1097222.0,
+    "wd": 1097222.0,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": "2025-08-09",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 1097222.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     164583.0,
+     1.0
+    ]
+   },
+   {
+    "id": 471,
+    "rec": "0x4a8c67ec042dc7036c95cf25e863fd6f01754df4",
+    "dep": 799999.9999999999,
+    "wd": 799999.9999999999,
+    "st": "2025-07-10",
+    "en": "2026-06-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 799999.9999999999,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 472,
+    "rec": "0x0869dddd3a8974807e262379011cc31c4712c587",
+    "dep": 150000.0,
+    "wd": 125306.50743371213,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 150000.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     30000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 473,
+    "rec": "0x573872f8bb5e4ea603dbfd39da062b2cc3cb3a46",
+    "dep": 99999.99999999999,
+    "wd": 99999.99999999999,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 99999.99999999999,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     20000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 474,
+    "rec": "0x29cf8c8ce837597c87c73f71216d0e1afe817786",
+    "dep": 666667.0,
+    "wd": 666667.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 666667.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     133333.0,
+     1.0
+    ]
+   },
+   {
+    "id": 475,
+    "rec": "0xfa4395f7479a89e71bd988226b3648e2023b3f4a",
+    "dep": 666667.0,
+    "wd": 666667.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 666667.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     133333.0,
+     1.0
+    ]
+   },
+   {
+    "id": 476,
+    "rec": "0x9be84f0d5e4a2940323ff7bf71fe2b932b85c66a",
+    "dep": 24999.999999999996,
+    "wd": 24999.999999999996,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 24999.999999999996,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     5000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 477,
+    "rec": "0x5236df6802994bae798d07bc4c10e9f915b70852",
+    "dep": 125000.0,
+    "wd": 125000.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 125000.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     24999.999999999996,
+     1.0
+    ]
+   },
+   {
+    "id": 478,
+    "rec": "0x99ede7fec7ca75b461dc4f3693b06054e3a95ae0",
+    "dep": 49999.99999999999,
+    "wd": 49999.99999999999,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 49999.99999999999,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     10000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 479,
+    "rec": "0x8dc740ba63d70bed3b2f197c1368a0f26b7a12f5",
+    "dep": 116667.0,
+    "wd": 116598.35546401516,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 116667.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     23333.0,
+     1.0
+    ]
+   },
+   {
+    "id": 480,
+    "rec": "0x36af8739bc5071cd74cf8c657224216916486254",
+    "dep": 49999.99999999999,
+    "wd": 24999.999999999996,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 49999.99999999999,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     10000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 481,
+    "rec": "0x09ef07ffe3678e94e2dce55e5062c6156d83038b",
+    "dep": 125000.0,
+    "wd": 125000.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 125000.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     24999.999999999996,
+     1.0
+    ]
+   },
+   {
+    "id": 482,
+    "rec": "0x0d72a7ad2ba11ac7a950a276b4d6cd30df56feee",
+    "dep": 20833.000000000004,
+    "wd": 20833.000000000004,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 20833.000000000004,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     4167.0,
+     1.0
+    ]
+   },
+   {
+    "id": 483,
+    "rec": "0x585cf81e0c34b08fb4234afd97efab826b003849",
+    "dep": 20833.000000000004,
+    "wd": 20833.000000000004,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 20833.000000000004,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     4167.0,
+     1.0
+    ]
+   },
+   {
+    "id": 484,
+    "rec": "0x2fd0115e3ac2082965992e2170e903c8cf4f003a",
+    "dep": 333333.0,
+    "wd": 333333.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 333333.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     66667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 485,
+    "rec": "0x04e7882988c9be3bb3fa1a7aa96af7e62464e752",
+    "dep": 33333.0,
+    "wd": 33333.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 33333.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     6667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 486,
+    "rec": "0x6e74c2a17fb723998ddfd1e21815e9b3932e13fd",
+    "dep": 135000.0,
+    "wd": 135000.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 135000.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     27000.000000000004,
+     1.0
+    ]
+   },
+   {
+    "id": 487,
+    "rec": "0x8ec9ec447e7807da2ec2eed7d51b4392eb6058ce",
+    "dep": 24999.999999999996,
+    "wd": 24999.999999999996,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 24999.999999999996,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     5000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 488,
+    "rec": "0xf1280832450f009c107280e8bb1dbc358be26a65",
+    "dep": 8333.0,
+    "wd": 8333.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 8333.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     1667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 489,
+    "rec": "0xecc9f57ba268e60562400191ff9bf47df9ab5572",
+    "dep": 1167.0,
+    "wd": 0.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 1167.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     233.0,
+     1.0
+    ]
+   },
+   {
+    "id": 490,
+    "rec": "0x18b1390299053b5d9f33ab3cdbabca8622c4a318",
+    "dep": 16667.0,
+    "wd": 16667.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 16667.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     3332.9999999999995,
+     1.0
+    ]
+   },
+   {
+    "id": 491,
+    "rec": "0x74fd09eb3d5342d9abfccbd5c144e3b0faca5a50",
+    "dep": 16667.0,
+    "wd": 16667.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 16667.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     3332.9999999999995,
+     1.0
+    ]
+   },
+   {
+    "id": 492,
+    "rec": "0xf92116841986da3cad95ea336b2c87975ff45f22",
+    "dep": 41667.0,
+    "wd": 41667.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 41667.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     8333.0,
+     1.0
+    ]
+   },
+   {
+    "id": 493,
+    "rec": "0x98843d6baaa4ca7f956ab51f795a666490e15df8",
+    "dep": 11667.0,
+    "wd": 11667.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 11667.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     2333.0,
+     1.0
+    ]
+   },
+   {
+    "id": 494,
+    "rec": "0x6af46883a2757d528116ebaa1b535d02b560086d",
+    "dep": 8333.0,
+    "wd": 8333.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 8333.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     1667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 495,
+    "rec": "0x5ef9ee7be723f3b8b82f6ab67078eeb0c8e00a24",
+    "dep": 10000.0,
+    "wd": 10000.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 10000.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     2000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 496,
+    "rec": "0x6d636672e80c0f01a02dcf8dd0734abbe1a9369c",
+    "dep": 10000.0,
+    "wd": 10000.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 10000.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     2000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 497,
+    "rec": "0x596fc687cb6b9e6df9bf76f99634454f3d6b50b7",
+    "dep": 10000.0,
+    "wd": 10000.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 10000.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     2000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 498,
+    "rec": "0x8b1e61d4e610ae490fed3c0501f22ad1a0cb0162",
+    "dep": 3332.9999999999995,
+    "wd": 3332.9999999999995,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 3332.9999999999995,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 499,
+    "rec": "0x4e7987ce808793a8545370f18d977b36b97a17b7",
+    "dep": 10000.0,
+    "wd": 10000.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 10000.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     2000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 500,
+    "rec": "0x6bb5d3826edfa507aecb1455983690a3c3848812",
+    "dep": 3332.9999999999995,
+    "wd": 3332.9999999999995,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 3332.9999999999995,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 501,
+    "rec": "0xfe6a93a354abdc991ee6f5f3292c3a14c09878dc",
+    "dep": 3332.9999999999995,
+    "wd": 3332.9999999999995,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 3332.9999999999995,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 502,
+    "rec": "0x98e615afb1da8444bca29315f95cd1e082c77992",
+    "dep": 16667.0,
+    "wd": 16667.0,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 16667.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     3332.9999999999995,
+     1.0
+    ]
+   },
+   {
+    "id": 503,
+    "rec": "0xa05658e03cb6b44d6172e98d1722fea3eaaaabb6",
+    "dep": 1833.0,
+    "wd": 1813.1263551710285,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 1833.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     367.0,
+     1.0
+    ]
+   },
+   {
+    "id": 504,
+    "rec": "0x9ceac40e54573409f346257ba941fae408513028",
+    "dep": 49999.99999999999,
+    "wd": 49999.99999999999,
+    "st": "2025-07-10",
+    "en": "2026-03-10",
+    "cl": "2025-07-11",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 49999.99999999999,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     10000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 514,
+    "rec": "0xd9fe94c8a0a9159d52683074a63acbf5fff1e379",
+    "dep": 333333.3333,
+    "wd": 0.0,
+    "st": "2025-07-11",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 333333.3333,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 515,
+    "rec": "0x771add5860f776dc6f1330585548f1bd5494f6ed",
+    "dep": 199999.99999999997,
+    "wd": 0.0,
+    "st": "2025-07-11",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 199999.99999999997,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 516,
+    "rec": "0xb2fc53f237cf2d72a8b7a6589bb72b9711552c90",
+    "dep": 266666.6667,
+    "wd": 0.0,
+    "st": "2025-07-11",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 266666.6667,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 517,
+    "rec": "0x58e6949e73654bcf40de6f99fe09ae29243b17c4",
+    "dep": 666666.6667000001,
+    "wd": 0.0,
+    "st": "2025-07-11",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 666666.6667000001,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 518,
+    "rec": "0xdf82206651374caed57d1b1fd8356318f72c879e",
+    "dep": 133333.3333,
+    "wd": 0.0,
+    "st": "2025-07-11",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 133333.3333,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 519,
+    "rec": "0x1331b853805d7242d5f2544cf55d1c6e4444b9ce",
+    "dep": 133333.3333,
+    "wd": 0.0,
+    "st": "2025-07-11",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 133333.3333,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 520,
+    "rec": "0x2d1eef3384e4f94344e8fcea3cc650876e5acaac",
+    "dep": 2333333.333,
+    "wd": 0.0,
+    "st": "2025-07-11",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 2333333.333,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 521,
+    "rec": "0x28309d65f0f4707a7fabad18714450ca423b8b61",
+    "dep": 1599999.9999999998,
+    "wd": 0.0,
+    "st": "2025-07-11",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 1599999.9999999998,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 522,
+    "rec": "0xb87c2ae6f0397f100518c01f66aafd2cba03d6dc",
+    "dep": 6250000.0,
+    "wd": 0.0,
+    "st": "2025-07-11",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 6250000.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 523,
+    "rec": "0x516eda760026e1493f462d9c8c3524aa499da7fb",
+    "dep": 5000000.0,
+    "wd": 0.0,
+    "st": "2025-07-11",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 5000000.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 524,
+    "rec": "0xc789c7834fb510f4db24f667455bc1f8e151dda6",
+    "dep": 5000000.0,
+    "wd": 0.0,
+    "st": "2025-07-11",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 5000000.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 526,
+    "rec": "0xb1e884c3dbe038058b96a0989ba5c2ad07435a1b",
+    "dep": 666666.67,
+    "wd": 0.0,
+    "st": "2025-07-14",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 666666.67,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 527,
+    "rec": "0x0d35428f4c48aab788d512dc02bb2b6aa008dfe8",
+    "dep": 3333333.0,
+    "wd": 0.0,
+    "st": "2025-07-14",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 3333333.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 528,
+    "rec": "0x5287a9299a947c66100c97c2ad7b85ad67b66897",
+    "dep": 16000000.0,
+    "wd": 0.0,
+    "st": "2025-07-14",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 16000000.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 529,
+    "rec": "0xc695128b54af6caf78aca0355477aed2721f2d1c",
+    "dep": 4000000.0,
+    "wd": 0.0,
+    "st": "2025-07-14",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 4000000.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 530,
+    "rec": "0xce147d154db2b534a147c6e22c1497e9dfeef892",
+    "dep": 8000000.0,
+    "wd": 0.0,
+    "st": "2025-07-14",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 8000000.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 531,
+    "rec": "0x127108abeea6d4c23c9843b97fadf3c99752d075",
+    "dep": 463066.0,
+    "wd": 0.0,
+    "st": "2025-07-14",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 463066.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 532,
+    "rec": "0x127108abeea6d4c23c9843b97fadf3c99752d075",
+    "dep": 115766.0,
+    "wd": 0.0,
+    "st": "2025-07-14",
+    "en": "2028-07-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 115766.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 534,
+    "rec": "0xfcd25dadb379bcf0c815e3c6fcecf4f08ba7fde9",
+    "dep": 5333333.3,
+    "wd": 0.0,
+    "st": "2025-07-15",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 5333333.3,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 535,
+    "rec": "0x5d51a71aa50bda4dab044834077c5d28ef6d04f9",
+    "dep": 10000000.0,
+    "wd": 0.0,
+    "st": "2025-07-15",
+    "en": "2028-07-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 10000000.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 536,
+    "rec": "0x50081f1167007957d42fd467d1d48f26c86239fd",
+    "dep": 4000000.0,
+    "wd": 0.0,
+    "st": "2025-07-15",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 4000000.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 537,
+    "rec": "0xb97d9dcfd44f068180854a30b9a9423f9f9a156b",
+    "dep": 2666666.667,
+    "wd": 0.0,
+    "st": "2025-07-15",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 2666666.667,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 538,
+    "rec": "0xdd048391f9a84d80c338e34eb6888ec75a701641",
+    "dep": 1333333.333,
+    "wd": 0.0,
+    "st": "2025-07-15",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 1333333.333,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 539,
+    "rec": "0x4a8c67ec042dc7036c95cf25e863fd6f01754df4",
+    "dep": 3600000.0,
+    "wd": 0.0,
+    "st": "2025-07-15",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 3600000.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 540,
+    "rec": "0x5c01dd855e6e492d326245347a8058a023b4d5b8",
+    "dep": 666666.7000000001,
+    "wd": 0.0,
+    "st": "2025-07-15",
+    "en": "2028-01-09",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 666666.7000000001,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 541,
+    "rec": "0xf840f0b1d28610031d293ff708dbc4b5ad9885a8",
+    "dep": 150000.0,
+    "wd": 150000.0,
+    "st": "2025-07-15",
+    "en": "2026-03-15",
+    "cl": "2025-07-16",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 150000.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     30000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 542,
+    "rec": "0x93f625d6779230459a328f32bf929db84829f1ef",
+    "dep": 166667.0,
+    "wd": 166667.0,
+    "st": "2025-07-15",
+    "en": "2026-03-15",
+    "cl": "2025-07-16",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 166667.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     33333.4,
+     1.0
+    ]
+   },
+   {
+    "id": 543,
+    "rec": "0x3dcfc6d4c71dc9084d60e6832e75b9f9f63ae28e",
+    "dep": 150000.0,
+    "wd": 150000.0,
+    "st": "2025-07-15",
+    "en": "2026-03-15",
+    "cl": "2025-07-16",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 150000.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     30000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 544,
+    "rec": "0x4f321533900a81fc93f4e663aa17351bf21dbf0f",
+    "dep": 99999.99999999999,
+    "wd": 99999.99999999999,
+    "st": "2025-07-15",
+    "en": "2026-03-15",
+    "cl": "2025-07-16",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 99999.99999999999,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     20000.0,
+     1.0
+    ]
+   },
+   {
+    "id": 545,
+    "rec": "0x0d4193c3770cc0ce66bc38515b85f07ccd938904",
+    "dep": 20833.000000000004,
+    "wd": 20833.000000000004,
+    "st": "2025-07-15",
+    "en": "2026-03-15",
+    "cl": "2025-07-16",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 20833.000000000004,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     4167.0,
+     1.0
+    ]
+   },
+   {
+    "id": 546,
+    "rec": "0xacbf5b79db3f441b3e1f0784f419ade0027ed899",
+    "dep": 250000.0,
+    "wd": 250000.0,
+    "st": "2025-07-15",
+    "en": "2026-03-15",
+    "cl": "2025-07-16",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 250000.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     49999.99999999999,
+     1.0
+    ]
+   },
+   {
+    "id": 547,
+    "rec": "0x3bd9fac24e8a864d46af3f1ae98b64692ba555ec",
+    "dep": 33333.0,
+    "wd": 33333.0,
+    "st": "2025-07-15",
+    "en": "2026-03-15",
+    "cl": "2025-07-16",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 33333.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     6667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 548,
+    "rec": "0x416ef3a81403dae0a24905fa8cadc4829fe9e00d",
+    "dep": 33333.0,
+    "wd": 33333.0,
+    "st": "2025-07-15",
+    "en": "2026-03-15",
+    "cl": "2025-07-16",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 33333.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     6667.0,
+     1.0
+    ]
+   },
+   {
+    "id": 549,
+    "rec": "0x8b1e61d4e610ae490fed3c0501f22ad1a0cb0162",
+    "dep": 9167.0,
+    "wd": 9167.0,
+    "st": "2025-07-15",
+    "en": "2026-03-15",
+    "cl": "2025-07-16",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 9167.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     1833.0,
+     1.0
+    ]
+   },
+   {
+    "id": 550,
+    "rec": "0xdac9beb709828e97f122f9593c2c960e3bdb3506",
+    "dep": 4167.0,
+    "wd": 4167.0,
+    "st": "2025-07-15",
+    "en": "2026-03-15",
+    "cl": "2025-07-16",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 4167.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     833.0,
+     1.0
+    ]
+   },
+   {
+    "id": 551,
+    "rec": "0xff4e09583ab03410b1f2fac3f2242ef7d1ec6cc3",
+    "dep": 25000000.0,
+    "wd": 0.0,
+    "st": "2025-07-10",
+    "en": "2028-01-10",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 25000000.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 552,
+    "rec": "0x31338618f1f0fc677eb3a33f6c5a3a4f0f5bc8a7",
+    "dep": 222222.0,
+    "wd": 222222.0,
+    "st": "2025-07-10",
+    "en": "2026-07-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 222222.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "id": 613,
+    "rec": "0x9fb28123125dd89d507162b915a7f4fb4e1819ab",
+    "dep": 777777.0,
+    "wd": 0.0,
+    "st": "2025-07-10",
+    "en": "2029-07-10",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 777777.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": 617,
+    "rec": "0xce569610e72abaef2da52bdc84f63bc3c4832d73",
+    "dep": 80417.0,
+    "wd": 80417.0,
+    "st": "2025-08-06",
+    "en": "2025-08-06",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 80417.0,
+    "canc": false,
+    "was": false,
+    "ref": 0.0,
+    "unl": [
+     80415.99999999999,
+     0.0
+    ]
+   },
+   {
+    "id": 618,
+    "rec": "0x749b857e0fafaff3e4c672ee998938150568fd8a",
+    "dep": 900000.0,
+    "wd": 812253.0821917809,
+    "st": "2025-08-13",
+    "en": "2026-08-13",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 812253.0821917809,
+    "canc": false,
+    "was": true,
+    "ref": 87746.91780821918,
+    "unl": [
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "id": 1485,
+    "rec": "0x3ad3cd9a8dd567d1c3081e0c359df94478eb5152",
+    "dep": 1000000.0,
+    "wd": 0.0,
+    "st": "2025-07-10",
+    "en": "2029-07-10",
+    "cl": "2026-07-10",
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 1000000.0,
+    "unl": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "streams_new": [
+   {
+    "id": 1168,
+    "rec": "0xc4b1c4fdf17cd7353cd7eed75bd475c6d6db1270",
+    "dep": 3600000.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2028-12-30",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": false,
+    "was": true,
+    "ref": 3600000.0,
+    "unl": null
+   },
+   {
+    "id": 1171,
+    "rec": "0x267a5cf846fbaca7d754aa60b961a0295b97b7c4",
+    "dep": 2333333.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1172,
+    "rec": "0xc4b1c4fdf17cd7353cd7eed75bd475c6d6db1270",
+    "dep": 3600000.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1173,
+    "rec": "0xd9fe94c8a0a9159d52683074a63acbf5fff1e379",
+    "dep": 333333.33,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1174,
+    "rec": "0x771add5860f776dc6f1330585548f1bd5494f6ed",
+    "dep": 199999.99999999997,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1175,
+    "rec": "0xb2fc53f237cf2d72a8b7a6589bb72b9711552c90",
+    "dep": 266666.67,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1176,
+    "rec": "0x58e6949e73654bcf40de6f99fe09ae29243b17c4",
+    "dep": 666666.67,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1177,
+    "rec": "0xdf82206651374caed57d1b1fd8356318f72c879e",
+    "dep": 133333.33,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1178,
+    "rec": "0x1331b853805d7242d5f2544cf55d1c6e4444b9ce",
+    "dep": 133333.33,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1179,
+    "rec": "0xc789c7834fb510f4db24f667455bc1f8e151dda6",
+    "dep": 5000000.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1180,
+    "rec": "0x516eda760026e1493f462d9c8c3524aa499da7fb",
+    "dep": 5000000.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1181,
+    "rec": "0x0d35428f4c48aab788d512dc02bb2b6aa008dfe8",
+    "dep": 3333333.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1182,
+    "rec": "0xc695128b54af6caf78aca0355477aed2721f2d1c",
+    "dep": 4000000.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1183,
+    "rec": "0xb97d9dcfd44f068180854a30b9a9423f9f9a156b",
+    "dep": 2666666.9999999995,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1184,
+    "rec": "0xdd048391f9a84d80c338e34eb6888ec75a701641",
+    "dep": 1333333.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1185,
+    "rec": "0x0d81b1f99d65ac1d34ffc3bfe0d206a9c7b25778",
+    "dep": 3090669.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2027-10-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1186,
+    "rec": "0xb1e884c3dbe038058b96a0989ba5c2ad07435a1b",
+    "dep": 666667.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1187,
+    "rec": "0x69bbe58022bf64cbdb8c52e7cc141042cfcb641e",
+    "dep": 170756.0,
+    "wd": 0.0,
+    "st": "2027-11-05",
+    "en": "2030-10-05",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1188,
+    "rec": "0x127108abeea6d4c23c9843b97fadf3c99752d075",
+    "dep": 463060.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1189,
+    "rec": "0xfcd25dadb379bcf0c815e3c6fcecf4f08ba7fde9",
+    "dep": 5333333.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1190,
+    "rec": "0x5c01dd855e6e492d326245347a8058a023b4d5b8",
+    "dep": 666666.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-01-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   },
+   {
+    "id": 1191,
+    "rec": "0x3ad3cd9a8dd567d1c3081e0c359df94478eb5152",
+    "dep": 1000000.0,
+    "wd": 0.0,
+    "st": "2027-01-10",
+    "en": "2029-07-10",
+    "cl": null,
+    "tok": "0x8b194370825e37b33373e74a41009161808c1488",
+    "snd": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "streamed": 0.0,
+    "canc": true,
+    "was": false,
+    "ref": 0.0,
+    "unl": null
+   }
+  ]
+ },
+ "epoch11": {
+  "liquid_pct": 12,
+  "staked_pct": 88,
+  "lock_months": 12,
+  "pool": 2710049,
+  "funded_liquid": 275000,
+  "funded_staked": 2017104
+ },
+ "cex_flows": {
+  "W1 Jun25-Jul12": {
+   "Binance": {
+    "deposits": 6395473,
+    "withdrawals": 6999954,
+    "net_in": -604481,
+    "n_dep": 17147,
+    "n_wd": 19749
+   },
+   "Gate": {
+    "deposits": 5792607,
+    "withdrawals": 4289840,
+    "net_in": 1502767,
+    "n_dep": 1317,
+    "n_wd": 1086
+   },
+   "MEXC": {
+    "deposits": 2244199,
+    "withdrawals": 2369765,
+    "net_in": -125566,
+    "n_dep": 988,
+    "n_wd": 767
+   },
+   "KuCoin": {
+    "deposits": 2117190,
+    "withdrawals": 601387,
+    "net_in": 1515802,
+    "n_dep": 574,
+    "n_wd": 125
+   },
+   "Bitget": {
+    "deposits": 151764,
+    "withdrawals": 2654241,
+    "net_in": -2502477,
+    "n_dep": 7,
+    "n_wd": 167
+   }
+  },
+  "Jul12-Aug8": {
+   "Binance": {
+    "deposits": 2586127,
+    "withdrawals": 3497618,
+    "net_in": -911492,
+    "n_dep": 5492,
+    "n_wd": 8630
+   },
+   "Bitget": {
+    "deposits": 1891903,
+    "withdrawals": 1275078,
+    "net_in": 616825,
+    "n_dep": 276,
+    "n_wd": 330
+   },
+   "Gate": {
+    "deposits": 5178097,
+    "withdrawals": 3374156,
+    "net_in": 1803941,
+    "n_dep": 770,
+    "n_wd": 564
+   },
+   "MEXC": {
+    "deposits": 1455678,
+    "withdrawals": 1160337,
+    "net_in": 295341,
+    "n_dep": 419,
+    "n_wd": 268
+   },
+   "KuCoin": {
+    "deposits": 528403,
+    "withdrawals": 552085,
+    "net_in": -23682,
+    "n_dep": 227,
+    "n_wd": 92
+   }
+  },
+  "W2 Aug8-Aug24 08:00": {
+   "Binance": {
+    "deposits": 1911455,
+    "withdrawals": 1986886,
+    "net_in": -75431,
+    "n_dep": 6212,
+    "n_wd": 6614
+   },
+   "MEXC": {
+    "deposits": 576000,
+    "withdrawals": 1745727,
+    "net_in": -1169727,
+    "n_dep": 347,
+    "n_wd": 336
+   },
+   "Bitget": {
+    "deposits": 3847956,
+    "withdrawals": 1862111,
+    "net_in": 1985845,
+    "n_dep": 1009,
+    "n_wd": 381
+   },
+   "Gate": {
+    "deposits": 1746251,
+    "withdrawals": 3859858,
+    "net_in": -2113607,
+    "n_dep": 679,
+    "n_wd": 670
+   },
+   "KuCoin": {
+    "deposits": 1648879,
+    "withdrawals": 1070667,
+    "net_in": 578212,
+    "n_dep": 416,
+    "n_wd": 134
+   }
+  },
+  "Crash Aug24 08:00-Aug26": {
+   "Binance": {
+    "deposits": 9508306,
+    "withdrawals": 1955699,
+    "net_in": 7552607,
+    "n_dep": 6302,
+    "n_wd": 1844
+   },
+   "Gate": {
+    "deposits": 2583474,
+    "withdrawals": 20742500,
+    "net_in": -18159026,
+    "n_dep": 188,
+    "n_wd": 1516
+   },
+   "Bitget": {
+    "deposits": 12112360,
+    "withdrawals": 18203916,
+    "net_in": -6091556,
+    "n_dep": 703,
+    "n_wd": 711
+   },
+   "MEXC": {
+    "deposits": 5230897,
+    "withdrawals": 4982208,
+    "net_in": 248688,
+    "n_dep": 195,
+    "n_wd": 782
+   },
+   "KuCoin": {
+    "deposits": 1262698,
+    "withdrawals": 3174810,
+    "net_in": -1912112,
+    "n_dep": 88,
+    "n_wd": 284
+   }
+  },
+  "Aug26-Sep11": {
+   "Binance": {
+    "deposits": 4685680,
+    "withdrawals": 2281043,
+    "net_in": 2404637,
+    "n_dep": 1893,
+    "n_wd": 1024
+   },
+   "Gate": {
+    "deposits": 8714792,
+    "withdrawals": 15799106,
+    "net_in": -7084314,
+    "n_dep": 115,
+    "n_wd": 583
+   },
+   "Bitget": {
+    "deposits": 22280497,
+    "withdrawals": 10813121,
+    "net_in": 11467376,
+    "n_dep": 727,
+    "n_wd": 570
+   },
+   "KuCoin": {
+    "deposits": 4435268,
+    "withdrawals": 6899127,
+    "net_in": -2463859,
+    "n_dep": 138,
+    "n_wd": 133
+   },
+   "MEXC": {
+    "deposits": 0,
+    "withdrawals": 655311,
+    "net_in": -655311,
+    "n_dep": 0,
+    "n_wd": 85
+   }
+  },
+  "Sep11-Oct4": {
+   "KuCoin": {
+    "deposits": 1031742,
+    "withdrawals": 2567477,
+    "net_in": -1535735,
+    "n_dep": 41,
+    "n_wd": 53
+   },
+   "Gate": {
+    "deposits": 7534762,
+    "withdrawals": 6783588,
+    "net_in": 751174,
+    "n_dep": 269,
+    "n_wd": 266
+   },
+   "Bitget": {
+    "deposits": 2798551,
+    "withdrawals": 22240820,
+    "net_in": -19442269,
+    "n_dep": 223,
+    "n_wd": 181
+   },
+   "Binance": {
+    "deposits": 3706478,
+    "withdrawals": 2750649,
+    "net_in": 955829,
+    "n_dep": 1301,
+    "n_wd": 1292
+   },
+   "MEXC": {
+    "deposits": 2420571,
+    "withdrawals": 1594133,
+    "net_in": 826439,
+    "n_dep": 199,
+    "n_wd": 206
+   }
+  },
+  "Oct4-Oct11": {
+   "Binance": {
+    "deposits": 444930,
+    "withdrawals": 495308,
+    "net_in": -50378,
+    "n_dep": 164,
+    "n_wd": 197
+   },
+   "KuCoin": {
+    "deposits": 194032,
+    "withdrawals": 143653,
+    "net_in": 50379,
+    "n_dep": 23,
+    "n_wd": 9
+   },
+   "Gate": {
+    "deposits": 1052360,
+    "withdrawals": 317699,
+    "net_in": 734661,
+    "n_dep": 115,
+    "n_wd": 13
+   },
+   "MEXC": {
+    "deposits": 361380,
+    "withdrawals": 492823,
+    "net_in": -131443,
+    "n_dep": 25,
+    "n_wd": 40
+   }
+  }
+ },
+ "verdict": "No BSC on-chain sends from identified team/treasury/vesting/TGE-tranche wallets in last 7d; deployer only 16,360 in 30d. Largest insider-path CEX deposits were Jun 6-12 2026 (0x150c8a). 200M team + ~72M backer tokens liquid in Safe #1 after Jul 7-8 cancellations, no on-chain schedule."
+}
