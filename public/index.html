@@ -9,6 +9,7 @@
 <body>
 <header class="topbar">
   <div class="brand">ASYMMETRIC<span>·</span>TERMINAL <em class="ro">READ-ONLY</em></div>
+  <nav id="viewNav" class="viewnav"><button data-v="terminal" class="on">Terminal</button><button data-v="options">Options</button><button data-v="airdrops">Airdrops</button></nav>
   <select id="chainSel" class="mini chainsel" title="Chain for search, trending/new and research"><option value="solana">Solana</option></select>
   <div class="ticker" id="solTicker">SOL —</div>
   <div class="searchwrap">
@@ -82,6 +83,53 @@
   </section>
 </main>
 
+<section id="viewOptions" class="view">
+  <div class="panel">
+    <div class="phead"><h2>Options screener</h2><span class="muted small">long calls/puts graded A–F for asymmetric upside · Derive (live) + CBOE (delayed) · model estimates, not advice</span>
+      <div class="filters">
+        <select id="optVenue" class="mini"><option value="">All venues</option><option value="stocks">Stocks/ETFs (CBOE)</option><option value="derive">Crypto (Derive)</option></select>
+        <select id="optUnd" class="mini"><option value="">All underlyings</option></select>
+        <select id="optType" class="mini"><option value="">Calls + puts</option><option value="call">Calls</option><option value="put">Puts</option></select>
+        <select id="optGrade" class="mini"><option value="F">Any grade</option><option value="C">C or better</option><option value="B">B or better</option><option value="A">A only</option></select>
+        <select id="optSort" class="mini"><option value="score">Sort: grade score</option><option value="ev">Sort: EV %</option><option value="touch">Sort: P(touch 3x)</option><option value="itm">Sort: P(ITM)</option><option value="rr">Sort: R:R at 2σ</option><option value="cheap">Sort: cheapest IV/RV</option><option value="volo">Sort: vol/OI</option></select>
+        <label class="small"><input type="checkbox" id="optOne" checked> top per underlying</label><label class="small"><input type="checkbox" id="optBest"> best expiry</label><label class="small"><input type="checkbox" id="optUnusual"> unusual vol</label><label class="small"><input type="checkbox" id="optEarn"> earnings before expiry</label><label class="small"><input type="checkbox" id="optLive"> live bid/ask</label>
+        <input id="optMaxLoss" class="mini" type="number" placeholder="max loss $" style="width:90px">
+        <button id="optRefresh" class="btn mini2">reload</button>
+      </div></div>
+    <div id="optOut" class="scroll"></div>
+  </div>
+</section>
+
+<section id="viewAirdrops" class="view">
+  <div class="panel adleft">
+    <div class="phead"><h2>Airdrops & points</h2><span class="muted small">ranked by early-ness and low dilution · airdrops.io + DefiLlama · estimates, not guarantees</span>
+      <div class="filters">
+        <select id="adGrade" class="mini"><option value="F">Any grade</option><option value="C">C or better</option><option value="B">B or better</option><option value="A">A only</option></select>
+        <select id="adKind" class="mini"><option value="">All sources</option><option value="speculative">Speculative (no confirmed drop)</option><option value="hot">Hot</option><option value="latest">Latest</option><option value="defillama-tokenless">DefiLlama tokenless + funded</option></select>
+        <label class="small"><input type="checkbox" id="adHideLate" checked> hide claim-live / ended</label>
+        <input id="adSearch" class="mini" placeholder="search">
+      </div></div>
+    <div id="adOut" class="scroll"></div>
+  </div>
+  <div class="panel adright">
+    <div class="phead"><h2>Assist mode</h2><span class="muted small">your checklist · you sign every step</span></div>
+    <div class="wbar"><button id="wPhantom" class="btn">Connect Phantom (Solana)</button><button id="wRabby" class="btn">Connect Rabby (EVM)</button><button id="adNotify" class="btn ghost mini2" title="Browser notifications for reminders while this page is open">🔔</button></div>
+    <div class="muted small pad">No private keys or seed phrases are ever requested. Transactions are prepared here and shown in your wallet; nothing is signed automatically. Phantom: injected Solana provider. Rabby: EIP-6963 discovery, EIP-1193 fallback.</div>
+    <div id="assistOut" class="scroll"></div>
+  </div>
+</section>
+
+<div id="prepModal" class="modal hidden"><div class="mbox">
+  <h3 id="prepTitle">Prepare transaction</h3>
+  <label class="small">Chain <select id="prepChain" class="mini"><option value="solana">Solana (Phantom)</option><option value="ethereum">Ethereum (Rabby)</option><option value="base">Base (Rabby)</option><option value="arbitrum">Arbitrum (Rabby)</option><option value="optimism">Optimism (Rabby)</option><option value="bsc">BSC (Rabby)</option><option value="polygon">Polygon (Rabby)</option><option value="avalanche">Avalanche (Rabby)</option><option value="blast">Blast (Rabby)</option></select></label>
+  <label class="small">Action <select id="prepAction" class="mini"><option value="transfer">Send native coin to an address from the official docs (e.g. deposit/bridge address)</option><option value="sign">Sign a message (wallet ownership proof, no funds move)</option></select></label>
+  <div id="prepTxFields"><input id="prepTo" placeholder="destination address (copy from the official site)"><input id="prepAmt" placeholder="amount" type="number" step="any"></div>
+  <input id="prepMsg" placeholder="message to sign (optional)">
+  <div class="muted small">For protocol actions (swaps, LP, lending) use the official app itself, connected with the same wallet, then tick the task here. Never paste a seed phrase anywhere.</div>
+  <div class="mrow"><button id="prepBuild" class="btn">Preview</button><button class="btn ghost" data-close="1">Close</button></div>
+  <div id="prepPreview"></div>
+</div></div>
+
 <div id="settings" class="modal hidden">
   <div class="card">
     <h3>Settings</h3>
@@ -91,7 +139,8 @@
     <div class="row end"><button id="rpcClear" class="btn ghost">Clear</button><button id="rpcSave" class="btn">Save</button></div>
   </div>
 </div>
-<footer class="foot">Read-only dashboard · no wallet connection, no keys, no trading · all risk output is heuristic, <b>not financial advice</b> · data: DexScreener, GeckoTerminal, Jupiter, Solana RPC, RugCheck, GoPlus, Honeypot.is, tonapi, TronGrid, publicnode RPCs, pump.fun, StonkFun, FRED, Fed, Kalshi, Polymarket, news RSS</footer>
+<footer class="foot">Read-only terminal · no keys, no trading · the optional Airdrop assist connects your own wallet and you sign every step in it · all risk output is heuristic, <b>not financial advice</b> · data: DexScreener, GeckoTerminal, Jupiter, Solana RPC, RugCheck, GoPlus, Honeypot.is, tonapi, TronGrid, publicnode RPCs, pump.fun, StonkFun, FRED, Fed, Kalshi, Polymarket, news RSS</footer>
 <script src="/app.js"></script>
+<script src="/views.js"></script>
 </body>
 </html>

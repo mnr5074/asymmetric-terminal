@@ -109,6 +109,30 @@ EVM/Tron scanner checks: honeypot (simulated sell), buy/sell tax and whether the
 
 FRED's `fredgraph.csv` rejects browser-like user agents, so the server fetches it with no UA.
 
+## Options screener (header: Options)
+
+Every listed **Derive.xyz** option (about 3,800 across BTC, ETH, SOL, HYPE, XRP, ZEC, ADA, PUMP, LIT, VVV, XAUT, CC; live order book via `api.lyra.finance/public`) plus **CBOE delayed chains** (`cdn-api.cboe.com/api/global/delayed_quotes/options/<SYM>.json`, about 15 min delayed, ~184K contracts) for 63 liquid US stocks/ETFs (change with `OPT_UNIVERSE`). Long calls and puts only, so max loss is the premium. Built by `research/options.py` into `data/options.json`; the server re-runs it in the background when the file is older than 30 minutes (a run takes about 3 minutes).
+
+Per contract: Black-Scholes fair value using realized vol (mean of 30/90/180-day close-to-close; Yahoo daily closes for stocks, Coinbase daily candles for crypto), premium vs fair, IV vs RV, max loss, breakeven and move needed, ±1σ/±2σ range by expiry, the underlying price needed at expiry for 3x/5x/10x, a suggested exit date (keeps 40% of the time left, before theta speeds up) with the price needed by then for a 3x mark, P(ITM) and P(touch the 3x level) under IV and RV, EV, reward:risk at a 2σ move, theta per day, volume/OI (unusual activity flag), earnings date before expiry (Nasdaq calendar, IV crush warning), and the best expiry per underlying.
+
+**Grade formula** (0-100): `30*EV + 25*touch + 20*convexity + 15*cheapness + 10*liquidity`
+- EV = clip((EV% + 25) / 225), EV% = (BS value at realized vol - premium) / premium
+- touch = clip(P(touch 3x level before expiry, realized vol) / 0.5)
+- convexity = clip(ln(1 + R) / ln 11), R = payoff multiple at a +2σ (IV) move
+- cheapness = clip((1.3 - IV/RV) / 0.6)
+- liquidity = clip(1 - spread / 30% of mid), 0 without a live bid/ask or open interest
+- A ≥ 75, B ≥ 60, C ≥ 45, D ≥ 30, else F. Caps: mark-only quote (common on Derive) max C; under 3 days max D; under 7 days or theta > 20%/day max C; theta > 10%/day max B; earnings before expiry with IV/RV > 1.5 max C.
+
+Limits: lognormal, driftless model; touch uses the reflection approximation; realized vol looks backward, so "cheap vs RV" can just mean the stock was wild recently. No dividends; flat rates (4% stocks, 0% crypto). CBOE quotes outside market hours are last-session values. Coinbase vol is rejected when the Coinbase price disagrees with the Derive index by >15% (e.g. LIT is a different asset on Coinbase), and CC has no free vol source. Estimates, not advice: long options usually expire worthless.
+
+## Airdrops & points (header: Airdrops)
+
+`research/airdrops.py` → `data/airdrops.json` (refreshed when older than 6 h). Sources: airdrops.io `/latest/ /hot/ /speculative/` listing pages (status, heat, publish date, required actions, official host, KYC flag); DefiLlama `api.llama.fi/protocols` (TVL, tokenless protocols, listing date, official URL); funding from the public `defillama.com/raises` page data (the `api.llama.fi/raises` API now returns HTTP 402, paid only). Funded tokenless protocols with ≥ $5M TVL that have no airdrops.io listing are added as "no announced program" candidates. Not available free: CryptoRank (403 without key), DropsTab (no public API), CoinGecko airdrops (404), and participant or points totals from any source, so TVL per user cannot be computed. airdrops.io heat stands in for crowding.
+
+**Grade formula** (0-100): `25*no token + 20*funding (log10 $ raised: $1M=0, $100M+=1) + 20*early (1 - days since first seen / 365) + 15*uncrowded (1 - heat / 150) + 10*low dilution (TVL $1M=1 … $1B=0) + 5 top-tier backer + 5 speculative`; minus 5 for KYC, 15 for an announced TGE, 35 for claim live or ended; capped at C with no disclosed funding and under $1M TVL. A ≥ 70, B ≥ 55, C ≥ 40, D ≥ 25, else F.
+
+**Assist mode** (right panel): track a campaign to get a checklist (safety steps + the campaign's listed actions) with progress, due and reminder dates, an `.ics` calendar reminder and optional browser notifications. Everything is kept in your browser's localStorage. Wallets: **Phantom** through its injected Solana provider (`window.phantom.solana`, Wallet Standard compatible; the @solana/wallet-adapter React library is not bundled because the frontend has no build step) and **Rabby** through **EIP-6963** discovery (`io.rabby`) with an EIP-1193 `window.ethereum` fallback. Prepared steps: send native coin to an address you copy from the official docs (SOL transfer message built in the page and byte-checked against @solana/web3.js; EVM `eth_sendTransaction` after `wallet_switchEthereumChain`), or sign an ownership message. Every step opens in your wallet for review; the page never sees keys and never signs automatically. For protocol actions (swaps, LP, lending) use the official app with the same wallet and tick the task.
+
 ## Files
 `server.js` (HTTP + API proxy/cache) · `lib/scanner.js` · `lib/solrpc.js` · `lib/util.js` · `public/` (vanilla JS/CSS) ·
 `research/` (collector, analysis, screener) · `scripts/screenshot.js`.
