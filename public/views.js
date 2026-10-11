@@ -14,17 +14,32 @@
   function show(v) {
     document.body.dataset.view = v;
     document.querySelectorAll('#viewNav button').forEach((b) => b.classList.toggle('on', b.dataset.v === v));
-    if (v === 'options') loadOptions(); if (v === 'airdrops') loadAirdrops();
-    const u = new URL(location.href); v === 'terminal' ? u.searchParams.delete('view') : u.searchParams.set('view', v); history.replaceState(null, '', u);
+    if (v === 'command') setTimeout(() => window.ccShow && window.ccShow()); if (v === 'options') loadOptions(); if (v === 'glossary' && window.renderGlossary) renderGlossary(); if (v === 'airdrops') loadAirdrops();
+    const u = new URL(location.href); v === 'command' ? u.searchParams.delete('view') : u.searchParams.set('view', v); history.replaceState(null, '', u);
   }
   Q('#viewNav').addEventListener('click', (e) => { const b = e.target.closest('button[data-v]'); if (b) show(b.dataset.v); });
 
   // ================= OPTIONS =================
+  const extChip = (p) => { const t = OPT?.tickers?.[p.underlying]?.ext; return t && t.ext_pct != null && Math.abs(t.ext_pct) >= 0.5 ? ` · <span class="${t.ext_pct >= 0 ? 'up' : 'dn'}">${t.session} ${t.ext_pct >= 0 ? '+' : ''}${t.ext_pct.toFixed(1)}%</span>` : ''; };
+  function tickerBox(p) {
+    const t = OPT?.tickers?.[p.underlying]; if (!t) return '';
+    const fl = t.flow || {}, ins = t.insider || {}, ud = t.updown || {};
+    return `<div class="tbox"><b>${esc(p.underlying)} signals</b>
+      ${p.signals?.length ? `<div>${p.signals.map((w) => esc(w)).join('<br>')}</div>` : ''}
+      <div>${ix('ext')} ${t.ext ? `${esc(t.ext.session)}: ${t.ext.ext_price != null ? px(t.ext.ext_price) + ' (' + (t.ext.ext_pct >= 0 ? '+' : '') + t.ext.ext_pct.toFixed(2) + '%)' : 'no extended-hours trade'} · regular close ${px(t.ext.regular)}` : '—'}
+      · ${ix('updown')} up-day volume ${ud.up_volume_share_10d != null ? Math.round(ud.up_volume_share_10d * 100) + '%' : '—'} · ${ix('cpr')} call/put vol ${fl.call_put_vol != null ? fl.call_put_vol.toFixed(2) : '—'} (calls ${fUsd(fl.call_premium_usd)} vs puts ${fUsd(fl.put_premium_usd)} premium traded)</div>
+      <div>${ix('insider')} insiders 30d: bought ${fUsd(ins.insider_buy_usd_30d)}, sold ${fUsd(ins.insider_sell_usd_30d)}${ins.cluster_buying ? ' · <span class="chip g">cluster buying</span>' : ''}${(t.insider_tx || []).slice(0, 3).map((x) => ` · ${esc(x.date)} ${esc(x.who)} ${x.code === 'P' ? 'bought' : 'sold'} ${fUsd(x.usd)}`).join('')}</div>
+      ${t.filings_8k?.length ? `<div>${ix('filing8k')} 8-K: ${t.filings_8k.slice(0, 2).map((f) => `<a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.date)} items ${esc(f.items || '?')}</a>`).join(' · ')}</div>` : ''}
+      ${t.news?.length ? `<div>News: ${t.news.slice(0, 4).map((n) => `<a href="${esc(n.link)}" target="_blank" rel="noopener" class="${n.sent > 0 ? 'up' : n.sent < 0 ? 'dn' : ''}">${esc(n.title)}</a>`).join(' · ')}</div>` : ''}
+      ${window._xData?.[p.underlying] ? `<div>${ix('xsoc')} X: ${window._xData[p.underlying].sample} posts sampled · ${window._xData[p.underlying].postsPerHour ?? '—'}/h · tone ${window._xData[p.underlying].toneAvg ?? '—'}</div>` : ''}
+      <div class="muted">Quotes: CBOE delayed ~15 min (last regular session when closed). Real-time order flow needs a paid feed (Tradier / Unusual Whales / ThetaData).</div></div>`;
+  }
   let OPT = null;
   async function loadOptions(force) {
     const box = Q('#optOut');
     if (OPT && !force) return renderOptions();
     box.innerHTML = '<div class="empty"><span class="spin"></span> loading option chains (Derive + CBOE delayed)…</div>';
+    api('/api/x').then((x) => { window._xData = {}; for (const i of x.items || []) window._xData[i.sym] = i; }).catch(() => {});
     try { OPT = await api('/api/options'); } catch (e) { box.innerHTML = `<div class="empty">${esc(e.message)}</div>`; return; }
     const unds = [...new Set(OPT.picks.map((p) => p.underlying))].sort();
     Q('#optUnd').innerHTML = '<option value="">All underlyings</option>' + unds.map((u) => `<option>${esc(u)}</option>`).join('');
@@ -46,13 +61,14 @@
     const u = d.universe;
     let h = `<div class="kv"><div><span class="muted small">Derive options listed / priced</span><b>${u.derive_listed} / ${u.derive_priced}</b></div><div><span class="muted small">Stock/ETF chains (CBOE delayed)</span><b>${u.stock_underlyings.length} · ${u.stock_contracts.toLocaleString()} contracts</b></div><div><span class="muted small">Screened long options</span><b>${u.eligible.toLocaleString()}</b><span class="muted small">of ${u.analyzed.toLocaleString()} analyzed</span></div><div><span class="muted small">Grades</span><b>${['A', 'B', 'C', 'D', 'F'].map((g) => `${g} ${d.grades[g] || 0}`).join(' · ')}</b></div><div><span class="muted small">Data age</span><b>${Math.round((d.ageSec || 0) / 60)} min</b><span class="muted small">${d.refreshing ? 'refreshing…' : new Date(d.generatedAt).toLocaleString()}</span></div></div>
     <div class="muted small pad">Showing ${shown.length} of ${rows.length} matching (top 20 per underlying stored). <span class="dn">Model estimates, not advice: long options usually expire worthless.</span> Click a row for details.</div>
-    <div class="tablewrap"><table class="tbl opt"><thead><tr><th>Gr</th><th>Contract</th><th class="r">Premium<br><span class="muted">max loss</span></th><th class="r">Fair (RV)<br><span class="muted">prem vs fair</span></th><th class="r">IV / RV</th><th class="r">Breakeven<br><span class="muted">move</span></th><th class="r">±1σ / ±2σ by expiry</th><th class="r">Target 3x / 5x / 10x</th><th class="r">Exit by<br><span class="muted">needs (3x)</span></th><th class="r">P(ITM)<br><span class="muted">IV / RV</span></th><th class="r">P(touch 3x)<br><span class="muted">IV / RV</span></th><th class="r">EV</th><th class="r">R:R 2σ</th><th class="r">θ/day</th><th class="r">Vol/OI</th><th>Flags</th></tr></thead><tbody>
+    <div class="tablewrap"><table class="tbl opt"><thead><tr><th>Gr ${ix('grade')}</th><th>Contract ${ix('best_expiry')}</th><th class="r">Premium ${ix('premium')}<br><span class="muted">max loss</span></th><th class="r">Fair (RV) ${ix('fair')}<br><span class="muted">prem vs fair ${ix('prem_vs_fair')}</span></th><th class="r">IV / RV ${ix('iv_rv')}</th><th class="r">Breakeven ${ix('breakeven')}<br><span class="muted">move</span></th><th class="r">P(profit) ${ix('p_profit')}<br><span class="muted">2x / 3x first ${ix('p_tp')}</span></th><th class="r">±1σ / ±2σ ${ix('sigma')}</th><th class="r">Target 3x/5x/10x ${ix('targets')}</th><th class="r">Exit by ${ix('exit_by')}<br><span class="muted">needs (3x)</span></th><th class="r">P(ITM) ${ix('p_itm')}<br><span class="muted">IV / RV</span></th><th class="r">P(touch 3x) ${ix('p_touch')}<br><span class="muted">IV / RV</span></th><th class="r">EV ${ix('ev')}</th><th class="r">R:R 2σ ${ix('rr')}</th><th class="r">θ/day ${ix('theta')}<br><span class="muted">Δ ${ix('delta')}</span></th><th class="r">Vol/OI ${ix('volume_oi')}</th><th>Flags ${ix('signals')}</th></tr></thead><tbody>
     ${shown.map((p, i) => `<tr data-i="${i}" class="optrow"><td>${gchip(p.grade)}<div class="muted small">${p.score}</div></td>
-      <td><b>${esc(p.underlying)}</b> ${p.type === 'call' ? '<span class="up">C</span>' : '<span class="dn">P</span>'} ${px(p.strike)} <span class="muted small">${esc(p.expiry)} · ${p.days}d</span><div class="muted small">${esc(p.venue)} · spot ${px(p.spot)}${p.best_expiry ? ' · <span class="chip g">best expiry</span>' : ''}</div></td>
+      <td><b>${esc(p.underlying)}</b> ${p.type === 'call' ? '<span class="up">C</span>' : '<span class="dn">P</span>'} ${px(p.strike)} <span class="muted small">${esc(p.expiry)} · ${p.days}d</span><div class="muted small">${esc(p.venue)} · spot ${px(p.spot)}${p.best_expiry ? ' · <span class="chip g">best expiry</span>' : ''}${extChip(p)}</div><div class="plain small">${esc(optPlain(p))}</div></td>
       <td class="r">${px(p.mid)}<div class="muted small">${fUsd(p.max_loss)}</div></td>
       <td class="r">${px(p.fair_rv)}<div class="small ${p.prem_vs_fair < 0 ? 'up' : 'dn'}">${p.prem_vs_fair != null ? (p.prem_vs_fair * 100).toFixed(0) + '%' : '—'}</div></td>
       <td class="r">${pct(p.iv)} / ${pct(p.rv30)}<div class="small ${p.iv_rv < 1 ? 'up' : 'dn'}">${num(p.iv_rv)}x</div></td>
       <td class="r">${px(p.breakeven)}<div class="muted small">${p.move_to_be_pct >= 0 ? '+' : ''}${p.move_to_be_pct.toFixed(1)}%</div></td>
+      <td class="r">${pct(p.p_profit_rv)}<div class="muted small">${p.p_tp_before_stop ? pct(p.p_tp_before_stop['2x']) + ' / ' + pct(p.p_tp_before_stop['3x']) : '—'}</div></td>
       <td class="r small">${px(p.sigma1[0])}–${px(p.sigma1[1])}<div class="muted">${px(p.sigma2[0])}–${px(p.sigma2[1])}</div></td>
       <td class="r small">${px(p.targets['3x'])} / ${px(p.targets['5x'])}<div class="muted">${px(p.targets['10x'])}</div></td>
       <td class="r small">${esc(p.exit_by)}<div class="muted">${px(p.need_for_3x_at_exit)}</div></td>
@@ -60,20 +76,20 @@
       <td class="r">${pct(p.p_touch3x_iv)} / ${pct(p.p_touch3x_rv)}</td>
       <td class="r ${p.ev >= 0 ? 'up' : 'dn'}">${p.ev_pct.toFixed(0)}%<div class="muted small">${fUsd(p.ev)}</div></td>
       <td class="r">${num(p.rr_2sigma, 1)}x</td>
-      <td class="r dn small">${fUsd(p.theta_day)}<div class="muted">${p.theta_pct_day.toFixed(1)}%</div></td>
+      <td class="r dn small">${fUsd(p.theta_day)}<div class="muted">${p.theta_pct_day.toFixed(1)}%${p.delta != null ? ' · Δ' + p.delta.toFixed(2) : ''}</div></td>
       <td class="r small">${p.vol_oi != null ? num(p.vol_oi) : '—'}<div class="muted">${p.volume ?? '—'}/${num(p.oi, 0)}</div></td>
-      <td>${p.unusual ? '<span class="chip a">unusual vol</span>' : ''}${p.earnings_before_expiry ? `<span class="chip a" title="IV crush risk after the report">earnings ${esc(p.earnings)}</span>` : ''}${!p.live_quote ? '<span class="chip" title="no live bid/ask">mark only</span>' : ''}${(p.caps || []).map((c) => `<span class="chip" title="${esc(c)}">cap</span>`).join('')}</td></tr>`).join('')}</tbody></table></div>`;
+      <td>${p.unusual ? '<span class="chip a">unusual vol</span>' : ''}${p.earnings_before_expiry ? `<span class="chip a" title="IV crush risk after the report">earnings ${esc(p.earnings)}</span>` : ''}${!p.live_quote ? '<span class="chip" title="no live bid/ask">mark only</span>' : ''}${(p.caps || []).map((c) => `<span class="chip" title="${esc(c)}">cap</span>`).join('')}${p.signal_pts ? `<span class="chip ${p.signal_pts > 0 ? 'g' : 'a'}">signals ${p.signal_pts > 0 ? '+' : ''}${p.signal_pts}</span>` : ''}${p.from_cache_age_h != null ? `<span class="chip" title="from an earlier rotation scan">${p.from_cache_age_h}h old</span>` : ''}</td></tr>`).join('')}</tbody></table></div>`;
     if (d.unusual?.length) h += `<div class="grp pad">Unusual volume vs open interest (latest session, CBOE delayed)</div><div class="tablewrap"><table class="tbl"><thead><tr><th>Contract</th><th class="r">Volume</th><th class="r">OI</th><th class="r">Vol/OI</th><th class="r">Premium</th><th class="r">IV</th><th>Grade</th></tr></thead><tbody>${d.unusual.slice(0, 25).map((p) => `<tr><td><b>${esc(p.underlying)}</b> ${p.type} ${px(p.strike)} ${esc(p.expiry)}</td><td class="r">${p.volume.toLocaleString()}</td><td class="r">${num(p.oi, 0)}</td><td class="r">${num(p.vol_oi)}</td><td class="r">${px(p.mid)}</td><td class="r">${pct(p.iv)}</td><td>${gchip(p.grade)}</td></tr>`).join('')}</tbody></table></div>`;
     h += `<details class="ev pad" open><summary>Grade formula & data notes</summary><div class="small">${esc(d.grade_formula)}</div><ul>${d.notes.map((n) => `<li>${esc(n)}</li>`).join('')}</ul><div class="small muted">Realized-vol sources: ${Object.entries(d.rv_sources || {}).map(([k, v]) => `${esc(k)}=${esc(v || 'none')}`).join(', ')}${u.stock_failed?.length ? ' · failed chains: ' + esc(u.stock_failed.join('; ')) : ''}</div></details>`;
-    Q('#optOut').innerHTML = h;
+    window._ixRows = shown; if (shown[0] && window.setExplainCtx) setExplainCtx(shown[0], `${shown[0].underlying} ${shown[0].type} ${shown[0].strike} ${shown[0].expiry}`); Q('#optOut').innerHTML = h;
     Q('#optOut').querySelectorAll('tr.optrow').forEach((tr) => tr.addEventListener('click', () => {
-      const p = shown[+tr.dataset.i]; const nx = tr.nextElementSibling;
+      const p = shown[+tr.dataset.i]; const nx = tr.nextElementSibling; if (window.setExplainCtx) setExplainCtx(p, `${p.underlying} ${p.type} ${p.strike} ${p.expiry}`);
       if (nx && nx.classList.contains('optdet')) { nx.remove(); return; }
       const det = document.createElement('tr'); det.className = 'optdet';
-      det.innerHTML = `<td colspan="16" class="small">Score parts: ${Object.entries(p.parts).map(([k, v]) => `${esc(k)} ${v}`).join(' · ')} (weights 30/25/20/15/10)${p.caps?.length ? ' · caps: ' + esc(p.caps.join('; ')) : ''}<br>
+      det.innerHTML = `<td colspan="17" class="small">${tradePlanHTML(p)}${tickerBox(p)}Score parts: ${Object.entries(p.parts).map(([k, v]) => `${esc(k)} ${v}`).join(' · ')} (weights 30/25/20/15/10)${p.caps?.length ? ' · caps: ' + esc(p.caps.join('; ')) : ''}<br>
         Fair value IV ${px(p.fair_iv)} · bid ${px(p.bid)} / ask ${px(p.ask)}${p.spread_pct != null ? ` (spread ${(p.spread_pct * 100).toFixed(1)}%)` : ''} · multiplier ${p.mult} · ${esc(p.id)}<br>
         To make 3x you need ${esc(p.underlying)} at ${px(p.targets['3x'])} by expiry ${esc(p.expiry)} (${((p.targets['3x'] / p.spot - 1) * 100).toFixed(1)}%), or about ${px(p.need_for_3x_at_exit)} by the suggested exit ${esc(p.exit_by)} with IV unchanged. Theta costs ${fUsd(-p.theta_day)} per day now.</td>`;
-      tr.after(det);
+      tr.after(det); const tpe = det.querySelector('.tplan'); if (tpe) window._tpRow.set(tpe, p);
     }));
   }
 
@@ -252,5 +268,5 @@
   }
   window.__solTransferMessage = solTransferMessage; window.__b58 = { b58enc, b58dec };
 
-  const v = new URLSearchParams(location.search).get('view'); if (v) show(v);
+  const v = new URLSearchParams(location.search).get('view') || (new URLSearchParams(location.search).get('tab') ? 'terminal' : 'command'); show(v);
 })();

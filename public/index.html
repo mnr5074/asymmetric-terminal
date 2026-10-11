@@ -9,7 +9,7 @@
 <body>
 <header class="topbar">
   <div class="brand">ASYMMETRIC<span>·</span>TERMINAL <em class="ro">READ-ONLY</em></div>
-  <nav id="viewNav" class="viewnav"><button data-v="terminal" class="on">Terminal</button><button data-v="options">Options</button><button data-v="airdrops">Airdrops</button></nav>
+  <nav id="viewNav" class="viewnav"><button data-v="command" class="on">Command</button><button data-v="terminal">Terminal</button><button data-v="options">Options</button><button data-v="airdrops">Airdrops</button><button data-v="glossary">Guide</button></nav>
   <select id="chainSel" class="mini chainsel" title="Chain for search, trending/new and research"><option value="solana">Solana</option></select>
   <div class="ticker" id="solTicker">SOL —</div>
   <div class="searchwrap">
@@ -83,6 +83,28 @@
   </section>
 </main>
 
+<section id="viewCommand" class="view">
+  <div id="ccLow" class="lowbanner hidden"></div>
+  <div class="ccTop"><div id="ccTicker" class="ticker2"></div><span id="ccNansen" class="muted small"></span><span id="ccUpdated" class="muted small"></span></div>
+  <div id="ccDesks" class="desks"></div>
+  <div class="ccGrid">
+    <div class="panel ccLive"><div class="phead"><span>LIVE ALPHA FEED <span id="ccLiveMeta" class="muted small"></span></span><span id="ccLiveF" class="subtabs"><button data-f="AB" class="on">A/B</button><button data-f="all">All</button><button data-f="veto">Vetoed</button></span></div><div id="ccLive" class="pbody scroll"></div></div>
+    <div class="ccMid">
+      <div class="panel"><div class="phead"><span>SCANNER DETAIL <span class="muted small">click any token</span></span></div><div id="ccDetail" class="pbody scroll"><div class="empty">Click a token in the feed, watchlist or slow-rug list.</div></div></div>
+      <div class="panel"><div class="phead"><span>WATCHLIST</span></div><div id="ccWatch" class="pbody scroll"></div></div>
+      <div class="panel"><div class="phead"><span>SLOW-RUG WATCH <span class="muted small">rug forecast ≥45</span></span></div><div id="ccSlow" class="pbody scroll"></div></div>
+    </div>
+    <div class="ccRight">
+      <div class="panel"><div class="phead"><span>MACRO / FED</span></div><div id="ccMacro" class="pbody"></div></div>
+      <div class="panel"><div class="phead"><span>TOP OPTIONS <span class="muted small">best A per underlying</span></span></div><div id="ccOpt" class="pbody scroll"></div></div>
+      <div class="panel"><div class="phead"><span>TOP AIRDROPS</span></div><div id="ccAir" class="pbody scroll"></div></div>
+      <div class="panel"><div class="phead"><span>SLEEPERS</span></div><div id="ccSleep" class="pbody scroll"></div></div>
+      <div class="panel hidden"><div class="phead"><span>X MENTIONS</span></div><div id="ccX" class="pbody scroll small"></div></div>
+    </div>
+  </div>
+  <div class="nfa small">Automated estimates from free public data · not financial advice · nothing here trades or signs for you</div>
+</section>
+<section id="viewGlossary" class="view"><div class="panel"><div class="phead"><h2>Glossary / How grades work</h2></div><div id="glossOut" class="scroll"></div></div></section>
 <section id="viewOptions" class="view">
   <div class="panel">
     <div class="phead"><h2>Options screener</h2><span class="muted small">long calls/puts graded A–F for asymmetric upside · Derive (live) + CBOE (delayed) · model estimates, not advice</span>
@@ -141,6 +163,8 @@
 </div>
 <footer class="foot">Read-only terminal · no keys, no trading · the optional Airdrop assist connects your own wallet and you sign every step in it · all risk output is heuristic, <b>not financial advice</b> · data: DexScreener, GeckoTerminal, Jupiter, Solana RPC, RugCheck, GoPlus, Honeypot.is, tonapi, TronGrid, publicnode RPCs, pump.fun, StonkFun, FRED, Fed, Kalshi, Polymarket, news RSS</footer>
 <script src="/app.js"></script>
+<script src="/explain.js"></script>
 <script src="/views.js"></script>
+<script src="/command.js"></script>
 </body>
 </html>

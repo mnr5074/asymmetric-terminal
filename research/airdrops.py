@@ -9,6 +9,7 @@ Participant counts are not available from any free source; airdrops.io "heat" (i
 Grades are heuristic ESTIMATES of allocation potential, not advice. Airdrops are never guaranteed."""
 import json, math, os, re, time, html, urllib.request, datetime as dt
 from common import DATA_DIR
+from calltrack import Tracker
 
 UA = {'user-agent': 'Mozilla/5.0 (asymmetric-terminal research)'}
 def fetch(url, timeout=40):
@@ -113,6 +114,13 @@ def main():
                     'official_url': official, 'twitter': (p or {}).get('twitter'), 'age_days': round(age_d), 'participants_est': None, 'tvl_per_user': None,
                     'parts': {'no_token': s_tok, 'funding': round(s_fund, 2), 'early': round(s_early, 2), 'uncrowded': round(s_crowd, 2), 'low_dilution': round(s_dil, 2)}})
     out.sort(key=lambda x: -x['score'])
+    # call log: 'value' = 1 while farming; outcome tracked as token launch (has_token / claim live) after the call
+    tr = Tracker('airdrops')
+    for x in out:
+        tr.log(x['key'], x['grade'], x['score'], 1.0, x['name'], {'raised': x['raised_usd'], 'tvl': x['tvl'], 'heat': x['heat'], 'age_days': x['age_days']}, x.get('page') or x.get('official_url'))
+        for c in tr.calls:
+            if c['key'] == x['key'] and (x['has_token'] or x['claim_live']) and not c.get('outcome'): c['outcome'] = {'t': int(time.time()), 'event': 'token/claim live', 'grade_at_call': c['grade']}
+    tr.save()
     res = {'generatedAt': int(now * 1000), 'count': len(out), 'sources': status, 'campaigns': out,
            'grade_formula': 'Score 0-100 = 25*no-token + 20*funding (log10 $ raised: $1M=0, $100M+=1) + 20*early-ness (1 - days since first seen/365; first seen = earliest of airdrops.io listing, DefiLlama listing, first funding round) + 15*uncrowded (1 - airdrops.io heat/150) + 10*low dilution (TVL $1M=1 ... $1B=0) + 5 top-tier backer + 5 speculative (no confirmed program yet); capped at C without disclosed funding or $1M TVL; -5 KYC, -15 TGE announced, -35 claim live/ended. A>=70, B>=55, C>=40, D>=25, else F.',
            'limits': ['No free source publishes participant counts or points totals, so TVL per user cannot be computed; airdrops.io heat (interest) is the crowding proxy.',
