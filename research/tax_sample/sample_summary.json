@@ -1,0 +1,163 @@
+{
+ "EXAMPLE_DATA": true,
+ "settings": {
+  "method": "FIFO",
+  "scope": "wallet",
+  "washCrypto": "off",
+  "year": 2026,
+  "filingStatus": "single",
+  "otherIncome": 95000,
+  "qualifiedDividends": 0,
+  "stCarryover": 0,
+  "ltCarryover": 0,
+  "identicalGroups": ""
+ },
+ "summary": {
+  "year": 2026,
+  "count": 21,
+  "proceeds": 121601.55,
+  "cost": 122439.68,
+  "washDisallowed": 5202.6,
+  "st": {
+   "gains": 1577.2,
+   "losses": -3801.7,
+   "net": -2224.5
+  },
+  "lt": {
+   "gains": 10095.7,
+   "losses": -3506.74,
+   "net": 6588.97
+  },
+  "income": 1620,
+  "incomeByKind": {
+   "staking": 820,
+   "airdrop": 800
+  },
+  "netTotal": 4364.47
+ },
+ "estimate": {
+  "totalFederal": 13081,
+  "baseline": 12070,
+  "incremental": 1011,
+  "ordinaryTax": 12426,
+  "capitalGainsTax": 655,
+  "niit": 0,
+  "taxableIncome": 84884,
+  "netting": {
+   "netST": -2224,
+   "netLT": 6589,
+   "combined": 4364,
+   "ordinaryAdd": 0,
+   "pref": 4364.47,
+   "deductibleLoss": 0,
+   "limit": 3000,
+   "carry": {
+    "st": 0,
+    "lt": 0
+   }
+  }
+ },
+ "washSales": [
+  {
+   "asset": "TSLA",
+   "sold": "2026-04-15",
+   "disallowed": 4000,
+   "rule": "IRC 1091 (stock/securities, always applied)"
+  },
+  {
+   "asset": "AAPL 260918C00220000",
+   "sold": "2026-07-01",
+   "disallowed": 1202.6,
+   "rule": "IRC 1091 (stock/securities, always applied)"
+  }
+ ],
+ "pendingBillExposure": {
+  "amount": 3620.05,
+  "sales": [
+   {
+    "asset": "WIF",
+    "sold": "2026-09-20",
+    "rebought": "2026-10-02",
+    "qty": 5000,
+    "deferred": 3400.28
+   },
+   {
+    "asset": "SOL",
+    "sold": "2026-10-02",
+    "rebought": "2026-09-20",
+    "qty": 9.978000000000005,
+    "deferred": 106.43
+   },
+   {
+    "asset": "SOL",
+    "sold": "2026-10-02",
+    "rebought": "2026-09-20",
+    "qty": 10.721999999999994,
+    "deferred": 106.33
+   },
+   {
+    "asset": "SOL",
+    "sold": "2026-10-05",
+    "rebought": "2026-09-20",
+    "qty": 0.6999999999999993,
+    "deferred": 7.01
+   }
+  ]
+ },
+ "harvest": {
+  "savings": 1242,
+  "picks": [
+   {
+    "asset": "RUGCAT",
+    "unrealized": -3488,
+    "taxSaved": 523
+   },
+   {
+    "asset": "AAPL 260918C00220000",
+    "unrealized": -1654,
+    "taxSaved": 303
+   },
+   {
+    "asset": "SOL",
+    "unrealized": -538,
+    "taxSaved": 118
+   },
+   {
+    "asset": "BONK",
+    "unrealized": -484,
+    "taxSaved": 106
+   },
+   {
+    "asset": "WIF",
+    "unrealized": -400,
+    "taxSaved": 88
+   },
+   {
+    "asset": "JUP",
+    "unrealized": -350,
+    "taxSaved": 77
+   },
+   {
+    "asset": "SOL",
+    "unrealized": -60,
+    "taxSaved": 14
+   },
+   {
+    "asset": "SOL",
+    "unrealized": -60,
+    "taxSaved": 13
+   },
+   {
+    "asset": "SOL",
+    "unrealized": -2,
+    "taxSaved": 0
+   }
+  ],
+  "worthless": [
+   "RUGCAT"
+  ]
+ },
+ "review": [
+  "250 MYSTERY arrived in solana:EXAMPLEwa11et1111111111111111111111111 on 2026-08-15 from outside this ledger: basis $0 until you add the source wallet/exchange or set a basis (or mark it as income if it was an airdrop/reward)."
+ ]
+}
