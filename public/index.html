@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asymmetric Terminal — read-only</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">ASYMMETRIC<span>·</span>TERMINAL <em class="ro">READ-ONLY</em></div>
+  <select id="chainSel" class="mini chainsel" title="Chain for search, trending/new and research"><option value="solana">Solana</option></select>
+  <div class="ticker" id="solTicker">SOL —</div>
+  <div class="searchwrap">
+    <input id="search" placeholder="Search name / symbol / address on the selected chain (or All chains)" autocomplete="off">
+    <div id="searchResults" class="dropdown hidden"></div>
+  </div>
+  <div class="status"><span id="refreshDot" class="dot"></span><span id="lastUpdate">—</span></div>
+  <button id="settingsBtn" class="btn ghost" title="Settings">⚙ RPC</button>
+  <a id="logoutBtn" class="btn ghost" href="/logout" hidden style="text-decoration:none">Sign out</a>
+</header>
+
+<main class="grid">
+  <section class="col left">
+    <div class="panel" id="watchPanel">
+      <div class="phead"><h2>Watchlist</h2><span class="muted small">auto-refresh 15s · DexScreener / Jupiter</span><select id="watchChain" class="mini" style="margin-left:auto" title="Filter watchlist by chain"><option value="all">All chains</option></select></div>
+      <div class="tablewrap"><table class="tbl" id="watchTbl">
+        <thead><tr><th></th><th>Token</th><th class="r">Price</th><th class="r">5m</th><th class="r">1h</th><th class="r">24h</th><th class="r">Vol 24h</th><th class="r">Liq</th><th class="r">FDV</th><th class="r">Age</th><th>Flags</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </div>
+    <div class="panel grow" id="discPanel">
+      <div class="phead tabs" id="discTabs">
+        <button data-k="boosts" class="on">Trending</button>
+        <button data-k="profiles">New</button>
+        <button data-k="pump">pump.fun</button>
+        <button data-k="eco">Ecosystems</button>
+        <span class="muted small" id="discChainLbl" style="margin-left:auto"></span>
+      </div>
+      <div class="subtabs hidden" id="ecoTabs">
+        <button data-e="stonkfun" class="on" title="Solana launchpad">StonkFun</button>
+        <button data-e="robinhood">Robinhood</button>
+        <button data-e="pons" title="Robinhood Chain launchpad">pons</button>
+        <button data-e="fomo">Fomo</button>
+        <button data-e="fourmeme" title="BSC launchpad (GeckoTerminal dex four-meme)">four.meme</button>
+        <span class="muted small" id="ecoSrc"></span>
+      </div>
+      <div class="tablewrap" id="discBody"></div>
+    </div>
+  </section>
+
+  <section class="col center">
+    <div class="panel" id="chartPanel">
+      <div class="phead"><h2 id="chartTitle">Chart</h2><div class="tabs" id="tfTabs"><button data-tf="minute:5">5m</button><button data-tf="minute:15" class="on">15m</button><button data-tf="hour:1">1h</button><button data-tf="hour:4">4h</button><button data-tf="day:1">1D</button><button data-tf="embed">DS↗</button></div></div><div id="chartMeta" class="muted small" style="padding:2px 8px"></div>
+      <div id="chartBox" class="chartbox"><div class="empty">Select a token</div></div>
+    </div>
+    <div class="panel grow">
+      <div class="phead tabs" id="lowerTabs">
+        <button data-t="wallet" class="on">Wallet viewer</button>
+        <button data-t="moon">Moonshot research</button>
+        <button data-t="macro">Macro &amp; News</button><button id="expandBtn" class="btn ghost" style="margin-left:auto;padding:1px 6px" title="expand">⤢</button>
+      </div>
+      <div id="lowerWallet" class="lower">
+        <div class="row"><input id="walletInput" placeholder="Paste a public address: Solana, EVM 0x… (all EVM chains), Sui, TON or Tron (read-only)"><button id="walletBtn" class="btn">View</button></div>
+        <div id="walletOut" class="tablewrap"></div>
+      </div>
+      <div id="lowerMoon" class="lower hidden"><div id="moonOut" class="tablewrap"><div class="empty">Loading…</div></div></div>
+      <div id="lowerMacro" class="lower hidden"><div id="macroOut" class="tablewrap"><div class="empty">Loading…</div></div></div>
+    </div>
+  </section>
+
+  <section class="col right">
+    <div class="panel grow" id="scanPanel">
+      <div class="phead"><h2>Token Scanner</h2><span class="muted small">rug / manipulation heuristics</span></div>
+      <div class="row">
+        <select id="scanChain" class="mini"><option value="solana">SOL</option></select>
+        <input id="scanInput" placeholder="Token address / mint / coin type">
+        <button id="scanBtn" class="btn">Scan</button>
+      </div>
+      <div id="scanOut" class="scanout"><div class="empty">Paste a mint or click any token.</div></div>
+    </div>
+  </section>
+</main>
+
+<div id="settings" class="modal hidden">
+  <div class="card">
+    <h3>Settings</h3>
+    <label>Custom Solana RPC URL (optional, e.g. Helius). Stored only in this browser; sent to the local backend per request.</label>
+    <input id="rpcUrl" placeholder="https://mainnet.helius-rpc.com/?api-key=…">
+    <p class="muted small">Default: public api.mainnet-beta.solana.com (rate-limited; deep scans page ≤20k signatures). A private RPC allows deeper history and faster scans.</p>
+    <div class="row end"><button id="rpcClear" class="btn ghost">Clear</button><button id="rpcSave" class="btn">Save</button></div>
+  </div>
+</div>
+<footer class="foot">Read-only dashboard · no wallet connection, no keys, no trading · all risk output is heuristic, <b>not financial advice</b> · data: DexScreener, GeckoTerminal, Jupiter, Solana RPC, RugCheck, GoPlus, Honeypot.is, tonapi, TronGrid, publicnode RPCs, pump.fun, StonkFun, FRED, Fed, Kalshi, Polymarket, news RSS</footer>
+<script src="/app.js"></script>
+</body>
+</html>
