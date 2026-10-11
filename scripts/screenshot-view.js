@@ -16,7 +16,7 @@ const { chromium } = require('playwright-core');
   }
   if (process.env.SEED) await page.evaluate((s) => { localStorage.setItem('st.airdrop.track.v1', s); }, process.env.SEED);
   if (process.env.SEED) await page.reload({ waitUntil: 'domcontentloaded' });
-  const sel = view === 'options' ? '#optOut table' : '#adOut table';
+  const sel = view === 'options' ? '#optOut table' : view === 'command' ? '#ccOpt table' : '#adOut table';
   await page.waitForSelector(sel, { timeout: 90000 }).catch(() => console.log('wait timeout'));
   if (process.env.ACT) await page.evaluate(process.env.ACT);
   await page.waitForTimeout(1500);

@@ -11,6 +11,13 @@ const { rpcFor } = require('./lib/solrpc');
 const auth = require('./lib/auth');
 const chains = require('./lib/chains');
 const macro = require('./lib/macro');
+const { createLiveFeed } = require('./lib/livefeed');
+const { createCalls } = require('./lib/calls');
+const { createRugRisk } = require('./lib/rugrisk');
+const { createAlerts } = require('./lib/alerts');
+const { createDesks } = require('./lib/desks');
+const { createNansen } = require('./lib/nansen');
+const { createX } = require('./lib/xapi');
 
 const PORT = +process.env.PORT || 8000;
 const HOST = process.env.HOST || '0.0.0.0';
@@ -451,6 +458,60 @@ const routes = {
     return scanner.scan(chain, address, deep, ctx);
   },
 };
+
+// ---------- desks: Crypto (live feed + rug forecast + call log + alerts), Options, Macro, News, Airdrops, Sleepers ----------
+const LIVE = process.env.LIVE_FEED || 'full'; // full | lite | off
+const L = (m) => console.log('[desks] ' + m);
+const rug = createRugRisk({ DATA_DIR, getJSON, cached, evmCallChain, chains, log: L });
+const nansen = createNansen({ DATA_DIR, log: L });
+const xapi = createX({ DATA_DIR, log: L });
+const live = createLiveFeed({ getJSON, cached, gtGet, dsTokens, DATA_DIR, chains, rug, nansen, mode: LIVE, log: L,
+  scan: async (chain, address, deep) => scanner.scan(chain, address, deep, { rpc: rpcFor({ headers: {} }), dsAllPairs, jupPrices, evmCall, evmCallChain, decodeAbiString, summarizePair, quotePrices: await quotePrices() }) });
+const calls = createCalls({ DATA_DIR, dsTokens, live, log: L });
+const alerts = createAlerts({ DATA_DIR, log: L });
+const desks = createDesks({ DATA_DIR, live, calls, rug, macro, nansen, readData: (f) => readData(f), log: L });
+live.onCycle(async (feed, items, newA) => {
+  if (xapi.enabled) for (const it of items) { const xf = xapi.features(it.symbol); if (xf && it.features) Object.assign(it.features, xf); }
+  await calls.onCycle(feed, items); await alerts.onFeed(feed, items, newA.map((x) => x.key), calls);
+  // alerted A-grade tokens: who bought/sold (7d) + 1d flows, budget-capped
+  if (nansen.enabled) for (const x of items.filter((i) => newA.some((n) => n.key === i.key)).slice(0, 2)) { await nansen.flow(x.chain, x.address, '1d', 'wbs_alert'); await nansen.whoBoughtSold(x.chain, x.address); }
+});
+async function nansenHousekeeping() {
+  if (!nansen.enabled) return;
+  try { await nansen.account(); await nansen.netflow(); const lc = nansen.lowCredit(); if (lc) await alerts.notice('nansen-low-' + lc.month, lc.text); } catch (e) { L('nansen: ' + e.message); }
+}
+async function xHousekeeping() {
+  if (!xapi.enabled) return;
+  const al = alerts.status().recent.filter((r) => r.key && Date.now() - r.t < 24 * 3600e3).map((r) => (live.feed().items.find((i) => i.key === r.key) || {}).symbol);
+  const top = live.feed().items.filter((x) => (x.grade === 'A' || x.grade === 'B') && !x.veto).slice(0, 8).map((x) => x.symbol);
+  let opt = []; try { const seen = new Set(); for (const p of readData('options.json').picks) if (p.grade === 'A' && !p.venue.startsWith('Derive') && !seen.has(p.underlying) && seen.add(p.underlying) && seen.size <= 4) opt.push(p.underlying); } catch {}
+  await xapi.refresh(al, [...top, ...opt]);
+}
+if (LIVE !== 'off') { setTimeout(xHousekeeping, 60000); setInterval(xHousekeeping, 30 * 60e3).unref(); }
+if (LIVE !== 'off') { setTimeout(nansenHousekeeping, 15000); setInterval(nansenHousekeeping, 3600e3).unref(); }
+if (LIVE !== 'off') { live.start(+(process.env.LIVE_INTERVAL_MS || 60e3)); desks.start(); }
+Object.assign(routes, {
+  async '/api/live'(q) { const f = live.feed(); const g = q.get('grade'), ch = q.get('chain'); let items = f.items; if (g) items = items.filter((x) => g.split(',').includes(x.grade)); if (ch && ch !== 'all') items = items.filter((x) => x.chain === ch); return { ...f, items: items.slice(0, +(q.get('limit') || 150)), status: live.status() }; },
+  async '/api/live/token'(q) { const k = q.get('key') || ''; const r = live.token(k); if (!r) throw Object.assign(new Error('not in live universe'), { status: 404 }); return { record: r, calls: calls.forKey(k) }; },
+  async '/api/calls'(q) { return { calls: calls.list({ grade: q.get('grade'), limit: +(q.get('limit') || 200) }), total: calls.count() }; },
+  async '/api/reportcard'() { const r = calls.reportCard(); for (const [f, k] of [['calls_options.json', 'options'], ['calls_airdrops.json', 'airdrops'], ['calls_sleepers.json', 'sleepers']]) { try { r[k] = readData(f).summary || null; } catch { r[k] = null; } } return { ...r, missed: calls.missedWinners(), recal: calls.recalState(), weights: live.getWeights() }; },
+  async '/api/rug/cases'() { return readData('rug_cases.json'); },
+  async '/api/rug/watch'() { const f = live.feed(); return { generatedAt: f.generatedAt, items: f.items.filter((x) => x.rug && (x.rug.score >= 25 || x.rug.dump30)).sort((a, b) => b.rug.score - a.rug.score).slice(0, 60) }; },
+  async '/api/rug/token'(q) { const chain = CHAINS.has(q.get('chain')) ? q.get('chain') : 'solana'; const a = (q.get('address') || '').trim(); if (!chains.validAddr(chain, a)) throw Object.assign(new Error('bad address'), { status: 400 });
+    const rec = live.token(chain + ':' + a) || { chain, address: a, m: {}, snaps: [], holdersHist: [] };
+    if (!rec.scan) { try { const s = await routes['/api/scan'](new URLSearchParams({ chain, address: a }), { headers: {} }); rec.scan = s; const p = s.market?.pair || s.pairs?.[0]; if (p) rec.m = { mc: p.marketCap, fdv: p.fdv, liq: p.liquidity, px: p.priceUsd }; } catch {} }
+    return rug.established(chain, a, rec); },
+  async '/api/sleepers'() { return withRefresh('sleepers.json', 'sleepers.py', 24 * 3600e3); },
+  async '/api/desks'() { return { ...desks.all(), nansen: nansen.status(), x: xapi.enabled ? { status: xapi.status(), items: xapi.all() } : { enabled: false } }; },
+  async '/api/x'() { return xapi.enabled ? { ...xapi.status(), items: xapi.all(), predictive: calls.featureSplit('xTone') } : { enabled: false }; },
+  async '/api/nansen/status'() { return nansen.status(); },
+  async '/api/nansen/token'(q) { const chain = CHAINS.has(q.get('chain')) ? q.get('chain') : 'solana'; const a = (q.get('address') || '').trim(); if (!chains.validAddr(chain, a)) throw Object.assign(new Error('bad address'), { status: 400 });
+    const tf = q.get('tf') === '7d' ? '7d' : '1d';
+    const flow = q.get('fetch') === '1' ? await nansen.flow(chain, a, tf, 'ondemand') : { summary: nansen.peekFlow(chain, a, tf), cached: true };
+    return { enabled: nansen.enabled, flow, netflow: nansen.netflowFor(chain, a), status: { creditsRemaining: nansen.status().creditsRemaining, usedToday: nansen.status().usedToday, dailyCap: nansen.status().dailyCap } }; },
+  async '/api/alerts'() { return alerts.status(); },
+  async '/api/alerts/test'() { return alerts.test('Asymmetric Terminal test alert (dry run unless ALERTS_LIVE=1)'); },
+});
 
 const refreshing = new Set();
 function withRefresh(file, script, maxAge) {

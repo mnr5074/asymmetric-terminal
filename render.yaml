@@ -26,6 +26,30 @@ services:
         sync: false
       - key: FOMOAPI_KEY        # optional, unofficial fomoapi.io key for the Fomo tab
         sync: false
+      - key: NANSEN_API_KEY     # Nansen API key (secret, server-side only). Credits are shared with any other copy using the same key
+        sync: false
+      - key: X_BEARER_TOKEN     # optional X API (pay-per-use) bearer token, server-side only
+        sync: false
+      - key: X_MONTHLY_CAP_USD
+        value: "50"
+      - key: X_DAILY_POSTS
+        value: "330"
+      - key: NANSEN_DAILY_CREDITS
+        value: "60"
+      - key: NANSEN_MONTHLY_CREDITS
+        value: "1800"
+      - key: LIVE_FEED          # full | lite | off  (lite = Solana/Base/BSC, fewer scans: fits the free plan)
+        value: lite
+      - key: ALERTS_LIVE        # 1 = really send texts (needs the SMTP_* vars); anything else = dry run
+        value: "0"
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: ALERT_TO
+        sync: false
     # disk:
     #   name: asymmetric-terminal-data
     #   mountPath: /app/data
