@@ -1,0 +1,15 @@
+{
+  "name": "asymmetric-terminal",
+  "version": "1.0.0",
+  "description": "Read-only Solana (+ Robinhood Chain) token dashboard with rug/manipulation scanner",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "screenshot": "node scripts/screenshot.js"
+  },
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "playwright-core": "^1.64.0"
+  }
+}

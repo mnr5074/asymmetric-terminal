@@ -1,0 +1,32 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Option A (default, $0): free web service. Disk is ephemeral and the service sleeps after ~15 min idle;
+#   the Moonshot tab serves the seeded snapshot baked into the image (research loop off).
+# Option B (~$7/mo + ~$0.25/GB disk): set plan: starter, uncomment `disk`, set RUN_RESEARCH=1 so the
+#   SQLite dataset persists in /app/data and refreshes hourly.
+services:
+  - type: web
+    name: asymmetric-terminal
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: PUBLIC_MODE
+        value: "1"
+      - key: RUN_RESEARCH
+        value: "0"
+      - key: SITE_PASSWORD      # required for a private site: you type it in Render's deploy form (never committed)
+        sync: false
+      - key: SITE_USER          # login user name
+        value: martin
+      - key: SESSION_SECRET     # signs the login cookie; Render generates a random value
+        generateValue: true
+      - key: SOLANA_RPC_URL     # optional Helius/QuickNode URL (secret) — much better scanner/wallet reliability
+        sync: false
+      - key: FOMOAPI_KEY        # optional, unofficial fomoapi.io key for the Fomo tab
+        sync: false
+    # disk:
+    #   name: asymmetric-terminal-data
+    #   mountPath: /app/data
+    #   sizeGB: 1
