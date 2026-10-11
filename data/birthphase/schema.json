@@ -1,0 +1,474 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "asymmetric-terminal/birthphase/schema.json",
+ "title": "Birth-phase (pre-launch) fingerprint record \u2014 one JSON object per line in data/birthphase/<launchpad>.jsonl",
+ "description": "Shared across all launchpads (Pump.fun, LetsBonk, Raydium LaunchLab, Believe/Meteora DBC, Bags, Moonshot, Boop, Heaven, Daos.fun, StonksFun, Hooked, Zora, Clanker, Flaunch, four.meme, Flap, Pons and other Robinhood Chain pads, Virtuals Genesis/bonding). Times are Unix ms (UTC). Money in USD unless the field name says otherwise. Wallets are SHORT ids (first4..last4) \u2014 the same short id is the join key for repeat-buyer detection across launches and across libraries. A field that could not be measured is null and the reason goes in coverage.missing \u2014 never fill with guesses. Virtuals worker: emit the same top-level fields; Genesis points/pledges go in 'presale' and first Genesis buyers/pledgers go in first_buyers with kind='pledge' or 'genesis'. Extra pad-specific fields go in 'ext' (free-form object).",
+ "type": "object",
+ "required": [
+  "schema_version",
+  "key",
+  "chain",
+  "address",
+  "launchpad",
+  "launch_mechanism",
+  "sample_stratum",
+  "created_ts",
+  "coverage"
+ ],
+ "properties": {
+  "schema_version": {
+   "const": "1.0"
+  },
+  "key": {
+   "type": "string",
+   "description": "<chain>:<token address> (lower-case for EVM)"
+  },
+  "chain": {
+   "enum": [
+    "solana",
+    "base",
+    "bsc",
+    "robinhood",
+    "ethereum",
+    "arbitrum",
+    "sui",
+    "ton"
+   ]
+  },
+  "address": {
+   "type": "string"
+  },
+  "symbol": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "name": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "launchpad": {
+   "type": "string",
+   "description": "canonical id = file name: pump.fun, letsbonk, raydium-launchlab, meteora-dbc (Believe/others), bags, moonshot, boop, heaven, daos.fun, stonkfun, hooked, zora, clanker, flaunch, four.meme, flap, pons, robinhood-other, virtuals, ..."
+  },
+  "launch_mechanism": {
+   "enum": [
+    "bonding_curve",
+    "presale_pledge",
+    "genesis_points",
+    "fair_launch_pool",
+    "direct_pool",
+    "fundraise_then_curve"
+   ]
+  },
+  "sample_stratum": {
+   "enum": [
+    "catalog_runner",
+    "catalog_crash",
+    "catalog_other",
+    "screener_db",
+    "random",
+    "random_graduates",
+    "pad_active_sample",
+    "pad_listing_sample",
+    "live_poll",
+    "other_worker"
+   ],
+   "description": "How the token entered the library. 'random' = uniform draw from ALL launches on the pad in a time window; 'random_graduates' = uniform draw from all graduations (migrations). These two are the only strata used for base rates / population re-weighting. Catalog/screener/listing strata are outcome-enriched or activity-filtered and must not be used alone for base rates."
+  },
+  "sources": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "creator": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "short id of deployer/dev"
+  },
+  "created_ts": {
+   "type": "number",
+   "description": "token/curve creation (or presale open) time, ms"
+  },
+  "first_buy_ts": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "first non-dev buy (or first pledge)"
+  },
+  "graduation_ts": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "curve completion / migration / official launch; null if never (see phase)"
+  },
+  "phase": {
+   "enum": [
+    "pre_launch",
+    "graduated",
+    "not_graduated",
+    "no_curve",
+    "unknown"
+   ],
+   "description": "no_curve = launches straight into an AMM pool (Clanker/Zora/Flaunch etc.): the 'birth phase' is then the first hour of the pool"
+  },
+  "observed_until_ts": {
+   "type": [
+    "number",
+    "null"
+   ]
+  },
+  "first_buyers": {
+   "type": "array",
+   "description": "first N buys in time order (N up to 100)",
+   "items": {
+    "type": "object",
+    "properties": {
+     "w": {
+      "type": "string",
+      "description": "short wallet id"
+     },
+     "ts": {
+      "type": "number"
+     },
+     "dt_s": {
+      "type": "number",
+      "description": "seconds since created_ts"
+     },
+     "usd": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "quote": {
+      "type": [
+       "number",
+       "null"
+      ],
+      "description": "size in quote asset (SOL/ETH/BNB/VIRTUAL/...)"
+     },
+     "quote_sym": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "kind": {
+      "enum": [
+       "buy",
+       "dev_buy",
+       "pledge",
+       "genesis"
+      ]
+     },
+     "wallet_age_d": {
+      "type": [
+       "number",
+       "null"
+      ],
+      "description": "days between the wallet's first-ever tx and this buy; null if not resolved"
+     },
+     "wallet_age_note": {
+      "type": [
+       "string",
+       "null"
+      ],
+      "description": "'exact', 'lower_bound' (history longer than the page cap) or 'nonce' (EVM: outgoing tx count at buy)"
+     },
+     "fresh": {
+      "type": [
+       "boolean",
+       "null"
+      ],
+      "description": "wallet created <= 7 days before the buy (Solana) / nonce <= 3 at the buy (EVM)"
+     }
+    }
+   }
+  },
+  "dev_buy": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "properties": {
+    "usd": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "quote": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "pct_supply": {
+     "type": [
+      "number",
+      "null"
+     ]
+    }
+   }
+  },
+  "presale": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "description": "presale / pledge / Genesis phase (Virtuals Genesis, Daos.fun fundraise, etc.)",
+   "properties": {
+    "open_ts": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "close_ts": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "n_participants": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "raised_usd": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "target_usd": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "oversub_x": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "top10_share": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "gini": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "points_total": {
+     "type": [
+      "number",
+      "null"
+     ]
+    }
+   }
+  },
+  "features": {
+   "type": "object",
+   "description": "scalar features at end of birth phase (graduation or last observation). All optional/nullable.",
+   "properties": {
+    "secs_create_to_first_buy": {},
+    "n_trades_curve": {},
+    "n_buys_curve": {},
+    "n_unique_buyers_curve": {},
+    "curve_vol_usd": {},
+    "buy_usd_median": {},
+    "buy_usd_p90": {},
+    "buy_usd_gini": {},
+    "top10_buyer_share": {},
+    "buyer_gini": {},
+    "first20_fresh_share": {},
+    "fresh_cluster_max": {
+     "description": "largest group of fresh wallets that bought within the same 2 s with sizes within \u00b110%"
+    },
+    "same_second_buys_first20": {},
+    "dev_buy_usd": {},
+    "dev_sold_before_grad": {},
+    "sell_share_curve": {},
+    "repeat_early_buyers": {
+     "description": "how many of the first 20 buyers were also first-20 buyers in >= 2 OTHER launches in the library (filled at build time)"
+    },
+    "repeat_early_buyers_winners": {
+     "description": "...of which appeared early in other launches that reached $1M"
+    },
+    "curve_fill_pct_per_min": {},
+    "secs_first_buy_to_grad": {}
+   }
+  },
+  "trajectory": {
+   "type": "array",
+   "description": "time-normalised arc: one point per checkpoint (seconds after created_ts: 30,60,120,300,600,900,1800,3600,7200,10800,21600,43200,86400) up to observed time",
+   "items": {
+    "type": "object",
+    "properties": {
+     "t": {
+      "type": "number"
+     },
+     "mcap": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "curve_pct": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "n_trades": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "n_buyers": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "vol_usd": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "phase": {
+      "type": [
+       "string",
+       "null"
+      ]
+     }
+    }
+   }
+  },
+  "post": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "description": "post-graduation / post-launch outcome",
+   "properties": {
+    "peak_mcap": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "peak_ts": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "t_to_100k_s": {
+     "type": [
+      "number",
+      "null"
+     ],
+     "description": "seconds from created_ts to first mcap >= $100K (null = never in observed window)"
+    },
+    "t_to_1m_s": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "t_to_10m_s": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "max_dd_from_peak_pct": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "now_mcap": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "resolution": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "description": "time resolution of milestone timing, e.g. 'trades' / '1h candles' / 'daily'"
+    },
+    "peak_source": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   }
+  },
+  "outcome": {
+   "type": "object",
+   "description": "labels used by the matcher: reached_100k/1m/10m (bool or null if censored/unknown)",
+   "properties": {
+    "reached_100k": {},
+    "reached_1m": {},
+    "reached_10m": {},
+    "graduated": {},
+    "label_note": {}
+   }
+  },
+  "coverage": {
+   "type": "object",
+   "required": [
+    "level"
+   ],
+   "properties": {
+    "level": {
+     "enum": [
+      "full",
+      "partial",
+      "outcome_only",
+      "failed"
+     ]
+    },
+    "missing": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "ext": {
+   "type": "object",
+   "description": "pad-specific extras. ext.snap is what the matcher uses: {\"<age_s>\": snapshot} for ages 60,300,900,1800,3600,10800 s after created_ts, each snapshot computed ONLY from data up to that age: {age, mcap, mcap_prev (mcap at max(30, age/5) s), curve_pct (0-100 or null), graduated (bool), n_trades, n_buyers (unique), vol (USD), top10 (top-10 buyer share of buy USD), sell_share, med_buy (median USD of first-20 buys up to age), gini20, same_sec (share of first-20 buys sharing a second), fresh20 (fresh share of first-20, needs >=4 resolved), n_first, _w (short ids of first-20 buyers), dev_pct (% supply bought by dev at creation), first_buy_delay (s), repeat (filled at build)}. Any key may be null. Records without ext.snap are kept for coverage and repeat-buyer sets but are not matchable.",
+   "properties": {
+    "snap": {
+     "type": "object"
+    }
+   }
+  }
+ }
+}
