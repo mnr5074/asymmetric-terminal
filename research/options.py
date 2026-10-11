@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Options screener: every listed Derive.xyz option + delayed CBOE chains for a broad US stock/ETF universe.
 Long calls/puts only (defined max loss = premium). All numbers are model ESTIMATES, not advice.
-Sources (keyless, verified 2026-10-11): api.lyra.finance/public (Derive: get_all_instruments, get_ticker),
+Sources (keyless, verified 2026-10-11): api.derive.xyz/v3/public (Derive v3: get_all_instruments, get_tickers per currency+expiry),
 cdn-api.cboe.com delayed_quotes/options/<SYM>.json (~15 min delayed, last session volume),
 query1.finance.yahoo.com v8 chart (daily closes for realized vol), api.nasdaq.com earnings calendar,
 api.exchange.coinbase.com candles (crypto realized vol).
@@ -155,7 +155,9 @@ def analyze(c, now):
     }
 
 # ---------------- data: Derive ----------------
-DERIVE = 'https://api.lyra.finance/public/'
+# Derive v3 JSON-RPC over HTTP POST (same source as lib/derive.js). The legacy api.lyra.finance host returned index prices
+# ~2.8% off spot and manager-wide OI on 2026-10-11, so it is no longer used.
+DERIVE = 'https://api.derive.xyz/v3/public/'
 CB_MAP = {'XAUT': 'PAXG-USD'}
 def coinbase_rv(base, index_px=None):
     prod = CB_MAP.get(base, f'{base}-USD')
@@ -174,29 +176,34 @@ def derive_contracts(log):
         ins += d['instruments']
         if page >= d['pagination']['num_pages']: break
         page += 1
-    log(f'derive: {len(ins)} listed options')
-    lock = threading.Lock(); last = [0.0]
-    def tick(n):
-        with lock:  # ~25 req/s
-            w = last[0] + 0.04 - time.time()
-            if w > 0: time.sleep(w)
-            last[0] = time.time()
-        try: return get(DERIVE + 'get_ticker', {'instrument_name': n}, timeout=20)['result']
+    now = time.time()
+    ins = [x for x in ins if x.get('is_active') and x.get('scheduled_activation', 0) <= now and x['option_details']['expiry'] > now]
+    log(f'derive: {len(ins)} live options (v3)')
+    # one get_tickers call per currency+expiry (~80 calls) instead of one get_ticker per instrument
+    groups = sorted({(x['base_currency'], dt.datetime.fromtimestamp(x['option_details']['expiry'], dt.timezone.utc).strftime('%Y%m%d')) for x in ins})
+    def chain(g):
+        try: return get(DERIVE + 'get_tickers', {'instrument_type': 'option', 'currency': g[0], 'expiry_date': int(g[1])}, timeout=25)['result']['tickers']
         except Exception: return None
-    with cf.ThreadPoolExecutor(8) as ex: ticks = list(ex.map(tick, [x['instrument_name'] for x in ins]))
+    with cf.ThreadPoolExecutor(6) as ex: chains = list(ex.map(chain, groups))
+    ticks = {}; failed_chains = 0
+    for t in chains:
+        if t is None: failed_chains += 1
+        else: ticks.update(t)
     rvs = {}
     out = []; failed = 0
-    for x, t in zip(ins, ticks):
+    for x in ins:
+        t = ticks.get(x['instrument_name'])
         if not t: failed += 1; continue
         base = x['base_currency']
-        if base not in rvs: rvs[base] = coinbase_rv(base, float(t.get('index_price') or 0) or None)
+        S = float(t.get('I') or 0)
+        if base not in rvs: rvs[base] = coinbase_rv(base, S or None)
         op = t.get('option_pricing') or {}
-        oi = sum(float(e.get('current_open_interest') or 0) for v in (t.get('open_interest') or {}).values() for e in v)
+        st = t.get('stats') or {}
         od = x['option_details']
         out.append({'underlying': base, 'venue': 'Derive', 'name': x['instrument_name'], 'cp': od['option_type'], 'K': float(od['strike']), 'expiry_ts': od['expiry'],
-                    'S': float(t.get('index_price') or 0), 'bid': float(t.get('best_bid_price') or 0), 'ask': float(t.get('best_ask_price') or 0), 'mark': float(t.get('mark_price') or 0),
-                    'iv': float(op.get('iv') or 0), 'oi': oi, 'vol': None, 'mult': 1, 'rv': rvs[base][0], 'r': R_CRYPTO, 'earnings': None})
-    log(f'derive: tickers ok {len(out)}, failed {failed}; realized-vol sources: ' + ', '.join(f'{k}={v[1] or "none"}' for k, v in rvs.items()))
+                    'S': S, 'bid': float(t.get('b') or 0), 'ask': float(t.get('a') or 0), 'mark': float(t.get('M') or 0),
+                    'iv': float(op.get('i') or 0), 'oi': float(st.get('oi') or 0), 'vol': float(st.get('c') or 0), 'mult': 1, 'rv': rvs[base][0], 'r': R_CRYPTO, 'earnings': None})
+    log(f'derive: tickers ok {len(out)}, missing {failed}, failed chains {failed_chains}/{len(groups)}; realized-vol sources: ' + ', '.join(f'{k}={v[1] or "none"}' for k, v in rvs.items()))
     return out, len(ins), {k: v[1] for k, v in rvs.items()}
 
 # ---------------- data: CBOE + Yahoo + Nasdaq ----------------
@@ -332,7 +339,9 @@ def main():
     for u, v in list(pc.items()):
         if v['t'] < cutoff: del pc[u]; continue
         if u in fresh_u: continue
-        for p in v['picks']: p = dict(p); p['from_cache_age_h'] = round((time.time() - v['t']) / 3600, 1); per_und.append(p)
+        for p in v['picks']:
+            if str(p.get('venue', '')).startswith('Derive'): continue  # Derive is rescanned in full every run; never resurface stale (pre-v3) Derive picks
+            p = dict(p); p['from_cache_age_h'] = round((time.time() - v['t']) / 3600, 1); per_und.append(p)
     json.dump(pc, open(pc_f, 'w'), default=lambda o: None)
     per_und.sort(key=lambda p: -p['score'])
     # per-ticker signals (pre/after-hours, insider Form 4, 8-K, news tone, up/down volume, call/put flow) -> score adjustment

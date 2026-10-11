@@ -24,6 +24,10 @@ const { createNarratives } = require('./lib/narratives');
 const { createPerps } = require('./lib/perps'); // Perp Desk (funding/OI, setups)
 const { createComposite } = require('./lib/composite');
 const { createUnlocks } = require('./lib/unlocks');
+const { createLiquidations } = require('./lib/liquidations'); // liquidation cascade detector
+const { createPriceGaps } = require('./lib/pricegaps'); // cross-exchange price gaps
+const { createFundingDiv } = require('./lib/fundingdiv'); // funding-rate divergence episodes
+const { createOrderbook } = require('./lib/orderbook'); // L2 spoofing / thin-book detector
 const tradeapi = require('./lib/tradeapi'); // wallet-approved swaps + sandwich log (never holds keys)
 const taxapi = require('./lib/tax/api'); // Tax desk: private ledger in data/tax (lib/tax/*)
 
@@ -31,6 +35,7 @@ const PORT = +process.env.PORT || 8000;
 const HOST = process.env.HOST || '0.0.0.0';
 const PUB = path.join(__dirname, 'public');
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
+const prov = require('./lib/provenance'); prov.start({ dataDir: DATA_DIR }); // data provenance: upstream-fetch registry + audit log data/provenance_log.jsonl (lib/provenance.js)
 const UA = { 'user-agent': 'Mozilla/5.0 (asymmetric-terminal read-only dashboard)' };
 const DS = 'https://api.dexscreener.com';
 const JUP = 'https://lite-api.jup.ag';
@@ -560,14 +565,18 @@ Object.assign(routes, {
     const flow = q.get('fetch') === '1' ? await nansen.flow(chain, a, tf, 'ondemand') : { summary: nansen.peekFlow(chain, a, tf), cached: true };
     return { enabled: nansen.enabled, flow, netflow: nansen.netflowFor(chain, a), status: { creditsRemaining: nansen.status().creditsRemaining, usedToday: nansen.status().usedToday, dailyCap: nansen.status().dailyCap } }; },
   async '/api/alerts'() { return alerts.status(); },
-  async '/api/alerts/test'() { return alerts.test('Asymmetric Terminal test alert (dry run unless ALERTS_LIVE=1)'); },
+  async '/api/alerts/test'() { return alerts.test('Asymmetric Terminal test alert'); },
 });
 
 // ---------- Perp Desk: funding/OI flags, composite A–F grade, unlocks, perp setups (lib/perps.js, lib/composite.js, lib/unlocks.js) ----------
 const perps = createPerps({ DATA_DIR, log: L });
 const unlocksMod = createUnlocks({ DATA_DIR, log: L });
-const composite = createComposite({ DATA_DIR, perps, unlocks: unlocksMod, macro, live, log: L });
-if (process.env.PERPS !== 'off') perps.start();
+const liquidations = createLiquidations({ DATA_DIR, perps, log: L });
+const pricegaps = createPriceGaps({ DATA_DIR, perps, log: L });
+const fundingdiv = createFundingDiv({ DATA_DIR, perps, log: L });
+const orderbook = createOrderbook({ DATA_DIR, perps, log: L });
+const composite = createComposite({ DATA_DIR, perps, unlocks: unlocksMod, macro, live, liquidations, pricegaps, fundingdiv, log: L });
+if (process.env.PERPS !== 'off') { perps.start(); if (process.env.LIQ !== 'off') liquidations.start(); if (process.env.GAPS !== 'off') pricegaps.start(); fundingdiv.start(); if (process.env.ORDERBOOK !== 'off') orderbook.start(); }
 async function compositeCached() { return cached('composite:all', 60e3, () => composite.compute()); }
 Object.assign(routes, {
   async '/api/perps'(q) {
@@ -584,6 +593,18 @@ Object.assign(routes, {
     return { ...s, flaggedCount: flagged.length, flagged: flagged.map((t) => t.sym), setups, nfa: 'Model estimates from public exchange data. Not financial advice. Nothing here trades.' };
   },
   async '/api/composite'(q) { const c = await compositeCached(); const k = q.get('kind'); return k ? { ...c, tokens: c.tokens.filter((t) => t.kind === k) } : c; },
+  async '/api/liquidations'() {
+    const s = liquidations.snapshot(); let comp = null; try { comp = await compositeCached(); } catch {}
+    const cBy = new Map((comp?.tokens || []).filter((t) => t.kind === 'perp').map((t) => [t.sym, t]));
+    let hist = null; try { hist = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'liquidations_history.json'), 'utf8')); delete hist.sample_crash_days; } catch {}
+    return { ...s, assets: (s.assets || []).map((a) => { const c = cBy.get(a.sym); const cf = c?.factors.find((f) => f.key === 'crash'); return { ...a, grade: c?.grade || null, crash: cf && cf.available !== false ? { score: cf.score, value: cf.value } : null }; }), history: hist };
+  },
+  async '/api/fundingdiv'() { return fundingdiv.snapshot(); },
+  async '/api/orderbook'() { return orderbook.snapshot(); },
+  async '/api/pricegaps'() {
+    const s = pricegaps.snapshot(); let hist = null; try { const h = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'pricegaps_history.json'), 'utf8')); const { tokens, ...rest } = h; hist = { ...rest, topGapProne: Object.entries(tokens || {}).sort((a, b) => b[1].gapDayPct - a[1].gapDayPct).slice(0, 25).map(([sym, v]) => ({ sym, ...v })) }; } catch {}
+    return { ...s, history: hist };
+  },
   async '/api/unlocks'(q) { return { ...unlocksMod.status(), days: 30, tokens: unlocksMod.list({ universeOnly: q.get('all') !== '1', days: +(q.get('days') || 30) }), netSupply: unlocksMod.netSupply() }; },
 });
 
@@ -596,14 +617,88 @@ Object.assign(routes, deriveDesk.routes());
 // Developer activity desk (lib/devactivity.js; data from research/devactivity.py): GitHub commit frequency / silence / burst flags
 const devactivity = require('./lib/devactivity').createDevActivity({ DATA_DIR, log: L });
 routes['/api/devactivity'] = async (q) => devactivity.api(q);
+// Priority Watch: NEAR + ZEC (lib/priority.js; research/priority.py -> data/priority.json, data/zec_shielded.json). Terminal-only high-priority alerts.
+const priority = require('./lib/priority').createPriority({ DATA_DIR, perps, liquidations, pricegaps, unlocks: unlocksMod, devactivity, composite: compositeCached, alerts, log: L });
+if (process.env.PRIORITY !== 'off') priority.start();
+routes['/api/priority'] = async () => priority.api();
+routes['/api/priority/shielded'] = async () => priority.shieldedApi();
 
 // Pattern detectors 1-5 (crash hours, fresh-wallet clusters, CEX + bridge flows, stock pairs) — lib/patterns.js, additive routes
 Object.assign(routes, require('./lib/patterns').routes({ DATA_DIR, live }));
+// Session seasonality (lib/seasonality.js; research/seasonality.py): DST-correct session windows, live volatile/quiet flags — additive
+Object.assign(routes, require('./lib/seasonality').routes({ DATA_DIR, live }));
+// Terminal uptime / restarts (lib/uptime.js; scripts/supervisor.js writes data/restarts.json): /api/health/detail + restart alerts — additive
+{ const up = require('./lib/uptime').createUptime({ DATA_DIR, alerts, log: (m) => console.log('[uptime] ' + m) }); Object.assign(routes, up.routes); up.start(); }
+// Airdrop Desk v2: tracker, under-farmed score, My Farms monitor, dilution, value estimates (lib/airdrops.js; research/airdrops_v2.py)
+Object.assign(routes, require('./lib/airdrops').routes({ DATA_DIR, root: __dirname }));
 
 // Narratives Desk (lib/narratives.js; data from research/narratives.py). narratives.boostFor(chain, address, symbol) for composite grades.
 const narratives = createNarratives({ DATA_DIR, root: __dirname, log: L });
 routes['/api/narratives'] = async (q) => narratives.api(q);
 routes['/api/narratives/boost'] = async () => narratives.boosts();
+// AI Agents desk (lib/agents.js; data from research/agents.py + research/agents_birth.py)
+const agentsDesk = require('./lib/agents').createAgents({ DATA_DIR, root: __dirname, log: L });
+routes['/api/agents'] = async (q) => agentsDesk.api(q);
+routes['/api/agents/launch'] = async (q) => agentsDesk.launch(q);
+// Social sentiment desk (lib/sentiment.js; data from the assistant-run free X collector, research/sentiment/COLLECTOR.md). Read-only.
+const sentimentDesk = require('./lib/sentiment').createSentiment({ DATA_DIR });
+routes['/api/sentiment'] = async (q) => sentimentDesk.api(q);
+// Stablecoin issuance desk (lib/stables.js; data from research/stables.py) — additive
+const stablesDesk = require('./lib/stables').createStables({ DATA_DIR, log: L });
+routes['/api/stables'] = async (q) => stablesDesk.api(q);
+// Regulatory Radar (lib/regradar.js; data from research/regradar.py): crypto-regulation news radar, flow cross-ref, event study — additive
+Object.assign(routes, require('./lib/regradar').createRegRadar({ DATA_DIR, log: L }).routes());
+// Pre-launch birth-phase library + live matcher (lib/birthphase.js; data from research/birthphase/*.py) — additive
+const birthphase = require('./lib/birthphase').createBirthphase({ DATA_DIR, root: __dirname, log: L });
+routes['/api/birthphase'] = async (q) => birthphase.api(q);
+routes['/api/birthphase/token'] = async (q) => birthphase.token(q);
+// keep live.json fresh for launch-model phone alerts (lib/alerts.js refuses snapshots > 30 min old); refresh() no-ops if < BIRTHPHASE_LIVE_MIN old or NO_AUTO_REFRESH=1
+setInterval(() => { try { birthphase.refresh(false); } catch {} }, 5 * 60e3).unref();
+// Contract vulnerability scanner (lib/contractscan.js; batch via research/contractscan.py): /api/contractscan[?chain=&address=] — additive
+Object.assign(routes, require('./lib/contractscan').routes());
+// Fake-volume detector (lib/fakevolume.js; backtest research/fakevolume.py): /api/fakevolume, /api/fakevolume/token?chain=&address= — additive (FAKEVOL=off disables the live scan)
+const fakevolume = require('./lib/fakevolume').createFakeVolume({ DATA_DIR, live, log: L });
+if (process.env.FAKEVOL !== 'off') fakevolume.start();
+Object.assign(routes, fakevolume.routes());
+// VC / fund / market-maker wallet watch (lib/vcwatch.js; research/vcwatch.py): /api/vcwatch, /api/vcwatch/wallets, /api/vcwatch/lookup — additive
+Object.assign(routes, require('./lib/vcwatch').routes({ DATA_DIR, root: __dirname, log: L }));
+// Copy-trade watch (ALERTS ONLY, never trades) + non-X social channel (lib/copytrade.js, lib/socialalt.js; research/copytrade.py, research/socialalt.py) — additive
+const copytrade = require('./lib/copytrade').createCopyTrade({ DATA_DIR, root: __dirname, live, alerts, log: L });
+if (LIVE !== 'off' && process.env.COPYTRADE !== 'off') copytrade.start();
+Object.assign(routes, copytrade.routes());
+const socialalt = require('./lib/socialalt').createSocialAlt({ DATA_DIR, root: __dirname, log: L });
+Object.assign(routes, socialalt.routes());
+// Pattern Lab: 37 crash/pump patterns, backtests + live flags (lib/patternlab.js; research/patternlab/*.py; PATTERN_LAB.md) — additive
+Object.assign(routes, require('./lib/patternlab').shared(DATA_DIR).routes());
+// Pattern Lab EXPANSION: rules 38+ and categories A-J (lib/patternlab_ext.js; research/patternlab_ext/*.py; PATTERN_LAB_EXT.md) — additive
+Object.assign(routes, require('./lib/patternlab_ext').routes({ DATA_DIR, live }));
+// Insider-privilege pattern scan + Velvet exposé (lib/insider.js; data/insider_pattern.json, data/velvet_postcrash.json): /api/insider, /api/insider/velvet — additive.
+// Signal-bus plug-ins (lib/signalbus.js register): insider scan + developer-activity silence/burst flags feed the alert ranker / false-positive log
+// (auto-labels, rolling scores, shadow mode). Pattern Lab EXT registers its own plug-in in lib/patternlab_ext.js.
+{ const insider = require('./lib/insider').createInsider({ DATA_DIR, root: __dirname }); Object.assign(routes, insider.routes());
+  const bus = require('./lib/signalbus');
+  bus.register(insider.signalPlugin(async () => { try { return ((await compositeCached()).tokens || []).map((t) => ({ chain: t.chain, address: t.kind === 'perp' ? null : t.id.split(':').slice(1).join(':'), sym: t.sym, price: t.price })); } catch { return []; } }));
+  bus.register({ id: 'dev_activity', name: 'Developer activity (GitHub silence / burst)', desk: 'crypto', claim: 'crash', async live() {
+    const d = devactivity.load(); if (!d) return []; const marks = new Map(((perps.snapshot && perps.snapshot().tokens) || []).map((t) => [String(t.sym).toUpperCase(), t.mark]));
+    const out = [];
+    for (const r of d.live || []) { if (!r.verified) continue; const sym = String(r.symbol || '').toUpperCase(); const px = marks.get(sym); const tok = px != null ? { key: 'perp:' + sym, chain: 'perp', symbol: sym } : { symbol: sym };
+      if (r.silence && r.previously_active) out.push({ token: tok, price: px ?? null, claim: 'crash', variant: 'silence', severity: 'low', strength: r.silence === 'silent_60d' ? 0.5 : 0.35, values: { days: r.days_since_last_commit }, reason: `${sym}: GitHub went quiet (${r.silence.replace('_', ' ')}) after being active`, source: 'data/devactivity.json' });
+      if (r.burst) out.push({ token: tok, price: px ?? null, claim: 'pump', variant: 'burst', severity: 'low', strength: 0.35, values: { commits_7d: r.commits_7d, avg_weekly_prev8: r.avg_weekly_prev8 }, reason: `${sym}: commit burst ${r.commits_7d} in 7d vs ${r.avg_weekly_prev8}/wk`, source: 'data/devactivity.json' }); }
+    return out; } }); }
+// Grok news & sentiment layer (lib/grok.js; xAI API, XAI_API_KEY from env only, hard monthly/daily USD caps, cache-by-hash) — additive
+const grokDesk = require('./lib/grok').createGrok({ DATA_DIR, macro, log: L });
+if (process.env.GROK !== 'off') grokDesk.start();
+routes['/api/grok'] = async (q) => grokDesk.api(q);
+routes['/api/grok/pulse'] = async () => grokDesk.pulse({ liquidations: () => liquidations.snapshot(), pricegaps: () => pricegaps.snapshot(), fundingdiv: () => fundingdiv.snapshot(), orderbook: () => orderbook.snapshot() });
+// Validation layer (lib/validation.js): cross-detector backtest scoreboard, ranked alert queue, false-positive log with automatic
+// labels + rolling detector effectiveness/shadow mode, PAPER trading (no execution) — additive
+require('./lib/validation').attachValidation({ routes, DATA_DIR, root: __dirname, live, calls, perps, liquidations, fundingdiv, orderbook, composite: compositeCached, nansen, dsTokens, getJSON, cached, log: (m) => console.log('[validation] ' + m) });
+// Data provenance (lib/provenance.js + lib/provenance_map.js): /api/provenance?path=&field=&row=, /api/provenance/coverage|log|upstream — additive
+Object.assign(routes, prov.routes({ routes, DATA_DIR, mem: { perps: () => perps.snapshot().generatedAt, live: () => live.feed().generatedAt, liquidations: () => liquidations.snapshot().generatedAt, pricegaps: () => pricegaps.snapshot().generatedAt } }));
+// API key health: age / 90-day rotation schedule / reminders / zero-cost validity probes / leak scan / SESSION_SECRET auto-rotation (lib/keyhealth.js, KEY_ROTATION.md) — additive
+const keyhealth = require('./lib/keyhealth').createKeyHealth({ DATA_DIR, root: __dirname, log: L, alerts });
+if (process.env.KEYHEALTH !== 'off') keyhealth.start();
+routes['/api/keyhealth'] = async (q) => keyhealth.api(q);
 const refreshing = new Set();
 function withRefresh(file, script, maxAge) {
   let st = null; try { st = fs.statSync(path.join(DATA_DIR, file)); } catch {}
@@ -621,6 +716,57 @@ function withRefresh(file, script, maxAge) {
 function readData(f) {
   try { return JSON.parse(fs.readFileSync(path.join(DATA_DIR, f), 'utf8')); }
   catch { throw Object.assign(new Error(f + ' not generated yet — run research/run.sh'), { status: 404 }); }
+}
+// Proactive desk refreshes: withRefresh/load() only run on API hits, so idle files go 5–10h stale.
+// Free scripts only; NO_AUTO_REFRESH=1 disables. Cadences: options 30m (US equity hours), unlocks/airdrops/regradar/stables 6h,
+// seasonality daily, ZEC shielded via priority.py (>20h inside its 30m loop), contractscan daily (new/stale only), VC/copytrade 2h.
+if (LIVE !== 'off' && process.env.NO_AUTO_REFRESH !== '1') {
+  const fileAge = (f) => { try { return Date.now() - fs.statSync(path.join(DATA_DIR, f)).mtimeMs; } catch { return Infinity; } };
+  const py = (script, args = [], key = script) => {
+    if (refreshing.has(key)) return;
+    refreshing.add(key);
+    const ch = spawn('nice', ['-n', '10', 'python3', script, ...args], { cwd: path.join(__dirname, 'research'), env: { ...process.env, DATA_DIR, NANSEN_API_KEY: '', X_BEARER_TOKEN: '' }, stdio: 'ignore' });
+    ch.on('exit', () => refreshing.delete(key)); ch.on('error', () => refreshing.delete(key));
+  };
+  const usEquityOpen = () => { // Mon–Fri 09:30–16:00 America/New_York
+    const fmt = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+    const o = {}; for (const p of fmt.formatToParts(new Date())) o[p.type] = p.value;
+    if (['Sat', 'Sun'].includes(o.weekday)) return false;
+    const m = (+o.hour) * 60 + (+o.minute); return m >= 9 * 60 + 30 && m < 16 * 60;
+  };
+  setInterval(() => { if (usEquityOpen() && fileAge('options.json') > 30 * 60e3) py('options.py'); }, 10 * 60e3).unref();
+  setInterval(() => {
+    if (fileAge('unlocks_calendar.json') > 6 * 3600e3) py('unlocks.py');
+    if (fileAge('airdrops.json') > 6 * 3600e3) py('airdrops.py');
+    if (fileAge('airdrop_desk.json') > 6 * 3600e3) py('airdrops_v2.py');
+    if (fileAge('regradar.json') > 6 * 3600e3) py('regradar.py', ['live'], 'regradar.py:live');
+    if (fileAge('stables.json') > 6 * 3600e3) py('stables.py');
+  }, 30 * 60e3).unref();
+  setInterval(() => { if (fileAge('seasonality_live.json') > 24 * 3600e3) py('seasonality.py'); }, 60 * 60e3).unref();
+  setInterval(() => { if (fileAge('vcwatch_live.json') > 2 * 3600e3) py('vcwatch.py', ['monitor'], 'vcwatch.py:monitor'); }, 30 * 60e3).unref();
+  setInterval(() => { try { copytrade.refresh(false); } catch {} }, 30 * 60e3).unref();
+  setInterval(() => { // contract scan: rebuild universe then batch new/stale only (batch skips already-ok tokens)
+    if (fileAge('contractscan.json') < 24 * 3600e3 || refreshing.has('contractscan:daily')) return;
+    refreshing.add('contractscan:daily');
+    const u = spawn('nice', ['-n', '10', 'python3', 'contractscan.py', 'universe'], { cwd: path.join(__dirname, 'research'), env: { ...process.env, DATA_DIR }, stdio: 'ignore' });
+    u.on('exit', () => {
+      const b = spawn('nice', ['-n', '10', 'node', 'lib/contractscan.js', 'batch', '--limit=80'], { cwd: __dirname, env: { ...process.env, DATA_DIR }, stdio: 'ignore' });
+      b.on('exit', () => refreshing.delete('contractscan:daily')); b.on('error', () => refreshing.delete('contractscan:daily'));
+    });
+    u.on('error', () => refreshing.delete('contractscan:daily'));
+  }, 60 * 60e3).unref();
+  // kick once shortly after boot for anything already past cadence
+  setTimeout(() => {
+    try { unlocksMod.status(); } catch {}
+    try { stablesDesk.api(new URLSearchParams()); } catch {}
+    if (usEquityOpen() && fileAge('options.json') > 30 * 60e3) py('options.py');
+    if (fileAge('airdrops.json') > 6 * 3600e3) py('airdrops.py');
+    if (fileAge('airdrop_desk.json') > 6 * 3600e3) py('airdrops_v2.py');
+    if (fileAge('regradar.json') > 6 * 3600e3) py('regradar.py', ['live'], 'regradar.py:live');
+    if (fileAge('seasonality_live.json') > 24 * 3600e3) py('seasonality.py');
+    if (fileAge('vcwatch_live.json') > 2 * 3600e3) py('vcwatch.py', ['monitor'], 'vcwatch.py:monitor');
+    try { copytrade.refresh(false); } catch {}
+  }, 45e3).unref();
 }
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.json': 'application/json' };
 
@@ -650,7 +796,7 @@ const server = http.createServer(async (req, res) => {
     try {
       const data = await h(u.searchParams, req);
       res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' });
-      res.end(JSON.stringify(data));
+      res.end(JSON.stringify(prov.attach(u.pathname, data, DATA_DIR))); // adds `_prov` (shallow copy) — lib/provenance.js
     } catch (e) {
       res.writeHead(e.status || 502, { 'content-type': 'application/json' });
       res.end(JSON.stringify({ error: String(e.message || e) }));
@@ -668,3 +814,41 @@ const server = http.createServer(async (req, res) => {
   });
 });
 server.listen(PORT, HOST, () => console.log(`[asymmetric-terminal] read-only dashboard on http://${HOST}:${PORT}${auth.ENABLED ? ` (password-protected, user '${auth.USER}')` : ' (open: SITE_PASSWORD not set)'}`));
+
+// ---------- Risk infrastructure (additive): (5) oracle manipulation, (6) dependency risk, (7) feed health / staleness, (8) OTC flow ----------
+// lib/oracles.js, lib/dependencies.js, lib/otcflow.js run research/riskinfra/*.py in the background (RISKINFRA=off disables; lock files
+// keep several server instances from running the same collector). lib/staleness.js instruments data/*.json + in-memory snapshots.
+{
+  const RL = (m) => console.log('[riskinfra] ' + m);
+  const riDeps = require('./lib/dependencies').createDependencies({ DATA_DIR, log: RL });
+  const riOracles = require('./lib/oracles').createOracles({ DATA_DIR, log: RL, after: () => riDeps.run(true) });
+  const riOtc = require('./lib/otcflow').createOtcFlow({ DATA_DIR, log: RL });
+  const sig = (arr, k) => (arr || []).slice(0, 12).map((x) => x && x[k]);
+  const probes = {};
+  if (LIVE !== 'off') probes.live = { label: 'Live alpha feed (in-memory)', expectedMs: 3 * 60e3, panels: ['ccLive', 'ccSlow'], fn: () => { const f = live.feed(); return { t: f.generatedAt, n: (f.items || []).length, sig: (f.items || []).slice(0, 12).map((x) => x.m && x.m.px) }; } };
+  if (process.env.PERPS !== 'off') {
+    probes.perps = { label: 'Perp snapshot (in-memory)', expectedMs: 2 * 60e3, panels: ['perpDesk'], fn: () => { const s = perps.snapshot(); return { t: s.generatedAt, n: (s.tokens || []).length, sig: sig(s.tokens, 'mark') }; } };
+    if (process.env.LIQ !== 'off') probes.liquidations = { label: 'Liquidation detector (in-memory)', expectedMs: 60e3, panels: [], fn: () => { const s = liquidations.snapshot(); return { t: s.generatedAt, n: (s.assets || []).length }; } };
+    if (process.env.GAPS !== 'off') probes.pricegaps = { label: 'Cross-exchange price gaps (in-memory)', expectedMs: 90e3, panels: [], fn: () => { const s = pricegaps.snapshot(); return { t: s.generatedAt, n: (s.tokens || []).length, sig: sig(s.tokens, 'mark') }; } };
+  }
+  if (LIVE !== 'off' && process.env.POOLWATCH !== 'off') probes.poolwatch = { label: 'QCAT/STRK pool watch (in-memory)', expectedMs: 15 * 60e3, panels: [], fn: () => { const s = poolwatch.status() || {}; return { t: s.updatedAt }; } };
+  const feedHealth = require('./lib/staleness').createStaleness({ DATA_DIR, root: __dirname, log: RL, probes, notify: (k, t) => alerts.notice(k, t) });
+  feedHealth.start();
+  if (process.env.RISKINFRA !== 'off') { riOracles.start(45e3); riDeps.start(120e3); riOtc.start(150e3); }
+  Object.assign(routes, {
+    async '/api/oracles'(q) { return riOracles.api(q); },
+    async '/api/dependencies'(q) { return riDeps.api(q); },
+    async '/api/otcflow'(q) { return riOtc.api(q); },
+    async '/api/feedhealth'(q) { return feedHealth.api(q); },
+    async '/api/riskinfra'() {
+      const g = (fn) => { try { return fn(); } catch (e) { return { error: e.message }; } };
+      const o = g(() => riOracles.api(new URLSearchParams())), d = g(() => riDeps.api(new URLSearchParams())), x = g(() => riOtc.api(new URLSearchParams('limit=40'))), h = feedHealth.api(new URLSearchParams());
+      return {
+        oracles: o.error ? o : { generatedAt: o.generatedAt, summary: o.summary, coverage: o.coverage, flags: (o.flags || []).slice(0, 25), thinPools: (o.thinPools || []).filter((t) => t.severity).slice(0, 12), runner: o.runner },
+        dependencies: d.error ? d : { generatedAt: d.generatedAt, summary: d.summary, stressed: (d.stressed || []).slice(0, 20), dependents: (d.dependents || []).slice(0, 20), lst: d.lst, hacks30d: (d.hacks30d || []).slice(0, 8), runner: d.runner },
+        otcflow: x.error ? x : { generatedAt: x.generatedAt, window: x.window, coverage: x.coverage, thisRun: x.thisRun, followUp: x.followUp, flags: (x.flags || []).slice(0, 20), runner: x.runner },
+        feedhealth: { generatedAt: h.generatedAt, summary: h.summary, restarts: h.restarts, panels: h.panels, problems: h.feeds.filter((f) => f.status === 'red' || f.status === 'yellow').slice(0, 30), alerts: h.alerts.slice(0, 10) },
+      };
+    },
+  });
+}

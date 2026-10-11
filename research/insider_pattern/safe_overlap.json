@@ -1,0 +1,1610 @@
+{
+ "velvet:binance-smart-chain": {
+  "holders": [
+   {
+    "address": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "pct": 37.66,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0x1fe27679ef816ec3dc8469c5d300af9933b73492",
+      "0x45419e383a7ae4cc75f19000e30294105ab057d6",
+      "0x8df5c93be940fd0053fc7fc1f071289b41291cb8",
+      "0xd52ae83c78ef4d519e92c243512e14ce0736abe5",
+      "0x579d36cce78af5664e26d6b858119625e1b9116a"
+     ],
+     "threshold": 3
+    }
+   },
+   {
+    "address": "0x75e7488ac067f07948739bfb550213b47db094bb",
+    "pct": 16.03,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0x45419e383a7ae4cc75f19000e30294105ab057d6",
+      "0x1fe27679ef816ec3dc8469c5d300af9933b73492",
+      "0x8df5c93be940fd0053fc7fc1f071289b41291cb8",
+      "0xfc60766e9059d5e4d706f324eba6ad06859133a8",
+      "0xcfe8a6f61522ea70049263dd6ba9ec48d31187ce"
+     ],
+     "threshold": 3
+    }
+   },
+   {
+    "address": "0x6e0bad2c077d699841f1929b45bfb93fafbed395",
+    "pct": 15.93,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x6cd06aaf06506bc3ff382d83023354e2b80eed22",
+    "pct": 4.04,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xe2e8fa23dda79231e4bd237321fd843fd7e9e0a7",
+    "pct": 3.5,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x150c8a0aff9caefe3ce92658afa302e0172d1056",
+    "pct": 3.34,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xb5893a55965a4a01c239f852d93ac47942415231",
+    "pct": 2.31,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xc882b111a75c0c657fc507c04fbfcd2cc984f071",
+    "pct": 2.01,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x4cad1efbfd5f0848e0c3c14fab23f92b2fa81f17",
+    "pct": 1.98,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x80952ba07edf0b100a3aa724d113a6de9992d70c",
+    "pct": 1.42,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": [
+   {
+    "a": "0xd19dce537125dfb5e76d7131668c4d5e4172b56c",
+    "b": "0x75e7488ac067f07948739bfb550213b47db094bb",
+    "shared": [
+     "0x1fe27679ef816ec3dc8469c5d300af9933b73492",
+     "0x45419e383a7ae4cc75f19000e30294105ab057d6",
+     "0x8df5c93be940fd0053fc7fc1f071289b41291cb8"
+    ]
+   }
+  ]
+ },
+ "velvet:base": {
+  "holders": [
+   {
+    "address": "0x6b0f53cbd9272d8117e9535fe25371dedf39a1be",
+    "pct": 47.35,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xa75990bbe6a02c264e10708d4efc967586e3abbd",
+    "pct": 9.08,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x22a9f52331c5b072752a7b982130e9992c8b941f",
+    "pct": 5.88,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x4446adc0b8136ffc55ddb7a488ba5509ace2a5ef",
+    "pct": 1.82,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x8ea5ad2a58c1dae75394b1e8636e6518eb6dac50",
+    "pct": 1.08,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x355a87d064775c5a388a34fd143e056f57aaf927",
+    "pct": 1.03,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xce94090458719c167af5477db61c9bc985961d1b",
+    "pct": 0.89,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xf579b16f9b1a4acc872d34a8141fbbd36c0ce10c",
+    "pct": 0.82,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x80ddcdd3d66f3038cbbad7cdc38f103c0ee39e92",
+    "pct": 0.78,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x38c658e7aca77169864becfaae8fed9f2d78a744",
+    "pct": 0.78,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": []
+ },
+ "lab:binance-smart-chain": {
+  "holders": [
+   {
+    "address": "0xc882b111a75c0c657fc507c04fbfcd2cc984f071",
+    "pct": 11.6,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x78a79d0fa0eaf58741f5bde7e05b5cc8f33d24d3",
+    "pct": 10.91,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0x8e4a7303c99457c15da4f6d949fb3863c5760aee",
+      "0x74ae027e6354627c4a9eb5274dea7d44fa70def5",
+      "0xf09c19328c26088053a8c9cfb982427baff2bd0b"
+     ],
+     "threshold": 3
+    }
+   },
+   {
+    "address": "0xf79ff8a5052e969a6d13e18c4e439fe5202b02fa",
+    "pct": 7.72,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0x74ae027e6354627c4a9eb5274dea7d44fa70def5",
+      "0x8e4a7303c99457c15da4f6d949fb3863c5760aee",
+      "0x1664535c2f4eb4d32c6591a1ba36ea19682eb55d",
+      "0xf09c19328c26088053a8c9cfb982427baff2bd0b"
+     ],
+     "threshold": 3
+    }
+   },
+   {
+    "address": "0xad3ab20ddd675e804a52a642d9d5f8ff1d256879",
+    "pct": 6.21,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x73d8bd54f7cf5fab43fe4ef40a62d390644946db",
+    "pct": 5.74,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xed9ab5bc05a0152b9dc2f7902e8369af7bc18771",
+    "pct": 5.31,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x74ac59355acd2bafa5d49c092b90698816570d80",
+    "pct": 4.98,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x17c61f4a7f41b96eb9c0d8805255b8411387c63b",
+    "pct": 4.24,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xa09b3e9b8be17cfb327adfb9f7756311ecff34d3",
+      "0xc175208f1c2b69e1d03eee8570bf18c0efe58f4f",
+      "0x9c81ec71783418d4b6f9c8dac85b3f20f1d931d4",
+      "0x7bbde33d6b97b612027a6a0b8995d6a8b29777b0"
+     ],
+     "threshold": 2
+    }
+   },
+   {
+    "address": "0xbc83be28b3531878eb7a886455325814cd5c7d63",
+    "pct": 3.64,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x8dac80ce96f69f9762bc450faa4d7fbd5891ae18",
+    "pct": 2.12,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": [
+   {
+    "a": "0x78a79d0fa0eaf58741f5bde7e05b5cc8f33d24d3",
+    "b": "0xf79ff8a5052e969a6d13e18c4e439fe5202b02fa",
+    "shared": [
+     "0x74ae027e6354627c4a9eb5274dea7d44fa70def5",
+     "0x8e4a7303c99457c15da4f6d949fb3863c5760aee",
+     "0xf09c19328c26088053a8c9cfb982427baff2bd0b"
+    ]
+   }
+  ]
+ },
+ "ravedao:ethereum": {
+  "holders": [
+   {
+    "address": "0x9831156f1a6e506fca41503590b42f07c2e80f54",
+    "pct": 78.44,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xb0492075fb616e318aebd8d6827efca13c527cf8",
+      "0x464e61f766f5d0444a42b30585dd0817a1ad0c9a",
+      "0xdad90130911f012498b62372856e4da4fe50f52a",
+      "0x2664cb80a5ee7d8ec05fe7c752dd62e078056e6d",
+      "0xbf3f3782ba865f285416f8385be0a8dfac63fe6e"
+     ],
+     "threshold": 4
+    }
+   },
+   {
+    "address": "0x6020656d1ef182173e45d4fc375bdd5a48c674b0",
+    "pct": 9.35,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xb0492075fb616e318aebd8d6827efca13c527cf8",
+      "0x464e61f766f5d0444a42b30585dd0817a1ad0c9a",
+      "0x2664cb80a5ee7d8ec05fe7c752dd62e078056e6d",
+      "0xbf3f3782ba865f285416f8385be0a8dfac63fe6e",
+      "0xdad90130911f012498b62372856e4da4fe50f52a"
+     ],
+     "threshold": 4
+    }
+   },
+   {
+    "address": "0x0a1f07993a51cceb4f52ca67765aeceadda790d7",
+    "pct": 2.54,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xb4bb5d4824216e22ca966b5822fef6d930bcb090",
+      "0xa3d8d89da06e3a09f6c93d398d5b3e5940dbc42a",
+      "0x1dfa585695d99d9ccd0e0000ebd6a8cf1bfdff6d",
+      "0xfa881f7dd065f35b142615a768e3c7ad1355a164"
+     ],
+     "threshold": 3
+    }
+   },
+   {
+    "address": "0xeb74df8588cfc1c179df4bd96c0bb8b227b9be92",
+    "pct": 2.27,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xb0492075fb616e318aebd8d6827efca13c527cf8",
+      "0x464e61f766f5d0444a42b30585dd0817a1ad0c9a",
+      "0x2664cb80a5ee7d8ec05fe7c752dd62e078056e6d",
+      "0xdad90130911f012498b62372856e4da4fe50f52a",
+      "0xbf3f3782ba865f285416f8385be0a8dfac63fe6e"
+     ],
+     "threshold": 4
+    }
+   },
+   {
+    "address": "0x5cd88270b1e42bca89a004ec59cbc26ff8699c16",
+    "pct": 0.92,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xed9ab5bc05a0152b9dc2f7902e8369af7bc18771",
+    "pct": 0.86,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x31694d761a8e851cffbcd286ac54d01e5ce5afe6",
+    "pct": 0.54,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xa3d8d89da06e3a09f6c93d398d5b3e5940dbc42a",
+      "0x980c0abf9115fc2a69d9b242e866f7479c6ff95b",
+      "0x1758bb4fd6fbe87983558d2134d6b719be766799",
+      "0x81e20ce0345d176127497a67e829af8900a34956"
+     ],
+     "threshold": 4
+    }
+   },
+   {
+    "address": "0x37cbad8eaf70a38b7a2679226b4b07109d7e2e0e",
+    "pct": 0.38,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x8f7f806d38be3ff6429ca5234117c4465c434c3a",
+    "pct": 0.29,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x5b62078c8df0248c4d82e34029780236c15bfe99",
+    "pct": 0.28,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": [
+   {
+    "a": "0x9831156f1a6e506fca41503590b42f07c2e80f54",
+    "b": "0x6020656d1ef182173e45d4fc375bdd5a48c674b0",
+    "shared": [
+     "0x2664cb80a5ee7d8ec05fe7c752dd62e078056e6d",
+     "0x464e61f766f5d0444a42b30585dd0817a1ad0c9a",
+     "0xb0492075fb616e318aebd8d6827efca13c527cf8",
+     "0xbf3f3782ba865f285416f8385be0a8dfac63fe6e",
+     "0xdad90130911f012498b62372856e4da4fe50f52a"
+    ]
+   },
+   {
+    "a": "0x9831156f1a6e506fca41503590b42f07c2e80f54",
+    "b": "0xeb74df8588cfc1c179df4bd96c0bb8b227b9be92",
+    "shared": [
+     "0x2664cb80a5ee7d8ec05fe7c752dd62e078056e6d",
+     "0x464e61f766f5d0444a42b30585dd0817a1ad0c9a",
+     "0xb0492075fb616e318aebd8d6827efca13c527cf8",
+     "0xbf3f3782ba865f285416f8385be0a8dfac63fe6e",
+     "0xdad90130911f012498b62372856e4da4fe50f52a"
+    ]
+   },
+   {
+    "a": "0x6020656d1ef182173e45d4fc375bdd5a48c674b0",
+    "b": "0xeb74df8588cfc1c179df4bd96c0bb8b227b9be92",
+    "shared": [
+     "0x2664cb80a5ee7d8ec05fe7c752dd62e078056e6d",
+     "0x464e61f766f5d0444a42b30585dd0817a1ad0c9a",
+     "0xb0492075fb616e318aebd8d6827efca13c527cf8",
+     "0xbf3f3782ba865f285416f8385be0a8dfac63fe6e",
+     "0xdad90130911f012498b62372856e4da4fe50f52a"
+    ]
+   },
+   {
+    "a": "0x0a1f07993a51cceb4f52ca67765aeceadda790d7",
+    "b": "0x31694d761a8e851cffbcd286ac54d01e5ce5afe6",
+    "shared": [
+     "0xa3d8d89da06e3a09f6c93d398d5b3e5940dbc42a"
+    ]
+   }
+  ]
+ },
+ "ravedao:base": {
+  "holders": [
+   {
+    "address": "0x14751179b65c66ec4810a589bdf50e10eeacf600",
+    "pct": 26.66,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xa52f7e1b765a6ca5c1bf73ca7239a01c72ae9c43",
+    "pct": 16.64,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xf8191d98ae98d2f7abdfb63a9b0b812b93c873aa",
+    "pct": 9.8,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xa9abd60c0c89aaa3869c706207dcdd7e9c33da57",
+    "pct": 9.06,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x20fe51a9229eef2cf8ad9e89d91cab9312cf3b7a",
+    "pct": 5.38,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xb77c458a44b80195b826b4d725d76ee8c007ed37",
+    "pct": 3.73,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x309643dc26e80d179879a5230449509ac7212439",
+    "pct": 3.72,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xe0d4a9d27a83efe32b5b2b617a3bd08465f25e25",
+    "pct": 3.56,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xf326b8d4d6f83a87b2d174750b8dc22140cffa06",
+    "pct": 3.45,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xa823b290cf7d1734e63473a443f22056d80acbe8",
+    "pct": 3.45,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": []
+ },
+ "ravedao:binance-smart-chain": {
+  "holders": [
+   {
+    "address": "0xf07327d01857e62c31ce29bd8a7870e769406fa3",
+    "pct": 23.95,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x73d8bd54f7cf5fab43fe4ef40a62d390644946db",
+    "pct": 23.39,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x2d81f8aebf3e58a5e638006c9fd8f38c5220ecab",
+    "pct": 13.14,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x238a358808379702088667322f80ac48bad5e6c4",
+    "pct": 8.28,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x6020656d1ef182173e45d4fc375bdd5a48c674b0",
+    "pct": 7.88,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xb0492075fb616e318aebd8d6827efca13c527cf8",
+      "0x464e61f766f5d0444a42b30585dd0817a1ad0c9a",
+      "0x2664cb80a5ee7d8ec05fe7c752dd62e078056e6d",
+      "0xbf3f3782ba865f285416f8385be0a8dfac63fe6e",
+      "0xdad90130911f012498b62372856e4da4fe50f52a"
+     ],
+     "threshold": 4
+    }
+   },
+   {
+    "address": "0x0a1f07993a51cceb4f52ca67765aeceadda790d7",
+    "pct": 7.36,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xb4bb5d4824216e22ca966b5822fef6d930bcb090",
+      "0xa3d8d89da06e3a09f6c93d398d5b3e5940dbc42a",
+      "0x1dfa585695d99d9ccd0e0000ebd6a8cf1bfdff6d",
+      "0xfa881f7dd065f35b142615a768e3c7ad1355a164"
+     ],
+     "threshold": 3
+    }
+   },
+   {
+    "address": "0x8dac80ce96f69f9762bc450faa4d7fbd5891ae18",
+    "pct": 2.81,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x53f78a071d04224b8e254e243fffc6d9f2f3fa23",
+    "pct": 2.13,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xb8e6d31e7b212b2b7250ee9c26c56cebbfbe6b23",
+    "pct": 2.12,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x69be413d648ae00f0fbd9856f1355e22b36ee5e0",
+    "pct": 1.15,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": []
+ },
+ "memecore:binance-smart-chain": {
+  "holders": [
+   {
+    "address": "0x69cb059678d1faa63f781fa08e5600f2f6ff4681",
+    "pct": 80.14,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x05cb186ab8ec85378a2cbf8a858568a8fb216b07",
+    "pct": 8.23,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x8b800787d7e47d9720512ea596ee7a44c9962e08",
+    "pct": 3.98,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x73d8bd54f7cf5fab43fe4ef40a62d390644946db",
+    "pct": 1.44,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x6f1f0a1ccc76d2d292249b19c19e401f0e843ba9",
+    "pct": 0.81,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x9b8fb7ff2ffdc0e75383c7bb4b8e823e2ecf9d76",
+    "pct": 0.42,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xc51eb7c9dc5ebd7c5433376a52fa85cb00c5bcaf",
+    "pct": 0.42,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x2714c5f0616047a4671b67fa872ce754991cc208",
+    "pct": 0.41,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x26e1b491060ed94d3ff33706262f61992172372d",
+    "pct": 0.4,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x27985deaa060ccf7ff2fef249ea23615713a4950",
+    "pct": 0.4,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": []
+ },
+ "chainopera-ai:binance-smart-chain": {
+  "holders": [
+   {
+    "address": "0x8348bcc1e920fa9e6afe5bbca1e28704a2322974",
+    "pct": 23.07,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85",
+      "0x0df81930be754d162c808ff34045321739767676",
+      "0x6d3cfa008e913f82646a247fbb8705d4b98d7200"
+     ],
+     "threshold": 2
+    }
+   },
+   {
+    "address": "0x38cd6dceb44a1ca1388baeef1ed1a7a3a7bf2d62",
+    "pct": 18.85,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xc077e143d30ea2aadfc99f46ca9e6b414019d771",
+      "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85",
+      "0x6d3cfa008e913f82646a247fbb8705d4b98d7200"
+     ],
+     "threshold": 2
+    }
+   },
+   {
+    "address": "0xa5e42f9d8881c1fa0533730a0680cb89adc8320f",
+    "pct": 15.93,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85",
+      "0x0df81930be754d162c808ff34045321739767676",
+      "0x6d3cfa008e913f82646a247fbb8705d4b98d7200"
+     ],
+     "threshold": 2
+    }
+   },
+   {
+    "address": "0x24c667542ccd8d1d48f44c9b199e61cc65243c30",
+    "pct": 11.35,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85",
+      "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+      "0x0df81930be754d162c808ff34045321739767676"
+     ],
+     "threshold": 2
+    }
+   },
+   {
+    "address": "0x6a787f2ef27b67b47166c1123a110735f5bae053",
+    "pct": 5.0,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xc077e143d30ea2aadfc99f46ca9e6b414019d771",
+      "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85",
+      "0x6d3cfa008e913f82646a247fbb8705d4b98d7200"
+     ],
+     "threshold": 2
+    }
+   },
+   {
+    "address": "0xf76d4edecb753539bf0ddeed25246bb70ffe592d",
+    "pct": 3.0,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85",
+      "0x0df81930be754d162c808ff34045321739767676",
+      "0x6d3cfa008e913f82646a247fbb8705d4b98d7200"
+     ],
+     "threshold": 2
+    }
+   },
+   {
+    "address": "0x9433988b74df5435e9534d0279b5705eab73c47c",
+    "pct": 2.24,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x1939d709b3c7c39fe1cc6ce9d5f8351710f48b43",
+    "pct": 1.5,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85",
+      "0x0df81930be754d162c808ff34045321739767676",
+      "0x6d3cfa008e913f82646a247fbb8705d4b98d7200"
+     ],
+     "threshold": 2
+    }
+   },
+   {
+    "address": "0x06b6df0c28539b381b60c93daf9a98880ac75b03",
+    "pct": 1.5,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85",
+      "0x0df81930be754d162c808ff34045321739767676",
+      "0x6d3cfa008e913f82646a247fbb8705d4b98d7200"
+     ],
+     "threshold": 2
+    }
+   },
+   {
+    "address": "0x4cad1efbfd5f0848e0c3c14fab23f92b2fa81f17",
+    "pct": 1.41,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": [
+   {
+    "a": "0x8348bcc1e920fa9e6afe5bbca1e28704a2322974",
+    "b": "0x38cd6dceb44a1ca1388baeef1ed1a7a3a7bf2d62",
+    "shared": [
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x8348bcc1e920fa9e6afe5bbca1e28704a2322974",
+    "b": "0xa5e42f9d8881c1fa0533730a0680cb89adc8320f",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x8348bcc1e920fa9e6afe5bbca1e28704a2322974",
+    "b": "0x24c667542ccd8d1d48f44c9b199e61cc65243c30",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x8348bcc1e920fa9e6afe5bbca1e28704a2322974",
+    "b": "0x6a787f2ef27b67b47166c1123a110735f5bae053",
+    "shared": [
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x8348bcc1e920fa9e6afe5bbca1e28704a2322974",
+    "b": "0xf76d4edecb753539bf0ddeed25246bb70ffe592d",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x8348bcc1e920fa9e6afe5bbca1e28704a2322974",
+    "b": "0x1939d709b3c7c39fe1cc6ce9d5f8351710f48b43",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x8348bcc1e920fa9e6afe5bbca1e28704a2322974",
+    "b": "0x06b6df0c28539b381b60c93daf9a98880ac75b03",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x38cd6dceb44a1ca1388baeef1ed1a7a3a7bf2d62",
+    "b": "0xa5e42f9d8881c1fa0533730a0680cb89adc8320f",
+    "shared": [
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x38cd6dceb44a1ca1388baeef1ed1a7a3a7bf2d62",
+    "b": "0x24c667542ccd8d1d48f44c9b199e61cc65243c30",
+    "shared": [
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x38cd6dceb44a1ca1388baeef1ed1a7a3a7bf2d62",
+    "b": "0x6a787f2ef27b67b47166c1123a110735f5bae053",
+    "shared": [
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc077e143d30ea2aadfc99f46ca9e6b414019d771",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x38cd6dceb44a1ca1388baeef1ed1a7a3a7bf2d62",
+    "b": "0xf76d4edecb753539bf0ddeed25246bb70ffe592d",
+    "shared": [
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x38cd6dceb44a1ca1388baeef1ed1a7a3a7bf2d62",
+    "b": "0x1939d709b3c7c39fe1cc6ce9d5f8351710f48b43",
+    "shared": [
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x38cd6dceb44a1ca1388baeef1ed1a7a3a7bf2d62",
+    "b": "0x06b6df0c28539b381b60c93daf9a98880ac75b03",
+    "shared": [
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0xa5e42f9d8881c1fa0533730a0680cb89adc8320f",
+    "b": "0x24c667542ccd8d1d48f44c9b199e61cc65243c30",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0xa5e42f9d8881c1fa0533730a0680cb89adc8320f",
+    "b": "0x6a787f2ef27b67b47166c1123a110735f5bae053",
+    "shared": [
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0xa5e42f9d8881c1fa0533730a0680cb89adc8320f",
+    "b": "0xf76d4edecb753539bf0ddeed25246bb70ffe592d",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0xa5e42f9d8881c1fa0533730a0680cb89adc8320f",
+    "b": "0x1939d709b3c7c39fe1cc6ce9d5f8351710f48b43",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0xa5e42f9d8881c1fa0533730a0680cb89adc8320f",
+    "b": "0x06b6df0c28539b381b60c93daf9a98880ac75b03",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x24c667542ccd8d1d48f44c9b199e61cc65243c30",
+    "b": "0x6a787f2ef27b67b47166c1123a110735f5bae053",
+    "shared": [
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x24c667542ccd8d1d48f44c9b199e61cc65243c30",
+    "b": "0xf76d4edecb753539bf0ddeed25246bb70ffe592d",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x24c667542ccd8d1d48f44c9b199e61cc65243c30",
+    "b": "0x1939d709b3c7c39fe1cc6ce9d5f8351710f48b43",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x24c667542ccd8d1d48f44c9b199e61cc65243c30",
+    "b": "0x06b6df0c28539b381b60c93daf9a98880ac75b03",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x6a787f2ef27b67b47166c1123a110735f5bae053",
+    "b": "0xf76d4edecb753539bf0ddeed25246bb70ffe592d",
+    "shared": [
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x6a787f2ef27b67b47166c1123a110735f5bae053",
+    "b": "0x1939d709b3c7c39fe1cc6ce9d5f8351710f48b43",
+    "shared": [
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x6a787f2ef27b67b47166c1123a110735f5bae053",
+    "b": "0x06b6df0c28539b381b60c93daf9a98880ac75b03",
+    "shared": [
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0xf76d4edecb753539bf0ddeed25246bb70ffe592d",
+    "b": "0x1939d709b3c7c39fe1cc6ce9d5f8351710f48b43",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0xf76d4edecb753539bf0ddeed25246bb70ffe592d",
+    "b": "0x06b6df0c28539b381b60c93daf9a98880ac75b03",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   },
+   {
+    "a": "0x1939d709b3c7c39fe1cc6ce9d5f8351710f48b43",
+    "b": "0x06b6df0c28539b381b60c93daf9a98880ac75b03",
+    "shared": [
+     "0x0df81930be754d162c808ff34045321739767676",
+     "0x6d3cfa008e913f82646a247fbb8705d4b98d7200",
+     "0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85"
+    ]
+   }
+  ]
+ },
+ "siren-2:binance-smart-chain": {
+  "holders": [
+   {
+    "address": "0x73d8bd54f7cf5fab43fe4ef40a62d390644946db",
+    "pct": 38.26,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x000000000000000000000000000000000000dead",
+    "pct": 27.65,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xb2af49dbf526054faf19602860a5e298a79f3d05",
+    "pct": 3.17,
+    "contract": 1,
+    "tag": "PancakeV3",
+    "safe": null
+   },
+   {
+    "address": "0xb8e6d31e7b212b2b7250ee9c26c56cebbfbe6b23",
+    "pct": 2.41,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x0d0707963952f2fba59dd06f2b425ace40b492fe",
+    "pct": 2.37,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x17a30350771d02409046a683b18fe1c13ccfc4a8",
+    "pct": 1.6,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x28aee52c2dfd391fb5028615c930a9a7b43ca19b",
+    "pct": 1.42,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x8dac80ce96f69f9762bc450faa4d7fbd5891ae18",
+    "pct": 1.42,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x4982085c9e2f89f2ecb8131eca71afad896e89cb",
+    "pct": 1.16,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xc882b111a75c0c657fc507c04fbfcd2cc984f071",
+    "pct": 1.09,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": []
+ },
+ "river:ethereum": {
+  "holders": [
+   {
+    "address": "0xa370d1bc5310e8bff824617ec62725ee58f30d12",
+    "pct": 29.74,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xde89a6df6951c7b33814b02c2c3d567ce4137174",
+    "pct": 19.46,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x96a84f061d51d27725ca17491ff36bf0283ce415",
+    "pct": 19.28,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xb82c71c2cff8ab8aa72422aa22855cb064a8dbfd",
+    "pct": 14.69,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x908be94068977ffb327c4536d5bf22377dfdf078",
+    "pct": 7.16,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xccd995355aff4db620a199f63a74857214b409cc",
+    "pct": 6.24,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0x073fcd98638f84f15d4141dc2167c8ca07229c04",
+      "0x3778ad0cf99e490a61ee948107eef878291834f6",
+      "0x8674895168583a422b3a51491b987492f1aa3558",
+      "0xf744534fc7c5856cc2dfd15e04d35d6e6e95fabd"
+     ],
+     "threshold": 3
+    }
+   },
+   {
+    "address": "0x2902517d8166971760a44e85f7fe3739e4354342",
+    "pct": 2.2,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x47f7f94bea3c3f9f150647b774b602a8704b32a4",
+    "pct": 1.04,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0x2acfb3f0255793c29a9aab335e5d77d0261b886b",
+      "0x186494152369dd62dfa5af4232c8444084ccae1d",
+      "0xf1b97ea37efa61ae4a9a3ca972ed26b4799fc40b",
+      "0xf1352e2d91d05df6f6846b9ec8f2ff3f415fb158"
+     ],
+     "threshold": 3
+    }
+   },
+   {
+    "address": "0xdd7e7253c73ce7351c6c966bb852d6d552b75469",
+    "pct": 0.07,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x9642b23ed1e01df1092b92641051881a322f5d4e",
+    "pct": 0.04,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": []
+ },
+ "river:base": {
+  "holders": [
+   {
+    "address": "0xfe469ca66024d391d55957f01e7788d07a9ba57a",
+    "pct": 78.98,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x79cb4a93e83d32a28fe659813a180633e9fc4532",
+    "pct": 19.65,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x498581ff718922c3f8e6a244956af099b2652b2b",
+    "pct": 0.99,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x04ce218ead72401702dd5f3e56cedb7d2d477777",
+    "pct": 0.38,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x8678f58ac6c4748b5289d0db70e627eef395dead",
+    "pct": 0.19,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x65a8f07bd9a8598e1b5b6c0a88f4779dbc077675",
+    "pct": 0.12,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x2cffed5d56eb6a17662756ca0fdf350e732c9818",
+    "pct": 0.02,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x8d413db42d6901de42b2c481cc0f6d0fd1c52828",
+    "pct": 0.01,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x0952e0ebc0fd9f909bb9c97950985b728fea67e2",
+    "pct": 0.01,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x64f2461cc226f326e1be29772e3fd35b1a4ca167",
+    "pct": 0.01,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": []
+ },
+ "river:binance-smart-chain": {
+  "holders": [
+   {
+    "address": "0xfdc8aecf0dd49b12583253809a9f188af19c83da",
+    "pct": 58.29,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xadfffc33cdc9970349cbcea3d73ec343d6ed116d",
+    "pct": 8.59,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x73d8bd54f7cf5fab43fe4ef40a62d390644946db",
+    "pct": 3.11,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xabbeb6e9b9c96a837c99fb9faa908fc7a1df2bc1",
+    "pct": 2.88,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x55e396b8870262e84672d334f95a80bff6f30af1",
+    "pct": 2.42,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xddfc28628205785bed7f686ac83005eb26dfe55e",
+    "pct": 2.2,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x02ccaae121dd8b3a0424ba564cd563fba151d2ae",
+    "pct": 1.87,
+    "contract": 1,
+    "tag": "",
+    "safe": {
+     "owners": [
+      "0xd8345639a0d1a1e4eda6f77c9e3ab2ba16be8cf2",
+      "0x3ef3fa7057e2611a2a44f2029b9030a912d1223b",
+      "0x5de916c5a824aa94175a0c332ca25a5cf024d105",
+      "0x9b19b5251c96c89c14f39f254c607a5a74e0a938"
+     ],
+     "threshold": 3
+    }
+   },
+   {
+    "address": "0x4cad1efbfd5f0848e0c3c14fab23f92b2fa81f17",
+    "pct": 1.77,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xe3d6871190d7143ea3e14c680f7b9fdd6bdc25a1",
+    "pct": 1.12,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x5ed60e6c6183521f3a9f893b4368c407e78b23d5",
+    "pct": 1.1,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": []
+ },
+ "audiera:binance-smart-chain": {
+  "holders": [
+   {
+    "address": "0x4efe47293d511c5b343134b7ffb000a638ea4fe0",
+    "pct": 30.78,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xb479c8f90b3064879aa59d4fa5bf8219bb0dd439",
+    "pct": 15.92,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x5f606fea477d05f9e7af4d6558f0b73b675ab8a0",
+    "pct": 4.35,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x61f38baeba826e0be0f5ce180e835e313c8a8dd5",
+    "pct": 1.41,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x4b7d4c29c7d9517055c392375238f1f00ad63fe2",
+    "pct": 1.32,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x536b87581f8f28e4c2dcd8ea78a53135f5abd6eb",
+    "pct": 1.13,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x5a6bd8d7d1f9d1617fdd8a389919d8eb8b271185",
+    "pct": 0.88,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x90e247cdc4ce307b34a7eb439643eb7b3b9d0042",
+    "pct": 0.6,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x4ed1e277ba96a54ddc9729d0f26a20b1bf408525",
+    "pct": 0.57,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x68c68e7b40d9fa2571a9eed8890b196a3e76a0da",
+    "pct": 0.44,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": []
+ },
+ "akedo:binance-smart-chain": {
+  "holders": [
+   {
+    "address": "0x27333bd8c321a263b0565e69eea3b736b9d1f42c",
+    "pct": 14.37,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xd229b65d50e412cc3c394233e7a53a1dac4da457",
+    "pct": 6.05,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xca9a3c9542761e8d1c0a3d7691baad0447637401",
+    "pct": 4.23,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xb8210c25df20921538ea35729badc3e0a63520f1",
+    "pct": 4.11,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x57114155891605d9c5a2907e2b702cf60ab07c0e",
+    "pct": 3.47,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x3e2bd24ea2aabf4311c3ca61bf5ce290ff52a448",
+    "pct": 3.41,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x73d8bd54f7cf5fab43fe4ef40a62d390644946db",
+    "pct": 3.37,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x55a3319b1cfe8b82cacb0b5cf96c7445bf12066a",
+    "pct": 2.8,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xa9578b2b9ddcd0465cdc05140b3821032b5a722b",
+    "pct": 2.45,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xaf6bc591cd10e62c74497bd5f9904329ecb59da1",
+    "pct": 2.32,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": []
+ },
+ "momentum-3:binance-smart-chain": {
+  "holders": [
+   {
+    "address": "0x8894e0a0c962cb723c1976a4421c95949be2d4e3",
+    "pct": 98.31,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x128463a60784c4d3f46c23af3f65ed859ba87974",
+    "pct": 1.49,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xe2fc31f816a9b94326492132018c3aecc4a93ae1",
+    "pct": 0.1,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xba8db0caf781cac69b6acf6c848ac148264cc05d",
+    "pct": 0.03,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df",
+    "pct": 0.01,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x5a1750754742369485894b5aec2fad000b216bba",
+    "pct": 0.01,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x0ff18fceff1daaac509c841df5e619f608373242",
+    "pct": 0.0,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x1e94919b63513d7c77e2c8c92ec63937d4eebf67",
+    "pct": 0.0,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0x33a60d07f3ffb3e068f05e91686cf976920c27bd",
+    "pct": 0.0,
+    "contract": 0,
+    "tag": "",
+    "safe": null
+   },
+   {
+    "address": "0xf3b19670523d36b164e816a522442422fd3f53b6",
+    "pct": 0.0,
+    "contract": 1,
+    "tag": "",
+    "safe": null
+   }
+  ],
+  "overlap": []
+ }
+}

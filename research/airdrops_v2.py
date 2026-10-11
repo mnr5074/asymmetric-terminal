@@ -33,7 +33,7 @@ SALE_ROUNDS = re.compile(r'public (token )?sale|token sale|ico\b|ido\b|community
 CRYPTO_WORDS = re.compile(r'airdrop|\btokens?\b|\btge\b|crypto|\bdefi\b|blockchain|re?staking|stablecoin|web3|on-?chain|\bdex\b|perps?\b|perpetual|testnet|mainnet|tokenomics|points program|\b(monad|solana|ethereum|arbitrum|sui|bnb chain|hyperliquid|aptos|berachain|movement)\b|\$[A-Z]{2,8}\b|raises \$|seed round|series a|lending protocol', re.I)
 TEMPLATE = re.compile(r'funding rounds, token sale review|price today|to usd chart|how to (easily )?buy|price (prediction|forecast)|learn to purchase|kabul university', re.I)
 PRICE_PAGE = re.compile(r'price today|to usd chart|price (prediction|forecast)|how to (easily )?buy', re.I)
-CONFIRMED = re.compile(r'tokenomics|tge (date|on|set)|token generation event (on|set|date)|airdrop (is )?(live|confirmed|checker|claim)|claim (is )?(live|open)|listing on|lists? \$?[A-Z]{2,8}|token sale|public sale|launches? (its )?\$?[A-Z]{2,8} token', re.I)
+CONFIRMED = re.compile(r'ahead of (its |the |a )?(planned )?(q[1-4] )?(\d{4} )?(tge|token launch)|\btge\b|token launch|airdrop (snapshot|allocation|eligibility)|tokenomics|tge (date|on|set)|token generation event (on|set|date)|airdrop (is )?(live|confirmed|checker|claim)|claim (is )?(live|open)|listing on|lists? \$?[A-Z]{2,8}|token sale|public sale|launches? (its )?\$?[A-Z]{2,8} token', re.I)
 SPECUL = re.compile(r'potential airdrop|possible airdrop|how to (get|farm|qualify)|airdrop guide|points (program|campaign)|season \d|could airdrop|retroactive', re.I)
 SITE_KW = {'points': r'\bpoints?\b', 'season': r'\bseason\s*\d|\bseason\b', 'leaderboard': r'leaderboard|ranking', 'airdrop': r'airdrop',
            'tge': r'\bTGE\b|token generation', 'tokenomics': r'tokenomics', 'xp/miles': r'\b(xp|miles|shards|pills|marks|gems|sats)\b'}
@@ -51,10 +51,12 @@ def google_news(name, days=120):
         try: tt = dt.datetime.strptime(pd.group(1), '%a, %d %b %Y %H:%M:%S %Z').replace(tzinfo=dt.timezone.utc).timestamp() if pd else None
         except Exception: tt = None
         if not tt or NOW - tt > days * 86400: continue
-        if not re.search(r'(?<![A-Za-z0-9])' + re.escape(name) + r'(?![A-Za-z0-9])', t, re.I) or not CRYPTO_WORDS.search(t): continue
+        head = t.rsplit(' - ', 1)[0] if ' - ' in t else t  # drop the ' - Source' suffix before matching
+        if not re.search(r'(?<![A-Za-z0-9])' + re.escape(name) + r'(?![A-Za-z0-9])', head, re.I) or not CRYPTO_WORDS.search(head): continue
+        t = t if len(t) < 400 else t[:400]
         tpl = bool(TEMPLATE.search(t))
         out.append({'t': day(tt), 'title': t[:200], 'url': link, 'template': tpl, 'price_page': bool(PRICE_PAGE.search(t)),
-                    'confirmed_kw': bool(CONFIRMED.search(t)) and not tpl, 'spec_kw': bool(SPECUL.search(t))})
+                    'confirmed_kw': bool(CONFIRMED.search(head)) and not tpl, 'spec_kw': bool(SPECUL.search(t))})
     out.sort(key=lambda x: x['t'], reverse=True)
     return out, 'ok'
 
@@ -119,9 +121,12 @@ def build_comparables(seed, raises_by):
         r['months_last_round_to_tge'] = round((t0 - max(x['date'] for x in pre)) / 86400 / 30.4, 1) if pre else None
         r['months_first_round_to_tge'] = round((t0 - min(x['date'] for x in pre)) / 86400 / 30.4, 1) if pre else None
         rows.append(r)
-    S = lambda k: [r[k] for r in rows if r.get(k) is not None and r['name'] != 'YO Protocol']
+    for r, c in zip(rows, seed['comparables']): r['small'] = bool(c.get('small')); r['pending'] = bool(c.get('pending'))
+    S = lambda k: [r[k] for r in rows if r.get(k) is not None and not r['small']]
     stats = {k: {'p25': q(S(k), .25), 'median': q(S(k), .5), 'p75': q(S(k), .75), 'n': len(S(k))}
              for k in ('airdrop_pct', 'fdv_tge', 'fdv_per_raised', 'airdrop_per_tvl', 'months_last_round_to_tge', 'months_first_round_to_tge')}
+    sm = [r['fdv_per_raised'] for r in rows if r['small'] and r.get('fdv_per_raised')]
+    stats['fdv_per_raised_small'] = {'median': q(sm, .5), 'n': len(sm), 'names': [r['name'] for r in rows if r['small']]}
     return rows, stats
 
 def timeline(rz, news, site, stats):
@@ -141,10 +146,10 @@ def timeline(rz, news, site, stats):
     priced = [x for x in rz if not SALE_ROUNDS.search(x.get('round') or '') and x.get('date')]
     est = None
     if priced:
-        last = max(x['date'] for x in priced); m = stats['months_last_round_to_tge']
+        last = min(x['date'] for x in priced); m = stats['months_first_round_to_tge']
         if m['median'] is not None:
             lo, mid, hi = (last + (m[k] or 0) * 30.4 * 86400 for k in ('p25', 'median', 'p75'))
-            est = {'from': day(lo), 'mid': day(mid), 'to': day(hi), 'method': f"last priced round {day(last)} + comparables' last-round-to-TGE lag (p25 {m['p25']:.0f} / median {m['median']:.0f} / p75 {m['p75']:.0f} months, n={m['n']})"}
+            est = {'from': day(lo), 'mid': day(mid), 'to': day(hi), 'method': f"first priced round {day(last)} + comparables' first-round-to-TGE lag (p25 {m['p25']:.0f} / median {m['median']:.0f} / p75 {m['p75']:.0f} months, n={m['n']})"}
             if bucket == 'unknown': bucket = 'overdue' if hi < NOW else 'mid' if lo < NOW + 180 * 86400 else 'far'
     return {'bucket': bucket, 'window': est, 'evidence': ev}
 
@@ -232,8 +237,15 @@ def main():
         price_pages = [n['title'] for n in e['news'] if n['price_page']][:2]
         heat = (e['v1'] or {}).get('heat')
         site_hits = (e.get('site') or {}).get('hits') or []
-        pts_ev = bool(set(site_hits) & {'points', 'season', 'leaderboard', 'xp/miles'}) or any(re.search(r'points|season|xp\b', n['title'], re.I) for n in e['news']) or bool(e['v1'])
+        seedf = next((f for f in seed['farms'].values() if f.get('defillama_slug') == e['slug']), None)
+        pts_ev = bool(seedf) or bool(set(site_hits) & {'points', 'season', 'leaderboard', 'xp/miles'}) or any(re.search(r'points|season|xp\b', n['title'], re.I) for n in e['news']) or bool(e['v1'])
         tl = timeline(e['raises'], e['news'], e.get('site'), cstats)
+        if seedf: tl['evidence'] = seedf['evidence'] + tl['evidence']
+        ver = (seed.get('verified') or {}).get(e['slug']) or []
+        if ver:
+            tl['evidence'] = ver + tl['evidence']
+            if any(v['kind'] == 'official' and v['confirmed'] for v in ver): pts_ev = True
+            elif all(not v['confirmed'] for v in ver) and not set(site_hits) & {'season', 'leaderboard', 'xp/miles'}: pts_ev = False
         age = th.get('age_days') or (round((NOW - e['listed']) / 86400) if e.get('listed') else None)
         # ---- under-farmed score (0-100) ----
         s_tvl = clamp(1 - math.log10(max(tvl, 5e6) / 5e6) / math.log10(200)) * (0.7 if tvl < 5e5 else 1)
@@ -247,13 +259,16 @@ def main():
         if th.get('ch90') is not None and th['ch90'] < -0.6: score -= 8; flags.append(f"TVL fell {th['ch90'] * 100:.0f}% in 90d")
         if (age or 0) > 1095: score -= 10; flags.append('live 3+ years without a token: drop increasingly unlikely')
         if tok_match or price_pages: score -= 12; flags.append('possible existing token: ' + '; '.join(tok_match + price_pages)[:160] + ' (name match, verify)')
-        if tl['bucket'] == 'overdue': flags.append("past the comparables' usual funding-to-TGE window with no token news")
+        if tl['bucket'] == 'overdue': score -= 6; flags.append("past the comparables' usual funding-to-TGE window with no token news")
         score = round(clamp(score, 0, 100), 1)
         if not pts_ev: score = min(score, 57.9)
         # ---- allocation expectation (comparables) ----
         fdv_src, fdv_lo, fdv_mid, fdv_hi = None, None, None, None
         if val: fdv_lo, fdv_mid, fdv_hi, fdv_src = val, val * 1.5, val * 3, 'last disclosed valuation x1 / x1.5 / x3'
-        elif raised and mul['median']: fdv_lo, fdv_mid, fdv_hi, fdv_src = raised * mul['p25'], raised * mul['median'], raised * mul['p75'], f"raised x comparables FDV/raised (p25 {mul['p25']:.0f}x / median {mul['median']:.0f}x / p75 {mul['p75']:.0f}x)"
+        elif raised and mul['median']:
+            small = cstats['fdv_per_raised_small']['median'] or mul['p25']
+            fdv_lo, fdv_mid, fdv_hi = raised * small, raised * math.sqrt(small * mul['median']), raised * mul['median']
+            fdv_src = f"raised x FDV/raised: low = small-protocol comps ({small:.0f}x: {', '.join(cstats['fdv_per_raised_small']['names'])}), high = big-drop comps median ({mul['median']:.0f}x), mid = geometric mean"
         pool = {'lo': fdv_lo * pct_lo / 100, 'mid': fdv_mid * pct_med / 100, 'hi': fdv_hi * pct_hi / 100} if fdv_mid else None
         per1k = {k: v * 1000 / tvl for k, v in pool.items()} if (pool and tvl) else None
         why = [f"TVL ${tvl / 1e6:.2f}M" + (f" ({th['ch30'] * 100:+.0f}% 30d)" if th.get('ch30') is not None else ''),
@@ -275,11 +290,11 @@ def main():
     for k, f in seed['farms'].items():
         try: th = tvl_stats(jget(f"https://api.llama.fi/protocol/{f['defillama_slug']}", 60).get('tvl') or [])
         except Exception: th = {}
-        farms[k] = {**f, 'tvl_hist': th, 'news': (google_news(f['name'].split(' (')[0])[0] or [])[:10]}
+        farms[k] = {**f, 'tvl_hist': th, 'news': (google_news(f['name'].split(' (')[0], 365)[0] or [])[:10]}
     res = {'generatedAt': int(NOW * 1000), 'sources': status, 'comparables': comps, 'comparable_stats': cstats, 'candidates': out, 'farms': farms,
            'methods': {
                'underfarmed': 'Score 0-100 = 25*low TVL (1 at <=$5M, 0 at $1B, x0.7 under $0.5M) + 20*funding vs TVL (log10(raised/TVL): 0.01x=0, 10x=1) + 15*young (1 - days since TVL first >$100K / 540) + 15*quiet (1 - crypto headlines in 90d / 25, x (1 - airdrops.io heat/150)) + 15*points evidence (1 found, 0.3 unknown) + 10*token hint (near 1, mid 0.7, far 0.4, overdue 0.3, unknown 0.2) + 3 if top-tier backer; -8 if TVL fell >60% in 90d; -10 if live 3+ years; -12 if a CoinGecko coin has the same name or price-page headlines exist (possible token); capped at C (57.9) without points evidence.',
-               'timeline': "Evidence first: public token sale round, 'tokenomics/TGE/claim' headlines, TGE/tokenomics on the official site => near. Otherwise window = last priced round + comparables' last-round-to-TGE lag (p25/median/p75).",
+               'timeline': "Evidence first: public token sale round, 'tokenomics/TGE/claim' headlines, TGE/tokenomics on the official site => near. Otherwise window = first priced round + comparables' first-round-to-TGE lag (p25/median/p75); 'overdue' = past the p75 date with no token news.",
                'allocation': 'Community pool $ = FDV estimate x airdrop % (comparables p25/median/p75). FDV estimate = disclosed valuation x1/1.5/3, else total raised x comparables FDV/raised p25/median/p75. Per $1k = pool x 1000 / today TVL: a ceiling that assumes the whole pool is split by capital at today\'s TVL. Real programs weight time, boosts and referrals, and TVL grows.',
                'value_user': 'Your $ = your share of total points x community pool $. Share = your points / total points when total is published; otherwise only a capital share (your deposit / TVL) can be used as a rough proxy for capital-weighted programs.'},
            'limits': ['No free source publishes participant counts for most points programs; news headline count and airdrops.io heat are attention/crowding proxies.',

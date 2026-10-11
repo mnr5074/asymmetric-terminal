@@ -23,6 +23,44 @@ setsid nohup research/run.sh > data/run.log 2>&1 < /dev/null &   # refresh loop 
 npm install && node scripts/screenshot.js "http://localhost:8000/?scan=solana:<mint>" screenshot.png
 ```
 
+### Keeping :8000 alive: supervisor, planned restarts, restart log
+
+The :8000 server runs under **`scripts/supervisor.js`** (it replaced the old `scripts/watchdog.sh` polling loop, which is now a shim that
+just runs the supervisor). Start it with `scripts/start-supervisor.sh` (no-op if already running) **from a shell that has
+`XAI_API_KEY`, `X_BEARER_TOKEN`, `NANSEN_API_KEY`** set: those are not in `.env`, and the server inherits them from the supervisor.
+
+* **Crash**: the supervisor spawns `scripts/run-server.sh` (sources `.env`, `exec node server.js`) as its own child and restarts it the
+  moment it exits (measured ~0.3-0.6 s until the port answers again). Exponential backoff (1, 2, 4 ... 60 s) only if it dies < 30 s after start.
+* **Hang**: `/api/health` probe (any HTTP answer = alive). Normal: every 5 s, 8 s timeout, restart after 3 consecutive failures
+  (~25 s for a fully blocked event loop). **Volatile windows** (lib/seasonality pooled-majors verdict `volatile`, or a fresh
+  liquidation `cascade` in data/liquidations.json): every 2 s, 5 s timeout, restart after 2 failures (~11 s). Override with
+  `SUP_PROBE_MS / SUP_TIMEOUT_MS / SUP_FAILS`; `touch data/supervisor_force_volatile` forces the aggressive profile.
+* It only ever signals the **exact supervised PID** (SIGTERM, then SIGKILL after 3 s). Never pattern kills. If another process already
+  serves :8000, it is *adopted* (watched by PID + probe) instead of starting a duplicate.
+* `node scripts/supervisor.js status` prints the state (data/supervisor.json). Log: `watchdog.log` (`[supervisor]` lines).
+
+**Intentional restarts (workers / agents): use**
+
+```bash
+scripts/restart-server.sh "why + who"     # e.g. "load new perps code (perps worker)"
+```
+
+It writes `data/restart_planned.json`, SIGTERMs the supervised PID and waits until the new server is healthy. The restart is logged as
+**planned** and never alerts. **Don't** `pkill -f "node server.js"` (that also kills other workers' test servers on other ports) or kill
+the :8000 PID by hand: that is logged as an *unplanned* restart and alerts.
+
+**Restart log**: `data/restarts.json` (time, reason = exit code / signal / hung / planned, `downtimeS`, old/new PID, attempts).
+`GET /api/health/detail` returns uptime, supervisor state + probe profile, which secrets are present (booleans only), and restart
+history. The Command view's RISK INFRA panel shows a **Terminal uptime** row, and a red banner appears at the top of the Command view
+for 1 h after an **unplanned** restart. Unplanned restarts of :8000 go to the alert queue (data/alerts.log) and are pushed through
+lib/alerts.js transports (ntfy / Brevo / SMTP, whatever is configured) **at most once per 30 min**
+("Asymmetric Terminal restarted at HH:MM PT after N s down: reason"); extra ones in that window are queued only.
+State: data/restart_alerts_state.json. Only the server whose PORT matches handles a record, so test servers on other ports stay silent.
+
+**Reboot**: this box has no cron daemon and no systemd (PID 1 is the sandbox pod daemon), so nothing starts the supervisor at boot.
+After a box restart run `scripts/start-supervisor.sh` from an agent shell that has the three secrets (a clean login shell does not
+get them: `env -i bash -lc 'test -n "$XAI_API_KEY"'` fails; they only exist in processes the platform started with them).
+
 URL params: `?scan=solana:<mint>` or `?scan=robinhood:<0x…>`, `&deep=0` (skip the deep scan), `&wallet=<address>`,
 `&tab=moon`, `&expand=1`, `&disc=pump|eco|profiles`.
 
@@ -111,7 +149,7 @@ FRED's `fredgraph.csv` rejects browser-like user agents, so the server fetches i
 
 ## Options screener (header: Options)
 
-Every listed **Derive.xyz** option (about 3,800 across BTC, ETH, SOL, HYPE, XRP, ZEC, ADA, PUMP, LIT, VVV, XAUT, CC; live order book via `api.lyra.finance/public`) plus **CBOE delayed chains** (`cdn-api.cboe.com/api/global/delayed_quotes/options/<SYM>.json`, about 15 min delayed, ~184K contracts) for 63 liquid US stocks/ETFs (change with `OPT_UNIVERSE`). Long calls and puts only, so max loss is the premium. Built by `research/options.py` into `data/options.json`; the server re-runs it in the background when the file is older than 30 minutes (a run takes about 3 minutes).
+Every listed **Derive.xyz** option (about 3,800 across BTC, ETH, SOL, HYPE, XRP, ZEC, ADA, PUMP, LIT, VVV, XAUT, CC; live order book via `api.derive.xyz/v3/public` (get_tickers per currency+expiry)) plus **CBOE delayed chains** (`cdn-api.cboe.com/api/global/delayed_quotes/options/<SYM>.json`, about 15 min delayed, ~184K contracts) for 63 liquid US stocks/ETFs (change with `OPT_UNIVERSE`). Long calls and puts only, so max loss is the premium. Built by `research/options.py` into `data/options.json`; the server re-runs it in the background when the file is older than 30 minutes (a run takes about 3 minutes).
 
 Per contract: Black-Scholes fair value using realized vol (mean of 30/90/180-day close-to-close; Yahoo daily closes for stocks, Coinbase daily candles for crypto), premium vs fair, IV vs RV, max loss, breakeven and move needed, ±1σ/±2σ range by expiry, the underlying price needed at expiry for 3x/5x/10x, a suggested exit date (keeps 40% of the time left, before theta speeds up) with the price needed by then for a 3x mark, P(ITM) and P(touch the 3x level) under IV and RV, EV, reward:risk at a 2σ move, theta per day, volume/OI (unusual activity flag), earnings date before expiry (Nasdaq calendar, IV crush warning), and the best expiry per underlying.
 
@@ -212,3 +250,21 @@ Posts Read only ($0.005 per post returned; counts and User Read are not used). `
 - `research/forensics_cases.json`: wallet-level crash forensics (SIREN, VELVET, STONK, ALLINU, LAB) used by `lib/precedents.js` as "this happened before" examples on the Exit Plan card triggers.
 - `lib/whalewatch.js`: free whale-exit tracking: snapshots top holders on every live-feed scan (no extra API calls) and flags top holders cutting 2%+ of supply within 72h (Exit Plan trigger).
 All research scripts block Nansen and X hosts and keep a per-host call counter.
+
+## Contract vulnerability scanner (lib/contractscan.js, research/contractscan.py)
+
+Scans every crash-catalog, eco, research-DB, CoinGecko control and watchlist token (1,282 in the universe, 1,268 scannable).
+- `python3 research/contractscan.py universe` builds `data/contractscan_universe.json`. Then `node lib/contractscan.js batch [--chain=X] [--force|--rescan-evm]` writes `data/contractscan.json` (resumable). Then `python3 research/contractscan.py stats` writes `contractscan_{coverage,corr,templates}.json`, and `node lib/contractscan.js reflag` re-applies the flags.
+- API: `/api/contractscan` returns a summary plus coverage and correlation. `/api/contractscan?chain=&address=` returns the batch result, or scans on demand and caches it.
+- **EVM**: GoPlus (cached, throttled to one call every 3 s, retries on "too many requests"), Honeypot.is, and our own eth_call sell/buy/transfer simulation (a Probe contract plus state overrides that find the balance slot; nothing is sent). Bytecode checks: mint, blacklist, whitelist, pause, trading switch, max-tx, tax setters, balance edit, tx.origin, external call, selfdestruct and delegatecall selectors. Proxy checks: EIP-1967, EIP-1822 and OZ-legacy slots, EIP-1167 clones, and whether the proxy admin is an EOA, a Safe or a timelock. Also: owner() and getOwner(), ownership history from OwnershipTransferred logs (ETH and Robinhood only; no free archive logs on the other chains), verified source (Sourcify/Blockscout/GoPlus), and a skeleton hash compared against honeypot templates.
+- **Solana**: RPC decode of SPL and Token-2022. It covers mint and freeze authority, transfer fee (with max fee and authority), transfer hook, permanent delegate, non-transferable, default-frozen state, pausable and close authority. It also checks the metadata update authority, program upgradeability for custom hook programs, RugCheck, GoPlus (watchlist only), and runs a Jupiter sell simulation from a real holder (`simulateTransaction`, unsigned). It rebuilds the at-launch authority state from the first InitializeMint transaction when the history is under about 2,000 transactions.
+- **Integration**: `lib/scanner.js` adds `cs_*` risk factors with plain-English text. Flags already covered by older checks get weight 0. Weights: critical 25, high 12, medium 5. `lib/composite.js` adds a "Contract scan" factor (weight 2) with grade caps: any critical flag → F, two or more high → D, one high → C.
+- **Paid, not used**: TokenSniffer API ($99/mo), De.Fi Scanner API (credit-based), GoPlus paid ($199–3,499/mo), CertiK (~$8–15K for a simple ERC-20), Hacken (~$5–30K), QuillAudits (~$5–7K per 1K LoC quick audit). Etherscan v2 needs a free key, which we don't have, so it is skipped. Nansen and X calls: 0.
+- **Caveats**: correlation features are measured *now*, except the launch_* and db_* features. Odds ratios come with Fisher p-values and a Mantel–Haenszel OR stratified by chain (EVM) or by sampling source (Solana). RugCheck "danger" flags are mostly market state (Low Liquidity, holder concentration), so they leak the outcome; use `rugcheck_contract_danger` instead. Solana `token2022` is a launch-era / launchpad confound, not a protective feature.
+
+### Added 2026-10-11 (PT): wiring pass
+- **Developer Activity panel** (Command view, public/research_desks.js). Uses `/api/devactivity` (data/devactivity.json, rebuilt from cached git history). Silence and burst flags now also go to the signal bus as detector `dev_activity`, so they get auto-labels and rolling scores. The composite `dev` factor is unchanged.
+- **Insider-privilege scan + Velvet exposé.** Code is lib/insider.js. Endpoints: `/api/insider` (15 ranked tokens with P1–P4 scores and tx-level evidence) and `/api/insider/velvet` (research/velvet_postcrash.md + data/velvet_postcrash.json). The panel sits on the Command view.
+  - Composite adjustment `insider`: down to −8, with a warning at a score of 6/12 or more. It matches by address on live and screener rows, and by symbol (3+ characters) on perp rows.
+  - Signal-bus detector `insider_pattern`.
+- **Pattern Lab EXT live wiring.** Tape rules run on the GT swaps that the fakevolume scan already fetches (no extra calls). Also added: feed rules 57/59/60, live 40/40b for memecoins, composite adjustment `plabx` (weights for robust rules only) and signal-bus detectors `plx_<id>`. The build rebuilds itself every 12 h. Details: PATTERN_LAB_EXT.md, "Live wiring".

@@ -192,6 +192,7 @@ def map_stage(limit=None):
         for owner, repo in x['links']:
             ol = owner.lower()
             if ol in owners_seen and not repo: continue
+            first_owner = ol not in owners_seen
             owners_seen.add(ol)
             listing = gh_owner_repos(owner)
             ev = []
@@ -207,14 +208,17 @@ def map_stage(limit=None):
                     info = {'name': pg['name'], 'fork': pg['fork'], 'archived': pg['archived'], 'mirror': pg['mirror'], 'stars': None, 'pushed': None, 'desc': ''}
                     owner = pg.get('owner') or owner
                 if any(k and len(k) >= 3 and k in norm(info['name'] + info.get('desc', '')) for k in name_keys): ev.append('repo name/description matches token')
-                if info['fork'] or info.get('mirror'): evid.append(f'{owner}/{info["name"]}: skipped ({"fork" if info["fork"] else "mirror"})')
+                if info.get('mirror') or info.get('archived'): evid.append(f'{owner}/{info["name"]}: skipped ({"mirror" if info.get("mirror") else "archived"})')
+                elif info['fork'] and not ev: evid.append(f'{owner}/{info["name"]}: skipped (fork, no ownership evidence)')
+                elif info['fork']: cand.append(dict(info, owner=owner, why='linked on CoinGecko; GitHub-fork network of an upstream codebase but the project\'s own primary repo (ownership evidence present)')); evid.append(f'{owner}/{info["name"]}: kept although GitHub marks it a fork (CoinGecko-linked primary repo)')
                 else: cand.append(dict(info, owner=owner, why='linked on CoinGecko'))
             if listing and listing.get('repos'):
                 ok = [r for r in listing['repos'] if not r['fork'] and not r['archived'] and not r['mirror'] and not DOCSY.search(r['name'])]
                 if any(any(k and len(k) >= 4 and k in norm(r['name'] + r['desc']) for k in name_keys) for r in ok[:30]): ev.append('org repos mention token name')
-                if not repo or not cand:   # org link (or linked repo unusable): take main repos from the org
-                    top = sorted(ok, key=lambda r: -(r['stars'] or 0))[:4]
-                    rec = sorted([r for r in ok if r['pushed'] and r not in top and (r['stars'] or 0) >= 1], key=lambda r: r['pushed'], reverse=True)[:2]
+                if first_owner:   # always add the owner's main repos (CoinGecko repo links are often stale): org link -> 4 top + 2 recent; repo link -> 2 top + 1 recent
+                    nt, nr = (4, 2) if (not repo or not cand) else (2, 1)
+                    top = sorted(ok, key=lambda r: -(r['stars'] or 0))[:nt]
+                    rec = sorted([r for r in ok if r['pushed'] and r not in top and (r['stars'] or 0) >= 1], key=lambda r: r['pushed'], reverse=True)[:nr]
                     for r in top: cand.append(dict(r, owner=owner, why='top-starred non-fork'))
                     for r in rec: cand.append(dict(r, owner=owner, why='most recently pushed non-fork'))
                 forks = sum(1 for r in listing['repos'] if r['fork']); arch = sum(1 for r in listing['repos'] if r['archived'])
@@ -228,7 +232,7 @@ def map_stage(limit=None):
         strong = any('homepage' in e for r in repos for e in r['evidence'])
         medium = any(r['evidence'] for r in repos)
         shared = any(r['shared_with'] for r in repos)
-        x['repos'] = repos[:6]; x['notes'] = evid
+        x['repos'] = repos[:8]; x['notes'] = evid
         x['verification'] = 'homepage' if strong else ('name-match' if medium and not shared else ('ambiguous (owner shared by several tokens)' if shared else 'unverified (CoinGecko link only)'))
         x['status'] = 'mapped' if repos else 'repo_unusable'
         x['verified'] = bool(repos) and (strong or (medium and not shared))
@@ -432,7 +436,8 @@ def analyze():
         for k, r in enumerate(rows):
             r['burst_ev'] = r['burst'] and k - lastb > 4
             if r['burst']: lastb = k
-        series[cid] = rows; panel += rows
+        series[cid] = rows
+        if P['x'].get('verified'): panel += rows   # backtest uses verified-ownership repos only
     # ---- event study
     def study(flag, hz, thr, direction):
         elig = [r for r in panel if r[hz] is not None and r['avg8'] is not None]
@@ -533,7 +538,7 @@ def analyze():
             q['tokens'] += 1; q['repo_listed'] += bool(x.get('links')); q['mapped'] += x.get('status') == 'mapped' or x.get('id') in projects
             q['verified'] += bool(x.get('verified')); q['analyzed'] += x.get('id') in projects
     meme = [x for x in items.values() if any('meme' in (c or '').lower() for c in (jload(os.path.join(CACHE, 'cg', safe(x['id']) + '.json'), {}) or {}).get('categories') or [])]
-    coverage = {'universe': len(items), 'status_counts': st, 'by_source': srcs, 'projects_analyzed': len(projects),
+    coverage = {'universe': len(items), 'backtest_projects_verified_with_prices': len({r['id'] for r in panel if r['has_px']}), 'status_counts': st, 'by_source': srcs, 'projects_analyzed': len(projects),
                 'projects_with_price_series': sum(1 for P in projects.values() if P.get('px_days', 0) > 200),
                 'memecoins': {'n': len(meme), 'with_repo_listed': sum(1 for x in meme if x.get('links')), 'analyzed': sum(1 for x in meme if x['id'] in projects)},
                 'repos_synced': sum(len(P['hs']) for P in projects.values())}

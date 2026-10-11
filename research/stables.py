@@ -62,10 +62,10 @@ def rpc(url, method, params, gap=0.25, retries=6):
         if w > 0: time.sleep(w)
         try:
             req = urllib.request.Request(url, json.dumps({'jsonrpc': '2.0', 'id': 1, 'method': method, 'params': params}).encode(), UA)
-            r = json.load(urllib.request.urlopen(req, timeout=90))
+            r = json.load(urllib.request.urlopen(req, timeout=45))
             if 'error' in r:
                 m = str(r['error'])
-                if i < retries and any(k in m.lower() for k in ('rate', 'limit exceeded', 'timeout', 'busy', 'try again', 'internal')):
+                if i < retries and any(k in m.lower() for k in ('rate', 'limit exceeded', 'timeout', 'busy', 'try again', 'internal', 'temporarily unavailable', 'unavailable')):
                     time.sleep(2 * (i + 1)); continue
                 raise RuntimeError(m[:300])
             return r['result']
@@ -78,8 +78,8 @@ def rpc(url, method, params, gap=0.25, retries=6):
             raise
 
 class Chain:
-    def __init__(self, name, urls, chunk, gap, threads=1):
-        self.name, self.urls, self.chunk, self.gap, self.threads = name, urls, chunk, gap, threads
+    def __init__(self, name, urls, chunk, gap, threads=1, batch_ts=False):
+        self.name, self.urls, self.chunk, self.gap, self.threads, self.batch_ts = name, urls, chunk, gap, threads, batch_ts
         self.tscache = {}
     def call(self, m, p):
         err = None
@@ -87,6 +87,22 @@ class Chain:
             try: return rpc(u, m, p, self.gap)
             except Exception as e: err = e
         raise err
+    def ts_many(self, blocks):
+        """exact timestamps via JSON-RPC batch (100 per HTTP request)"""
+        need = sorted(set(b for b in blocks if b not in self.tscache))
+        for i in range(0, len(need), 100):
+            part = need[i:i + 100]
+            body = [{'jsonrpc': '2.0', 'id': j, 'method': 'eth_getBlockByNumber', 'params': [hex(b), False]} for j, b in enumerate(part)]
+            for k in range(5):
+                try:
+                    r = json.load(urllib.request.urlopen(urllib.request.Request(self.urls[0], json.dumps(body).encode(), UA), timeout=60)); break
+                except Exception:
+                    if k == 4: raise
+                    time.sleep(3 * (k + 1))
+            for x in r:
+                if 'result' in x and x['result']: self.tscache[part[x['id']]] = int(x['result']['timestamp'], 16)
+            time.sleep(self.gap)
+        return {b: self.tscache.get(b) for b in blocks}
     def head(self): return int(self.call('eth_blockNumber', []), 16)
     def ts(self, b):
         if b not in self.tscache: self.tscache[b] = int(self.call('eth_getBlockByNumber', [hex(b), False])['timestamp'], 16)
@@ -104,16 +120,16 @@ class Chain:
             else: lo = g
         return hi
 
-ETH = Chain('ethereum', ['https://rpc.mevblocker.io', 'https://rpc.flashbots.net'], 4000, 0.3)
+ETH = Chain('ethereum', ['https://rpc.mevblocker.io'], 4000, 0.3)  # archive logs; (flashbots returns EMPTY for old ranges -> never use as fallback)
 BASE = Chain('base', ['https://gateway.tenderly.co/public/base'], 1000, 0.12, threads=4)
-RH = Chain('robinhood', ['https://rpc.mainnet.chain.robinhood.com'], 300_000, 0.3)  # Nitro returns blockTimestamp=0x0 -> interpolate inside 300k-block (~8h) chunks
+RH = Chain('robinhood', ['https://rpc.mainnet.chain.robinhood.com'], 5_000_000, 0.3, batch_ts=True)  # Nitro returns blockTimestamp=0x0 -> exact ts via batched eth_getBlockByNumber
 
 def a2t(a): return '0x' + '0' * 24 + a[2:].lower()
 # Each source: what to scan and how to decode. kind: 'fiat' (USDC Mint/Burn), 'tether' (Issue/Redeem), 'xfer' (Transfer 0x0)
 SOURCES = [
     {'id': 'ethereum:USDC', 'chain': ETH, 'coin': 'USDC', 'addr': '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 'dec': 6, 'kind': 'fiat', 'native': True, 'days': DAYS, 'label': 'native (Circle)'},
     {'id': 'base:USDC', 'chain': BASE, 'coin': 'USDC', 'addr': '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913', 'dec': 6, 'kind': 'fiat', 'native': True, 'days': BASE_DAYS, 'label': 'native (Circle)'},
-    {'id': 'ethereum:USDT', 'chain': ETH, 'coin': 'USDT', 'addr': '0xdAC17F958D2ee523a2206206994597C13D831ec7', 'dec': 6, 'kind': 'tether', 'native': True, 'days': max(DAYS, 365), 'chunk': 20000, 'label': 'native (Tether)'},
+    {'id': 'ethereum:USDT', 'chain': ETH, 'coin': 'USDT', 'addr': '0xdAC17F958D2ee523a2206206994597C13D831ec7', 'dec': 6, 'kind': 'tether', 'native': True, 'days': max(DAYS, 365), 'chunk': 10000, 'label': 'native (Tether)'},
     {'id': 'robinhood:USDG', 'chain': RH, 'coin': 'USDG', 'addr': '0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168', 'dec': 6, 'kind': 'xfer', 'native': True, 'days': 365, 'label': 'native (Paxos-issued Global Dollar; listed on docs.robinhood.com/chain/contracts)'},
 ]
 # Robinhood Chain extra stables (identified via RPC symbol()/name()/decimals(); filled in RH_EXTRA below)
@@ -161,13 +177,15 @@ def scan_range(src, a, b):
             for l in logs:
                 if l.get('blockTimestamp') in ('0x0', '0x', 0): l.pop('blockTimestamp')
             need = [l for l in logs if not l.get('blockTimestamp')]
-            if need:  # interpolate timestamps inside [x,y]
+            exact = {}
+            if need and ch.batch_ts: exact = ch.ts_many([int(l['blockNumber'], 16) for l in need])
+            elif need:  # interpolate timestamps inside [x,y]
                 tx, ty = ch.ts(x), ch.ts(y)
             for l in logs:
                 r = decode(src, l)
                 if not r: continue
                 bn = int(l['blockNumber'], 16)
-                t = int(l['blockTimestamp'], 16) if l.get('blockTimestamp') else (tx + (ty - tx) * (bn - x) / max(1, y - x))
+                t = int(l['blockTimestamp'], 16) if l.get('blockTimestamp') else exact.get(bn) if exact.get(bn) else (ch.ts(x) + (ch.ts(y) - ch.ts(x)) * (bn - x) / max(1, y - x))
                 out.append((t, *r))
     return out
 
@@ -201,11 +219,24 @@ def scan_source(src, cache):
                 h[typ] += amt; h['nm' if typ == 'mint' else 'nb'] += 1
                 c = h['cls'].setdefault(cls, [0.0, 0.0]); c[0 if typ == 'mint' else 1] += amt
             done[0] += 1
-            if done[0] % 200 == 0: log(sid, done[0], '/', len(ranges))
+            if done[0] % 25 == 0: log(sid, done[0], '/', len(ranges), 'events so far', sum(h['nm'] + h['nb'] for h in H.values()))
     if ch.threads > 1:
         with ThreadPoolExecutor(ch.threads) as ex: list(ex.map(work, ranges))
     else:
-        for r in ranges: work(r)
+        # newest first so a failure mid-backfill still leaves a contiguous [lowest_done, head] window we can keep
+        fwdj = [r for r in ranges if first is None or r[0] > (last or 0)]; back = [r for r in ranges if r not in fwdj]
+        for grp in (fwdj, back):
+            grp.sort(key=lambda r: -r[0]); low = None
+            for r in grp:
+                try: work(r); low = r[0]
+                except Exception:
+                    if grp is fwdj and first is not None: raise  # incremental gap -> do not save inconsistent state
+                    if low is not None:
+                        st['first'] = low; st['last'] = newlast if grp is fwdj else st['last']
+                        st['first_ts'], st['last_ts'] = ch.ts(st['first']), ch.ts(st['last']); st['partial'] = True
+                        st.update({'coin': src['coin'], 'chain': ch.name, 'addr': src['addr'], 'kind': src['kind'], 'native': src['native'], 'label': src['label']})
+                    raise
+    st.pop('partial', None)
     st['first'], st['last'] = newfirst, newlast
     st['first_ts'], st['last_ts'] = ch.ts(newfirst), ch.ts(newlast)
     # totalSupply snapshot for reconciliation
@@ -213,6 +244,13 @@ def scan_source(src, cache):
         st['totalSupply'] = int(ch.call('eth_call', [{'to': src['addr'], 'data': '0x18160ddd'}, 'latest']), 16) / 10 ** src['dec']
         st['totalSupply_at'] = int(time.time())
     except Exception as e: st['totalSupply_err'] = str(e)[:120]
+    # reconciliation: totalSupply(last) - totalSupply(first-1) must equal sum(mint) - sum(burn) over the scanned range
+    try:
+        sup = lambda b: int(ch.call('eth_call', [{'to': src['addr'], 'data': '0x18160ddd'}, hex(b)]), 16) / 10 ** src['dec']
+        a, b = (0.0 if newfirst <= 1 else sup(newfirst - 1)), sup(newlast)
+        ev = sum(h['mint'] - h['burn'] for h in H.values())
+        st['reconcile'] = {'supply_delta': b - a, 'events_net': ev, 'diff': (b - a) - ev, 'ok': abs((b - a) - ev) <= max(1.0, 1e-6 * abs(b))}
+    except Exception as e: st['reconcile'] = {'error': str(e)[:160]}
     st.update({'coin': src['coin'], 'chain': ch.name, 'addr': src['addr'], 'kind': src['kind'], 'native': src['native'], 'label': src['label']})
 
 def onchain_windows(st):
@@ -442,11 +480,19 @@ def main():
     cache = jload(ONCH, {}) or {}
     errors = {}
     if os.environ.get('STABLES_SKIP_ONCHAIN') != '1':
+        import copy
+        only = set(filter(None, os.environ.get('STABLES_ONLY', '').split(',')))
         for src in SOURCES:
+            if only and src['id'] not in only: continue
+            snap = copy.deepcopy(cache.get(src['id']))
             try:
                 scan_source(src, cache); jsave(ONCH, cache)
             except Exception as e:
                 errors[src['id']] = str(e)[:300]; log('onchain fail', src['id'], e)
+                st = cache.get(src['id']) or {}
+                if st.get('partial') and st.get('first') is not None: jsave(ONCH, cache); errors[src['id']] += ' (partial window kept; next run resumes backfill)'
+                elif snap is None: cache.pop(src['id'], None)
+                else: cache[src['id']] = snap
     log('defillama...')
     pairs, glob = llama()
     log('solana snapshot...')
@@ -517,7 +563,7 @@ def main():
         dly = onchain_daily(st)
         rows = [{'date': d, 'net': v['mint'] - v['burn'], 'prev': 0} for d, v in dly.items() if d < day(NOW)]
         pf = spike_flags([{'date': d, 'net': v['pm'] - v['pb']} for d, v in dly.items() if d < day(NOW)])
-        onc[sid] = {k: st.get(k) for k in ('coin', 'chain', 'addr', 'kind', 'native', 'label', 'totalSupply', 'totalSupply_at', 'first_ts', 'last_ts')}
+        onc[sid] = {k: st.get(k) for k in ('coin', 'chain', 'addr', 'kind', 'native', 'label', 'totalSupply', 'totalSupply_at', 'first_ts', 'last_ts', 'reconcile')}
         onc[sid]['windows'] = onchain_windows(st)
         onc[sid]['daily'] = [{'date': d, 'mint': round(v['mint'], 2), 'burn': round(v['burn'], 2), 'net': round(v['mint'] - v['burn'], 2), 'primary_net': round(v['pm'] - v['pb'], 2)} for d, v in dly.items()][-365:]
         onc[sid]['spike_latest_primary'] = next((x for x in reversed(pf) if x), None)
@@ -553,6 +599,13 @@ def main():
     log('backtest...')
     px = prices(); cat = catalog_chain_tokens()
     bt = backtest({c: v['flags'] for c, v in chains.items()}, px, cat)
+    tests = [(c, t, h, x) for c, v in bt.items() for t, hz in v['targets'].items() for h, x in hz.items() if x.get('perm_p') is not None]
+    bt_summary = {'n_tests': len(tests), 'bonferroni_alpha_0.05': (0.05 / len(tests)) if tests else None,
+                  'nominal_hits_perm_p_lt_0.05': [{'chain': c, 'target': t, 'h': h, 'diff': (x['welch'] or {}).get('diff'), 'n_spike': x['n_spike'], 'perm_p': x['perm_p']} for c, t, h, x in tests if x['perm_p'] < 0.05],
+                  'expected_false_positives_at_0.05': round(0.05 * len(tests), 1),
+                  'caveats': ['overlapping forward windows + clustered spike days: Welch p is optimistic; prefer the circular-shift permutation p',
+                              'BSC USDT/USDC are Binance-Peg (bridged) and move in large round lumps (treasury top-ups); n is tiny and the Oct 8/14 2025 spikes sit next to the Oct 10 2025 market-wide liquidation crash',
+                              'Robinhood Chain has only ~66 days of DefiLlama history and no chain-native token in the catalog (ETH used as proxy)']}
     labels = {
         'base:USDT': 'No native Tether USDT on Base. DefiLlama lists no USDT on Base; bridged variants (e.g. bridged "Tether USD" 0xfde4…bb2, USDT0 routes) are third-party bridged tokens and are not counted as USDT issuance.',
         'base:USDbC': 'USDbC (0xd9aA…6CA) = legacy bridged USDC (Base canonical bridge), not Circle-native; excluded from USDC issuance.',
@@ -569,7 +622,7 @@ def main():
                       'backtest': 'signal date D (DefiLlama snapshot D 00:00 UTC) -> forward log return from CoinGecko daily close at D 00:00 UTC to D+h; spike days vs all other days; Welch t + circular-shift permutation p (2000 shifts) to respect clustering; catalog basket = equal-weight mean of available crash/runner catalog tokens per chain (needs >=5 tokens with data that day)'},
            'chains': {k: {kk: vv for kk, vv in v.items() if kk != 'flags'} for k, v in chains.items()}, 'chain_flags_recent': {k: [x for x in v['flags'][-60:] if x] for k, v in chains.items()},
            'pairs': pm, 'velocity_ranking': ranking, 'base_share': share, 'onchain': onc, 'solana': sol, 'active_spikes': active,
-           'labels': labels, 'backtest': bt, 'errors': errors,
+           'labels': labels, 'backtest': bt, 'backtest_summary': bt_summary, 'errors': errors,
            'paid_or_unavailable': ['Solana gross mint/burn history (needs Helius/indexer; free key not configured)', 'Etherscan/Basescan V2 API needs a (free) key: ETHERSCAN_API_KEY not set, so RPC logs used instead', 'Blockscout API for Robinhood Chain is behind a Cloudflare challenge for scripts; used the public RPC instead', 'Tron USDT mint/burn events not scanned (DefiLlama net only)', 'Arbitrum/BSC: DefiLlama net only']}
     jsave(OUT, out)
     log('wrote', OUT, round(time.time() - t0, 1), 's', 'errors:', errors)

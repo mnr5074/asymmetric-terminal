@@ -12,6 +12,8 @@ const DEFAULT_WL = [
   ['bsc', '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82'], ['ton', 'EQAvlWFDxGF2lXm67y4yzC17wYKD9A0guwPkMs1gOsM__NOT'],
   ['solana', 'EosbW31T1WAQSiHUErogcaNHd8FBZDbjPPgQMJzXARNV'], ['solana', 'HsRpHQn6VbyMs5b5j5SV6xQ2VvpvvCCzu19GjytVSCoz'], // QCAT, STRK (Solana SPL)
 ];
+// PRIORITY tokens (native L1 coins, no canonical DEX address on the supported chains -> tracked by symbol/CoinGecko id in the Priority Watch panel, public/priority.js + lib/priority.js)
+const PRIORITY_WATCH = [{ sym: 'NEAR', cg: 'near' }, { sym: 'ZEC', cg: 'zcash' }];
 const LS = { wl: 'st.watchlist.v1', sel: 'st.selected.v1', rpc: 'st.rpc.v1', chain: 'st.chain.v1', wchain: 'st.wchain.v1' };
 let CHAINS = { solana: { name: 'Solana', short: 'SOL' }, robinhood: { name: 'Robinhood Chain', short: 'RH' } };
 let curChain = localStorage.getItem(LS.chain) || 'solana';
