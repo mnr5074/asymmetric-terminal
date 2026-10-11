@@ -8,6 +8,7 @@ api.exchange.coinbase.com candles (crypto realized vol).
 Output: data/options.json"""
 import json, math, os, sys, time, urllib.request, concurrent.futures as cf, datetime as dt, threading
 from common import DATA_DIR
+from calltrack import Tracker
 
 UA = {'user-agent': 'Mozilla/5.0 (asymmetric-terminal research)', 'accept': 'application/json'}
 def get(url, data=None, timeout=25, tries=3):
@@ -91,6 +92,8 @@ def analyze(c, now):
     fv_rv = bs(S, K, T, vol_rv, r, cp)
     fv_iv = bs(S, K, T, iv, r, cp)
     be = K + mid if cp == 'C' else K - mid
+    _sq = iv * math.sqrt(T); _d1 = (math.log(S / K) + (r + iv * iv / 2) * T) / _sq; _pdf = math.exp(-_d1 * _d1 / 2) / math.sqrt(2 * math.pi)
+    greeks = {'delta': round(N(_d1) if cp == 'C' else N(_d1) - 1, 4), 'gamma': _pdf / (S * _sq), 'vega_1pt': S * _pdf * math.sqrt(T) / 100}
     sig1 = (S * math.exp(-iv * math.sqrt(T)), S * math.exp(iv * math.sqrt(T)))
     sig2 = (S * math.exp(-2 * iv * math.sqrt(T)), S * math.exp(2 * iv * math.sqrt(T)))
     tgt = {}
@@ -126,6 +129,13 @@ def analyze(c, now):
     exit_T = T * 0.4 if days > 14 else max(T * 0.25, 1 / 365)  # time REMAINING at the suggested exit
     exit_ts = c['expiry_ts'] - exit_T * 365 * 86400
     need3_exit = solve_price(3 * mid, K, exit_T, iv, r, cp, S)
+    # chance of profit + chance of hitting the take-profit levels (2x, 3x) before the time stop (~21 DTE rule)
+    p_profit = p_itm(S, be, T, vol_rv, cp) if be > 0 else 0.0
+    stop_T = 21 / 365 if days > 35 else exit_T          # time remaining at the time stop
+    hold_T = max(T - stop_T, 1 / 365)                     # time we hold
+    stop_ts = c['expiry_ts'] - stop_T * 365 * 86400
+    tp_need = {m: solve_price(m * mid, K, stop_T, iv, r, cp, S) for m in (2, 3)}
+    p_tp = {f'{m}x': (p_touch(S, b, hold_T, vol_rv, cp) if b else 0.0) for m, b in tp_need.items()}
     vol_oi = (c['vol'] / c['oi']) if c.get('oi') and c.get('vol') is not None else None
     unusual = bool(c.get('vol') and c['vol'] >= 500 and c['vol'] >= 1.5 * (c.get('oi') or 0))
     th = theta_day(S, K, T, iv, r, cp)
@@ -137,8 +147,8 @@ def analyze(c, now):
         'iv': iv, 'rv30': rv, 'iv_rv': ivrv, 'fair_rv': fv_rv, 'fair_iv': fv_iv, 'prem_vs_fair': (mid / fv_rv - 1) if fv_rv > 0 else None,
         'max_loss': mid * mult, 'mult': mult, 'breakeven': be, 'move_to_be_pct': (be / S - 1) * 100,
         'sigma1': sig1, 'sigma2': sig2, 'targets': tgt, 'exit_by': dt.datetime.utcfromtimestamp(exit_ts).strftime('%Y-%m-%d'), 'need_for_3x_at_exit': need3_exit,
-        'p_itm_iv': pitm_iv, 'p_itm_rv': pitm_rv, 'p_touch3x_iv': touch_iv, 'p_touch3x_rv': touch_rv,
-        'ev': ev * mult, 'ev_pct': ev_pct * 100, 'rr_2sigma': R, 'theta_day': th * mult, 'theta_pct_day': th / mid * 100,
+        'p_itm_iv': pitm_iv, 'p_itm_rv': pitm_rv, 'p_profit_rv': p_profit, 'p_tp_before_stop': p_tp, 'tp_need': {f'{m}x': v for m, v in tp_need.items()}, 'time_stop': dt.datetime.utcfromtimestamp(stop_ts).strftime('%Y-%m-%d'), 'p_touch3x_iv': touch_iv, 'p_touch3x_rv': touch_rv,
+        'ev': ev * mult, 'ev_pct': ev_pct * 100, 'rr_2sigma': R, 'theta_day': th * mult, 'delta': greeks['delta'], 'gamma': greeks['gamma'], 'vega_1pt': greeks['vega_1pt'] * mult, 'theta_pct_day': th / mid * 100,
         'earnings': c.get('earnings'), 'earnings_before_expiry': bool(earn_before),
         'score': round(score, 1), 'grade': g, 'caps': why,
         'parts': {'ev': round(s_ev, 2), 'touch': round(s_touch, 2), 'convexity': round(s_conv, 2), 'cheapness': round(s_cheap, 2), 'liquidity': round(s_liq, 2)},
@@ -211,10 +221,34 @@ def parse_occ(sym):
     exp = dt.datetime(2000 + int(ymd[:2]), int(ymd[2:4]), int(ymd[4:6]), 20, 0, tzinfo=dt.timezone.utc)  # 4pm ET close
     return root, int(exp.timestamp()), cp, int(k) / 1000
 
-def stock_contracts(log, earn, sink):
+FLOW = {}
+OPT_BATCH = int(os.environ.get('OPT_BATCH', '250'))
+def pick_symbols(log):
+    """Core list every run + a rotating batch from the full optionable universe (data/opt_universe.json)."""
+    st_f = os.path.join(DATA_DIR, 'opt_scan_state.json')
+    try: st = json.load(open(st_f))
+    except Exception: st = {}
+    try:
+        uf = os.path.join(DATA_DIR, 'opt_universe.json')
+        if time.time() - os.path.getmtime(uf) > 7 * 86400: raise FileNotFoundError
+        U = json.load(open(uf))
+    except Exception:
+        try:
+            import opt_universe; opt_universe.main(); U = json.load(open(os.path.join(DATA_DIR, 'opt_universe.json')))
+        except Exception as e: log('universe build failed:', e); U = {'symbols': []}
+    now = time.time(); core = [x for x in STOCKS if x]
+    rest = [x['s'] for x in U['symbols'] if x['s'] not in core]
+    never = [x for x in rest if x not in st]
+    valuable_due = sorted([x for x in rest if x in st and st[x].get('oi', 0) >= 5000 and now - st[x]['t'] > 3600], key=lambda x: st[x]['t'])
+    low_due = sorted([x for x in rest if x in st and st[x].get('oi', 0) < 5000 and now - st[x]['t'] > 7 * 86400], key=lambda x: st[x]['t'])
+    batch = (never[:OPT_BATCH // 2] + valuable_due + never[OPT_BATCH // 2:] + low_due)[:OPT_BATCH]
+    log(f'universe {len(U["symbols"])} optionable; scanned before {len(st)}; this run core {len(core)} + batch {len(batch)} (never-seen {len(never)}, valuable due {len(valuable_due)}, low-OI due {len(low_due)})')
+    return core + batch, st, st_f, U
+
+def stock_contracts(log, earn, sink, syms=None, st=None):
     out, ok, fail = [], [], []
-    n = 0
-    for s in STOCKS:
+    n = 0; st = st if st is not None else {}
+    for s in (syms or STOCKS):
         try:
             d = get(f'https://cdn-api.cboe.com/api/global/delayed_quotes/options/{s}.json')['data']
             ch = get(f'https://query1.finance.yahoo.com/v8/finance/chart/{s}?range=1y&interval=1d')['chart']['result'][0]
@@ -228,10 +262,17 @@ def stock_contracts(log, earn, sink):
                 out.append({'underlying': s, 'venue': 'CBOE (delayed)', 'name': o['option'], 'cp': cp, 'K': K, 'expiry_ts': exp, 'S': S,
                             'bid': o.get('bid') or 0, 'ask': o.get('ask') or 0, 'mark': o.get('theo') or 0, 'iv': o.get('iv') or 0, 'oi': o.get('open_interest') or 0,
                             'vol': o.get('volume') or 0, 'mult': 100, 'rv': rv, 'r': R_STOCK, 'earnings': earn.get(s), 'quote_time': d.get('last_trade_time')})
-            ok.append(s); n += len(out); sink(out); out = []; del d
+            toi = sum(c['oi'] for c in out); st[s] = {'t': time.time(), 'oi': toi, 'n': len(out)}
+            cv = sum(c['vol'] or 0 for c in out if c['cp'] == 'C'); pv = sum(c['vol'] or 0 for c in out if c['cp'] == 'P')
+            cprem = sum((c['vol'] or 0) * ((c['bid'] + c['ask']) / 2 if c['bid'] and c['ask'] else c['mark']) * 100 for c in out if c['cp'] == 'C')
+            pprem = sum((c['vol'] or 0) * ((c['bid'] + c['ask']) / 2 if c['bid'] and c['ask'] else c['mark']) * 100 for c in out if c['cp'] == 'P')
+            FLOW[s] = {'call_vol': cv, 'put_vol': pv, 'call_put_vol': cv / pv if pv else None, 'call_premium_usd': cprem, 'put_premium_usd': pprem, 'total_oi': toi, 'spot': S}
+            ok.append(s); n += len(out)
+            if toi >= 1000 or s in STOCKS: sink(out)  # skip chains with almost no open interest (no real market)
+            out = []; del d
         except Exception as e:
             fail.append(f'{s}: {str(e)[:60]}')
-        time.sleep(1.0)
+        time.sleep(0.6)
     log(f'cboe: {len(ok)} underlyings, {n} contracts; failed: {fail[:5]}')
     return n, ok, fail
 
@@ -245,6 +286,7 @@ def main():
         otm = (p['type'] == 'call' and mny >= 0.97) or (p['type'] == 'put' and mny <= 1.03)
         min_px = 0.05 if p['venue'].startswith('CBOE') else 0.5
         return otm and p['mid'] >= min_px and 2 <= p['days'] <= 400
+    tr = Tracker('options'); open_ids = tr.keys_open(400 * 86400); seen_mid = {}
     lock = threading.Lock(); unusual_all = []; analyzed = [0]
     topk, bestsc, grades, n_elig = {}, {}, {}, [0]
     def sink(raws):  # analyze one batch, keep only what is needed (keeps memory well under 512 MB)
@@ -253,6 +295,7 @@ def main():
             if not a: continue
             with lock:
                 analyzed[0] += 1
+                if a['id'] in open_ids: seen_mid[a['id']] = a['mid']
                 if a['unusual']:
                     unusual_all.append(a)
                     if len(unusual_all) > 300: unusual_all.sort(key=lambda p: -(p['vol_oi'] or 0)); del unusual_all[60:]
@@ -261,11 +304,15 @@ def main():
                     u = a['underlying']; b = bestsc.setdefault(u, {}); b[a['expiry']] = max(b.get(a['expiry'], -1), a['score'])
                     L = topk.setdefault(u, []); L.append(a)
                     if len(L) > 80: L.sort(key=lambda p: -p['score']); del L[20:]
+    uni_meta = {}
     with cf.ThreadPoolExecutor(2) as ex:
         fd = ex.submit(derive_contracts, log)
         def stocks():
             earn = earnings_map(log=log)
-            return stock_contracts(log, earn, sink)
+            syms, st, st_f, U = pick_symbols(log); uni_meta.update({k: v for k, v in U.items() if k != 'symbols'}); uni_meta['run_symbols'] = len(syms)
+            r = stock_contracts(log, earn, sink, syms, st)
+            json.dump(st, open(st_f, 'w')); uni_meta['scanned_total'] = len(st); uni_meta['valuable_oi5000'] = sum(1 for v in st.values() if v.get('oi', 0) >= 5000)
+            return r
         fs = ex.submit(stocks)
         dcon, n_derive, rvsrc = fd.result()
         sink(dcon); n_dcon = len(dcon); del dcon
@@ -274,13 +321,54 @@ def main():
     per_und = []
     for u, L in topk.items():
         L.sort(key=lambda p: -p['score'])
-        for p in L[:20]: p['best_expiry'] = best_exp.get(u) == p['expiry']; per_und.append(p)
+        for p in L[:(20 if u in STOCKS else 8)]: p['best_expiry'] = best_exp.get(u) == p['expiry']; per_und.append(p)
+    # merge cached picks for underlyings scanned in earlier rotations (<= 3 days old), trimmed to top 5 each
+    pc_f = os.path.join(DATA_DIR, 'opt_picks_cache.json')
+    try: pc = json.load(open(pc_f))
+    except Exception: pc = {}
+    for u, L in topk.items():
+        if not u.endswith('-USD') and '-' not in u: pc[u] = {'t': time.time(), 'picks': sorted(L, key=lambda p: -p['score'])[:5]}
+    cutoff = time.time() - 3 * 86400; fresh_u = set(topk)
+    for u, v in list(pc.items()):
+        if v['t'] < cutoff: del pc[u]; continue
+        if u in fresh_u: continue
+        for p in v['picks']: p = dict(p); p['from_cache_age_h'] = round((time.time() - v['t']) / 3600, 1); per_und.append(p)
+    json.dump(pc, open(pc_f, 'w'), default=lambda o: None)
     per_und.sort(key=lambda p: -p['score'])
+    # per-ticker signals (pre/after-hours, insider Form 4, 8-K, news tone, up/down volume, call/put flow) -> score adjustment
+    tick_info = {}
+    try:
+        import stock_signals as SS
+        stock_u = [p['underlying'] for p in per_und if not p['venue'].startswith('Derive')]
+        tick = list(dict.fromkeys([x for x in STOCKS if x] + stock_u))[:int(os.environ.get('OPT_SIGNAL_TICKERS', '120'))]
+        SIG = SS.collect(tick, log)
+        for p in per_und:
+            u = p['underlying']
+            if u not in SIG: continue
+            pts, why = SS.adjust(p, SIG[u], FLOW.get(u))
+            if pts or why:
+                p['signal_pts'] = pts; p['signals'] = why
+                if pts:
+                    old_g = p['grade']; p['score'] = round(min(100.0, max(0.0, p['score'] + pts)), 1); ng = grade_of(p['score'])
+                    if p.get('caps') and CAP[ng] > CAP[old_g]: ng = old_g  # never lift a capped grade
+                    p['grade'] = ng
+        for u in tick:
+            e = SIG.get(u) or {}; sc = e.get('sec') or {}
+            tick_info[u] = {'ext': e.get('ext'), 'updown': e.get('flowvol'), 'flow': FLOW.get(u), 'news': (e.get('news') or [])[:5],
+                            'insider': {k: sc.get(k) for k in ('insider_buy_usd_30d', 'insider_sell_usd_30d', 'cluster_buying', 'buyers_30d', 'form4_parsed')} if sc else None,
+                            'insider_tx': (sc.get('insider_tx_90d') or [])[:6], 'filings_8k': sc.get('filings_8k_14d') or []}
+        per_und.sort(key=lambda p: -p['score'])
+    except Exception as e: log('signals failed:', e)
+    for k, v in seen_mid.items(): tr.update(k, v)
+    for p in per_und:
+        if p['grade'] in ('A', 'B') or p.get('best_expiry'):
+            tr.log(p['id'], p['grade'], p['score'], p['mid'], f"{p['underlying']} {p['type']} {p['strike']} {p['expiry']}", {k: p.get(k) for k in ('iv', 'rv30', 'iv_rv', 'ev_pct', 'p_touch3x_rv', 'rr_2sigma', 'days', 'venue')})
+    tr.save()
     unusual = sorted(unusual_all, key=lambda p: -(p['vol_oi'] or 0))[:60]
     out = {'generatedAt': int(time.time() * 1000), 'elapsed_s': round(time.time() - t0),
-           'universe': {'derive_listed': n_derive, 'derive_priced': n_dcon, 'stock_underlyings': ok, 'stock_failed': fail, 'stock_contracts': n_scon, 'analyzed': analyzed[0], 'eligible': n_elig[0]},
+           'universe': {'derive_listed': n_derive, 'derive_priced': n_dcon, 'stock_underlyings': ok, 'stock_failed': fail, 'stock_contracts': n_scon, 'analyzed': analyzed[0], 'eligible': n_elig[0], 'rotation': uni_meta, 'underlyings_with_picks': len(set(p['underlying'] for p in per_und))},
            'grades': grades, 'grade_formula': GRADE_DOC, 'rv_sources': rvsrc,
-           'picks': per_und, 'unusual': unusual,
+           'picks': per_und, 'unusual': unusual, 'tickers': tick_info,
            'best_expiry': best_exp,
            'notes': ['Stock chains: CBOE delayed quotes (about 15 min, and last-session values outside market hours); volume = latest session.',
                      'Derive: live on-chain order book; many strikes have no resting bid/ask, so the mark price is used and the grade is capped at C.',
