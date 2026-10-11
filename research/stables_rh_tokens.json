@@ -1,0 +1,4 @@
+[
+ {"coin": "USDe", "addr": "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34", "dec": 18, "native": false, "label": "bridged (Ethena USDe omnichain/OFT-style deployment; supply matches DefiLlama USDe on Robinhood Chain)"},
+ {"coin": "USDC", "addr": "0x80e0e24718dbFcad49ECAA6F1e6C89A190586cA8", "dec": 6, "native": false, "label": "bridged (StandardArbERC20 via Arbitrum-style canonical bridge; not Circle-native)"}
+]
