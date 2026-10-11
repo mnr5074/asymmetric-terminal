@@ -1,0 +1,83 @@
+{
+ "generatedAt": 1791727792160,
+ "status": "EXECUTED 2026-10-11 07:15-07:23 PT after user approval (steps 1-3 adapted; see execution)",
+ "budget_snapshot": {
+  "credits_remaining": 2031,
+  "plan": "pro",
+  "source": "data/nansen_budget.json (2026-10-11)"
+ },
+ "cost_reference": {
+  "source": "docs.nansen.ai Credits & Pricing guide / llms-full.txt, read 2026-10-11",
+  "search/entity-name": 0,
+  "tgm/transfers": 1,
+  "tgm/who-bought-sold": 1,
+  "profiler/address/transactions": 1,
+  "profiler/address/related-wallets": 1,
+  "funds/holdings (v1beta1)": 5,
+  "smart-money/netflow": 5,
+  "smart-money/holdings": 5,
+  "smart-money/dex-trades": 5,
+  "profiler/address/labels": "100 per non-empty response (empty = 0)",
+  "profiler/address/premium-labels": "500 per non-empty response (empty = 0)",
+  "observed_in_repo": "tgm/who-bought-sold and tgm/transfers cost 1 credit each in data/nansen_crash_raw.json"
+ },
+ "steps": [
+  {
+   "step": 1,
+   "what": "Resolve which of our ~100 entity names Nansen knows (Wintermute, GSR, Jump, DWF, Amber, Flowdesk, Cumberland, a16z, Paradigm, ...)",
+   "endpoint": "search/entity-name",
+   "calls": 100,
+   "credits": 0
+  },
+  {
+   "step": 2,
+   "what": "Label harvest on tokens we already study: who-bought-sold (BUY+SELL) and transfers for the 45 crash-catalog leaderboard tokens + 30 live-feed tokens; every row carries Nansen address labels (Fund, Smart Trader, MM names). Store new Fund/MM/Smart Money labels into data/vc_wallets.json with source=nansen, confidence=high (entity) / medium (behavioural).",
+   "endpoint": "tgm/who-bought-sold + tgm/transfers",
+   "calls": 225,
+   "credits": 225,
+   "expected_yield": "~25 labelled counterparties per call; the 6-token run in nansen_crash_raw.json returned 534 labelled addresses incl. 2 funds and ~25 smart traders, so ~1,500-3,000 new labelled addresses, of which perhaps 1-3% Fund/MM (estimate, not measured)"
+  },
+  {
+   "step": 3,
+   "what": "Direct fund accumulation feed without needing addresses: funds/holdings snapshot per chain (ethereum, base, bsc, solana, arbitrum), weekly diff -> new positions in small caps",
+   "endpoint": "funds/holdings",
+   "calls": 10,
+   "credits": 50,
+   "recurring": "50 credits/week (~215/month)"
+  },
+  {
+   "step": 4,
+   "what": "Smart-money netflow per chain (already used by the netflow desk at 5 credits/call) cross-checked against vcwatch flags",
+   "endpoint": "smart-money/netflow",
+   "calls": 5,
+   "credits": 25,
+   "recurring": "25 credits/run"
+  },
+  {
+   "step": 5,
+   "what": "Confirm only the strongest unlabeled accumulators (wallets behind multi-entity or pre-listing flags) with premium labels; empty answers are free",
+   "endpoint": "profiler/address/premium-labels",
+   "calls": "<=3",
+   "credits": "<=1500 worst case (500 per non-empty) - optional; use profiler/address/labels (100) first"
+  }
+ ],
+ "initial_total_credits": "~300 for steps 1-4 (fits in the 2,031 remaining) + optional step 5 (100-1,500)",
+ "recurring_credits_per_month": "~215 (weekly funds/holdings) + ~100 (4 netflow runs)",
+ "execution": {
+  "credits_used_total": 139,
+  "by_endpoint": {
+   "funds/holdings": 10,
+   "tgm/who-bought-sold": 32,
+   "smart-money/historical-holdings": 32,
+   "tgm/holders": 65,
+   "search/entity-name": 0,
+   "account": 0
+  },
+  "balance_after": 1727,
+  "step1_entity_search": "56 names searched (0 cr); 50 resolve to a Nansen entity (e.g. Wintermute Market Making, GSR, DWF Labs, Flowdesk, Cumberland, B2C2, Selini Capital, Folkvang, QCP Capital, a16z crypto, Paradigm Capital, Polychain Capital, Multicoin Capital, Pantera Capital, Dragonfly Capital, YZi Labs, Coinbase Ventures). Entity names are only usable as filters in other endpoints; no addresses are returned.",
+  "step2_label_harvest": "tgm/who-bought-sold top-50 buyers (30d) on 30 tokens (32 cr): free-tier labels are mostly behavioural (High Activity, Smart Trader); yielded 25 Smart Traders, 55 former Smart Traders, 2 Wintermute addresses, Sigil Fund.",
+  "step3_funds_holdings": "funds/holdings across ethereum/base/bnb/solana/robinhood filtered mcap<=$100M, age<=365d, >=$10k held (10 cr): 12 fund-held small caps. Then tgm/holders with Fund filter (65 cr): 92 Fund-cohort wallets with 7d/30d balance changes (entity names are premium labels, 150 cr/call, NOT bought).",
+  "step4_historical": "smart-money/historical-holdings with Fund filter returned 0 rows for 30 tokens and chain-wide (32 cr): Nansen no longer keeps Fund wallets in the historical Smart Money cohort, so a Nansen-based historical fund lead-time study is not possible on this endpoint. Disabled.",
+  "not_done": "netflow (already run by the netflow desk), profiler labels/premium labels (>=100 cr per call; not essential)"
+ }
+}
