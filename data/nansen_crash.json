@@ -1,0 +1,1480 @@
+{
+ "accountBefore": {
+  "credits_remaining": 2052,
+  "plan": "pro"
+ },
+ "accountAfter": {
+  "credits_remaining": 2040,
+  "plan": "pro"
+ },
+ "creditsUsed": 19,
+ "tokens": {
+  "LAB": {
+   "chain": "bnb",
+   "address": "0x7ec43cf65f1663f820427c62a5780b8f2e25593a",
+   "window": [
+    "2026-06-24",
+    "2026-07-10"
+   ],
+   "transfers_window_from": "2026-06-28",
+   "transfer_min_usd": 100000,
+   "top_sellers": [
+    {
+     "address": "0x3bc367866468d4f80096be899b66ab29d03f2717",
+     "label": "\u200b\u200b\ud83e\udd16 MEV Bot [0x3bc367]",
+     "type": "bot/MEV",
+     "sold_usd": 9221903,
+     "bought_usd": 4399042,
+     "net_sold_tokens": 1020858,
+     "net_sold_pct_supply": 0.102
+    },
+    {
+     "address": "0x7817dbf38e9d1c95671625f0052c147864692fe0",
+     "label": "Token Millionaire [0x7817db]",
+     "type": "other labeled",
+     "sold_usd": 1431027,
+     "bought_usd": 1345070,
+     "net_sold_tokens": 66415,
+     "net_sold_pct_supply": 0.007
+    },
+    {
+     "address": "0x12d2b8ac38c59758a062a9f757f2740461779439",
+     "label": "\u200b\u200bTrading Bot [0x12d2b8]",
+     "type": "bot/MEV",
+     "sold_usd": 947195,
+     "bought_usd": 771986,
+     "net_sold_tokens": 11396,
+     "net_sold_pct_supply": 0.001
+    },
+    {
+     "address": "0xea2732a6e103ecae3830d69b48742f6b05988888",
+     "label": "High Activity [0xea2732]",
+     "type": "other labeled",
+     "sold_usd": 513386,
+     "bought_usd": 5036,
+     "net_sold_tokens": 96646,
+     "net_sold_pct_supply": 0.01
+    },
+    {
+     "address": "0xde5b2ed8ca0680f389ec5b1290bac5249d3252bf",
+     "label": "High Activity [0xde5b2e]",
+     "type": "other labeled",
+     "sold_usd": 494915,
+     "bought_usd": 0,
+     "net_sold_tokens": 339730,
+     "net_sold_pct_supply": 0.034
+    },
+    {
+     "address": "0x11fc12b988933966688d33b70651b5f2f450963c",
+     "label": "High Activity [0x11fc12]",
+     "type": "other labeled",
+     "sold_usd": 420471,
+     "bought_usd": 10427,
+     "net_sold_tokens": 141590,
+     "net_sold_pct_supply": 0.014
+    },
+    {
+     "address": "0xb58aaabada0c7ae5f02fa25081bbe49aae3d44c7",
+     "label": "\u200b\u200b\ud83e\udd16 MEV Bot [0xb58aaa]",
+     "type": "bot/MEV",
+     "sold_usd": 380922,
+     "bought_usd": 0,
+     "net_sold_tokens": 317930,
+     "net_sold_pct_supply": 0.032
+    },
+    {
+     "address": "0x031942f26a094be40414f442a2f1295e3a5c1680",
+     "label": "\u200b\u200b\ud83e\udd16 DEX Trading Bot [0x031942]",
+     "type": "bot/MEV",
+     "sold_usd": 319474,
+     "bought_usd": 6474,
+     "net_sold_tokens": 278378,
+     "net_sold_pct_supply": 0.028
+    },
+    {
+     "address": "0x52e868e60b37a637359a010977e4a86b63ab266c",
+     "label": "High Balance [0x52e868]",
+     "type": "other labeled",
+     "sold_usd": 274945,
+     "bought_usd": 16616,
+     "net_sold_tokens": 91978,
+     "net_sold_pct_supply": 0.009
+    },
+    {
+     "address": "0xe94753d6e067d25e0dbe90ed782b7ea21475fc48",
+     "label": "\u200b\u200b\ud83e\udd16 MEV Bot [0xe94753]",
+     "type": "bot/MEV",
+     "sold_usd": 237902,
+     "bought_usd": 1830,
+     "net_sold_tokens": 203631,
+     "net_sold_pct_supply": 0.02
+    },
+    {
+     "address": "0xeeb4e7601559733d3879f55d58502f8cfb4d116e",
+     "label": "HL Perps Altcoin Trader [0xeeb4e7]",
+     "type": "other labeled",
+     "sold_usd": 216804,
+     "bought_usd": 141474,
+     "net_sold_tokens": 87336,
+     "net_sold_pct_supply": 0.009
+    },
+    {
+     "address": "0x1264fcc3a76dee6d8781948b41aa4ce78fed89c6",
+     "label": "High Activity [0x1264fc]",
+     "type": "other labeled",
+     "sold_usd": 203211,
+     "bought_usd": 0,
+     "net_sold_tokens": 209273,
+     "net_sold_pct_supply": 0.021
+    }
+   ],
+   "top12_sold_usd_by_type": {
+    "bot/MEV": 11107396,
+    "other labeled": 3554759
+   },
+   "transfers_n": 100,
+   "transfers_by_destination": {
+    "burn": {
+     "usd": 10999466,
+     "tokens": 10000000,
+     "n": 1
+    },
+    "CEX": {
+     "usd": 142988231,
+     "tokens": 32263731,
+     "n": 95
+    },
+    "unlabeled": {
+     "usd": 8999770,
+     "tokens": 7992756,
+     "n": 3
+    },
+    "other labeled": {
+     "usd": 335074,
+     "tokens": 24500,
+     "n": 1
+    }
+   },
+   "cex_deposits_by_exchange": {
+    "Gate": {
+     "usd": 75372599,
+     "tokens": 13251920,
+     "n": 33,
+     "first": "2026-06-28T04:26:44Z"
+    },
+    "Bitget": {
+     "usd": 41450166,
+     "tokens": 7623622,
+     "n": 41,
+     "first": "2026-06-29T02:47:34Z"
+    },
+    "Kucoin": {
+     "usd": 16830623,
+     "tokens": 3370933,
+     "n": 17,
+     "first": "2026-07-01T11:00:39Z"
+    },
+    "CEX (unnamed)": {
+     "usd": 8999770,
+     "tokens": 7992756,
+     "n": 3,
+     "first": "2026-07-10T14:40:27Z"
+    },
+    "Mexc": {
+     "usd": 335074,
+     "tokens": 24500,
+     "n": 1,
+     "first": "2026-07-07T22:10:35Z"
+    }
+   },
+   "cex_deposit_usd_from_top_sellers": 0,
+   "largest_transfers": [
+    {
+     "time": "2026-07-09T17:24:38Z",
+     "from": "\ud83e\udd16 SafeProxy [0xf79ff8]",
+     "to": "Burn Address [0x000000]",
+     "tokens": 10000000,
+     "pct_supply": 1.0,
+     "usd": 10999466,
+     "price_that_day": 1.2519246015422547
+    },
+    {
+     "time": "2026-07-05T04:26:38Z",
+     "from": "\ud83c\udfe6 Gate: Wallet [0x0d0707]",
+     "to": "\ud83c\udfe6 Gate: Wallet [0xc882b1]",
+     "tokens": 506034,
+     "pct_supply": 0.051,
+     "usd": 8236892,
+     "price_that_day": 15.571088960318933
+    },
+    {
+     "time": "2026-07-03T04:26:57Z",
+     "from": "\ud83c\udfe6 Gate: Wallet [0x0d0707]",
+     "to": "\ud83c\udfe6 Gate: Wallet [0xc882b1]",
+     "tokens": 919878,
+     "pct_supply": 0.092,
+     "usd": 6807120,
+     "price_that_day": 11.755591818904009
+    },
+    {
+     "time": "2026-07-07T16:17:35Z",
+     "from": "\ud83c\udfe6 Gate: Wallet [0xc882b1]",
+     "to": "\ud83c\udfe6 Gate: Wallet [0x0d0707]",
+     "tokens": 431280,
+     "pct_supply": 0.043,
+     "usd": 5898416,
+     "price_that_day": 15.25502047102308
+    },
+    {
+     "time": "2026-07-07T16:15:37Z",
+     "from": "\ud83c\udfe6 Gate: Deposit [0x035ae7]",
+     "to": "\ud83c\udfe6 Gate: Wallet [0x0d0707]",
+     "tokens": 385029,
+     "pct_supply": 0.039,
+     "usd": 5265862,
+     "price_that_day": 15.25502047102308
+    },
+    {
+     "time": "2026-07-04T23:06:57Z",
+     "from": "\ud83c\udfe6 Gate: Deposit [0x878216]",
+     "to": "\ud83c\udfe6 Gate: Wallet [0x0d0707]",
+     "tokens": 398899,
+     "pct_supply": 0.04,
+     "usd": 4428201,
+     "price_that_day": 5.980592163951484
+    },
+    {
+     "time": "2026-07-05T00:33:33Z",
+     "from": "\ud83c\udfe6 Bitget: Main Wallet [0x1ab497]",
+     "to": "\ud83c\udfe6 Bitget: Deposit [0xffa8db]",
+     "tokens": 268983,
+     "pct_supply": 0.027,
+     "usd": 4378323,
+     "price_that_day": 15.571088960318933
+    },
+    {
+     "time": "2026-07-07T23:01:48Z",
+     "from": "\ud83c\udfe6 KuCoin: Wallet [0x53f78a]",
+     "to": "\ud83e\udd16 \ud83c\udfe6 KuCoin: Wallet [0x17a303]",
+     "tokens": 300000,
+     "pct_supply": 0.03,
+     "usd": 4102962,
+     "price_that_day": 15.25502047102308
+    }
+   ],
+   "note": "Transfers = top 100 by USD value (non-DEX, incl. CEX) in the window; sellers = top 25 by sold USD (DEX trades)."
+  },
+  "VELVET": {
+   "chain": "bnb",
+   "address": "0x8b194370825e37b33373e74a41009161808c1488",
+   "window": [
+    "2026-06-26",
+    "2026-07-05"
+   ],
+   "transfers_window_from": "2026-06-26",
+   "transfer_min_usd": 10000,
+   "top_sellers": [
+    {
+     "address": "0xbd97306a087ed0c46b783cfbfdcdc6c12c7a2866",
+     "label": "\u200b\u200bTrading Bot [0xbd9730]",
+     "type": "bot/MEV",
+     "sold_usd": 1864385,
+     "bought_usd": 1559667,
+     "net_sold_tokens": 544107,
+     "net_sold_pct_supply": 0.054
+    },
+    {
+     "address": "0x3ad8842eeded3a063d621eeae09216ef5e4f3e95",
+     "label": "[0x3ad884]",
+     "type": "unlabeled",
+     "sold_usd": 382587,
+     "bought_usd": 0,
+     "net_sold_tokens": 214601,
+     "net_sold_pct_supply": 0.021
+    },
+    {
+     "address": "0x9e229b12cc9081d6a510b29ccbd6311743e277ed",
+     "label": "Token Millionaire [0x9e229b]",
+     "type": "other labeled",
+     "sold_usd": 140053,
+     "bought_usd": 110688,
+     "net_sold_tokens": 34354,
+     "net_sold_pct_supply": 0.003
+    },
+    {
+     "address": "0x537f572e9502bd2ec5d46c7ae917992cac96474f",
+     "label": "\ud83e\udd16 Token Millionaire [0x537f57]",
+     "type": "other labeled",
+     "sold_usd": 120097,
+     "bought_usd": 58240,
+     "net_sold_tokens": 88672,
+     "net_sold_pct_supply": 0.009
+    },
+    {
+     "address": "0x60b97709d633dd4e0f0f44f6102fd50341c0afa6",
+     "label": "\ud83e\udd16 SafeProxy [0x60b977]",
+     "type": "team/deployer/multisig",
+     "sold_usd": 92807,
+     "bought_usd": 82513,
+     "net_sold_tokens": 3215,
+     "net_sold_pct_supply": 0.0
+    },
+    {
+     "address": "0xc4d50263c1e89b65b63c830ff93fadc957064fa4",
+     "label": "Top 100 on ENA Leaderboard [0xc4d502]",
+     "type": "other labeled",
+     "sold_usd": 91718,
+     "bought_usd": 53312,
+     "net_sold_tokens": 35487,
+     "net_sold_pct_supply": 0.004
+    },
+    {
+     "address": "0x79df1e89d164d8659dd8cd4dc50c36b2f8f9008b",
+     "label": "[0x79df1e]",
+     "type": "unlabeled",
+     "sold_usd": 66134,
+     "bought_usd": 59314,
+     "net_sold_tokens": 13643,
+     "net_sold_pct_supply": 0.001
+    },
+    {
+     "address": "0x17cb5247dfa09c23569abff4cb44afd5eda9ea9a",
+     "label": "\ud83e\udd16 High Activity [0x17cb52]",
+     "type": "other labeled",
+     "sold_usd": 62387,
+     "bought_usd": 6581,
+     "net_sold_tokens": 47771,
+     "net_sold_pct_supply": 0.005
+    },
+    {
+     "address": "0x7bc60188d49b49c0b82df5938daea936f1abd4fb",
+     "label": "[0x7bc601]",
+     "type": "unlabeled",
+     "sold_usd": 58352,
+     "bought_usd": 40447,
+     "net_sold_tokens": 24406,
+     "net_sold_pct_supply": 0.002
+    },
+    {
+     "address": "0xb3e17d2ebbd710be53ecd8e8727337a8dd792811",
+     "label": "\ud83e\udd16 High Balance [0xb3e17d]",
+     "type": "other labeled",
+     "sold_usd": 57208,
+     "bought_usd": 877,
+     "net_sold_tokens": 44850,
+     "net_sold_pct_supply": 0.004
+    },
+    {
+     "address": "0x57fd714755dbe55798501e1b4b2bcc355c06bf6a",
+     "label": "\ud83e\udd16 SafeProxy [0x57fd71]",
+     "type": "team/deployer/multisig",
+     "sold_usd": 56384,
+     "bought_usd": 53365,
+     "net_sold_tokens": 3092,
+     "net_sold_pct_supply": 0.0
+    },
+    {
+     "address": "0x3533a74e98ad19ce0f32e99b2aedf4e6196137e9",
+     "label": "[0x3533a7]",
+     "type": "unlabeled",
+     "sold_usd": 47796,
+     "bought_usd": 2522,
+     "net_sold_tokens": 33592,
+     "net_sold_pct_supply": 0.003
+    }
+   ],
+   "top12_sold_usd_by_type": {
+    "bot/MEV": 1864385,
+    "unlabeled": 554869,
+    "other labeled": 471463,
+    "team/deployer/multisig": 149191
+   },
+   "transfers_n": 100,
+   "transfers_by_destination": {
+    "CEX": {
+     "usd": 54071140,
+     "tokens": 75314700,
+     "n": 82
+    },
+    "unlabeled": {
+     "usd": 3625353,
+     "tokens": 2533918,
+     "n": 11
+    },
+    "other labeled": {
+     "usd": 464324,
+     "tokens": 629267,
+     "n": 6
+    },
+    "whale": {
+     "usd": 75094,
+     "tokens": 59212,
+     "n": 1
+    }
+   },
+   "cex_deposits_by_exchange": {
+    "Gate": {
+     "usd": 35406305,
+     "tokens": 62007621,
+     "n": 60,
+     "first": "2026-06-27T08:53:03Z"
+    },
+    "Bitget": {
+     "usd": 15274231,
+     "tokens": 10725101,
+     "n": 12,
+     "first": "2026-06-29T12:22:35Z"
+    },
+    "Kucoin": {
+     "usd": 3268166,
+     "tokens": 2494436,
+     "n": 8,
+     "first": "2026-06-27T02:00:33Z"
+    },
+    "Mexc": {
+     "usd": 122437,
+     "tokens": 87543,
+     "n": 2,
+     "first": "2026-06-27T06:21:17Z"
+    }
+   },
+   "cex_deposit_usd_from_top_sellers": 0,
+   "largest_transfers": [
+    {
+     "time": "2026-07-03T04:26:59Z",
+     "from": "\ud83c\udfe6 Gate: Wallet [0x0d0707]",
+     "to": "\ud83c\udfe6 Gate: Wallet [0xc882b1]",
+     "tokens": 21438065,
+     "pct_supply": 2.144,
+     "usd": 9499185,
+     "price_that_day": 0.4695599831898997
+    },
+    {
+     "time": "2026-06-30T17:44:34Z",
+     "from": "\ud83c\udfe6 Bitget: Deposit [0xffa8db]",
+     "to": "\ud83c\udfe6 Bitget: Main Wallet [0x1ab497]",
+     "tokens": 3000000,
+     "pct_supply": 0.3,
+     "usd": 4822973,
+     "price_that_day": 1.6082326358354222
+    },
+    {
+     "time": "2026-06-30T05:50:05Z",
+     "from": "\ud83c\udfe6 Bitget: Deposit [0xffa8db]",
+     "to": "\ud83c\udfe6 Bitget: Main Wallet [0x1ab497]",
+     "tokens": 2000000,
+     "pct_supply": 0.2,
+     "usd": 3215315,
+     "price_that_day": 1.6082326358354222
+    },
+    {
+     "time": "2026-07-04T04:26:45Z",
+     "from": "\ud83c\udfe6 Gate: Wallet [0x0d0707]",
+     "to": "\ud83c\udfe6 Gate: Wallet [0xc882b1]",
+     "tokens": 4943533,
+     "pct_supply": 0.494,
+     "usd": 2676046,
+     "price_that_day": 0.45669847719502044
+    },
+    {
+     "time": "2026-07-01T08:33:33Z",
+     "from": "\ud83c\udfe6 Bitget: Main Wallet [0x1ab497]",
+     "to": "\ud83c\udfe6 Bitget: Deposit [0xffa8db]",
+     "tokens": 1639022,
+     "pct_supply": 0.164,
+     "usd": 2493669,
+     "price_that_day": 1.6307418573476886
+    },
+    {
+     "time": "2026-07-02T06:39:21Z",
+     "from": "\ud83c\udfe6 Gate: Deposit [0x035ae7]",
+     "to": "\ud83c\udfe6 Gate: Wallet [0x0d0707]",
+     "tokens": 3729207,
+     "pct_supply": 0.373,
+     "usd": 2018309,
+     "price_that_day": 1.5185463348881585
+    },
+    {
+     "time": "2026-06-30T04:34:34Z",
+     "from": "\ud83c\udfe6 Bitget: Deposit [0xffa8db]",
+     "to": "\ud83c\udfe6 Bitget: Main Wallet [0x1ab497]",
+     "tokens": 1000000,
+     "pct_supply": 0.1,
+     "usd": 1607658,
+     "price_that_day": 1.6082326358354222
+    },
+    {
+     "time": "2026-07-01T12:34:04Z",
+     "from": "\ud83c\udfe6 Bitget: Main Wallet [0x1ab497]",
+     "to": "\ud83c\udfe6 Bitget: Deposit [0xffa8db]",
+     "tokens": 937798,
+     "pct_supply": 0.094,
+     "usd": 1426801,
+     "price_that_day": 1.6307418573476886
+    }
+   ],
+   "note": "Transfers = top 100 by USD value (non-DEX, incl. CEX) in the window; sellers = top 25 by sold USD (DEX trades)."
+  },
+  "SIREN": {
+   "chain": "bnb",
+   "address": "0x997a58129890bbda032231a52ed1ddc845fc18e1",
+   "window": [
+    "2026-03-21",
+    "2026-04-02"
+   ],
+   "transfers_window_from": "2026-03-21",
+   "transfer_min_usd": 10000,
+   "top_sellers": [
+    {
+     "address": "0xbd97306a087ed0c46b783cfbfdcdc6c12c7a2866",
+     "label": "\u200b\u200bTrading Bot [0xbd9730]",
+     "type": "bot/MEV",
+     "sold_usd": 15987382,
+     "bought_usd": 16906776,
+     "net_sold_tokens": 590815,
+     "net_sold_pct_supply": 0.082
+    },
+    {
+     "address": "0xe04723b83fc521a5bc5b707ca0f15e2108c448b3",
+     "label": "\u200b\u200bTrading Bot [0xe04723]",
+     "type": "bot/MEV",
+     "sold_usd": 4669228,
+     "bought_usd": 0,
+     "net_sold_tokens": 3315241,
+     "net_sold_pct_supply": 0.458
+    },
+    {
+     "address": "0x22f171160544953b83b1f5d60bf04144d76b4275",
+     "label": "\u200b\u200b\ud83e\udd16 DEX Trading Bot [0x22f171]",
+     "type": "bot/MEV",
+     "sold_usd": 2942997,
+     "bought_usd": 2948199,
+     "net_sold_tokens": 5836,
+     "net_sold_pct_supply": 0.001
+    },
+    {
+     "address": "0x9e229b12cc9081d6a510b29ccbd6311743e277ed",
+     "label": "Token Millionaire [0x9e229b]",
+     "type": "other labeled",
+     "sold_usd": 2927522,
+     "bought_usd": 2883727,
+     "net_sold_tokens": 36644,
+     "net_sold_pct_supply": 0.005
+    },
+    {
+     "address": "0x2788b4131b4c26d6b2bc2b10a4eef18b6560008c",
+     "label": "High Balance [0x2788b4]",
+     "type": "other labeled",
+     "sold_usd": 2568527,
+     "bought_usd": 2603353,
+     "net_sold_tokens": 100832,
+     "net_sold_pct_supply": 0.014
+    },
+    {
+     "address": "0x78c6d092b95e37bedb0650ca15e0f1c418cdbe18",
+     "label": "Uses \"WUDU\" HL Referral Code [0x78c6d0]",
+     "type": "other labeled",
+     "sold_usd": 2109996,
+     "bought_usd": 0,
+     "net_sold_tokens": 1274372,
+     "net_sold_pct_supply": 0.176
+    },
+    {
+     "address": "0x055a3b37957bfbd3345bed9968e7e8dd56d67066",
+     "label": "\u200b\u200bTrading Bot [0x055a3b]",
+     "type": "bot/MEV",
+     "sold_usd": 1967379,
+     "bought_usd": 0,
+     "net_sold_tokens": 1413744,
+     "net_sold_pct_supply": 0.195
+    },
+    {
+     "address": "0xa73072adc6c34859426fcc29bc6ca2cac07c93c3",
+     "label": "High Balance [0xa73072]",
+     "type": "other labeled",
+     "sold_usd": 1735090,
+     "bought_usd": 1904675,
+     "net_sold_tokens": 5299,
+     "net_sold_pct_supply": 0.001
+    },
+    {
+     "address": "0xa5dd28e677a935734fda73b9fe028261057a111d",
+     "label": "\u200b\u200bTrading Bot [0xa5dd28]",
+     "type": "bot/MEV",
+     "sold_usd": 835480,
+     "bought_usd": 542233,
+     "net_sold_tokens": 201589,
+     "net_sold_pct_supply": 0.028
+    },
+    {
+     "address": "0xe48f79e7cde558bb205c19d68abfbeb24390c834",
+     "label": "High Activity [0xe48f79]",
+     "type": "other labeled",
+     "sold_usd": 797957,
+     "bought_usd": 827603,
+     "net_sold_tokens": 0,
+     "net_sold_pct_supply": 0.0
+    },
+    {
+     "address": "0x2ee6d537750b2711777e81038960b8f987bd08d1",
+     "label": "[0x2ee6d5]",
+     "type": "unlabeled",
+     "sold_usd": 612835,
+     "bought_usd": 626170,
+     "net_sold_tokens": 0,
+     "net_sold_pct_supply": 0.0
+    },
+    {
+     "address": "0x70c69520eb6595d102bfd8aed8fc58428489c4e4",
+     "label": "\u200b\u200bTrading Bot [0x70c695]",
+     "type": "bot/MEV",
+     "sold_usd": 546777,
+     "bought_usd": 308669,
+     "net_sold_tokens": 63763,
+     "net_sold_pct_supply": 0.009
+    }
+   ],
+   "top12_sold_usd_by_type": {
+    "bot/MEV": 26949243,
+    "other labeled": 10139092,
+    "unlabeled": 612835
+   },
+   "transfers_n": 100,
+   "transfers_by_destination": {
+    "unlabeled": {
+     "usd": 487843332,
+     "tokens": 264041393,
+     "n": 96
+    },
+    "other labeled": {
+     "usd": 18346123,
+     "tokens": 9929696,
+     "n": 3
+    },
+    "CEX": {
+     "usd": 4656285,
+     "tokens": 23537872,
+     "n": 1
+    }
+   },
+   "cex_deposits_by_exchange": {
+    "Gate": {
+     "usd": 4656285,
+     "tokens": 23537872,
+     "n": 1,
+     "first": "2026-04-02T04:26:41Z"
+    }
+   },
+   "cex_deposit_usd_from_top_sellers": 0,
+   "largest_transfers": [
+    {
+     "time": "2026-03-22T10:55:54Z",
+     "from": "\ud83e\udd16 Hedgeys [0x2aa5d1]",
+     "to": "[0x2fc843]",
+     "tokens": 5032356,
+     "pct_supply": 0.696,
+     "usd": 9297789,
+     "price_that_day": 0.944398802028854
+    },
+    {
+     "time": "2026-03-22T11:13:08Z",
+     "from": "[0x2fc843]",
+     "to": "\u200b\u200bSIREN Custody Vaults [0xf3689a]",
+     "tokens": 5032355,
+     "pct_supply": 0.696,
+     "usd": 9297788,
+     "price_that_day": 0.944398802028854
+    },
+    {
+     "time": "2026-03-22T10:55:50Z",
+     "from": "\ud83e\udd16 Hedgeys [0x2aa5d1]",
+     "to": "[0x7eed30]",
+     "tokens": 4606507,
+     "pct_supply": 0.637,
+     "usd": 8510991,
+     "price_that_day": 0.944398802028854
+    },
+    {
+     "time": "2026-03-22T11:13:08Z",
+     "from": "[0x7eed30]",
+     "to": "[0x7fa9a2]",
+     "tokens": 4606506,
+     "pct_supply": 0.637,
+     "usd": 8510989,
+     "price_that_day": 0.944398802028854
+    },
+    {
+     "time": "2026-03-22T10:55:53Z",
+     "from": "\ud83e\udd16 Hedgeys [0x2aa5d1]",
+     "to": "[0x0e2af4]",
+     "tokens": 4359033,
+     "pct_supply": 0.603,
+     "usd": 8053757,
+     "price_that_day": 0.944398802028854
+    },
+    {
+     "time": "2026-03-22T11:13:08Z",
+     "from": "[0x0e2af4]",
+     "to": "[0xac3357]",
+     "tokens": 4359032,
+     "pct_supply": 0.603,
+     "usd": 8053755,
+     "price_that_day": 0.944398802028854
+    },
+    {
+     "time": "2026-03-22T10:55:52Z",
+     "from": "\ud83e\udd16 Hedgeys [0x2aa5d1]",
+     "to": "[0x7690d4]",
+     "tokens": 4110390,
+     "pct_supply": 0.568,
+     "usd": 7594364,
+     "price_that_day": 0.944398802028854
+    },
+    {
+     "time": "2026-03-22T11:13:08Z",
+     "from": "[0x7690d4]",
+     "to": "[0x54fe23]",
+     "tokens": 4110389,
+     "pct_supply": 0.568,
+     "usd": 7594362,
+     "price_that_day": 0.944398802028854
+    }
+   ],
+   "note": "Transfers = top 100 by USD value (non-DEX, incl. CEX) in the window; sellers = top 25 by sold USD (DEX trades)."
+  },
+  "ALLINU": {
+   "chain": "solana",
+   "address": "4MMQY9bwkxxTtsK3W227Q5ABT6yFY8Pmn9Ze7wmAXKY8",
+   "window": [
+    "2026-09-13",
+    "2026-09-25"
+   ],
+   "transfers_window_from": "2026-09-13",
+   "transfer_min_usd": 10000,
+   "top_sellers": [
+    {
+     "address": "5KXDF6QnqhBj72hDtJNkkpFaQVUfbFXNybMsp3DiK6tD",
+     "label": "Stonk: Rewards Distributor [5KXDF6Qn]",
+     "type": "other labeled",
+     "sold_usd": 778437,
+     "bought_usd": 43705,
+     "net_sold_tokens": 96530936,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "7vKrS8V3CLKUvnypkrzToAv4oyGgQ6tf9RU8Sx5K8FWV",
+     "label": "\ud83e\udd16 [7vKrS8V3]",
+     "type": "unlabeled",
+     "sold_usd": 300393,
+     "bought_usd": 271217,
+     "net_sold_tokens": 601940,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "3n44HksmwFtju3nPWdYFdyb3h7xLteZKJRbQsVnoX6QM",
+     "label": "[3n44Hksm]",
+     "type": "unlabeled",
+     "sold_usd": 287110,
+     "bought_usd": 25972,
+     "net_sold_tokens": 17435865,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "6XpoayPqAE99XfCPARDig3CwU6Mg7pMdrTCCbqVidZMV",
+     "label": "\ud83d\udc64 \ud83d\udc40 lyx [6XpoayPq]",
+     "type": "other labeled",
+     "sold_usd": 234628,
+     "bought_usd": 123103,
+     "net_sold_tokens": 150595,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "G9Ft2duZrj27qdwEYun8hJKoxM7zz7GDL933Vsr2j9RW",
+     "label": "Pablo Token Deployer [G9Ft2duZ]",
+     "type": "team/deployer/multisig",
+     "sold_usd": 194094,
+     "bought_usd": 57287,
+     "net_sold_tokens": 16371504,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "6YWiTobrAUgEverHcb8GZ9hwgv9ZL6ddfeX4tdvNhaG6",
+     "label": "\ud83d\udc40 \"QuestCapital888\" on FOMO [6YWiTobr]",
+     "type": "smart money/fund",
+     "sold_usd": 177721,
+     "bought_usd": 256548,
+     "net_sold_tokens": 809184,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "AH39BneW9UeWxQysUcwogQrYFdPvJuRVZ5w4ccq9SKfL",
+     "label": "\ud83d\udd27 \ud83d\udc64 logjam [AH39BneW]",
+     "type": "other labeled",
+     "sold_usd": 171847,
+     "bought_usd": 16198,
+     "net_sold_tokens": 1914519,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "BMAfxYVcJcQM2TJfhweJFmMWV7Gr5v6Xj9xq4cHDYtYe",
+     "label": "\ud83d\udc40 \"gudblondie\" on FOMO [BMAfxYVc]",
+     "type": "other labeled",
+     "sold_usd": 143815,
+     "bought_usd": 155377,
+     "net_sold_tokens": 82389,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "niDQB4CxfdqDcdBWJFe4PkfsZD6njoiHCMfn5VNvRDY",
+     "label": "\ud83d\udd27 Former Smart Trader [niDQB4Cx]",
+     "type": "smart money/fund",
+     "sold_usd": 115434,
+     "bought_usd": 90969,
+     "net_sold_tokens": 1177927,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "BpFph9AceSM6ykdaXYb1Vd98CRr8xUreG6EyYE1GDxcp",
+     "label": "\ud83d\udd27 \ud83d\udc40 \"csin02\" on FOMO [BpFph9Ac]",
+     "type": "other labeled",
+     "sold_usd": 109202,
+     "bought_usd": 86563,
+     "net_sold_tokens": 785853,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "zV18RQeme9fDZUbCGf7skSWNz6Vphs5j3PQUHjHdcgi",
+     "label": "\ud83e\udd13 180D Smart Trader [zV18RQem]",
+     "type": "smart money/fund",
+     "sold_usd": 106196,
+     "bought_usd": 0,
+     "net_sold_tokens": 9602677,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "HaHToYj1EDQf2FzwV9g34wWumk1nsgv55Mu2ou7FFX9Q",
+     "label": "\ud83d\udd27 Top 100 on STONK Leaderboard [HaHToYj1]",
+     "type": "other labeled",
+     "sold_usd": 104166,
+     "bought_usd": 0,
+     "net_sold_tokens": 18022069,
+     "net_sold_pct_supply": null
+    }
+   ],
+   "top12_sold_usd_by_type": {
+    "other labeled": 1542095,
+    "unlabeled": 587503,
+    "team/deployer/multisig": 194094,
+    "smart money/fund": 399351
+   },
+   "transfers_n": 51,
+   "transfers_by_destination": {
+    "unlabeled": {
+     "usd": 1141840,
+     "tokens": 73748317,
+     "n": 30
+    },
+    "other labeled": {
+     "usd": 630915,
+     "tokens": 35771763,
+     "n": 14
+    },
+    "smart money/fund": {
+     "usd": 124085,
+     "tokens": 6852653,
+     "n": 2
+    },
+    "whale": {
+     "usd": 19772,
+     "tokens": 1036885,
+     "n": 1
+    },
+    "team/deployer/multisig": {
+     "usd": 34439,
+     "tokens": 1851089,
+     "n": 2
+    },
+    "DEX/pool": {
+     "usd": 29186,
+     "tokens": 5470318,
+     "n": 2
+    }
+   },
+   "cex_deposits_by_exchange": {},
+   "cex_deposit_usd_from_top_sellers": 0,
+   "largest_transfers": [
+    {
+     "time": "2026-09-16T02:24:49Z",
+     "from": "[2eekcsg2]",
+     "to": "[3n44Hksm]",
+     "tokens": 17622570,
+     "pct_supply": null,
+     "usd": 336033,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-16T09:16:10Z",
+     "from": "TNSR Airdrop Recipient [ErNMP3aJ]",
+     "to": "\ud83d\udc40 \"AssetAngus\" on FOMO [6fVGL6nH]",
+     "tokens": 8043065,
+     "pct_supply": null,
+     "usd": 153368,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-16T20:57:57Z",
+     "from": "\ud83e\udd13 \ud83d\udc64 \ud83d\udc40 Omakase [F5MYbjEA]",
+     "to": "[GUHSFLqv]",
+     "tokens": 8001089,
+     "pct_supply": null,
+     "usd": 152568,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-16T20:59:35Z",
+     "from": "[GUHSFLqv]",
+     "to": "\ud83e\udd13 \ud83d\udc64 \ud83d\udc40 Omakase [F5MYbjEA]",
+     "tokens": 7921078,
+     "pct_supply": null,
+     "usd": 151042,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-16T20:19:42Z",
+     "from": "[GUHSFLqv]",
+     "to": "\ud83e\udd13 \ud83d\udc64 \ud83d\udc40 Omakase [F5MYbjEA]",
+     "tokens": 5940000,
+     "pct_supply": null,
+     "usd": 113266,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-17T13:35:18Z",
+     "from": "\ud83e\udd13 180D Smart Trader [J9jUL2vg]",
+     "to": "\ud83d\udc40 \"SmartCrayonMaker\" on FOMO [Eofr44u7]",
+     "tokens": 5866312,
+     "pct_supply": null,
+     "usd": 106225,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-16T20:16:47Z",
+     "from": "\ud83e\udd13 \ud83d\udc64 \ud83d\udc40 Omakase [F5MYbjEA]",
+     "to": "[GUHSFLqv]",
+     "tokens": 4000000,
+     "pct_supply": null,
+     "usd": 76273,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-21T06:17:15Z",
+     "from": "\ud83d\udd27 \ud83d\udc64 gr3g [GmCqxJx2]",
+     "to": "\ud83d\udc64 gr3g [CyT2UQZE]",
+     "tokens": 3386129,
+     "pct_supply": null,
+     "usd": 71248,
+     "price_that_day": null
+    }
+   ],
+   "note": "Transfers = top 100 by USD value (non-DEX, incl. CEX) in the window; sellers = top 25 by sold USD (DEX trades)."
+  },
+  "STONK": {
+   "chain": "solana",
+   "address": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
+   "window": [
+    "2026-09-18",
+    "2026-10-02"
+   ],
+   "transfers_window_from": "2026-09-18",
+   "transfer_min_usd": 10000,
+   "top_sellers": [
+    {
+     "address": "Dzmkq4wo1xZ2sAXhMvSg5GbcoSPiQ4JHL3aoVvjeuA5J",
+     "label": "\ud83e\udd16 [Dzmkq4wo]",
+     "type": "unlabeled",
+     "sold_usd": 17207520,
+     "bought_usd": 17186861,
+     "net_sold_tokens": 55100,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "7KdoBm9vrujoH8nhLD3YfaJ7oqentYVNFe7K4KR9jcyb",
+     "label": "\ud83e\udd16 [7KdoBm9v]",
+     "type": "unlabeled",
+     "sold_usd": 5794730,
+     "bought_usd": 5289860,
+     "net_sold_tokens": 1447415,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "5vh3TZMDWhP2WNJNtUjYYps21JPnY3HYpR13c22LBwAT",
+     "label": "\ud83d\udc40 \"excesscapital\" on FOMO [5vh3TZMD]",
+     "type": "smart money/fund",
+     "sold_usd": 1852799,
+     "bought_usd": 1571694,
+     "net_sold_tokens": 970840,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "DYkwVoWmbJR6N68n8sKJc3mFcA587gw44dm9btsNjaiQ",
+     "label": "@bholu on Farcaster [ETH Verified] [DYkwVoWm]",
+     "type": "other labeled",
+     "sold_usd": 1621350,
+     "bought_usd": 878350,
+     "net_sold_tokens": 2881041,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "BwpQ7Erv2vgdmHKuGNsC6m6satzt4yD4BEfXJPxGzuWW",
+     "label": "[BwpQ7Erv]",
+     "type": "unlabeled",
+     "sold_usd": 1442447,
+     "bought_usd": 1440468,
+     "net_sold_tokens": 205699,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "AEtL29wgARtujVynpgoDtUMLvM7NmZ6WALcjD2NjU8Dk",
+     "label": "\ud83d\udd27 \"AEtL29\" on pump.fun [AEtL29wg]",
+     "type": "DEX/pool",
+     "sold_usd": 1302486,
+     "bought_usd": 426759,
+     "net_sold_tokens": 3266848,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "dmuXAmcXJcdNuK264vsJQNBpVBPAx4JLujBzBMahJ6C",
+     "label": "High Balance [dmuXAmcX]",
+     "type": "other labeled",
+     "sold_usd": 1242831,
+     "bought_usd": 1233142,
+     "net_sold_tokens": 319,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "GCvHhEUYQwTJ8jyf8Lc4bv8jBXyZU4LMMsZCobwEPzvM",
+     "label": "\u200b\u200bTrading Bot [GCvHhEUY]",
+     "type": "bot/MEV",
+     "sold_usd": 1170506,
+     "bought_usd": 383318,
+     "net_sold_tokens": 2649461,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "BMAfxYVcJcQM2TJfhweJFmMWV7Gr5v6Xj9xq4cHDYtYe",
+     "label": "\ud83d\udc40 \"gudblondie\" on FOMO [BMAfxYVc]",
+     "type": "other labeled",
+     "sold_usd": 1163950,
+     "bought_usd": 1014204,
+     "net_sold_tokens": 551366,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "GMqwf2ct8runQarHgHxkbXgcMBJzwjVoL525ZLCAFLB2",
+     "label": "\"solanadoomer\" on pump.fun [GMqwf2ct]",
+     "type": "DEX/pool",
+     "sold_usd": 1081725,
+     "bought_usd": 1004905,
+     "net_sold_tokens": 0,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "D58UvaC4yBRFgGp7p4WV9wU7ThjmH5dFnQUtVrKfPn1f",
+     "label": "ECAT Token Deployer [D58UvaC4]",
+     "type": "team/deployer/multisig",
+     "sold_usd": 1080513,
+     "bought_usd": 1024008,
+     "net_sold_tokens": 160987,
+     "net_sold_pct_supply": null
+    },
+    {
+     "address": "28bcF6diYNzyKvYCHJZTQbzrcF7esZg95eSdj1QC8K4z",
+     "label": "certifiedbum.eth* on Ethereum [28bcF6di]",
+     "type": "other labeled",
+     "sold_usd": 1044675,
+     "bought_usd": 1015112,
+     "net_sold_tokens": 0,
+     "net_sold_pct_supply": null
+    }
+   ],
+   "top12_sold_usd_by_type": {
+    "unlabeled": 24444697,
+    "smart money/fund": 1852799,
+    "other labeled": 5072806,
+    "DEX/pool": 2384211,
+    "bot/MEV": 1170506,
+    "team/deployer/multisig": 1080513
+   },
+   "transfers_n": 100,
+   "transfers_by_destination": {
+    "CEX": {
+     "usd": 3206550,
+     "tokens": 11633342,
+     "n": 6
+    },
+    "unlabeled": {
+     "usd": 18697439,
+     "tokens": 65486007,
+     "n": 53
+    },
+    "whale": {
+     "usd": 1398211,
+     "tokens": 5042318,
+     "n": 4
+    },
+    "other labeled": {
+     "usd": 8006408,
+     "tokens": 27871123,
+     "n": 22
+    },
+    "smart money/fund": {
+     "usd": 728575,
+     "tokens": 2330839,
+     "n": 2
+    },
+    "bot/MEV": {
+     "usd": 489345,
+     "tokens": 2019549,
+     "n": 1
+    },
+    "team/deployer/multisig": {
+     "usd": 3059323,
+     "tokens": 10237669,
+     "n": 9
+    },
+    "DEX/pool": {
+     "usd": 720208,
+     "tokens": 2880186,
+     "n": 3
+    }
+   },
+   "cex_deposits_by_exchange": {
+    "Gate": {
+     "usd": 2455797,
+     "tokens": 8703869,
+     "n": 3,
+     "first": "2026-09-18T08:01:39Z"
+    },
+    "CEX (unnamed)": {
+     "usd": 750754,
+     "tokens": 2929473,
+     "n": 3,
+     "first": "2026-09-20T22:35:31Z"
+    }
+   },
+   "cex_deposit_usd_from_top_sellers": 0,
+   "largest_transfers": [
+    {
+     "time": "2026-09-27T23:15:32Z",
+     "from": "[6jsNFbsE]",
+     "to": "\ud83c\udfe6 Gate: Wallet [u6PJ8DtQ]",
+     "tokens": 5502885,
+     "pct_supply": null,
+     "usd": 1513535,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-27T22:46:48Z",
+     "from": "Hypersphere Ventures [8G2eUJ9x]",
+     "to": "[6jsNFbsE]",
+     "tokens": 5502880,
+     "pct_supply": null,
+     "usd": 1513534,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-27T01:07:15Z",
+     "from": "[AE3fF5Md]",
+     "to": "[2kQZaP9t]",
+     "tokens": 2760963,
+     "pct_supply": null,
+     "usd": 759386,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-26T12:37:41Z",
+     "from": "\ud83e\udd16 High Balance [G4G5Szkb]",
+     "to": "STONK Whale [EiGkkAwc]",
+     "tokens": 2349467,
+     "pct_supply": null,
+     "usd": 655533,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-19T00:24:34Z",
+     "from": "Top 100 on FARTCOIN Leaderboard [Hbb3np1f]",
+     "to": "@bholu on Farcaster [ETH Verified] [DYkwVoWm]",
+     "tokens": 2537748,
+     "pct_supply": null,
+     "usd": 633731,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-29T07:52:46Z",
+     "from": "[AE3fF5Md]",
+     "to": "[2kQZaP9t]",
+     "tokens": 2400000,
+     "pct_supply": null,
+     "usd": 581530,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-20T00:14:09Z",
+     "from": "[FapdzLdf]",
+     "to": "cbrs.sol [4c138uTU]",
+     "tokens": 2000000,
+     "pct_supply": null,
+     "usd": 566535,
+     "price_that_day": null
+    },
+    {
+     "time": "2026-09-20T00:13:27Z",
+     "from": "cbrs.sol [4c138uTU]",
+     "to": "[FapdzLdf]",
+     "tokens": 2000000,
+     "pct_supply": null,
+     "usd": 566535,
+     "price_that_day": null
+    }
+   ],
+   "note": "Transfers = top 100 by USD value (non-DEX, incl. CEX) in the window; sellers = top 25 by sold USD (DEX trades)."
+  },
+  "ANSEM": {
+   "chain": "solana",
+   "address": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
+   "window": [
+    "2026-07-04",
+    "2026-07-14"
+   ],
+   "transfers_window_from": "2026-07-04",
+   "transfer_min_usd": 10000,
+   "top_sellers": [
+    {
+     "address": "CFmr5rvSrHTeRYHvhiSsBjt5EE8rbxXeqDtCKZNLzepw",
+     "label": "Photon Trading Bot User [CFmr5rvS]",
+     "type": "bot/MEV",
+     "sold_usd": 2241523,
+     "bought_usd": 2219774,
+     "net_sold_tokens": 0,
+     "net_sold_pct_supply": 0.0
+    },
+    {
+     "address": "6bYGAHdc3cHsNXozrpcqGSpQBUaH94qodV8Q2kXxHxn4",
+     "label": "[6bYGAHdc]",
+     "type": "unlabeled",
+     "sold_usd": 1987456,
+     "bought_usd": 1966621,
+     "net_sold_tokens": 0,
+     "net_sold_pct_supply": 0.0
+    },
+    {
+     "address": "HCoUkq7iHecWTVCAVPfH9fBSGbZrgrE2jbHrE1rnCpUV",
+     "label": "\ud83d\udd27 Top 100 on CARDS Leaderboard [HCoUkq7i]",
+     "type": "other labeled",
+     "sold_usd": 1757576,
+     "bought_usd": 1250223,
+     "net_sold_tokens": 1226484,
+     "net_sold_pct_supply": 0.123
+    },
+    {
+     "address": "CT2mERXYg3DU18zxPRjrWhJ33DNUQJLoVyKHHVu97ewZ",
+     "label": "[CT2mERXY]",
+     "type": "unlabeled",
+     "sold_usd": 1547543,
+     "bought_usd": 1528617,
+     "net_sold_tokens": 0,
+     "net_sold_pct_supply": 0.0
+    },
+    {
+     "address": "3inTyfqCpLwa4U812GmB3FPcGz6iFWxHbaNpw5dPrTg2",
+     "label": "luckisaskill.sol [3inTyfqC]",
+     "type": "other labeled",
+     "sold_usd": 1223718,
+     "bought_usd": 479461,
+     "net_sold_tokens": 2430759,
+     "net_sold_pct_supply": 0.244
+    },
+    {
+     "address": "7DCP8EZvcd251FYSkPP5CAejRDyywKEH8wU2wQ3VerVb",
+     "label": "\u200b\u200bDeposit [7DCP8EZv]",
+     "type": "CEX",
+     "sold_usd": 1150383,
+     "bought_usd": 1121690,
+     "net_sold_tokens": 17416,
+     "net_sold_pct_supply": 0.002
+    },
+    {
+     "address": "3SdVtYPdnQw2b8WSE2T1VeexAqkDjbTyeSZ8Pzs6bgou",
+     "label": "\ud83d\udd27 Former Smart Trader [3SdVtYPd]",
+     "type": "smart money/fund",
+     "sold_usd": 1081113,
+     "bought_usd": 198270,
+     "net_sold_tokens": 2533682,
+     "net_sold_pct_supply": 0.254
+    },
+    {
+     "address": "H3qrSThjpPjKvkqMUYqLTVucb5H7nhCUQAn9U3ekBxj1",
+     "label": "\ud83d\udd27 Former Smart Trader [H3qrSThj]",
+     "type": "smart money/fund",
+     "sold_usd": 1032794,
+     "bought_usd": 0,
+     "net_sold_tokens": 3363869,
+     "net_sold_pct_supply": 0.337
+    },
+    {
+     "address": "2S8E25nAcqvvMYEWZHBQk22GzevwvmsVNAs6Gw5tRX7d",
+     "label": "\u200b\u200bTrading Bot [2S8E25nA]",
+     "type": "bot/MEV",
+     "sold_usd": 983410,
+     "bought_usd": 593123,
+     "net_sold_tokens": 1884794,
+     "net_sold_pct_supply": 0.189
+    },
+    {
+     "address": "GkdYWRjFzZW3oxbRaPJ43C5385E4GtfgW3vwfK2ZAtac",
+     "label": "[GkdYWRjF]",
+     "type": "unlabeled",
+     "sold_usd": 982128,
+     "bought_usd": 126896,
+     "net_sold_tokens": 2918896,
+     "net_sold_pct_supply": 0.293
+    },
+    {
+     "address": "ArqJyL33EXQbyp9AeFzAe35M6EKmYCTmLQEbpj1ysxVz",
+     "label": "looxrare.sol [ArqJyL33]",
+     "type": "other labeled",
+     "sold_usd": 971236,
+     "bought_usd": 829274,
+     "net_sold_tokens": 770275,
+     "net_sold_pct_supply": 0.077
+    },
+    {
+     "address": "37ByujbQA6wGZ9a2L1QhFZZHTNf8WYnV9BzHnhboNEYN",
+     "label": "\ud83d\udd27 Former Smart Trader [37ByujbQ]",
+     "type": "smart money/fund",
+     "sold_usd": 946028,
+     "bought_usd": 234344,
+     "net_sold_tokens": 2381844,
+     "net_sold_pct_supply": 0.239
+    }
+   ],
+   "top12_sold_usd_by_type": {
+    "bot/MEV": 3224933,
+    "unlabeled": 4517127,
+    "other labeled": 3952530,
+    "CEX": 1150383,
+    "smart money/fund": 3059935
+   },
+   "transfers_n": 100,
+   "transfers_by_destination": {
+    "unlabeled": {
+     "usd": 17056289,
+     "tokens": 56605650,
+     "n": 65
+    },
+    "DEX/pool": {
+     "usd": 2774383,
+     "tokens": 8712110,
+     "n": 5
+    },
+    "other labeled": {
+     "usd": 3792621,
+     "tokens": 14714116,
+     "n": 18
+    },
+    "team/deployer/multisig": {
+     "usd": 1053709,
+     "tokens": 3122741,
+     "n": 6
+    },
+    "smart money/fund": {
+     "usd": 632269,
+     "tokens": 1992948,
+     "n": 4
+    },
+    "bot/MEV": {
+     "usd": 305199,
+     "tokens": 1147952,
+     "n": 2
+    }
+   },
+   "cex_deposits_by_exchange": {},
+   "cex_deposit_usd_from_top_sellers": 0,
+   "largest_transfers": [
+    {
+     "time": "2026-07-07T22:22:40Z",
+     "from": "[CB4PTPy5]",
+     "to": "[9SJTWFtX]",
+     "tokens": 3000002,
+     "pct_supply": 0.301,
+     "usd": 1179072,
+     "price_that_day": 0.4221509815626985
+    },
+    {
+     "time": "2026-07-07T09:22:19Z",
+     "from": "[5LkDy1xh]",
+     "to": "[CB4PTPy5]",
+     "tokens": 3000002,
+     "pct_supply": 0.301,
+     "usd": 1179072,
+     "price_that_day": 0.4221509815626985
+    },
+    {
+     "time": "2026-07-04T14:03:20Z",
+     "from": "[G6sYuVgG]",
+     "to": "\ud83d\udd27 \"ThePatientOne\" on pump.fun [3kfyzegb]",
+     "tokens": 3333333,
+     "pct_supply": 0.334,
+     "usd": 1133673,
+     "price_that_day": 0.31721884142431606
+    },
+    {
+     "time": "2026-07-04T12:38:08Z",
+     "from": "\ud83d\udd27 \"ThePatientOne\" on pump.fun [3kfyzegb]",
+     "to": "[G6sYuVgG]",
+     "tokens": 3333333,
+     "pct_supply": 0.334,
+     "usd": 1133673,
+     "price_that_day": 0.31721884142431606
+    },
+    {
+     "time": "2026-07-06T21:19:33Z",
+     "from": "[GfePXRZm]",
+     "to": "Top 100 on PUMP Leaderboard [ByN1aujZ]",
+     "tokens": 1722924,
+     "pct_supply": 0.173,
+     "usd": 614216,
+     "price_that_day": 0.31132215802923363
+    },
+    {
+     "time": "2026-07-09T12:35:27Z",
+     "from": "[GfePXRZm]",
+     "to": "Top 100 on PUMP Leaderboard [ByN1aujZ]",
+     "tokens": 1934710,
+     "pct_supply": 0.194,
+     "usd": 577592,
+     "price_that_day": 0.3062782195329884
+    },
+    {
+     "time": "2026-07-06T13:55:49Z",
+     "from": "Top 100 on PUMP Leaderboard [ByN1aujZ]",
+     "to": "[GfePXRZm]",
+     "tokens": 1600000,
+     "pct_supply": 0.16,
+     "usd": 570394,
+     "price_that_day": 0.31132215802923363
+    },
+    {
+     "time": "2026-07-08T17:26:48Z",
+     "from": "Top 100 on PUMP Leaderboard [ByN1aujZ]",
+     "to": "[GfePXRZm]",
+     "tokens": 1934710,
+     "pct_supply": 0.194,
+     "usd": 556454,
+     "price_that_day": 0.33825212532773824
+    }
+   ],
+   "note": "Transfers = top 100 by USD value (non-DEX, incl. CEX) in the window; sellers = top 25 by sold USD (DEX trades)."
+  }
+ }
+}

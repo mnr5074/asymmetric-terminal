@@ -1,0 +1,21 @@
+{
+ "schema": "birthphase/v1",
+ "file": "data/birthphase/virtuals.jsonl",
+ "one_record_per_line": true,
+ "note": "Virtuals Protocol launches. Times ISO-8601 UTC. USD values use VIRTUAL/USD from the Uniswap v3 VIRTUAL/USDC pool on Base at the trade hour. mcap = spot price x total supply (FDV-style; Virtuals agent supply is fixed at 1B).",
+ "fields": {
+  "id": "virtuals:<virtuals api id>",
+  "chain": "base | robinhood",
+  "token/pre_token/curve_pair/lp": "addresses (lowercase); pre_token trades on curve_pair (bonding curve) before graduation; lp = Uniswap V2 pool after graduation",
+  "cohort": "case_study | top_mcap (outcome-selected, never used for base rates) | graduated_recent | random (seeded random sample of launches with >=20 holders, outcome-blind; base rates use this)",
+  "first_buy_at": "first bonding-curve buy (birth start)",
+  "first_buyers[]": "first 25 distinct buyers: short id, t_s since first buy, VIRTUAL and USD size, nonce_before (Base), contract_wallet, fresh (EOA with <=2 prior txs), wallet_age_days (case studies), prior_early_launches (times this wallet was a first-25 buyer in an earlier library launch)",
+  "fresh_first_buyers / fresh_cluster_size / fresh_cluster_flag": "detector-2 rule adapted to EVM: >=3 fresh first buyers whose first buys fall within 6 h",
+  "curve": "bonding-curve phase: trades, buyers, VIRTUAL in/out, first_buy_to_graduation_h, fill_pct_per_h (net VIRTUAL vs the 42,000 VIRTUAL graduation threshold per hour), launch/peak/end mcap, buy_size (median/p75/p90, %>$1k, top buyer share), buy_size_by_hour",
+  "curve_mcap_grid": "mcap (USD) at fixed hours after the first buy: 0.083, 0.25, 0.5, 1, 2, 4, 8, 16, 24, 48",
+  "stages[]": "first time mcap reached $10K/$30K/$40K/$100K/$1M/$10M: elapsed_h since first buy and (curve phase) holders, top10_pct (of total supply, curve inventory excluded), gini, unique buyers, buy sizes, sell/buy ratio",
+  "post": "after graduation: first-24h buy sizes and peak, long-horizon path (GeckoTerminal hourly/daily or archive reserve samples), peak_mcap_usd + peak_at, CoinGecko ATH for tokens older than 180 days",
+  "outcome": "peak_mcap_usd, peak_at, reached_1m, reached_10m, graduated, hours_to_<stage>k",
+  "coverage": "what was and was not available for this launch"
+ }
+}

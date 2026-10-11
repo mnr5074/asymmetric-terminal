@@ -1,0 +1,474 @@
+{
+ "generatedAt": 1791726035538,
+ "method": "free data only: GoPlus, DexScreener, CoinGecko, public RPC eth_call (balances, Safe getOwners), existing Nansen cache (no new calls), x namespace (7 reads), public reports; + 37 Nansen credits on 2026-10-11 (tgm/transfers, first-funder, profiler transactions)",
+ "candidates": [
+  {
+   "rank": 1,
+   "token": "LAB",
+   "chain": "bsc",
+   "address": "0x7ec43cf65f1663f820427c62a5780b8f2e25593a",
+   "scores": {
+    "P1": 3,
+    "P2": 1,
+    "P3": 2,
+    "P4": 1
+   },
+   "confidence": "high (on-chain path) / medium (intent)",
+   "verified": [
+    "RPC: Safes 0x78a79d0fa0eaf58741f5bde7e05b5cc8f33d24d3 (10.91%) and 0xf79ff8a5052e969a6d13e18c4e439fe5202b02fa (7.72%) share 3 signers; 0xf79ff8 burned 10M on Jul 9 (tx 0x83e9024a\u2026a370, Nansen cache)",
+    "Nansen cache: Jul 10 14:40-14:48 UTC three unlabeled wallets 0x76ccfde9819500204985580d235dd8326fa0b241 (2.61M), 0x628dd74f428a81cd34ece11331a7f1593f76047a (2.51M), 0xaad30cab22f772c1658b7845b5837d35bf3a467a (2.87M) deposited to Astherus vault 0x128463a6\u2026"
+   ],
+   "reported": [
+    "ZachXBT/Lookonchain Jul 12: entity funded with >196M LAB by team in Apr 2026, via 4 Bitget deposit addresses, ~100M withdrawn to 10 wallets May 11-12, 18.4M (~$18.3M) sold via Aster Jul 10-11, ~81.5M left",
+    "ZachXBT May: opaque private placement/OTC, unilateral unlock-rule changes, >95% insider control"
+   ],
+   "inferred": [
+    "X posts (unverified claims): KOL-round/community-sale allocations still locked or delayed while the team-funded entity sold (asymmetry analog of P3)",
+    "The 3 Astherus depositors may be the ZachXBT cluster (same day, similar sizes) - not confirmed"
+   ],
+   "nansen_verified": [
+    "Apr 8 2026 14:58-15:03 UTC: five Safes 0x80b06923098c17c84e0564742d1a2d071d7ee29a (80,000,000), 0xf760b38e09282b11884a26e4ffb701eb0bd8de99 (64,814,995), 0x36fc85ec486c254c9564d66de8c4210a1a20c291 (22,788,000), 0xec99ab6394c3bb6e256c3dab3147ba37c2dcd375 (17,950,000), 0xa7d234a976917ea7995d0dcbee6d613ebabd559b (14,446,897) sent ~200.0M LAB to EOA 0xe03722dedbf090ad7a1c8f82ceb86637053e21dd (Nansen label \"LAB Distributor\"; gas first-funded by Bybit 14:20 UTC same day). Txs e.g. 0x834cf7e2e18773ba953dbfb35459a75f627669c96828cc7f93a45e43c89d1044, 0xac5725dd11e33cb89b4d5c05d8bdcb1efc3f4cd3ac04627e26679b2ca336313a",
+    "RPC: all five source Safes are 3-of-4 with the same signers (0x74ae027e\u2026, 0x8e4a7303\u2026, 0x1664535c\u2026, 0xf09c1932\u2026) as LAB top-holder Safes 0x78a79d\u2026 and 0xf79ff8\u2026",
+    "Apr 8 15:44-15:53 UTC: Distributor -> Bitget deposits 0x77156a0a621d2ac7a075c0ac3172707c2e4aa191 (40,000,000; tx 0x9c237d1e\u2026ffb00) and 0xe39f91a0daffc5547ada79a09be30b8556f7dfba (60,000,000; tx 0xf11e9579\u2026c3), Gate deposit 0x8728f7d310d297e313f92624a060a6be9af6c496 (36,000,000; returned Apr 13) and 0x0e93898f\u2026 (59,999,892; returned Apr 13)",
+    "Apr 23 18:11-18:27 UTC: Distributor -> 0xaa5e3b10\u2026 50,000,000 -> 7 one-time hops in ~9 min -> 0xd073d2be05109cd8dbb766b50932aa4a32673a99 -> Bitget deposit 0xdd77bfbd\u2026 ; Distributor -> 0x7e1c3886\u2026 45,999,892 -> 8 hops in ~16 min -> 0x1e8ea4785666a967c3b34a9db986a9fd105de166 -> Bitget deposit 0x6593aa6c\u2026. At least 58,998,000 LAB reached Bitget via these two hop chains Apr 23-25 (top-60 rows only)",
+    "May 11 15:36 - May 12 00:57 UTC: Bitget Main Wallet 0x1ab4973a\u2026 withdrew 99,999,579 LAB to exactly 10 wallets (0x82fc0b\u2026, 0xf05ced\u2026, 0xbcf077\u2026, 0x093eb8\u2026, 0xef80a2\u2026, 0x7db446\u2026, 0x7c62af\u2026, 0x10e816\u2026, 0x0d95e8\u2026, 0x2d81ef\u2026)",
+    "Two of those, 0xf05ced86edc1857c977b70728f3c330e9e89b151 (9,000,000 on May 11, tx 0xe6ae236a\u2026086e9) and 0x82fc0bc04c4326b679bf9dbdc60d653062bea31a (10,500,000, tx 0xe6556584\u2026d014), funded the three Astherus depositors: Jul 10 02:43-02:50 UTC 2,613,571 / 2,507,913 / 2,871,272 and Jul 11 11:10-11:11 UTC 3,500,000 each to 0x76ccfd\u2026, 0x628dd7\u2026, 0xaad30c\u2026"
+   ],
+   "upgraded_from_reported": [
+    "ZachXBT/Lookonchain: team funded an entity with >196M LAB in Apr 2026 via Bitget deposits -> VERIFIED (~200.0M from same-signer Safes via \"LAB Distributor\"; 136M direct to Bitget/Gate deposits, rest via hop chains)",
+    "~100M withdrawn to 10 wallets May 11-12 -> VERIFIED (99,999,579 to 10 wallets)",
+    "Those wallets fed the Jul 10-11 Aster selling -> VERIFIED for the deposit leg (2 of the 10 wallets -> 3 Astherus depositors, 22.99M LAB); the trades themselves were not pulled"
+   ],
+   "not_confirmed": [
+    "Which published allocation the five Safes represent"
+   ]
+  },
+  {
+   "rank": 2,
+   "token": "LAPTOP",
+   "chain": "base",
+   "address": "0xb095274743941e953c746f9c228da9c18bb6ec29",
+   "scores": {
+    "P1": 3,
+    "P2": 0,
+    "P3": 2,
+    "P4": 3
+   },
+   "confidence": "high (facts) / medium (intent)",
+   "verified": [
+    "RPC 2026-10-11: founder Safe 0xd81bf90a51b7ffe69722c62168416fa2654fa818 holds 300,000,000 (untouched); same-signer Safe \"wallet F\" 0x246c846c945605222971e6ddeb45183ba7afacbb holds 20,000,000 (received 50M); liquidity Safe 0x8aeaffde02e751c04d96cec90d93f93c50bcc530 holds 37,499,200; deployer Safe 0xf859bf7a72a282eac0e99e1ca0d1b814ccd8b24d holds 0"
+   ],
+   "reported": [
+    "Bitquery (Oct 8) + Trenchbook (Oct 7): 7 allocation Safes share founder Safe signers; wallet F sent 30M to fresh 0xEF36\u202696C3 at 12:06:13 UTC on launch day (3.5 min after open); 25M left Sep 18 via fresh 0xae823f1b7a5ba8ff4c28e33fb01a5fd35b35dcf3 to KuCoin/Gate/Kraken deposits",
+    "Disclosures: treasury unlocked at TGE, residual profit to founders-owned TTM Media; charity = 36-month schedule; which 50M Safe is which is undisclosed",
+    "Airdrop: only ~1% of the 80M in the Substack claim contract claimed",
+    "Launch pool held 29,885 tokens/$35.7K; MM1 Safe 0x19cbc83ded190616d819555c3b42b3b3507fc41e (Bitquery label: GSR) pulled $654K at 12:05:53 UTC, 84s after peak"
+   ],
+   "inferred": [
+    "Wallet F = treasury is more likely (Bitquery), so sales may be permitted by disclosures; sales themselves not visible on-chain"
+   ],
+   "nansen_verified": [
+    "Nansen labels: 0x246c846c945605222971e6ddeb45183ba7afacbb (\"wallet F\") = \"LAPTOP Distributor\"; 0xd81bf9\u2026, 0x8aeaff\u2026, 0xeff4d8\u2026, 0xcb92b4\u2026 = \"LAPTOP Multisig\". Deployer Safe 0xf859bf\u2026 seeded them Sep 1 and Sep 8 01:04 UTC (tx 0x1a0f9b45\u20264a26: 300M founder Safe, 100M 0xeff4d8\u2026, 50M Distributor, 50M 0xcb92b4\u2026)",
+    "Sep 9 12:06:13 UTC: Distributor -> 0xef36a582b2d7922ba238359448899d4d643096c3 30,000,000 (tx 0x1bd73c8de5a00d45eaa41331debacbe37dad16b8c51e106048ae1506b70dfbee; ~$51.9M at that minute). Nansen labels the recipient \"GSR\"",
+    "Sep 18 00:52:27 UTC: Distributor -> fresh 0xb47e6c5cdefeb93022b85a193aed33cd837718d2 25,015,385 (tx 0x48335d27\u20267820) -> 01:00:45 0xae823f1b7a5ba8ff4c28e33fb01a5fd35b35dcf3 (tx 0x45608755\u2026bb76) -> Sep 18-24: KuCoin deposit 0xca5798\u2026 18,665,364 (8 txs), Gate deposit 0x40a03e\u2026 4,013,072 (6), Kraken deposit 0xe2e69d\u2026 2,336,959 (8); ~$2.16M at transfer-time prices"
+   ],
+   "upgraded_from_reported": [
+    "Bitquery/Trenchbook 30M to 0xEF36\u202696C3 at 12:06:13 UTC launch day -> VERIFIED (full address; Nansen labels it GSR, i.e. a market maker, not a fresh wallet)",
+    "25M via fresh 0xae823f\u2026 to KuCoin/Gate/Kraken -> VERIFIED with intermediate hop 0xb47e6c\u2026 and per-exchange amounts"
+   ],
+   "not_confirmed": [
+    "Whether wallet F = treasury bucket (Nansen calls it \"Distributor\"; disclosure mapping still not public)"
+   ]
+  },
+  {
+   "rank": 3,
+   "token": "RAVE",
+   "chain": "eth/bsc/base",
+   "address": {
+    "ethereum": "0x17205fab260a7a6383a81452ce6315a39370db97",
+    "base": "0x1aa8fd5bcce2231c6100d55bf8b377cff33acfc3",
+    "binance-smart-chain": "0x97693439ea2f0ecdeb9135881e49f354656a911c"
+   },
+   "scores": {
+    "P1": 3,
+    "P2": 1,
+    "P3": null,
+    "P4": 1
+   },
+   "confidence": "high (on-chain path) / allegation-level (manipulation)",
+   "verified": [
+    "RPC: ETH Safes 0x9831156f1a6e506fca41503590b42f07c2e80f54 (78.44%), 0x6020656d1ef182173e45d4fc375bdd5a48c674b0 (9.35%), 0xeb74df8588cfc1c179df4bd96c0bb8b227b9be92 (2.27%) = 90.06% under the same 5 signers, 4-of-5; 0x9831\u2026 is token owner (GoPlus), mintable flag set"
+   ],
+   "reported": [
+    "ZachXBT Apr 18: deployer-linked wallets sent 18.58M RAVE to Bitget before the pump, later 29.78M withdrawn; ~$42M to Bitget/~$32M withdrawn; Binance+Bitget investigations; team denied"
+   ],
+   "inferred": [
+    "X: multiple posts claim a KOL round and paid KOL pushes (Feb 23); unverified"
+   ],
+   "nansen_verified": [
+    "Nov 2 2025: \"RaveDAO: RAVE Multisig\" 0x6020656d\u2026 -> Safe 0x53d7d52301366dc14e1916b14efec1add8f3487b 35,000,000 (tx 0x525d94d4\u202697c5). RPC: 0x53d7d5 is 4-of-5 sharing 4 signers with the 78.4% RaveDAO Multisig 0x9831156f\u2026",
+    "Apr 12 2026 11:57-15:39 UTC: 0x53d7d5 -> Bitget deposit 0x2dc20f2180582172f5450c5d71e23fa438a7031b 3,000,000 + 3,000,000 + 2,983,923 (txs 0xc9fbdc60\u2026d454, 0x0e2c8653\u20268713, 0x1db9d972\u2026cc1cd) and Gate deposit 0x31711246b05d71e9eda5e38a3abb654020ee3353 3,000,000 (tx 0x0335e4f5\u2026acba9) = 11.98M (~$33.5M)",
+    "Apr 19 2026 19:47:59 UTC: 0x53d7d5 -> fresh EOAs 0xf7631516008417a257313b1aec148f591447ada8 (12,996,077) and 0x7474f30f0ee0fef597d4a660c605b2b8480f0fe3 (10,000,000) in one tx 0xcea5f1602385c1a66a1747da7374fca831639f4b07fadfd059567df0d4921adc -> within 4-6 min Bitget deposits 0x64d6e91d\u2026 (12,986,077; tx 0x1b3d888f\u2026e519) and 0x26ac542f\u2026 (9,998,999; tx 0x0c50e33d\u2026afb6) = ~23.0M (~$26.6M)",
+    "RaveDAO Multisig 0x6020656d\u2026 also sent directly to Gate deposit 0xfb7706\u2026 (333,333, Nov 25 2025), MEXC deposit 0xcd2ae2\u2026 (133,323, Dec 10) and LBank deposit 0xa6c490\u2026 (99,990, Dec 10)",
+    "RaveDAO Multisig 0xeb74df\u2026 funded EOAs 0x2628c0\u2026 (4.25M) and 0xfe8320\u2026 (~1.58M), which paid recurring fixed amounts (18,750-40,000) to many wallets in Dec 2025-Feb 2026, incl. 0xa4b2b1\u2026 (Nansen label \"Funded @langeriuseth On Friend.tech\"; received 3 x 25,000; e.g. Dec 19 14:31 received, 14:36 sent 25,000 to Bitget deposit 0x554274\u2026), 0x2fd011\u2026 (\"Top 100 on CRCLON Leaderboard\", 3 x 18,750, then MEXC deposit), teamcyber.eth, \"MC Investor\" 0x396d4a\u2026 (-> Gate deposit 40,000 x 3)"
+   ],
+   "upgraded_from_reported": [
+    "ZachXBT: deployer-linked wallets sent RAVE to Bitget before/around the pump -> VERIFIED for a same-signer Safe: ~32.0M to Bitget and 3.0M to Gate on Apr 12 and Apr 19 2026 (ZachXBT's 18.58M figure itself not reproduced)"
+   ],
+   "not_confirmed": [
+    "Purpose of the recurring fixed payouts (salary, KOL or grants); @langeriuseth handle not found on X today"
+   ]
+  },
+  {
+   "rank": 4,
+   "token": "VELVET",
+   "chain": "bsc/base",
+   "address": "0x8b194370825e37b33373e74a41009161808c1488",
+   "scores": {
+    "P1": 3,
+    "P2": 2,
+    "P3": null,
+    "P4": 1
+   },
+   "confidence": "high (structure) / medium (attribution)",
+   "verified": [
+    "RPC: Safes 0xd19dce537125dfb5e76d7131668c4d5e4172b56c (376.63M, 37.66%) and 0x75e7488ac067f07948739bfb550213b47db094bb (160.32M, 16.03%) are 3-of-5 Safes sharing 3 signers; token creator 0x579d36cce78af5664e26d6b858119625e1b9116a (GoPlus) is a signer on the 37.66% Safe",
+    "RPC: 0x6e0bad2c077d699841f1929b45bfb93fafbed395 (159.28M) and 0x6cd06aaf06506bc3ff382d83023354e2b80eed22 (40.39M) are Sablier Lockup contracts (locked)",
+    "Nansen cache: Jul 1 Gate deposits 412,090 (tx 0x07d92575\u2026aed, from 0x2ef99d8159b7ed16eb70588374f70b704c5b5cc2), 456,877 (0x996275ab\u2026dc5, from 0x7e64fa074546c93fee716d5e346396e61b708dc6), 418,760 (0xfb8856fa\u202681a, from 0x9b4e1ba73797d9a7d4b10e4ddba8cd55dee27369) at 05:17-05:22 UTC",
+    "GoPlus: no locked LP; BSC DEX liq ~$0.60M vs $34M mcap"
+   ],
+   "reported": [
+    "EmberCN/Yujin Jun 11: project-linked addresses sent 22M to Bitget/Gate/KuCoin in 3 days; DWF Labs 6.68M in a month",
+    "Bubblemaps (Jun 16): creator-associated address received 72M in March, sent ~$2.5M to CEX Jun 6-9"
+   ],
+   "inferred": [
+    "~54% of supply sits in Safes with no on-chain lock, controlled by keys overlapping the creator; which published bucket (treasury 18% etc.) each Safe is = not tied",
+    "X: public ambassador program; @yhbryankimiq (422K) and @kreator_nobot posted with ambassador/advisor disclosure; no promoter wallet tied to team wallets yet"
+   ],
+   "nansen_verified": [
+    "Mar 4 2026 06:30-09:54 UTC: fixed-amount wallet-to-wallet moves 0x6bff1c\u2026 -> 0x150c8a0aff9caefe3ce92658afa302e0172d1056 72,666,667 (tx 0x2c45f5a0b5dd96de44655800f652d392f27ca4e9e6871dacc4658db8f8911cc5), 0xcd5710\u2026 -> 0xe2e8fa\u2026 35,000,000, 0xa3277d\u2026 -> 0x80952b\u2026 28,193,720, 0x9d6abf\u2026 -> 0x3cf3d6\u2026 10,000,000, 0x167e53\u2026 -> 0x515c18\u2026 5,333,333. Sender 0x6bff1c\u2026 was gas-funded via ChangeNOW 74 min before; its VELVET inflow is not in Nansen BSC/Base data since Oct 2025",
+    "Jun 7-9 2026: 0x150c8a\u2026 -> 18 Gate deposits 19,349,135 and 7 KuCoin deposits 7,001,753 VELVET (~$7.6M; top-60 rows), e.g. Jun 7 05:20 UTC tx 0x4fb1bb29\u202676d14",
+    "May 20 - Jun 7 2026: 0x80952b\u2026 -> Bitget/MEXC/Gate/KuCoin deposits 8,847,761 VELVET; Jun 5 10:34-10:42 UTC 4,999,900 via 0xa6608a\u2026 -> 0xae8633\u2026 -> 0x25fc72\u2026 (two hops in 29 s)",
+    "Velvet Safe 0xd19dce\u2026 sends ~0.56-1.0M VELVET monthly to creator 0x579d36\u2026, which forwards it to SablierMerkleInstant contracts (reward distributions). No direct Safe/creator -> CEX transfer found Oct 2025-Jul 2026",
+    "Jul 1 Gate depositors 0x2ef99d\u2026, 0x7e64fa\u2026, 0x9b4e1b\u2026 (and 0xa00155\u2026, 0x798497\u2026, 0x98dffe\u2026, 0x8586ad\u2026, 0x600772\u2026) were funded by Bitget Main Wallet withdrawals Jun 22-30 (2.70M VELVET, often in identical 10,000/20,000 chunks at the same second), not by the Safes or creator",
+    "P2: creator 0x579d36\u2026 -> thebullishtradr.eth 0x559acc031f14350dc7b309baa2195fb2def0351c 27,777 VELVET Dec 4 2025 06:26 UTC (tx 0xa290ea5d\u20267b3f); Safe 0xd19dce\u2026 -> same wallet 20,800 Nov 3 2025 (tx 0x09e860b8\u2026905d). The wallet sold 15,000 + 12,777 via aggregators at 08:50-08:52 UTC the same day. X @TheBullishTradR (63.8K followers) posted \"$VELVET \u2026 $1 is inevitable\" Dec 17 2025 and many referral posts without #ad; described himself as \"an affiliate of @Velvet_Capital\" in a Dec 19 reply. ENS-to-X match is by name only"
+   ],
+   "upgraded_from_reported": [
+    "Bubblemaps: an address received 72M in March and sent ~$2.5M to CEX Jun 6-9 -> VERIFIED as 0x150c8a\u2026 (72,666,667 on Mar 4; \u226526.35M to Gate/KuCoin Jun 7-9). Its link to the creator is NOT confirmed by Nansen"
+   ],
+   "not_confirmed": [
+    "Creator/Safe origin of the Mar 4 fixed-amount tranches (upstream not visible)",
+    "Jul 1 Gate depositors funded by team (they were funded from Bitget)"
+   ]
+  },
+  {
+   "rank": 5,
+   "token": "RIVER",
+   "chain": "eth/bsc/base",
+   "address": {
+    "ethereum": "0xda7ad9dea9397cffddae2f8a052b82f1484252b3",
+    "base": "0xda7ad9dea9397cffddae2f8a052b82f1484252b3",
+    "binance-smart-chain": "0xda7ad9dea9397cffddae2f8a052b82f1484252b3"
+   },
+   "scores": {
+    "P1": 3,
+    "P2": 1,
+    "P3": 3,
+    "P4": 0
+   },
+   "confidence": "medium",
+   "verified": [
+    "GoPlus/RPC: ETH top-6 holders are contracts (~96.6%); BSC 0xfdc8aecf\u2026 holds 58.29%"
+   ],
+   "reported": [
+    "Bubblemaps (Jan 28): 2,000+ wallet cluster linked to creator via funder 0x365b\u2026 and distributor 0x6790\u2026; 7 fresh addresses withdrew 230M from Bitget Dec 3/29; cluster deposited to Bitget Jan 9; est. $10M profit",
+    "Docs: airdrop capped 30M and converts into staked RIVER (not liquid)"
+   ],
+   "inferred": [
+    "X Jan 27: >=20 templated \"partnered with ...\" posts from low-follower \"\ud83c\udf0a RIVER\" accounts within ~3h (coordinated campaign; payer unknown)"
+   ],
+   "nansen_verified": [
+    "Nansen labels the wallets \"RIVER Concentrated Supply Group\". BSC Dec 3 2025 07:42-09:46 UTC Bitget Main Wallet withdrew to 0xe62e9e\u2026 (499,990), 0xd89a25\u2026 (449,990), 0x67902d0d325280f7775ab610caa6b312f1d2287c (399,990; Bubblemaps \"0x6790\u2026\" distributor), 0xd499f9\u2026 (349,980), 0x6123d6\u2026 (300,000); Dec 29 to 0x69f240\u2026 (667,600) and 0xe4d5b3\u2026 (384,500)",
+    "Dec 4 09:46-09:55 UTC: 0x67902d\u2026 fanned ~6,900-7,000 RIVER to \u22658 wallets, each forwarded again within ~13 min",
+    "First funders: 0x67902d\u2026 and 0xe62e9e\u2026 were gas-funded at the same second (Dec 1 2025 04:39:16 UTC) by other group wallets; 0x37bb29\u2026 by 0x5fe93b\u2026 at 04:39:10"
+   ],
+   "upgraded_from_reported": [
+    "Bubblemaps cluster withdrew from Bitget Dec 3/29 -> VERIFIED on BSC, but amounts seen are ~2.8M RIVER, not 230M (other chains not queried)"
+   ],
+   "not_confirmed": [
+    "Funder 0x365b\u2026 / creator link (gas-funding tree only goes to other cluster wallets)"
+   ]
+  },
+  {
+   "rank": 6,
+   "token": "M (MemeCore)",
+   "chain": "bsc/MemeCore L1",
+   "address": {
+    "binance-smart-chain": "0x22b1458e780f8fa71e2f84502cee8b5a3cc731fa"
+   },
+   "scores": {
+    "P1": 2,
+    "P2": 2,
+    "P3": null,
+    "P4": 3
+   },
+   "confidence": "medium",
+   "verified": [
+    "RPC: 0x69cb059678d1faa63f781fa08e5600f2f6ff4681 holds 925.9M M on BSC (80.1% of BSC supply); alleged team wallet 0x6f1f0a1ccc76d2d292249b19c19e401f0e843ba9 holds 9.31M on BSC",
+    "DexScreener: ~$58K liquidity vs ~$2.15B mcap"
+   ],
+   "reported": [
+    "ZachXBT Apr 20: 0x6f1f0a\u2026 got 200M at TGE, sent 5.3M to two Kraken deposits on listing day (Jul 3 2025); $7.9M withdrawn to 18 fresh wallets"
+   ],
+   "inferred": [
+    "X: project-run InfoFi/Kaito ($700K in M) and \"50 Shades of $M\" ($100K pool, Apr 21-23 2026) campaigns pay promoters in M; participant posts list EVM addresses and mostly no #ad; the 5 checked addresses hold 0 M on BSC now (rewards may be on L1)"
+   ],
+   "nansen_verified": [
+    "Jun 20 2025 05:04 UTC: 207,200,000 M minted to 0x6f1f0a1ccc76d2d292249b19c19e401f0e843ba9 on BSC (tx 0xee78173336b4cddd2a82bca25410ff995f763a90fd5b1aa37b386eb9cce7cfc8)",
+    "Jul 3 2025 (listing day): 0x6f1f0a\u2026 -> Kraken deposit 0xaa1f9fa46177aca98f5f433d88fe6d21d029c4a6 4,000,000 at 06:43 UTC (tx 0x89f9ca02\u20261244); -> PancakeSwap M-USDT 15,720,233 at 07:20 (~$865K); Jul 11 a further 4.49M into the same pool (~$3.06M)",
+    "Jul 1: 0x6f1f0a\u2026 -> 0x06ef5775\u2026 174,999,990 -> Jul 3 07:55-07:59 Binance 0x93deb6\u2026 100,000,000 and \"Binance: DEX/CEX Trading\" 75,000,000 (~$9.6M)"
+   ],
+   "upgraded_from_reported": [
+    "ZachXBT: wallet got 200M at TGE and sent 5.3M to two Kraken deposits on listing day -> PARTLY VERIFIED: 207.2M minted to it; 4.0M to one Kraken deposit on BSC on Jul 3 2025"
+   ],
+   "not_confirmed": [
+    "Second Kraken deposit; promoter-reward addresses (on MemeCore L1, not covered)"
+   ]
+  },
+  {
+   "rank": 7,
+   "token": "MELANIA",
+   "chain": "solana",
+   "address": {
+    "solana": "FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P"
+   },
+   "scores": {
+    "P1": 2,
+    "P2": 0,
+    "P3": null,
+    "P4": 3
+   },
+   "confidence": "medium (reported)",
+   "verified": [],
+   "reported": [
+    "Bubblemaps/Decrypt: community-allocation tokens put into single-sided Meteora pools and pulled (~$30M); 50M moved from community funds via Cq2Tj6\u2026"
+   ],
+   "inferred": []
+  },
+  {
+   "rank": 8,
+   "token": "SIREN",
+   "chain": "bsc",
+   "address": "0x997a58129890bbda032231a52ed1ddc845fc18e1",
+   "scores": {
+    "P1": 2,
+    "P2": 0,
+    "P3": null,
+    "P4": 3
+   },
+   "confidence": "medium-high",
+   "verified": [
+    "Nansen cache: Hedgeys 0x2aa5d15eb36e5960d056e8fea6e7bb3e2a06a351 released ~2.0-3.2M each to ~49 fresh wallets from 09:13:05 UTC Mar 22 (e.g. tx 0x75c79afb\u2026908e -> 0xe8082fbab2db0fb3be56246fdffecc91f7f662f5, 2.25M)"
+   ],
+   "reported": [
+    "Dune (chiayungchiachia): 903 holders self-locked 484.1M in Hedgey Feb 5-6 via a batch minter, unlocked Feb 20/21, redeemed Mar 21-22, 100% moved on within 30d",
+    "Bubblemaps: 200+ wallet cluster ~50% of supply"
+   ],
+   "inferred": [
+    "Locks were self-made and short (2 weeks) - a lock that reduced visible float rather than restricting insiders"
+   ],
+   "nansen_verified": [
+    "Cache: ~20 Hedgey-redeemer wallets forwarded their full balances within 5 seconds (11:13:08-11:13:13 UTC Mar 22 2026), two of them to Nansen-labeled \"SIREN Custody Vaults\" 0xf3689a9546c7e6fd466c8cd4a36f71891d72b2a8 (5,032,355 and 2,713,147)",
+    "First funders of 3 redeemers (0x2fc843\u2026, 0x7eed30\u2026, 0x6feff0\u2026): different unlabeled wallets, all on Jan 15 2025 within 40 minutes"
+   ],
+   "upgraded_from_reported": [
+    "Dune: Hedgey self-locks redeemed and moved on -> VERIFIED with single-controller timing; custody-vault label suggests a project-side destination for part of it"
+   ],
+   "not_confirmed": [
+    "No outflows from the custody vault in Mar 22-May 15 in Nansen data"
+   ]
+  },
+  {
+   "rank": 9,
+   "token": "MMT",
+   "chain": "sui/bsc",
+   "address": {
+    "sui": "0x35169bc93e1fddfcf3a82a9eae726d349689ed59e4b065369af8789fe59f8608::mmt::MMT",
+    "binance-smart-chain": "0xac246674dd88dd08f9c6dd0ab5e2115988bff34a"
+   },
+   "scores": {
+    "P1": 2,
+    "P2": null,
+    "P3": null,
+    "P4": null
+   },
+   "confidence": "medium (reported)",
+   "verified": [
+    "GoPlus: one EOA 0x8894e0a0c962cb723c1976a4421c95949be2d4e3 holds 98.31% of BSC supply"
+   ],
+   "reported": [
+    "Holder split 89.476M to 12 addresses; team-linked wallet sent 38M (~$45.6M) to Binance; dev cluster 409M to CEX since TGE (described as airdrop distribution + MM)"
+   ],
+   "inferred": []
+  },
+  {
+   "rank": 10,
+   "token": "COAI",
+   "chain": "bsc",
+   "address": {
+    "binance-smart-chain": "0x0a8d6c86e1bce73fe4d0bd531e1a567306836ea5"
+   },
+   "scores": {
+    "P1": 2,
+    "P2": null,
+    "P3": null,
+    "P4": 1
+   },
+   "confidence": "medium (structure only)",
+   "verified": [
+    "RPC: 8 Safes totaling 80.2% (0x8348bcc1\u2026 23.07%, 0x38cd6dce\u2026 18.85%, 0xa5e42f9d\u2026 15.93%, 0x24c66754\u2026 11.35%, \u2026) all 2-of-3 with signers 0xc7c3b52d0ed51ee6e150fa42bf5200f73ade5f85 and 0x6d3cfa008e913f82646a247fbb8705d4b98d7200 in common"
+   ],
+   "reported": [
+    "Bubblemaps: 60 synchronized wallets funded 1 BNB each from Binance, ~$13M profit; not directly linked to team"
+   ],
+   "inferred": [
+    "Nominally separate buckets controllable by the same 2 keys; bucket mapping not public"
+   ],
+   "nansen_verified": [
+    "Nansen labels 0x8348bc\u2026 \"COAI Multisig\" and 0x7a181877986e7a0c60bc4a6b8a303c1968b5f13f \"COAI Distributor\"; all 8 same-key Safes sent test transfers to the Distributor Sep 25 2025 00:53-01:07 UTC",
+    "Sep 26 2025 16:21 UTC (day after TGE): Safe 0x24c667542ccd8d1d48f44c9b199e61cc65243c30 -> Bitget deposit 0x0e7bf0fe395f27b077ecdc285bd010d5081e1bec 10,000,000 COAI (~$1.69M; tx 0xb640a6e56a3b26b3e8e8ccb8f0d561c33c3ef787139517a183aedb89f8a8f561)"
+   ],
+   "upgraded_from_reported": [],
+   "not_confirmed": [
+    "Which bucket 0x24c667 is (could be a listing/MM allocation)"
+   ]
+  },
+  {
+   "rank": 11,
+   "token": "STONK",
+   "chain": "solana",
+   "address": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
+   "scores": {
+    "P1": 2,
+    "P2": null,
+    "P3": null,
+    "P4": null
+   },
+   "confidence": "medium",
+   "verified": [
+    "Nansen cache: \"Hypersphere Ventures\" 8G2eUJ9xvJnDabaH9fhm9qMFmudDkBD44gRzvD1naWZq -> fresh 6jsNFbsEWWHAw1vUDovd8CWZFRePviwtYpubV2qThxSX 5,502,880 (tx 2WRtuHpP\u2026zkn4R, Sep 27 22:46 UTC) -> Gate u6PJ8DtQ\u2026 5,502,885 (tx vbm2xJSp\u2026aCReT, 23:15 UTC)"
+   ],
+   "reported": [],
+   "inferred": [
+    "Fund wallet using a 29-minute intermediary hop to an exchange"
+   ]
+  },
+  {
+   "rank": 12,
+   "token": "OM",
+   "chain": "eth/MANTRA",
+   "address": "not resolved (CoinGecko platforms empty)",
+   "scores": {
+    "P1": 2,
+    "P2": null,
+    "P3": null,
+    "P4": null
+   },
+   "confidence": "low-medium (disputed)",
+   "verified": [],
+   "reported": [
+    "Lookonchain/Arkham: 17 wallets deposited 43.6M OM (~$227M) to exchanges before Apr 13 2025; two labeled Laser Digital (0x84EE7\u2026, 0xB37DBD\u2026) - Laser and MANTRA deny"
+   ],
+   "inferred": []
+  },
+  {
+   "rank": 13,
+   "token": "ALLINU",
+   "chain": "solana",
+   "address": "4MMQY9bwkxxTtsK3W227Q5ABT6yFY8Pmn9Ze7wmAXKY8",
+   "scores": {
+    "P1": 1,
+    "P2": null,
+    "P3": null,
+    "P4": null
+   },
+   "confidence": "medium (meme: dev/insider view)",
+   "verified": [
+    "Nansen cache: \"Stonk: Rewards Distributor\" sold $778K (96.5M net, 9.7%); \"Pablo Token Deployer\" sold $194K; 2eekcsg2\u2026 -> 3n44Hksm\u2026 17,622,570 on Sep 16 (tx 4AWVRgDT\u2026LGQn) then sold ~$287K"
+   ],
+   "reported": [],
+   "inferred": []
+  },
+  {
+   "rank": 14,
+   "token": "AKE",
+   "chain": "bsc",
+   "address": {
+    "binance-smart-chain": "0x2c3a8ee94ddd97244a93bc48298f97d2c412f7db"
+   },
+   "scores": {
+    "P1": 1,
+    "P2": null,
+    "P3": null,
+    "P4": null
+   },
+   "confidence": "low-medium",
+   "verified": [],
+   "reported": [
+    "Lookonchain: suspected MM withdrew 216M AKE from Binance Alpha Sep 20 2026, holds >=12.4B (54% of circ); linked to a \"B2 trading\" address"
+   ],
+   "inferred": []
+  },
+  {
+   "rank": 15,
+   "token": "ANSEM",
+   "chain": "solana",
+   "address": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
+   "scores": {
+    "P1": 1,
+    "P2": null,
+    "P3": null,
+    "P4": null
+   },
+   "confidence": "low (meme)",
+   "verified": [
+    "Nansen cache: fixed-amount hops 3,000,002 5LkDy1xh\u2026 -> CB4PTPy5\u2026 (Jul 7 09:22) -> 9SJTWFtX\u2026 (22:22); 3,333,333 round-trip 3kfyzegb\u2026 <-> G6sYuVgG\u2026 Jul 4"
+   ],
+   "reported": [],
+   "inferred": [
+    "Fixed-amount wallet-to-wallet moves; no CEX endpoint seen"
+   ]
+  }
+ ],
+ "nansen_run": {
+  "date": "2026-10-11",
+  "credits_before": 2038,
+  "credits_after": 2001,
+  "credits_used": 37,
+  "cap": 60,
+  "paid_calls": 37,
+  "endpoints": {
+   "tgm/transfers": 26,
+   "profiler/address/first-funder": 9,
+   "profiler/address/transactions": 2
+  },
+  "free_calls": "account x4, search/entity-name x5",
+  "timeouts_not_charged": 3,
+  "raw": "data/insider_pattern_nansen_raw.json",
+  "notes": [
+   "One profiler/address/transactions call (M, Jun-Aug 2025) returned only address-poisoning spam despite hide_spam_token",
+   "Not run: related-wallets, counterparties (5 credits), any labels endpoint (100-500 credits)"
+  ],
+  "by_token": {
+   "VELVET": 9,
+   "M": 6,
+   "RIVER": 5,
+   "LAB": 4,
+   "SIREN": 4,
+   "RAVE": 3,
+   "promoter wallets": 3,
+   "LAPTOP": 2,
+   "COAI": 1
+  }
+ }
+}

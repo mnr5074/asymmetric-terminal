@@ -1,0 +1,416 @@
+{
+ "_note": "Hand-curated evidence for the Airdrop Desk (research/airdrops_v2.py, lib/airdrops.js). Every fact carries a source URL and the date it was checked. Edit freely; nothing here is invented: if a field is unknown it is null.",
+ "checked": "2026-10-11",
+ "comparables": [
+  {
+   "name": "EigenLayer",
+   "symbol": "EIGEN",
+   "gecko": "eigenlayer",
+   "tge": "2024-10-01",
+   "supply": 1673646668,
+   "airdrop_pct": 6.75,
+   "airdrop_note": "Season 1 stakedrop (~113M EIGEN); claimable May 2024 but non-transferable until Oct 1 2024",
+   "tvl_slug": "eigencloud",
+   "raise_names": [
+    "EigenLayer",
+    "Eigen Labs",
+    "EigenCloud"
+   ],
+   "src": "https://docs.eigenfoundation.org/eigen-token/key-info"
+  },
+  {
+   "name": "Ethena",
+   "symbol": "ENA",
+   "gecko": "ethena",
+   "tge": "2024-04-02",
+   "supply": 15000000000,
+   "airdrop_pct": 5.0,
+   "airdrop_note": "Season 1 shard campaign",
+   "tvl_slug": "ethena-usde",
+   "raise_names": [
+    "Ethena",
+    "Ethena Labs"
+   ],
+   "src": "https://en.theblockbeats.news/news/56369"
+  },
+  {
+   "name": "Blast",
+   "symbol": "BLAST",
+   "gecko": "blast",
+   "tge": "2024-06-26",
+   "supply": 100000000000,
+   "airdrop_pct": 17.0,
+   "airdrop_note": "Phase 1 (points + gold + Blur share)",
+   "tvl_chain": "Blast",
+   "raise_names": [
+    "Blast"
+   ],
+   "src": "https://en.theblockbeats.news/news/56369"
+  },
+  {
+   "name": "Hyperliquid",
+   "symbol": "HYPE",
+   "gecko": "hyperliquid",
+   "tge": "2024-11-29",
+   "supply": 1000000000,
+   "airdrop_pct": 31.0,
+   "airdrop_note": "Genesis distribution (points seasons 1-2); no VC round",
+   "tvl_slug": "hyperliquid-bridge",
+   "raise_names": [
+    "Hyperliquid"
+   ],
+   "src": "https://coinlaw.io/token-airdrop-statistics/"
+  },
+  {
+   "name": "Jupiter",
+   "symbol": "JUP",
+   "gecko": "jupiter-exchange-solana",
+   "tge": "2024-01-31",
+   "supply": 10000000000,
+   "airdrop_pct": 10.0,
+   "airdrop_note": "Jupuary 1 (usage-based, no points program)",
+   "tvl_slug": null,
+   "raise_names": [
+    "Jupiter"
+   ],
+   "src": "widely reported (Jupiter governance / Jupuary posts)"
+  },
+  {
+   "name": "Kamino",
+   "symbol": "KMNO",
+   "gecko": "kamino",
+   "tge": "2024-04-30",
+   "supply": 10000000000,
+   "airdrop_pct": 7.0,
+   "airdrop_note": "Season 1 points",
+   "tvl_slug": "kamino-lend",
+   "raise_names": [
+    "Kamino",
+    "Kamino Finance"
+   ],
+   "src": "widely reported (Kamino Season 1 docs)"
+  },
+  {
+   "name": "LayerZero",
+   "symbol": "ZRO",
+   "gecko": "layerzero",
+   "tge": "2024-06-20",
+   "supply": 1000000000,
+   "airdrop_pct": 8.5,
+   "airdrop_note": "Initial airdrop (usage-based, heavy sybil filter)",
+   "tvl_slug": null,
+   "raise_names": [
+    "LayerZero",
+    "LayerZero Labs"
+   ],
+   "src": "widely reported (LayerZero Foundation)"
+  },
+  {
+   "name": "Scroll",
+   "symbol": "SCR",
+   "gecko": "scroll",
+   "tge": "2024-10-22",
+   "supply": 1000000000,
+   "airdrop_pct": 5.5,
+   "airdrop_note": "Session 0 marks",
+   "tvl_chain": "Scroll",
+   "raise_names": [
+    "Scroll"
+   ],
+   "src": "widely reported (Scroll Session 0)"
+  },
+  {
+   "name": "ether.fi",
+   "symbol": "ETHFI",
+   "gecko": "ether-fi",
+   "tge": "2024-03-18",
+   "supply": 1000000000,
+   "airdrop_pct": 6.0,
+   "airdrop_note": "Season 1 loyalty points",
+   "tvl_slug": "ether.fi-stake",
+   "raise_names": [
+    "ether.fi",
+    "Ether.fi",
+    "EtherFi"
+   ],
+   "src": "widely reported (ether.fi Season 1)"
+  },
+  {
+   "name": "Usual",
+   "symbol": "USUAL",
+   "gecko": "usual",
+   "tge": "2024-12-18",
+   "supply": 4000000000,
+   "airdrop_tokens": 340000000,
+   "airdrop_pct": null,
+   "airdrop_note": "Pills pre-launch airdrop: 7.5% + 1% Believer's Bonus per Usual blog; 340M USUAL per Usual docs; supply here = max supply",
+   "tvl_slug": "usual-usd0",
+   "raise_names": [
+    "Usual",
+    "Usual Labs"
+   ],
+   "src": "https://usual.money/blog/welcome-to-a-new-yield-era"
+  },
+  {
+   "name": "YO Protocol",
+   "symbol": "YO",
+   "gecko": null,
+   "tge": "2026-02-05",
+   "supply": 1000000000,
+   "airdrop_pct": 8.0,
+   "airdrop_note": "Genesis airdrop; token non-transferable, no market price. Price used = YO's own reference $0.09 (FDV $90M) from docs/Merkl",
+   "ref_price": 0.09,
+   "tvl_slug": "yo-protocol",
+   "raise_names": [
+    "YO Protocol"
+   ],
+   "src": "https://docs.yo.xyz/welcome-to-yo/faq",
+   "small": true
+  },
+  {
+   "name": "TownSquare (pre-TGE, sale tier)",
+   "symbol": "TOWN",
+   "gecko": null,
+   "tge": "2026-07-27",
+   "supply": 10000000000,
+   "airdrop_pct": 1.86,
+   "airdrop_note": "Not yet launched: FDV = upper Sonar sale tier ($200M); airdrop % = day-one community unlock (5.83% of the 31.84% pool = 1.86% of supply), the rest of the pool vests over 84 months",
+   "ref_price": 0.02,
+   "pending": true,
+   "small": true,
+   "tvl_slug": "townsquare",
+   "raise_names": [
+    "TownSquare"
+   ],
+   "src": "https://www.townesquare.xyz/introducing-town-tokenomics"
+  }
+ ],
+ "farms": {
+  "yo": {
+   "name": "YO Protocol (yoETH vault)",
+   "chain": "Base (main), also Ethereum, Arbitrum, Solana",
+   "site": "https://app.yo.xyz",
+   "docs": "https://docs.yo.xyz",
+   "defillama_slug": "yo-protocol",
+   "vault_yoETH": {
+    "address": "0x3A43AEC53490CB9Fa922847385D82fe25d0E9De7",
+    "chains": [
+     8453,
+     1
+    ],
+    "src": "Merkl opportunity 'Deposit wETH to YO' (api.merkl.xyz/v4/opportunities?mainProtocolId=yo)"
+   },
+   "token": {
+    "symbol": "YO",
+    "address": "0x1925450f5e5fB974b0AaE1F3408cF5286FBD1A72",
+    "chain": "Base",
+    "supply": 1000000000,
+    "transferable": false,
+    "ref_price": 0.09,
+    "src": "@yo-protocol/core SDK constant YO_TOKEN; docs.yo.xyz FAQ (FDV $90M / $0.09 reference)"
+   },
+   "status": "TOKEN LIVE (not a future airdrop). $YO launched Jan 29 2026 with Heat 1 of the rewards program; Genesis airdrop (8% of 1B) was claimable Feb 5 - May 6 2026 (closed). YO says Genesis 'will be the last airdrop'. Since then $YO is streamed to depositors through Merkl (30% of supply reserved for community rewards); unclaimed Merkl rewards may be reassigned after 90 days. $YO is non-transferable until a governance vote; no market price exists.",
+   "points_program": "YO Points (2025, base multiplier 3x that declined as TVL grew; DeFi-activity multipliers 4-5x for Pendle/Balancer) converted into the Genesis airdrop. Replaced by $YO rewards 'Heats'.",
+   "user_rank_source": "The public all-time $YO rewards leaderboard (api.yo.xyz/api/v1/rewards/all-time/<YO token>) matches 'rank 200-300 with under 10,000': on 2026-10-11 rank 200 = ~12,064 YO, rank 250 = ~8,763 YO, rank 300 = ~6,794 YO, out of 5,087 wallets and ~31.39M YO total. The leaderboard ranks CLAIMED $YO (it matched Merkl 'claimed' exactly in a test), so unclaimed rewards do not count until claimed.",
+   "automation": {
+    "public": [
+     "api.yo.xyz all-time and weekly $YO rewards leaderboard (rank, amount, total users)",
+     "api.yo.xyz per-user current/last week rewards",
+     "Merkl user rewards (earned, claimed, pending) api.merkl.xyz/v4/users/<addr>/rewards?chainId=8453",
+     "yoETH balance on Base/Ethereum via public RPC (ERC-4626 balanceOf + convertToAssets)",
+     "DefiLlama TVL"
+    ],
+    "login": []
+   },
+   "evidence": [
+    {
+     "t": "2026-02-05",
+     "kind": "official",
+     "confirmed": true,
+     "text": "Genesis airdrop: 8% of 1B $YO; claims Feb 5 - May 6 2026; 'the last airdrop for the YO community'",
+     "url": "https://app.yo.xyz/tokenomics"
+    },
+    {
+     "t": "2026-01-29",
+     "kind": "official",
+     "confirmed": true,
+     "text": "$YO rewards program in 'Heats' started Jan 29 2026; 30% of supply reserved for community rewards; claims via Merkl, 90-day claim window",
+     "url": "https://docs.yo.xyz/welcome-to-yo/faq"
+    },
+    {
+     "t": "2026-10-01",
+     "kind": "onchain",
+     "confirmed": true,
+     "text": "Current Merkl campaign Oct 1 - Nov 1 2026: 174,000 YO to yoETH depositors on Base (~5.6k YO/day; Merkl values it at ~$420/day, ~$10.2M TVL) + 32,000 YO on Ethereum; all YO vaults together ~$1.7k/day at the $0.09 reference price",
+     "url": "https://api.merkl.xyz/v4/opportunities?mainProtocolId=yo"
+    },
+    {
+     "t": "2025-12-15",
+     "kind": "funding",
+     "confirmed": true,
+     "text": "Series A $10M led by Foundation Capital (Coinbase Ventures, Scribble, Launchpad Capital)",
+     "url": "https://defillama.com/protocol/yo-protocol"
+    },
+    {
+     "t": "2026-10-11",
+     "kind": "official",
+     "confirmed": false,
+     "text": "Transferability 'expected to be enabled through a governance vote as soon as practicable'; governance 'will be activated in the coming months' (no date)",
+     "url": "https://app.yo.xyz/tokenomics"
+    }
+   ]
+  },
+  "townsquare": {
+   "name": "TownSquare",
+   "chain": "Monad (lending), deposits also on BNB Chain (USD1, U) and Base (USDC)",
+   "site": "https://app.townsq.xyz",
+   "docs": "https://docs.townsq.xyz",
+   "defillama_slug": "townsquare",
+   "x": "https://x.com/TownSquarexyz",
+   "token": {
+    "symbol": "TOWN",
+    "supply": 10000000000,
+    "community_pool": 3184000000,
+    "community_tge_unlock_pct_of_pool": 5.83,
+    "community_tge_tokens": 185627200,
+    "sale_tokens": 66670000,
+    "sale_raised_usd": 1320000,
+    "sale_fdv_tiers_usd": [
+     150000000,
+     200000000
+    ],
+    "premarket_fdv_usd": 270000000,
+    "premarket_src": "Aspecta pre-TGE price as reported by BingX news (unverified secondary source)",
+    "src": "https://www.townesquare.xyz/introducing-town-tokenomics"
+   },
+   "status": "PRE-TGE. $TOWN public sale on Sonar (Echo) closed Jul 27 2026 (2.01x oversubscribed, tiers at $150M and $200M FDV). Tokenomics published (indicative). TGE date NOT announced; third-party calendars say 'Q4 2026 (estimated)'. Points docs say points carry 'no right to any token distribution', but the tokenomics say part of the 31.84% community pool 'becomes available early to reward existing users that participated in the protocol before it became popular', and the app's referral page already describes '$TOWN token reward' claims.",
+   "points_program": "TownSquare Points, Season 01 leaderboard at app.townsq.xyz/ranking: lending/borrowing MON, MON LSTs, stables (USD1, AUSD, USDC, earnAUSD, USDT), RWAs, wBTC/wETH; deposits of U/USD1 on BNB, USDC on Base, AUSD on Monad. +20% boosted wallets, +15% boost for all users when the in-app TVL milestone ($125M) is reached; 2.5% referral kickback of $TOWN rewards.",
+   "tvl_note": "DefiLlama tracks only the Monad lending + loop vaults: ~$0.21M TVL and ~$0.34M borrowed on 2026-10-11 (peak ~$3.6M in Jan 2026). The ~$100M figure you see is not on DefiLlama: the app sums its own deposits + vaults + RWA vaults toward a $125M milestone, and TownSquare announced a '$100M USD1 liquidity program' on May 14 2026. Treat the in-app number as unaudited.",
+   "automation": {
+    "public": [
+     "total registered users (action-link-stage.townesquare.xyz/api/users/total-users)",
+     "DefiLlama TVL (Monad lending only)"
+    ],
+    "login": [
+     "Your points and rank: /api/points/* requires a Bearer token from a wallet-signature login (SIWE). Cannot be read with just an address; enter your points/rank by hand from app.townsq.xyz/ranking.",
+     "Total points are not published."
+    ]
+   },
+   "evidence": [
+    {
+     "t": "2026-07-27",
+     "kind": "official",
+     "confirmed": true,
+     "text": "$TOWN public sale on Sonar ended, 2.01x oversubscribed; distribution on token-launch day (200M tier) or after lockup (150M tier)",
+     "url": "https://www.townsq.xyz/"
+    },
+    {
+     "t": "2026-07-29",
+     "kind": "official",
+     "confirmed": true,
+     "text": "Sale summary: 700+ registered, $2M+ committed (KYC)",
+     "url": "https://twiscan.com/en/x/TownSquarexyz/2082411129238892598"
+    },
+    {
+     "t": "2026-10-11",
+     "kind": "official",
+     "confirmed": true,
+     "text": "Tokenomics: 10B supply; community airdrop & ve-incentives 31.84% (3.184B), 5.83% of it unlocked at TGE (~185.6M TOWN = 1.86% of supply), 84-month vesting for the rest; 'a portion becomes available early to reward existing users'",
+     "url": "https://www.townesquare.xyz/introducing-town-tokenomics"
+    },
+    {
+     "t": "2026-10-11",
+     "kind": "official",
+     "confirmed": false,
+     "text": "Points docs: 'Points are non-transferable activity records with no monetary value and no right to any token distribution. Any future benefit is discretionary.'",
+     "url": "https://docs.townsq.xyz/incentives-and-points/townsquare-points-and-partner-points"
+    },
+    {
+     "t": "2026-05-21",
+     "kind": "funding",
+     "confirmed": true,
+     "text": "Series A $16.25M (World Liberty Financial, OKX Ventures, Amber, Animoca, Arcane, Aptos Network, ...)",
+     "url": "https://blog.townsq.xyz/funding"
+    },
+    {
+     "t": "2026-05-14",
+     "kind": "news",
+     "confirmed": true,
+     "text": "TownSquare announces $100M USD1 liquidity program with World Liberty Financial",
+     "url": "https://crypto.news/townsquare-unveils-100-million-usd1-liquidity-initiative/"
+    },
+    {
+     "t": "2026-10-09",
+     "kind": "community",
+     "confirmed": false,
+     "text": "CryptoDiffer lists $TOWN TGE as 'Q4 2026, estimated' (no official date)",
+     "url": "https://cryptodiffer.com/upcoming-tges/townsquare-tge"
+    },
+    {
+     "t": "2026-07-26",
+     "kind": "community",
+     "confirmed": false,
+     "text": "Aspecta pre-TGE market implied ~$270M FDV (reported by BingX news)",
+     "url": "https://bingx.com/en/news/post/-townsquare-townsquarexyz-sonar-town-aspecta-pretge-fdv-sonar-coinbase-fluent-blend-pharos-pros-coinbase-coinbase"
+    }
+   ]
+  }
+ },
+ "verified": {
+  "_note": "Manually verified points-program facts for desk candidates (2026-10-11, web). Merged into each candidate's evidence by airdrops_v2.py.",
+  "perpl": [
+   {
+    "t": "2026-10-11",
+    "kind": "official",
+    "confirmed": true,
+    "text": "Perpl runs a Points program plus 'Purple Summer' mPoints (16 weeks, 50k mPoints/week, share of up to $1M in MON). Points have no confirmed token conversion.",
+    "url": "https://docs.perpl.xyz/exchange/points"
+   }
+  ],
+  "nuva": [
+   {
+    "t": "2026-10-11",
+    "kind": "official",
+    "confirmed": true,
+    "text": "NUVA Points Hub: Season 0 ended, Season 1 'coming soon' (vault deposits, referrals, DEX liquidity, DeFi, social).",
+    "url": "https://app.nuva.finance/en/points-hub"
+   }
+  ],
+  "xo-protocol": [
+   {
+    "t": "2026-10-11",
+    "kind": "official",
+    "confirmed": true,
+    "text": "XO Market Conviction Points from trades and liquidity (daily), plus weekly 'Aura' social seasons.",
+    "url": "https://docs.xo.market/product/rewards/conviction-points"
+   }
+  ],
+  "oro-finance": [
+   {
+    "t": "2026-10-11",
+    "kind": "official",
+    "confirmed": true,
+    "text": "Oro Season 0 'Nuggets' for GOLD holding, staking, liquidity and referrals, weekly distribution.",
+    "url": "https://app.oro.finance/"
+   }
+  ],
+  "ammalgam": [
+   {
+    "t": "2026-10-11",
+    "kind": "official",
+    "confirmed": true,
+    "text": "Ammalgam vault deposit points/boosts program.",
+    "url": "https://medium.com/@ammalgam_chain/ammalgam-vaults-rewards-deposits-boosts-rewards-7bd73aefa2b7"
+   }
+  ],
+  "cabal": [
+   {
+    "t": "2026-10-11",
+    "kind": "community",
+    "confirmed": false,
+    "text": "No documented points program found in a web check (homepage contains the word 'points'); Cabal is an Initia liquid-staking protocol. Verify before farming.",
+    "url": "https://thecabal.xyz"
+   }
+  ]
+ }
+}
