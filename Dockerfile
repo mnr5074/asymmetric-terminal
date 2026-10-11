@@ -10,8 +10,8 @@ COPY lib ./lib
 COPY public ./public
 COPY research ./research
 COPY scripts/start.sh ./scripts/start.sh
-# Seed snapshot of research outputs (analysis/screener JSON) so the Moonshot tab works even on an ephemeral disk
-COPY data/analysis.json data/screener.json data/macro_events.json data/options.json data/airdrops.json ./seed/
+# Seed snapshot of research outputs so every view works on an ephemeral disk (refreshed in the background once running)
+COPY data/analysis.json data/screener.json data/macro_events.json data/options.json data/airdrops.json data/live_model.json data/live_feed.json data/sleepers.json data/revival_lab.json data/rug_cases.json data/unlocks.json data/opt_universe.json ./seed/
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000 PUBLIC_MODE=1 DATA_DIR=/app/data
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s CMD node -e "fetch('http://127.0.0.1:'+(process.env.PORT||8000)+'/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
