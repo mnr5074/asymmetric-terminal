@@ -10,12 +10,15 @@ const DEFAULT_WL = [
   ['solana', '6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx'], ['robinhood', '0x39dBED3a2bd333467115dE45665cC57F813C4571'],
   ['ethereum', '0x6982508145454Ce325dDbE47a25d4ec3d2311933'], ['base', '0x532f27101965dd16442E59d40670FaF5eBB142E4'],
   ['bsc', '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82'], ['ton', 'EQAvlWFDxGF2lXm67y4yzC17wYKD9A0guwPkMs1gOsM__NOT'],
+  ['solana', 'EosbW31T1WAQSiHUErogcaNHd8FBZDbjPPgQMJzXARNV'], ['solana', 'HsRpHQn6VbyMs5b5j5SV6xQ2VvpvvCCzu19GjytVSCoz'], // QCAT, STRK (Solana SPL)
 ];
 const LS = { wl: 'st.watchlist.v1', sel: 'st.selected.v1', rpc: 'st.rpc.v1', chain: 'st.chain.v1', wchain: 'st.wchain.v1' };
 let CHAINS = { solana: { name: 'Solana', short: 'SOL' }, robinhood: { name: 'Robinhood Chain', short: 'RH' } };
 let curChain = localStorage.getItem(LS.chain) || 'solana';
 let natives = {};
 let watch = JSON.parse(localStorage.getItem(LS.wl) || 'null') || DEFAULT_WL;
+// one-time additive merge of newly added defaults into saved watchlists (QCAT, STRK)
+if (!localStorage.getItem('st.wl.add.qcat-strk')) { for (const t of DEFAULT_WL.slice(-2)) if (!watch.some(([c, a]) => c === t[0] && a === t[1])) watch.push(t); localStorage.setItem(LS.wl, JSON.stringify(watch)); localStorage.setItem('st.wl.add.qcat-strk', '1'); }
 let tokenData = {};
 let selected = null; // {chain, address, pair}
 const params = new URLSearchParams(location.search);

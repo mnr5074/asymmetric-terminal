@@ -191,3 +191,5 @@ body[data-view=glossary] main.grid{display:none}body[data-view=glossary] #viewGl
   footer,.foot{display:none}
   .tph label{font-size:11px}
 }
+
+.exitcard{border:1px solid #333;border-left:3px solid #e0a030;padding:6px 8px;margin:6px 0;border-radius:4px}.exitcard.l-high{border-left-color:#ff4d5e}.exitcard.l-low{border-left-color:#3fb950}.exitcard .cmpg{font-size:11px;margin-top:3px}
