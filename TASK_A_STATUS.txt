@@ -1,0 +1,8 @@
+TASK A: DONE (2026-10-11 ~01:05 PT)
+Repo: https://github.com/mnr5074/asymmetric-terminal  (created PUBLIC at creation, private=false)
+Unauthenticated GET https://api.github.com/repos/mnr5074/asymmetric-terminal -> 200, visibility=public, default branch main
+Head commit on main: a0f51eefc7585d6e49b70b45942763713eb22a35  (9 push commits, <=4 files each, on top of the auto-init README commit)
+Pushed 33 files: app, lib, public, research, scripts, Dockerfile, render.yaml, README, data/analysis.json, data/screener.json, data/macro_events.json
+Excluded: .env, *.db, *.log, node_modules, screenshots, PUBLIC_URL.txt, tunnel.log, watchdog.log, __pycache__
+Secret scan of pushed files: user's password string not present (0 hits); no API keys/tokens/private keys matched; .env.example values empty.
+render.yaml: runtime docker, plan free, healthCheckPath /api/health, SITE_PASSWORD sync:false, SESSION_SECRET generateValue:true, SITE_USER martin, PUBLIC_MODE "1", RUN_RESEARCH "0"
