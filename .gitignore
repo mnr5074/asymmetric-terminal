@@ -1,0 +1,14 @@
+node_modules/
+*.log
+data/*.db
+data/*.db-*
+!data/analysis.json
+!data/screener.json
+!data/macro_events.json
+__pycache__/
+*.pyc
+.env
+screenshot*.png
+tunnel.log
+PUBLIC_URL.txt
+watchdog.log

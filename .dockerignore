@@ -1,0 +1,6 @@
+node_modules
+*.log
+data/*.db
+data/*.log
+screenshot*.png
+.git
