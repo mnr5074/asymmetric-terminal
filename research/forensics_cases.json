@@ -1,0 +1,25 @@
+{
+  "source": "Nansen tgm/who-bought-sold + tgm/transfers over each crash window (user-approved one-off, 19 credits, 2026-10-11) + CoinGecko daily closes. Wallet labels are Nansen's.",
+  "cases": [
+    {"symbol": "SIREN", "chain": "bsc", "address": "0x997a58129890bbda032231a52ed1ddc845fc18e1", "type": "unlock/vesting dump", "signal": "unlock",
+     "peak": {"date": "2026-03-24", "price": 2.39}, "drop": {"date": "2026-03-25", "price": 1.02, "pct": -57}, "low_by": {"date": "2026-04-01", "price": 0.57},
+     "finding": "Hedgeys vesting contract released 136.0M SIREN (18.8% of supply, ~$251M) to ~49 wallets on 2026-03-22 09:13-10:56 UTC, 2 days before the peak; price fell 57% the day after the peak.",
+     "lesson": "A large vesting release to many fresh wallets right before a top is an exit-now trigger."},
+    {"symbol": "VELVET", "chain": "bsc", "address": "0x8b194370825e37b33373e74a41009161808c1488", "type": "clustered CEX deposits", "signal": "cex_cluster",
+     "peak": {"date": "2026-06-29", "price": 1.88}, "drop": {"date": "2026-07-03", "price": 0.47, "pct": -75},
+     "finding": "13 outside wallets deposited 3.05M VELVET ($4.54M, 0.30% of supply) to Gate on Jun 29-Jul 1; three unlabeled wallets deposited 412K/457K/419K within 5 minutes on Jul 1 05:17-05:22 UTC, 2 days before the drop.",
+     "lesson": "Several wallets depositing similar amounts to one exchange within minutes = coordinated sell prep."},
+    {"symbol": "STONK", "chain": "solana", "address": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx", "type": "fund distribution to CEX", "signal": "fund_to_cex",
+     "peak": {"date": "2026-09-21", "price": 0.363}, "drop": {"date": "2026-10-11", "price": 0.136, "pct": -63},
+     "finding": "A wallet labeled 'Hypersphere Ventures' moved 5.50M STONK to an intermediate wallet that forwarded it to Gate 29 minutes later ($1.51M, ~0.6% of supply) on Sep 27, 6 days after the closing peak; 5 outside->CEX deposits totaled $2.97M Sep 18-27.",
+     "lesson": "Fund/VC wallets routing tokens to an exchange through a fresh hop is distribution."},
+    {"symbol": "ALLINU", "chain": "solana", "address": "4MMQY9bwkxxTtsK3W227Q5ABT6yFY8Pmn9Ze7wmAXKY8", "type": "platform/deployer selling", "signal": "deployer_sell",
+     "peak": {"date": "2026-09-16", "mcap_close": 20660000}, "drop": {"date": "2026-10-11", "mcap": 3990000, "pct": -81},
+     "finding": "Biggest seller in Sep 13-25 was 'Stonk: Rewards Distributor' ($778K sold, net 96.5M tokens, ~9.7% of supply); 'Pablo Token Deployer' sold $194K (net 16.4M, ~1.6%); a wallet funded with 17.6M tokens on peak day sold $287K.",
+     "lesson": "Reward/treasury/deployer wallets selling into a run cap the upside; treat as dev selling."},
+    {"symbol": "LAB", "chain": "bsc", "address": "0x7ec43cf65f1663f820427c62a5780b8f2e25593a", "type": "off-chain / perp-driven dump", "signal": "offchain_dump",
+     "peak": {"date": "2026-06-27", "price": 19.78}, "drop": {"date": "2026-07-09", "price": 1.25, "pct": -94},
+     "finding": "Little on-chain selling: the top DEX seller was an MEV bot (net 0.10% of supply); 92 of 95 exchange transfers were exchange-internal (Gate/Bitget/KuCoin) from Jun 28; a team multisig burned 10M LAB (1.0%) on collapse day; 7.99M LAB ($9.0M) went to the Astherus perp deposit vault after the collapse.",
+     "lesson": "When price collapses without on-chain sellers, the selling is on CEX/perps: on-chain 'all clear' is not safety for CEX-listed low-float tokens."}
+  ]
+}
