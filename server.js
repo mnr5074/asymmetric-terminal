@@ -31,6 +31,17 @@ const { createOrderbook } = require('./lib/orderbook'); // L2 spoofing / thin-bo
 const tradeapi = require('./lib/tradeapi'); // wallet-approved swaps + sandwich log (never holds keys)
 const taxapi = require('./lib/tax/api'); // Tax desk: private ledger in data/tax (lib/tax/*)
 
+// RENDER_LITE: small-instance mode (Render Starter = 512 MB). Auto-on when RENDER is set (Render injects it) or RENDER_LITE=1;
+// RENDER_LITE=0 forces it off. Skips every background collector/refresh loop and python spawn; data/*.json is served read-only.
+const RENDER_LITE = process.env.RENDER_LITE === '1' || (!!process.env.RENDER && process.env.RENDER_LITE !== '0');
+if (process.env.RENDER && process.env.ALERTS_ENABLED === undefined) process.env.ALERTS_ENABLED = '0'; // box already sends alerts: no duplicates
+if (RENDER_LITE) {
+  for (const k of ['PERPS', 'ORDERBOOK', 'LIQ', 'GAPS', 'DERIVE', 'PRIORITY', 'POOLWATCH', 'FAKEVOL', 'COPYTRADE', 'GROK', 'KEYHEALTH', 'RISKINFRA']) process.env[k] = 'off';
+  process.env.RENDER_LITE = '1'; // lib/* module timers check this
+  process.env.LIVE_FEED = 'off'; process.env.NO_AUTO_REFRESH = '1'; process.env.RUN_RESEARCH = '0';
+  console.log('[asymmetric-terminal] RENDER_LITE on: background collectors/refresh loops disabled, serving data/*.json read-only');
+}
+
 const PORT = +process.env.PORT || 8000;
 const HOST = process.env.HOST || '0.0.0.0';
 const PUB = path.join(__dirname, 'public');
@@ -628,7 +639,7 @@ Object.assign(routes, require('./lib/patterns').routes({ DATA_DIR, live }));
 // Session seasonality (lib/seasonality.js; research/seasonality.py): DST-correct session windows, live volatile/quiet flags — additive
 Object.assign(routes, require('./lib/seasonality').routes({ DATA_DIR, live }));
 // Terminal uptime / restarts (lib/uptime.js; scripts/supervisor.js writes data/restarts.json): /api/health/detail + restart alerts — additive
-{ const up = require('./lib/uptime').createUptime({ DATA_DIR, alerts, log: (m) => console.log('[uptime] ' + m) }); Object.assign(routes, up.routes); up.start(); }
+{ const up = require('./lib/uptime').createUptime({ DATA_DIR, alerts, log: (m) => console.log('[uptime] ' + m) }); Object.assign(routes, up.routes); if (!RENDER_LITE) up.start(); }
 // Airdrop Desk v2: tracker, under-farmed score, My Farms monitor, dilution, value estimates (lib/airdrops.js; research/airdrops_v2.py)
 Object.assign(routes, require('./lib/airdrops').routes({ DATA_DIR, root: __dirname }));
 
@@ -653,7 +664,7 @@ const birthphase = require('./lib/birthphase').createBirthphase({ DATA_DIR, root
 routes['/api/birthphase'] = async (q) => birthphase.api(q);
 routes['/api/birthphase/token'] = async (q) => birthphase.token(q);
 // keep live.json fresh for launch-model phone alerts (lib/alerts.js refuses snapshots > 30 min old); refresh() no-ops if < BIRTHPHASE_LIVE_MIN old or NO_AUTO_REFRESH=1
-setInterval(() => { try { birthphase.refresh(false); } catch {} }, 5 * 60e3).unref();
+if (!RENDER_LITE) setInterval(() => { try { birthphase.refresh(false); } catch {} }, 5 * 60e3).unref();
 // Contract vulnerability scanner (lib/contractscan.js; batch via research/contractscan.py): /api/contractscan[?chain=&address=] — additive
 Object.assign(routes, require('./lib/contractscan').routes());
 // Fake-volume detector (lib/fakevolume.js; backtest research/fakevolume.py): /api/fakevolume, /api/fakevolume/token?chain=&address= — additive (FAKEVOL=off disables the live scan)
@@ -833,7 +844,7 @@ server.listen(PORT, HOST, () => console.log(`[asymmetric-terminal] read-only das
   }
   if (LIVE !== 'off' && process.env.POOLWATCH !== 'off') probes.poolwatch = { label: 'QCAT/STRK pool watch (in-memory)', expectedMs: 15 * 60e3, panels: [], fn: () => { const s = poolwatch.status() || {}; return { t: s.updatedAt }; } };
   const feedHealth = require('./lib/staleness').createStaleness({ DATA_DIR, root: __dirname, log: RL, probes, notify: (k, t) => alerts.notice(k, t) });
-  feedHealth.start();
+  if (!RENDER_LITE) feedHealth.start();
   if (process.env.RISKINFRA !== 'off') { riOracles.start(45e3); riDeps.start(120e3); riOtc.start(150e3); }
   Object.assign(routes, {
     async '/api/oracles'(q) { return riOracles.api(q); },
