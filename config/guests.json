@@ -1,0 +1,6 @@
+{
+  "_note": "Restricted read-only guest logins (lib/auth.js). Only salted scrypt hashes, never plaintext. Delete a user line to remove that login; env GUEST_LOGINS=off disables all.",
+  "users": {
+    "eddie": "scrypt$16384$8$1$0EcPwjU3KogFZGyP53gwwQ$TdQfhXtwGxGxniJ8paBoovRzo33vtweXYCHo90KfWHY"
+  }
+}

@@ -257,6 +257,7 @@ async function walletSui(addr) {
 
 // ---------- routes ----------
 const routes = {
+  async '/api/whoami'(q, req) { return { user: req.authUser || null, role: req.authRole || (auth.ENABLED ? null : 'owner') }; },
   async '/api/health'() { return { ok: true, time: new Date().toISOString(), readOnly: true, auth: auth.ENABLED }; },
 
   async '/api/chains'() { return { chains: chains.publicList(), natives: await nativePrices() }; },
@@ -820,6 +821,11 @@ const server = http.createServer(async (req, res) => {
   if (!f.startsWith(PUB)) { res.writeHead(403); return res.end(); }
   fs.readFile(f, (err, buf) => {
     if (err) { res.writeHead(404); return res.end('not found'); }
+    if (req.authRole === 'guest' && p === '/index.html') { // guest login: hide owner-only nav (portfolio, swap, tax, wallet viewer, settings); APIs are 403'd in lib/auth.js
+      res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' });
+      return res.end(String(buf).replace('</head>', `<style>#viewNav [data-v=portfolio],#viewNav [data-v=swap],#viewNav [data-v=tax],#lowerTabs [data-t=wallet],#lowerWallet,#settingsBtn{display:none!important}</style>
+<script>window.ST_ROLE='guest';addEventListener('DOMContentLoaded',()=>{const b=document.querySelector('#lowerTabs [data-t=moon]');b&&b.click();const o=new MutationObserver(()=>document.querySelectorAll('#viewNav [data-v=portfolio],#viewNav [data-v=swap],#viewNav [data-v=tax]').forEach((x)=>x.remove()));o.observe(document.body,{childList:true,subtree:true});});</script></head>`));
+    }
     res.writeHead(200, { 'content-type': MIME[path.extname(f)] || 'application/octet-stream' });
     res.end(buf);
   });

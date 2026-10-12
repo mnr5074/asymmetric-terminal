@@ -7,6 +7,7 @@ WORKDIR /app
 COPY package.json ./
 COPY server.js ./
 COPY lib ./lib
+COPY config ./config
 COPY public ./public
 COPY research ./research
 COPY scripts/start.sh ./scripts/start.sh
