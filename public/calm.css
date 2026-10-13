@@ -1,0 +1,56 @@
+/* calm.css: readability layer (loaded after style.css). Bigger type, more air, softer hierarchy, fewer borders, 44px tap targets.
+   Nothing is removed: secondary details are collapsed behind "More details" toggles (calm.js). */
+:root{font-size:15px;--line:#18202b;--mut:#8592a3;--txt:#dfe5ec;--soft:#a9b4c2}
+html body{line-height:1.5;letter-spacing:.1px}
+html body .small{font-size:.82em}
+html body .muted{color:var(--mut)}
+/* softer chrome: fewer borders, more spacing */
+html body .panel{border-color:transparent;border-radius:10px;background:var(--panel)}
+html body .phead{border-bottom:0;background:transparent;padding:10px 14px 6px;gap:10px;flex-wrap:wrap}
+html body .phead h2,html body .phead>span:first-child{font-size:.95em;letter-spacing:1px;color:#fff;font-weight:700}
+html body .grid{gap:12px;padding:12px}html body .col{gap:12px}
+html body .tbl th{font-size:.75em;padding:8px 8px;border-bottom:1px solid var(--line);background:var(--panel)}
+html body .tbl td{font-size:.92em;padding:8px 8px;border-bottom:1px solid #0f141b}
+html body .tabs button,html body .subtabs button{padding:6px 10px}
+html body .subtabs{border-bottom:0;padding:4px 14px}
+html body .desks{gap:12px}
+html body .desk{border:0;border-radius:10px;padding:12px 14px;font-size:.9em;max-height:none;overflow:visible;background:var(--panel2)}
+html body .desk .dh{font-size:.85em;margin-bottom:6px}html body .desk li{margin:4px 0;color:var(--soft)}
+html body .check .d{font-size:.9em;color:var(--soft);line-height:1.5}
+html body .chip{font-size:.75em;padding:1px 6px;border-radius:999px}
+html body .topbar{height:auto;min-height:52px;padding:8px 14px;border-bottom:0}
+html body .btn{padding:8px 14px;border-radius:8px}
+html body input,html body select{padding:8px 10px;border-radius:8px}
+/* collapse helpers */
+.calm-more{background:none;border:0;color:var(--blu);font:inherit;font-size:.88em;cursor:pointer;padding:10px 0;min-height:44px;text-align:left}
+.desk.calm-c li:nth-child(n+3){display:none}.desk.calm-c.xp li{display:list-item}
+details.more>summary{cursor:pointer;color:var(--blu);min-height:44px;display:flex;align-items:center;list-style:none}details.more>summary::before{content:'▸ ';margin-right:4px}details.more[open]>summary::before{content:'▾ '}
+/* mobile (Android ~411px) */
+@media (max-width:700px){
+  :root{font-size:16.5px}
+  html body .topbar{gap:10px}
+  html body .viewnav button,html body .tabs button,html body .subtabs button,html body .btn,html body select,html body input{min-height:44px}
+  html body .ix{position:relative;width:22px;height:22px;min-height:0}html body .ix::after{content:'';position:absolute;inset:-11px}
+  html body .viewnav{gap:6px;padding-bottom:4px}html body .viewnav button{flex:0 0 auto;padding:8px 14px;border-radius:999px}
+  html body .desks{grid-template-columns:1fr}
+  html body main.grid{display:flex;flex-direction:column;overflow:auto;gap:14px;padding:10px}
+  html body main.grid .col{flex:none;width:100%}html body main.grid .panel{min-height:0;max-height:none}
+  html body #watchPanel,html body #chartPanel{max-height:none;flex:none}html body #chartPanel{height:60vh}
+  html body .kv{grid-template-columns:1fr 1fr;gap:8px}
+  html body .searchwrap{order:2;flex:1 1 100%;max-width:none}html body .topbar .brand{flex:1}
+  details.calm-filters{padding:0 0 4px;width:100%}
+  html body .ccGrid{gap:14px}html body .ccGrid .panel{max-height:none}
+  html body #viewCommand{gap:14px;padding:10px}
+  /* tables -> stacked cards; first cells visible, rest behind "More details" */
+  html body .tbl.calm-stack thead{display:none}
+  html body .tbl.calm-stack,html body .tbl.calm-stack tbody{display:block;width:100%}
+  html body .tbl.calm-stack tr{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;padding:12px 14px;margin:0 0 10px;background:var(--panel2);border-radius:10px}
+  html body .tbl.calm-stack td{display:block;border:0;padding:2px 0;white-space:normal;font-size:.95em;min-width:0;overflow-wrap:anywhere}
+  html body .tbl.calm-stack td:first-child{grid-column:1/-1;font-size:1.05em}
+  html body .tbl.calm-stack td[data-l]::before{content:attr(data-l);display:block;font-size:.72em;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
+  html body .tbl.calm-stack tr:not(.xp) td.calm-x{display:none}
+  html body .tbl.calm-stack td.calm-btn{grid-column:1/-1}
+  html body .tbl.calm-stack td:first-child:has(.star){grid-column:auto}
+  html body .tok{max-width:none}
+  html body .tablewrap{overflow-x:hidden}
+}
