@@ -832,6 +832,11 @@ const server = http.createServer(async (req, res) => {
 });
 server.listen(PORT, HOST, () => console.log(`[asymmetric-terminal] read-only dashboard on http://${HOST}:${PORT}${auth.ENABLED ? ` (password-protected, user '${auth.USER}')` : ' (open: SITE_PASSWORD not set)'}`));
 
+// Heavy Accumulation desk (lib/accumulation.js -> data/accumulation.json): scores tokens from data other desks already collected (0 credits).
+const accumulation = require('./lib/accumulation').createAccumulation({ DATA_DIR, log: L });
+routes['/api/accumulation'] = async () => accumulation.api();
+if (!RENDER_LITE && process.env.ACCUMULATION !== 'off') accumulation.start(+(process.env.ACCUMULATION_MS || 10 * 60e3));
+
 // ---------- Risk infrastructure (additive): (5) oracle manipulation, (6) dependency risk, (7) feed health / staleness, (8) OTC flow ----------
 // lib/oracles.js, lib/dependencies.js, lib/otcflow.js run research/riskinfra/*.py in the background (RISKINFRA=off disables; lock files
 // keep several server instances from running the same collector). lib/staleness.js instruments data/*.json + in-memory snapshots.
