@@ -794,8 +794,45 @@ function limited(req, key, max, winMs) {
 }
 setInterval(() => { const n = Date.now(); for (const [k, v] of hits) if (!v.length || n - v[v.length - 1] > 600e3) hits.delete(k); }, 300e3).unref();
 
+// ---------- transfer: gzip/brotli + static caching (helps slow first loads on Render's 0.5 CPU) ----------
+const zlib = require('zlib');
+const COMPRESSIBLE = /^(application\/json|text\/|application\/javascript|image\/svg)/;
+function pickEnc(req) { const ae = String(req.headers['accept-encoding'] || ''); return /\bbr\b/.test(ae) ? 'br' : /\bgzip\b/.test(ae) ? 'gzip' : null; }
+function compressBody(enc, buf, fast) {
+  return enc === 'br' ? zlib.brotliCompressSync(buf, { params: { [zlib.constants.BROTLI_PARAM_QUALITY]: fast ? 4 : 9, [zlib.constants.BROTLI_PARAM_SIZE_HINT]: buf.length } })
+    : zlib.gzipSync(buf, { level: fast ? 5 : 9 });
+}
+// Wrap res so any single-shot response (JSON from every handler incl. tax/trade, HTML, JS, CSS) is compressed; streamed writes pass through untouched.
+function withCompression(req, res) {
+  const enc = pickEnc(req); if (!enc || req.method === 'HEAD') return;
+  const wh = res.writeHead.bind(res), we = res.write.bind(res), en = res.end.bind(res);
+  let pending = null, streamed = false;
+  const flushHead = () => { if (pending) { wh(...pending); pending = null; } };
+  res.writeHead = (...a) => { pending = a; return res; };
+  res.write = (...a) => { streamed = true; flushHead(); return we(...a); };
+  res.end = (body, ...rest) => {
+    if (streamed || body == null || typeof body === 'function') { flushHead(); return en(body, ...rest); }
+    const buf = Buffer.isBuffer(body) ? body : Buffer.from(String(body));
+    const [status = res.statusCode, a1, a2] = pending || []; const hdrs = { ...(typeof a1 === 'object' ? a1 : a2 || {}) };
+    const ct = String(hdrs['content-type'] || hdrs['Content-Type'] || res.getHeader('content-type') || '');
+    pending = null;
+    if (buf.length < 1024 || !COMPRESSIBLE.test(ct) || hdrs['content-encoding'] || res.getHeader('content-encoding')) { wh(status, hdrs); return en(buf); }
+    const z = res._precompressed || compressBody(enc, buf, true);
+    wh(status, { ...hdrs, 'content-encoding': enc, vary: 'Accept-Encoding', 'content-length': z.length }); return en(z);
+  };
+}
+// Static: index.html revalidates (no-cache + ETag) and points at ?v=<mtime> asset URLs, which are cached for a year (immutable).
+const staticZ = new Map(); // path|enc|mtime -> compressed buffer (computed once per file version, brotli q9)
+const assetV = (rel) => { try { return Math.round(fs.statSync(path.join(PUB, rel)).mtimeMs).toString(36); } catch { return '0'; } };
+const versionAssets = (html) => html.replace(/(src|href)="\/([\w.-]+\.(?:js|css))"/g, (m, a, f) => `${a}="/${f}?v=${assetV(f)}"`);
+
+// RENDER_LITE: data only changes on redeploy, so memoize GET API responses for 60s (one CPU-bound compute per minute per URL).
+const liteMemo = new Map();
+let optBody = null; // /api/options serialized + compressed cache
+
 const server = http.createServer(async (req, res) => {
   const u = new URL(req.url, 'http://x');
+  withCompression(req, res);
   if (await auth.gate(req, res, u)) return;
   if (u.pathname.startsWith('/api/')) {
     const deep = u.pathname === '/api/scan' && u.searchParams.get('deep') === '1';
@@ -805,10 +842,23 @@ const server = http.createServer(async (req, res) => {
     const h = routes[u.pathname];
     if (!h) { res.writeHead(404, { 'content-type': 'application/json' }); return res.end('{"error":"not found"}'); }
     if (req.method !== 'GET') { res.writeHead(405); return res.end(); }
+    if (u.pathname === '/api/options') { // 15 MB of picks on the box: serialize once per file version, floats to 5 significant digits, precompressed per encoding
+      try {
+        const data = await h(u.searchParams, req); const mt = fs.statSync(path.join(DATA_DIR, 'options.json')).mtimeMs;
+        if (!optBody || optBody.mt !== mt || optBody.refreshing !== data.refreshing) optBody = { mt, refreshing: data.refreshing, body: Buffer.from(JSON.stringify(prov.attach(u.pathname, data, DATA_DIR), (k, v) => (typeof v === 'number' && !Number.isInteger(v) ? +v.toPrecision(5) : v))), z: {} };
+        const enc = pickEnc(req); if (enc) res._precompressed = optBody.z[enc] ||= compressBody(enc, optBody.body, false);
+        res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' }); return res.end(optBody.body);
+      } catch (e) { res.writeHead(e.status || 502, { 'content-type': 'application/json' }); return res.end(JSON.stringify({ error: String(e.message || e) })); }
+    }
+    const memoK = RENDER_LITE && !/^\/api\/(whoami|health)/.test(u.pathname) ? u.pathname + '?' + u.searchParams.toString() : null;
+    const hit = memoK && liteMemo.get(memoK);
+    if (hit && Date.now() - hit.t < 60e3) { res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' }); return res.end(hit.body); }
     try {
       const data = await h(u.searchParams, req);
+      const body = JSON.stringify(prov.attach(u.pathname, data, DATA_DIR)); // adds `_prov` (shallow copy) — lib/provenance.js
+      if (memoK) { liteMemo.set(memoK, { t: Date.now(), body }); if (liteMemo.size > 500) liteMemo.delete(liteMemo.keys().next().value); }
       res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' });
-      res.end(JSON.stringify(prov.attach(u.pathname, data, DATA_DIR))); // adds `_prov` (shallow copy) — lib/provenance.js
+      res.end(body);
     } catch (e) {
       res.writeHead(e.status || 502, { 'content-type': 'application/json' });
       res.end(JSON.stringify({ error: String(e.message || e) }));
@@ -819,16 +869,24 @@ const server = http.createServer(async (req, res) => {
   if (p === '/' || p === '\\') p = '/index.html';
   const f = path.join(PUB, p);
   if (!f.startsWith(PUB)) { res.writeHead(403); return res.end(); }
-  fs.readFile(f, (err, buf) => {
-    if (err) { res.writeHead(404); return res.end('not found'); }
+  fs.stat(f, (serr, st) => fs.readFile(f, (err, buf) => {
+    if (err || serr) { res.writeHead(404); return res.end('not found'); }
+    if (p === '/index.html') buf = Buffer.from(versionAssets(String(buf)));
     if (req.authRole === 'guest' && p === '/index.html') { // guest login: hide owner-only nav (portfolio, swap, tax, wallet viewer, settings); APIs are 403'd in lib/auth.js
       res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' });
       return res.end(String(buf).replace('</head>', `<style>#viewNav [data-v=portfolio],#viewNav [data-v=swap],#viewNav [data-v=tax],#lowerTabs [data-t=wallet],#lowerWallet,#settingsBtn{display:none!important}</style>
 <script>window.ST_ROLE='guest';addEventListener('DOMContentLoaded',()=>{const b=document.querySelector('#lowerTabs [data-t=moon]');b&&b.click();const o=new MutationObserver(()=>document.querySelectorAll('#viewNav [data-v=portfolio],#viewNav [data-v=swap],#viewNav [data-v=tax]').forEach((x)=>x.remove()));o.observe(document.body,{childList:true,subtree:true});});</script></head>`));
     }
-    res.writeHead(200, { 'content-type': MIME[path.extname(f)] || 'application/octet-stream' });
+    const ct = MIME[path.extname(f)] || 'application/octet-stream';
+    const etag = `W/"${st.size.toString(36)}-${Math.round(st.mtimeMs).toString(36)}${p === '/index.html' ? '-' + (req.authRole || 'o') : ''}"`;
+    const versioned = u.searchParams.has('v') && p !== '/index.html';
+    const hdr = { 'content-type': ct, etag, 'cache-control': versioned ? 'public, max-age=31536000, immutable' : 'no-cache' };
+    if (req.headers['if-none-match'] === etag) { res.writeHead(304, hdr); return res.end(); }
+    const enc = pickEnc(req);
+    if (enc && COMPRESSIBLE.test(ct) && buf.length >= 1024) { const k = `${p}|${enc}|${etag}`; let z = staticZ.get(k); if (!z) { z = compressBody(enc, buf, false); staticZ.set(k, z); } res._precompressed = z; }
+    res.writeHead(200, hdr);
     res.end(buf);
-  });
+  }));
 });
 server.listen(PORT, HOST, () => console.log(`[asymmetric-terminal] read-only dashboard on http://${HOST}:${PORT}${auth.ENABLED ? ` (password-protected, user '${auth.USER}')` : ' (open: SITE_PASSWORD not set)'}`));
 
