@@ -96,13 +96,13 @@
       const rec = (f.recent || []).filter((x) => proven.has(x.detector) && x.status !== 'shadow');
       const up = rec.filter((x) => !/crash|rug|dump/i.test(x.claim || '')), dn = rec.filter((x) => /crash|rug|dump/i.test(x.claim || ''));
       const det = (k) => { const v = f.detectors[k]; return `${E(k.replace(/_/g, ' '))} · hit ${Math.round(v.precision * 100)}% of ${v.n} (lift ${(v.rollingLift || 0).toFixed(1)})`; };
-      const li = (x) => `<li><b>${E(x.symbol || x.key)}</b> ${E(x.reason || '')}<div class="muted small">${det(x.detector)} · ${ago(x.t)}</div></li>`;
+      const li = (x) => `<li><b>${E(x.symbol || x.key)}</b> ${E(x.reason || '')}<div class="muted small">${det(x.detector)} · ${ago(x.t)}</div>${(window.fsLine ? window.fsLine(x) : '')}</li>`;
       Q('#tSetups .tb').innerHTML = up.length ? `<ul>${up.slice(0, 5).map(li).join('')}</ul>` : `<div class="muted">No fresh setup from a proven signal right now.${LITE ? ' (Render shows the last box snapshot.)' : ''}</div><div class="muted small">Proven live: ${[...proven].map((k) => E(k.replace(/_/g, ' '))).join(', ') || 'none yet'}.</div>`;
       Q('#tRisk .tb').innerHTML = dn.length ? `<ul>${dn.slice(0, 5).map(li).join('')}</ul>` : '<div class="muted">No fresh proven rug / crash flag.</div>';
     } catch (e) { Q('#tSetups .tb').textContent = Q('#tRisk .tb').textContent = 'unavailable: ' + e.message; }
     try {
       const b = await j('/api/flatbase'); const top = b.items.filter((x) => x.label !== 'Watching').slice(0, 5);
-      Q('#tBreak .tb').innerHTML = (top.length ? `<ul>${top.map((x) => `<li><b>${E(x.symbol)}</b> <span class="lbl l-${E(x.label.split(' ')[0].toLowerCase())}">${E(x.label)}</span> <span class="muted">score ${x.score}</span><div class="muted small">${E(x.reasons[0] || '')} · data as of ${new Date(x.dataAsOf).toISOString().slice(0, 10)}</div></li>`).join('')}</ul>` : '<div class="muted">No coin in a qualifying flat base.</div>')
+      Q('#tBreak .tb').innerHTML = (top.length ? `<ul>${top.map((x) => `<li><b>${E(x.symbol)}</b> <span class="lbl l-${E(x.label.split(' ')[0].toLowerCase())}">${E(x.label)}</span> <span class="muted">score ${x.score}</span><div class="muted small">${E(x.reasons[0] || '')} · data as of ${new Date(x.dataAsOf).toISOString().slice(0, 10)}</div>${(window.fsLine ? window.fsLine(x) : '')}</li>`).join('')}</ul>` : '<div class="muted">No coin in a qualifying flat base.</div>')
         + `<div class="muted small">Signal strength: <b>${E(b.strength)}</b> (backtest). <a href="#" class="goBrk">All breakouts →</a></div>`;
       Q('#tBreak .goBrk').onclick = (e) => { e.preventDefault(); brk.click(); };
     } catch (e) { Q('#tBreak .tb').textContent = 'unavailable: ' + e.message; }

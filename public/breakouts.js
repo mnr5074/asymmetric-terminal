@@ -27,7 +27,7 @@
   let D = null, F = 'all';
   const card = (x) => `<div class="bk l-${E(x.label.split(' ')[0].toLowerCase())}" data-sym="${E(x.symbol)}">
     <div class="h"><b>${E(x.symbol)}</b><span class="lbl l-${E(x.label.split(' ')[0].toLowerCase())}">${E(x.label)}</span><span class="sc num">${x.score}</span></div>
-    <ul>${x.reasons.map((r) => `<li>${E(r)}</li>`).join('')}</ul>
+    <ul>${x.reasons.map((r) => `<li>${E(r)}</li>`).join('')}</ul>${(window.fsLine ? window.fsLine(x) : '')}
     <div class="f"><span>data as of ${new Date(x.dataAsOf).toISOString().slice(0, 10)} (${ago(x.fetchedAt)} fetch)</span><span>strength <span class="str ${E(x.strength)}">${E(x.strength)}</span></span>${x.onchain ? '<span>on-chain ✓</span>' : '<span>on-chain n/a</span>'}</div>
     <details class="more"><summary>More details</summary><div class="muted small">${Object.entries(x.parts).map(([k, v]) => `${E(k)} ${v}`).join(' · ')}<br>below high ${pc(x.m.ddAth)} · 6-mo high ${pc(x.m.ddLocal)} · range 4w/8w/12w ${pc(x.m.range4w)}/${pc(x.m.range8w)}/${pc(x.m.range12w)} · base ${x.m.baseDays}d · vol 20d/120d ${x.m.volDry20v120}x · 5d/20d ${x.m.volUp5v20}x · source ${E(x.src)}</div></details></div>`;
   function render() {
