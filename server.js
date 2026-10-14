@@ -828,6 +828,7 @@ const versionAssets = (html) => html.replace(/(src|href)="\/([\w.-]+\.(?:js|css)
 
 // RENDER_LITE: data only changes on redeploy, so memoize GET API responses for 60s (one CPU-bound compute per minute per URL).
 const liteMemo = new Map();
+const firstSeen = require('./lib/firstseen').createFirstSeen({ DATA_DIR, log: L }); // 'First posted / Updated' stamps on pick cards
 let optBody = null; // /api/options serialized + compressed cache
 
 const server = http.createServer(async (req, res) => {
@@ -845,7 +846,7 @@ const server = http.createServer(async (req, res) => {
     if (u.pathname === '/api/options') { // 15 MB of picks on the box: serialize once per file version, floats to 5 significant digits, precompressed per encoding
       try {
         const data = await h(u.searchParams, req); const mt = fs.statSync(path.join(DATA_DIR, 'options.json')).mtimeMs;
-        if (!optBody || optBody.mt !== mt || optBody.refreshing !== data.refreshing) optBody = { mt, refreshing: data.refreshing, body: Buffer.from(JSON.stringify(prov.attach(u.pathname, data, DATA_DIR), (k, v) => (typeof v === 'number' && !Number.isInteger(v) ? +v.toPrecision(5) : v))), z: {} };
+        if (!optBody || optBody.mt !== mt || optBody.refreshing !== data.refreshing) optBody = { mt, refreshing: data.refreshing, body: Buffer.from(JSON.stringify(prov.attach(u.pathname, firstSeen.annotate(u.pathname, data), DATA_DIR), (k, v) => (typeof v === 'number' && !Number.isInteger(v) ? +v.toPrecision(5) : v))), z: {} };
         const enc = pickEnc(req); if (enc) res._precompressed = optBody.z[enc] ||= compressBody(enc, optBody.body, false);
         res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' }); return res.end(optBody.body);
       } catch (e) { res.writeHead(e.status || 502, { 'content-type': 'application/json' }); return res.end(JSON.stringify({ error: String(e.message || e) })); }
@@ -855,7 +856,7 @@ const server = http.createServer(async (req, res) => {
     if (hit && Date.now() - hit.t < 60e3) { res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' }); return res.end(hit.body); }
     try {
       const data = await h(u.searchParams, req);
-      const body = JSON.stringify(prov.attach(u.pathname, data, DATA_DIR)); // adds `_prov` (shallow copy) — lib/provenance.js
+      const body = JSON.stringify(prov.attach(u.pathname, firstSeen.annotate(u.pathname, data), DATA_DIR)); // adds `_prov` (shallow copy) — lib/provenance.js
       if (memoK) { liteMemo.set(memoK, { t: Date.now(), body }); if (liteMemo.size > 500) liteMemo.delete(liteMemo.keys().next().value); }
       res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' });
       res.end(body);
