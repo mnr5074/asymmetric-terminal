@@ -31,13 +31,13 @@
     if (Q('#prioOut')) return true;
     const desks = Q('#ccDesks'); if (!desks) return false;
     const el = document.createElement('div'); el.className = 'panel'; el.id = 'prioPanel';
-    el.innerHTML = '<div class="phead"><span>★ PRIORITY WATCH <span class="muted small">NEAR · ZEC · pinned · funding/OI · tokenomics · news · narratives · ZEC shielded pools</span></span><span><span id="prioMeta" class="muted small"></span> <button id="prioToggle" class="btn ghost mini2" title="collapse / expand">▾</button></span></div><div id="prioOut" class="pbody scroll prio" style="max-height:70vh;overflow:auto"><div class="empty">Loading…</div></div>';
+    el.innerHTML = '<div class="phead"><span>★ PRIORITY WATCH <span class="muted small">NEAR · ZEC · pinned · funding/OI · tokenomics · news · narratives</span></span><span><span id="prioMeta" class="muted small"></span> <button id="prioToggle" class="btn ghost mini2" title="collapse / expand">▾</button></span></div><div id="prioOut" class="pbody scroll prio" style="max-height:70vh;overflow:auto"><div class="empty">Loading…</div></div>';
     desks.insertAdjacentElement('afterend', el); return true;
   }
   async function get(p) { if (typeof api === 'function') return api(p); const r = await fetch(p); const j = await r.json(); if (j.error) throw new Error(j.error); return j; }
   async function load() {
     try { D = await get('/api/priority'); } catch (e) { Q('#prioOut').innerHTML = `<div class="empty">${E(e.message)}</div>`; return; }
-    try { Z = await get('/api/priority/shielded'); } catch { Z = null; }
+    Z = null; // ZEC shielded-pool deep dive removed from the UI (Martin, Oct 2026); /api/priority/shielded still served
     render();
   }
   function alertsHtml() {
@@ -190,7 +190,7 @@
   function render() {
     const errs = D.status?.errors || [];
     Q('#prioMeta').textContent = `data ${D.generatedAt ? ago(D.generatedAt) + ' ago' : '—'} · alerts checked ${ago(D.alerts?.evaluatedAt)} ago${errs.length ? ` · ${errs.length} source error(s)` : ''}`;
-    Q('#prioOut').innerHTML = alertsHtml() + `<div class="pgrid">${card('NEAR')}${card('ZEC')}</div>` + newsHtml() + shieldedHtml() +
+    Q('#prioOut').innerHTML = alertsHtml() + `<div class="pgrid">${card('NEAR')}${card('ZEC')}</div>` + newsHtml() +
       (errs.length ? `<div class="note" style="padding:0 8px">Source errors (fields shown as —): ${errs.map((e) => E(e.what + ': ' + e.error)).join(' · ')}</div>` : '') +
       `<div class="note" style="padding:0 8px 6px">${E(D.nfa)}</div>`;
     drawCharts();
