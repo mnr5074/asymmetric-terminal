@@ -257,7 +257,7 @@ async function walletSui(addr) {
 
 // ---------- routes ----------
 const routes = {
-  async '/api/whoami'(q, req) { return { user: req.authUser || null, role: req.authRole || (auth.ENABLED ? null : 'owner') }; },
+  async '/api/whoami'(q, req) { return { user: req.authUser || null, role: req.authRole || (auth.ENABLED ? null : 'owner'), lite: RENDER_LITE }; },
   async '/api/health'() { return { ok: true, time: new Date().toISOString(), readOnly: true, auth: auth.ENABLED }; },
 
   async '/api/chains'() { return { chains: chains.publicList(), natives: await nativePrices() }; },
@@ -623,7 +623,7 @@ Object.assign(routes, {
 // Derive Desk (lib/derive.js + research/derive_desk.py): every Derive option (OI/vol/IV/greeks), defined-risk strategy scanner,
 // IV rank/skew, DRV farming math, cross-flags vs composite/perps. Polls api.derive.xyz/v3 every ~3 min (DERIVE=off disables).
 const deriveDesk = require('./lib/derive').createDerive({ DATA_DIR, log: L, composite: compositeCached, perps, root: __dirname });
-if (process.env.DERIVE !== 'off') deriveDesk.start();
+if (process.env.DERIVE === 'on') deriveDesk.start(); // Derive tab removed (Martin, Oct 2026): collector off by default (its ~7s synchronous strategy build was tripping the supervisor's health probe); DERIVE=on re-enables
 Object.assign(routes, deriveDesk.routes());
 
 // Developer activity desk (lib/devactivity.js; data from research/devactivity.py): GitHub commit frequency / silence / burst flags
@@ -874,7 +874,7 @@ const server = http.createServer(async (req, res) => {
     if (p === '/index.html') buf = Buffer.from(versionAssets(String(buf)));
     if (req.authRole === 'guest' && p === '/index.html') { // guest login: hide owner-only nav (portfolio, swap, tax, wallet viewer, settings); APIs are 403'd in lib/auth.js
       res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' });
-      return res.end(String(buf).replace('</head>', `<style>#viewNav [data-v=portfolio],#viewNav [data-v=swap],#viewNav [data-v=tax],#lowerTabs [data-t=wallet],#lowerWallet,#settingsBtn{display:none!important}</style>
+      return res.end(String(buf).replace('</head>', `<style>#viewNav [data-v=portfolio],#viewNav [data-v=swap],#viewNav [data-v=tax],#lowerTabs [data-t=wallet],#lowerWallet,#settingsBtn,#ownerMenu{display:none!important}</style>
 <script>window.ST_ROLE='guest';addEventListener('DOMContentLoaded',()=>{const b=document.querySelector('#lowerTabs [data-t=moon]');b&&b.click();const o=new MutationObserver(()=>document.querySelectorAll('#viewNav [data-v=portfolio],#viewNav [data-v=swap],#viewNav [data-v=tax]').forEach((x)=>x.remove()));o.observe(document.body,{childList:true,subtree:true});});</script></head>`));
     }
     const ct = MIME[path.extname(f)] || 'application/octet-stream';
@@ -889,6 +889,15 @@ const server = http.createServer(async (req, res) => {
   }));
 });
 server.listen(PORT, HOST, () => console.log(`[asymmetric-terminal] read-only dashboard on http://${HOST}:${PORT}${auth.ENABLED ? ` (password-protected, user '${auth.USER}')` : ' (open: SITE_PASSWORD not set)'}`));
+
+// Breakouts: flat-base scanner (lib/flatbase.js -> data/flatbase.json; series from research/flatbase_backfill.js, daily, free sources)
+const flatbase = require('./lib/flatbase').createFlatbase({ DATA_DIR, log: L });
+routes['/api/flatbase'] = async () => flatbase.api();
+if (!RENDER_LITE && process.env.FLATBASE !== 'off') {
+  flatbase.start();
+  const backfill = () => { const ch = spawn('nice', ['-n', '10', 'node', 'research/flatbase_backfill.js'], { cwd: __dirname, env: { ...process.env, DATA_DIR }, stdio: 'ignore' }); ch.on('exit', () => flatbase.refresh()); ch.on('error', () => {}); };
+  setTimeout(backfill, 10 * 60e3).unref(); setInterval(backfill, 24 * 3600e3).unref(); // cached files < 20h old are skipped
+}
 
 // Heavy Accumulation desk (lib/accumulation.js -> data/accumulation.json): scores tokens from data other desks already collected (0 credits).
 const accumulation = require('./lib/accumulation').createAccumulation({ DATA_DIR, log: L });
