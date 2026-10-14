@@ -1,0 +1,568 @@
+{
+ "generatedAt": 1791965058179,
+ "method": "weekly no-look-ahead replay, multi-year daily history (Binance spot USDT pairs incl. delisted, + GeckoTerminal for TROLL), breakout = 2x within 90d held 7d, baseline = beaten-down coins",
+ "sample": {
+  "coins": 573,
+  "coinWeeks": 87029,
+  "firstDay": "2018-03-10",
+  "lastDay": "2026-07-16"
+ },
+ "baselineRate": 0.1076650420912716,
+ "tiers": [
+  {
+   "name": "baseline: beaten-down (>= 70% below high), any shape",
+   "n": 63196,
+   "coins": 541,
+   "hits": 6804,
+   "hitRate": 0.108,
+   "lift": 1,
+   "p": 0.503,
+   "liftCI90": [
+    1,
+    1
+   ],
+   "medianPeak90d": 1.24,
+   "medianDaysToBreakout": 50
+  },
+  {
+   "name": "all scored coin-weeks",
+   "n": 87029,
+   "coins": 573,
+   "hits": 10857,
+   "hitRate": 0.125,
+   "lift": 1.16,
+   "p": 9.98e-60,
+   "liftCI90": [
+    1.12,
+    1.19
+   ],
+   "medianPeak90d": 1.24,
+   "medianDaysToBreakout": 47
+  },
+  {
+   "name": "score >= 70",
+   "n": 13155,
+   "coins": 509,
+   "hits": 1574,
+   "hitRate": 0.12,
+   "lift": 1.11,
+   "p": 0.00000491,
+   "liftCI90": [
+    1.04,
+    1.18
+   ],
+   "medianPeak90d": 1.24,
+   "medianDaysToBreakout": 50
+  },
+  {
+   "name": "score 55-69",
+   "n": 17127,
+   "coins": 548,
+   "hits": 1946,
+   "hitRate": 0.114,
+   "lift": 1.06,
+   "p": 0.00616,
+   "liftCI90": [
+    1.01,
+    1.09
+   ],
+   "medianPeak90d": 1.23,
+   "medianDaysToBreakout": 52
+  },
+  {
+   "name": "score < 55",
+   "n": 56747,
+   "coins": 571,
+   "hits": 7337,
+   "hitRate": 0.129,
+   "lift": 1.2,
+   "p": 2.69e-62,
+   "liftCI90": [
+    1.14,
+    1.25
+   ],
+   "medianPeak90d": 1.25,
+   "medianDaysToBreakout": 44
+  },
+  {
+   "name": "label Coiled",
+   "n": 14499,
+   "coins": 526,
+   "hits": 1827,
+   "hitRate": 0.126,
+   "lift": 1.17,
+   "p": 5.69e-13,
+   "liftCI90": [
+    1.09,
+    1.24
+   ],
+   "medianPeak90d": 1.21,
+   "medianDaysToBreakout": 51
+  },
+  {
+   "name": "label Waking",
+   "n": 3917,
+   "coins": 461,
+   "hits": 506,
+   "hitRate": 0.129,
+   "lift": 1.2,
+   "p": 0.00000785,
+   "liftCI90": [
+    1.05,
+    1.29
+   ],
+   "medianPeak90d": 1.31,
+   "medianDaysToBreakout": 46
+  },
+  {
+   "name": "label Breaking out",
+   "n": 444,
+   "coins": 253,
+   "hits": 77,
+   "hitRate": 0.173,
+   "lift": 1.61,
+   "p": 0.00000557,
+   "liftCI90": [
+    1.45,
+    2
+   ],
+   "medianPeak90d": 1.34,
+   "medianDaysToBreakout": 47
+  },
+  {
+   "name": "flat base but no volume uptick",
+   "n": 12486,
+   "coins": 479,
+   "hits": 1606,
+   "hitRate": 0.129,
+   "lift": 1.19,
+   "p": 2.33e-14,
+   "liftCI90": [
+    1.12,
+    1.26
+   ],
+   "medianPeak90d": 1.23,
+   "medianDaysToBreakout": 52
+  },
+  {
+   "name": "flat base + volume uptick",
+   "n": 2097,
+   "coins": 386,
+   "hits": 278,
+   "hitRate": 0.133,
+   "lift": 1.23,
+   "p": 0.000134,
+   "liftCI90": [
+    1.1,
+    1.32
+   ],
+   "medianPeak90d": 1.34,
+   "medianDaysToBreakout": 41
+  },
+  {
+   "name": "label Coiled, before 2024",
+   "n": 7301,
+   "coins": 359,
+   "hits": 874,
+   "hitRate": 0.12,
+   "lift": 1.11,
+   "p": 0.000481,
+   "liftCI90": [
+    1.01,
+    1.22
+   ],
+   "medianPeak90d": 1.22,
+   "medianDaysToBreakout": 61
+  },
+  {
+   "name": "label Coiled, 2024 onward (out-of-time)",
+   "n": 7198,
+   "coins": 471,
+   "hits": 953,
+   "hitRate": 0.132,
+   "lift": 1.23,
+   "p": 7.35e-12,
+   "liftCI90": [
+    1.11,
+    1.33
+   ],
+   "medianPeak90d": 1.2,
+   "medianDaysToBreakout": 45
+  },
+  {
+   "name": "label Waking, before 2024",
+   "n": 2263,
+   "coins": 338,
+   "hits": 319,
+   "hitRate": 0.141,
+   "lift": 1.31,
+   "p": 1.92e-7,
+   "liftCI90": [
+    1.14,
+    1.46
+   ],
+   "medianPeak90d": 1.32,
+   "medianDaysToBreakout": 52
+  },
+  {
+   "name": "label Waking, 2024 onward (out-of-time)",
+   "n": 1654,
+   "coins": 399,
+   "hits": 187,
+   "hitRate": 0.113,
+   "lift": 1.05,
+   "p": 0.252,
+   "liftCI90": [
+    0.9,
+    1.17
+   ],
+   "medianPeak90d": 1.29,
+   "medianDaysToBreakout": 40
+  },
+  {
+   "name": "label Breaking out, before 2024",
+   "n": 292,
+   "coins": 193,
+   "hits": 58,
+   "hitRate": 0.199,
+   "lift": 1.84,
+   "p": 4.32e-7,
+   "liftCI90": [
+    1.56,
+    2.29
+   ],
+   "medianPeak90d": 1.43,
+   "medianDaysToBreakout": 55
+  },
+  {
+   "name": "label Breaking out, 2024 onward (out-of-time)",
+   "n": 152,
+   "coins": 111,
+   "hits": 19,
+   "hitRate": 0.125,
+   "lift": 1.16,
+   "p": 0.762,
+   "liftCI90": [
+    0.87,
+    1.7
+   ],
+   "medianPeak90d": 1.26,
+   "medianDaysToBreakout": 34
+  }
+ ],
+ "verdict": {
+  "tier": "weak",
+  "why": "score >= 70: 1574/13155 coin-weeks broke out (12.0%) vs 10.8% for all beaten-down coins; lift 1.11 (90% CI 1.04–1.18), p 0.00000491. Bar for proven: >= 30 events, >= 10 hits, p < 0.01, lift >= 1.5."
+ },
+ "labelTiers": {
+  "Coiled": {
+   "tier": "weak",
+   "why": "1827/14499 broke out (12.6%) vs 10.8% baseline, lift 1.17 (90% CI 1.09–1.24); before 2024 lift 1.11 (n 7301), 2024+ lift 1.23 (n 7198)"
+  },
+  "Waking": {
+   "tier": "weak",
+   "why": "506/3917 broke out (12.9%) vs 10.8% baseline, lift 1.2 (90% CI 1.05–1.29); before 2024 lift 1.31 (n 2263), 2024+ lift 1.05 (n 1654)"
+  },
+  "Breaking out": {
+   "tier": "weak",
+   "why": "77/444 broke out (17.3%) vs 10.8% baseline, lift 1.61 (90% CI 1.45–2); before 2024 lift 1.84 (n 292), 2024+ lift 1.16 (n 152)"
+  }
+ },
+ "sanity": {
+  "bn_strk": {
+   "history": [
+    {
+     "date": "2026-06-17",
+     "close": 0.0344,
+     "score": 39,
+     "label": null,
+     "baseDays": 34,
+     "range8w": 0.556
+    },
+    {
+     "date": "2026-06-24",
+     "close": 0.0308,
+     "score": 44,
+     "label": null,
+     "baseDays": 34,
+     "range8w": 0.582
+    },
+    {
+     "date": "2026-07-01",
+     "close": 0.0297,
+     "score": 46,
+     "label": null,
+     "baseDays": 37,
+     "range8w": 0.656
+    },
+    {
+     "date": "2026-07-08",
+     "close": 0.0304,
+     "score": 52,
+     "label": null,
+     "baseDays": 44,
+     "range8w": 0.483
+    },
+    {
+     "date": "2026-07-15",
+     "close": 0.0288,
+     "score": 59,
+     "label": null,
+     "baseDays": 51,
+     "range8w": 0.433
+    },
+    {
+     "date": "2026-07-22",
+     "close": 0.03012,
+     "score": 56,
+     "label": "Coiled",
+     "baseDays": 57,
+     "range8w": 0.32
+    },
+    {
+     "date": "2026-07-29",
+     "close": 0.02644,
+     "score": 58,
+     "label": "Coiled",
+     "baseDays": 58,
+     "range8w": 0.314
+    },
+    {
+     "date": "2026-08-05",
+     "close": 0.02532,
+     "score": 44,
+     "label": null,
+     "baseDays": 48,
+     "range8w": 0.4
+    },
+    {
+     "date": "2026-08-12",
+     "close": 0.02267,
+     "score": 47,
+     "label": null,
+     "baseDays": 51,
+     "range8w": 0.441
+    },
+    {
+     "date": "2026-08-19",
+     "close": 0.02411,
+     "score": 52,
+     "label": "Coiled",
+     "baseDays": 58,
+     "range8w": 0.347
+    },
+    {
+     "date": "2026-08-26",
+     "close": 0.02623,
+     "score": 55,
+     "label": "Waking",
+     "baseDays": 65,
+     "range8w": 0.347
+    },
+    {
+     "date": "2026-09-02",
+     "close": 0.02669,
+     "score": 47,
+     "label": "Coiled",
+     "baseDays": 72,
+     "range8w": 0.326
+    },
+    {
+     "date": "2026-09-09",
+     "close": 0.03126,
+     "score": 54,
+     "label": "Waking",
+     "baseDays": 79,
+     "range8w": 0.347
+    },
+    {
+     "date": "2026-09-16",
+     "close": 0.02791,
+     "score": 39,
+     "label": "Coiled",
+     "baseDays": 86,
+     "range8w": 0.347
+    },
+    {
+     "date": "2026-09-23",
+     "close": 0.03832,
+     "score": 14,
+     "label": null,
+     "baseDays": 6,
+     "range8w": 0.733
+    },
+    {
+     "date": "2026-09-30",
+     "close": 0.04315,
+     "score": 13,
+     "label": null,
+     "baseDays": 13,
+     "range8w": 0.733
+    },
+    {
+     "date": "2026-10-07",
+     "close": 0.04907,
+     "score": 15,
+     "label": null,
+     "baseDays": 11,
+     "range8w": 0.893
+    },
+    {
+     "date": "2026-10-14",
+     "close": 0.0823,
+     "score": 36,
+     "label": null,
+     "baseDays": 3,
+     "range8w": 1.332
+    }
+   ],
+   "symbol": "STRK",
+   "src": "binance",
+   "days": 968,
+   "score": 36,
+   "label": null,
+   "m": {
+    "close": 0.0823,
+    "ath": 2.629,
+    "ddAth": 0.969,
+    "ddLocal": 0.332,
+    "range4w": 1.238,
+    "range8w": 1.332,
+    "range12w": 1.383,
+    "vol30": 0.1463,
+    "volPct1y": 1,
+    "baseDays": 3,
+    "volDry20v120": 3.86,
+    "volUp5v20": 2.41,
+    "rangePos": 0.59,
+    "baseHi": 0.12316,
+    "baseLo": 0.02467
+   },
+   "parts": {
+    "drawdown": 20,
+    "tightness": 0,
+    "duration": 0,
+    "volume": 7.5,
+    "trigger": 2.8
+   }
+  },
+  "dex:troll": {
+   "history": [
+    {
+     "date": "2026-08-12",
+     "close": 0.03804333517298191,
+     "score": 45,
+     "label": null,
+     "baseDays": 31,
+     "range8w": 0.623
+    },
+    {
+     "date": "2026-08-19",
+     "close": 0.04745968461222715,
+     "score": 45,
+     "label": null,
+     "baseDays": 38,
+     "range8w": 0.58
+    },
+    {
+     "date": "2026-08-26",
+     "close": 0.051866589313432784,
+     "score": 38,
+     "label": null,
+     "baseDays": 8,
+     "range8w": 0.58
+    },
+    {
+     "date": "2026-09-02",
+     "close": 0.0419936881102191,
+     "score": 43,
+     "label": null,
+     "baseDays": 15,
+     "range8w": 0.459
+    },
+    {
+     "date": "2026-09-09",
+     "close": 0.049817736610573024,
+     "score": 22,
+     "label": null,
+     "baseDays": 5,
+     "range8w": 0.704
+    },
+    {
+     "date": "2026-09-16",
+     "close": 0.04248465459222383,
+     "score": 24,
+     "label": null,
+     "baseDays": 11,
+     "range8w": 0.704
+    },
+    {
+     "date": "2026-09-23",
+     "close": 0.049301785216169944,
+     "score": 20,
+     "label": null,
+     "baseDays": 18,
+     "range8w": 0.704
+    },
+    {
+     "date": "2026-09-30",
+     "close": 0.046260951128845165,
+     "score": 27,
+     "label": null,
+     "baseDays": 25,
+     "range8w": 0.704
+    },
+    {
+     "date": "2026-10-07",
+     "close": 0.03978711729666861,
+     "score": 40,
+     "label": null,
+     "baseDays": 15,
+     "range8w": 0.699
+    },
+    {
+     "date": "2026-10-14",
+     "close": 0.03836887498606929,
+     "score": 43,
+     "label": null,
+     "baseDays": 19,
+     "range8w": 0.725
+    }
+   ],
+   "symbol": "TROLL",
+   "src": "geckoterminal",
+   "days": 183,
+   "score": 43,
+   "label": null,
+   "m": {
+    "close": 0.03836887498606929,
+    "ath": 0.14779612947245033,
+    "ddAth": 0.74,
+    "ddLocal": 0.708,
+    "range4w": 0.488,
+    "range8w": 0.725,
+    "range12w": 0.725,
+    "vol30": 0.0644,
+    "volPct1y": 0.18,
+    "baseDays": 19,
+    "volDry20v120": 0.53,
+    "volUp5v20": 0.54,
+    "rangePos": 0.05,
+    "baseHi": 0.07728828167321089,
+    "baseLo": 0.03618291399013196
+   },
+   "parts": {
+    "drawdown": 20,
+    "tightness": 8.7,
+    "duration": 0,
+    "volume": 7.5,
+    "trigger": 0
+   }
+  }
+ },
+ "caveats": [
+  "Weekly samples of the same coin overlap (not independent); the coin-cluster bootstrap CI accounts for that.",
+  "On-chain inputs (holders, smart money) have no history, so the backtest uses the 85-point price/volume score only.",
+  "Universe = Binance USDT pairs incl. halted ones; fully delisted pairs that Binance no longer lists are missing (some survivorship bias). Binance listing itself is a quality filter."
+ ]
+}
