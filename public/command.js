@@ -42,7 +42,7 @@
   }
   function renderOptions() {
     const t = DK.options?.top || [];
-    Q('#ccOpt').innerHTML = `<table class="tbl"><thead><tr><th>Gr</th><th>Contract</th><th>Mid</th><th>EV</th><th>P(ITM)</th><th>R:R</th></tr></thead><tbody>${t.map((p) => `<tr><td>${G(p.grade)}</td><td><b>${esc(p.underlying)}</b> ${esc(p.type)} ${esc(p.strike)} ${esc(p.expiry)}</td><td>${p.mid?.toFixed(2)}</td><td>${p.ev_pct != null ? p.ev_pct.toFixed(0) + '%' : '—'}</td><td>${p.p_itm_rv != null ? Math.round(p.p_itm_rv * 100) + '%' : '—'}</td><td>${p.rr_2sigma != null ? p.rr_2sigma.toFixed(1) : '—'}</td></tr>`).join('') || '<tr><td colspan=6 class="empty">no A picks</td></tr>'}</tbody></table>`;
+    Q('#ccOpt').innerHTML = `<table class="tbl"><thead><tr><th>Gr</th><th>Contract</th><th>Mid</th><th>EV</th><th>P(ITM)</th><th>R:R</th></tr></thead><tbody>${t.map((p) => `<tr><td>${G(p.grade)}</td><td><b>${esc(p.underlying)}</b> ${esc(p.type)} ${esc(p.strike)} ${esc(p.expiry)}${window.fsLine ? window.fsLine(p) : ''}</td><td>${p.mid?.toFixed(2)}</td><td>${p.ev_pct != null ? p.ev_pct.toFixed(0) + '%' : '—'}</td><td>${p.p_itm_rv != null ? Math.round(p.p_itm_rv * 100) + '%' : '—'}</td><td>${p.rr_2sigma != null ? p.rr_2sigma.toFixed(1) : '—'}</td></tr>`).join('') || '<tr><td colspan=6 class="empty">no A picks</td></tr>'}</tbody></table>`;
   }
   function renderAirdrops() {
     const t = DK.airdrops?.top || [];
@@ -50,7 +50,7 @@
   }
   function renderSleepers() {
     const t = DK.sleepers?.top || [];
-    Q('#ccSleep').innerHTML = `<table class="tbl"><thead><tr><th>Gr ${ix('sleeper')}</th><th>Token</th><th>vs ATH</th><th>Acc. ${ix('accumulation')}</th><th>Looks like ${ix('lookalike')}</th></tr></thead><tbody>${t.map((x) => `<tr><td>${G(x.grade)}</td><td><b>${esc(x.symbol)}</b> <span class="muted small">${esc(x.sector || '')}</span></td><td>${x.drawdown_pct != null ? '-' + Math.abs(x.drawdown_pct).toFixed(0) + '%' : '—'}</td><td>${x.accumulation ? x.accumulation.conditions_met + '/4' + (x.accumulation.flag ? ' ●' : '') : '—'}</td><td class="small">${x.lookalikes?.[0] ? esc(x.lookalikes[0].like) + ' ' + x.lookalikes[0].similarity + '%' : '—'}</td></tr>`).join('') || '<tr><td colspan=5 class="empty">sleeper screen not generated yet</td></tr>'}</tbody></table>`;
+    Q('#ccSleep').innerHTML = `<table class="tbl"><thead><tr><th>Gr ${ix('sleeper')}</th><th>Token</th><th>vs ATH</th><th>Acc. ${ix('accumulation')}</th><th>Looks like ${ix('lookalike')}</th></tr></thead><tbody>${t.map((x) => `<tr><td>${G(x.grade)}</td><td><b>${esc(x.symbol)}</b> <span class="muted small">${esc(x.sector || '')}</span>${(window.fsLine ? window.fsLine(x) : '')}</td><td>${x.drawdown_pct != null ? '-' + Math.abs(x.drawdown_pct).toFixed(0) + '%' : '—'}</td><td>${x.accumulation ? x.accumulation.conditions_met + '/4' + (x.accumulation.flag ? ' ●' : '') : '—'}</td><td class="small">${x.lookalikes?.[0] ? esc(x.lookalikes[0].like) + ' ' + x.lookalikes[0].similarity + '%' : '—'}</td></tr>`).join('') || '<tr><td colspan=5 class="empty">sleeper screen not generated yet</td></tr>'}</tbody></table>`;
   }
   function renderSlow() {
     const t = DK.crypto?.slowRug || [];
