@@ -639,6 +639,7 @@ routes['/api/priority/shielded'] = async () => priority.shieldedApi();
 Object.assign(routes, require('./lib/patterns').routes({ DATA_DIR, live }));
 // Session seasonality (lib/seasonality.js; research/seasonality.py): DST-correct session windows, live volatile/quiet flags — additive
 Object.assign(routes, require('./lib/seasonality').routes({ DATA_DIR, live }));
+Object.assign(routes, require('./lib/liveprice').routes); // live 'Now' price for pick cards (free DexScreener/GeckoTerminal/Binance/CoinGecko/CBOE, 30s cache); works in RENDER_LITE
 // Terminal uptime / restarts (lib/uptime.js; scripts/supervisor.js writes data/restarts.json): /api/health/detail + restart alerts — additive
 { const up = require('./lib/uptime').createUptime({ DATA_DIR, alerts, log: (m) => console.log('[uptime] ' + m) }); Object.assign(routes, up.routes); if (!RENDER_LITE) up.start(); }
 // Airdrop Desk v2: tracker, under-farmed score, My Farms monitor, dilution, value estimates (lib/airdrops.js; research/airdrops_v2.py)
@@ -851,7 +852,7 @@ const server = http.createServer(async (req, res) => {
         res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' }); return res.end(optBody.body);
       } catch (e) { res.writeHead(e.status || 502, { 'content-type': 'application/json' }); return res.end(JSON.stringify({ error: String(e.message || e) })); }
     }
-    const memoK = RENDER_LITE && !/^\/api\/(whoami|health)/.test(u.pathname) ? u.pathname + '?' + u.searchParams.toString() : null;
+    const memoK = RENDER_LITE && !/^\/api\/(whoami|health|liveprice)/.test(u.pathname) ? u.pathname + '?' + u.searchParams.toString() : null;
     const hit = memoK && liteMemo.get(memoK);
     if (hit && Date.now() - hit.t < 60e3) { res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' }); return res.end(hit.body); }
     try {
