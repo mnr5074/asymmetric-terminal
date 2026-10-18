@@ -25,7 +25,7 @@
   function row(r) {
     const v = r.velocity, t = r.tone.last24h, p = r.price || {};
     const flags = r.divergences.map((f) => `<span class="chip z-heated" title="${E(f.text)}">${E(f.kind.replace(/_/g, ' '))}</span>`).join(' ');
-    return `<tr class="srow" data-s="${E(r.sym)}"><td><b>${E(r.sym)}</b>${r.lowSample ? ' <span class="muted small">low n</span>' : ''}</td><td class="r">${N(r.oscillator)}<span class="bar" style="width:${Math.round((r.oscillator || 0) / 2)}px"></span></td>
+    return `<tr class="srow" data-s="${E(r.sym)}"><td><b>${E(r.sym)}</b>${r.lowSample ? ' <span class="muted small">low n</span>' : ''}${r.suppressed ? ` <span class="chip z-heated" title="${E(r.suppressReason || '')}">unreliable</span>` : ''}${r.regime?.provisional ? ` <span class="muted small" title="${E(r.regime.note)}">new query</span>` : ''}</td><td class="r">${N(r.oscillator)}<span class="bar" style="width:${Math.round((r.oscillator || 0) / 2)}px"></span></td>
       <td><span class="chip z-${E(r.zone)}">${E(r.zone)}</span></td><td class="r">${v.c24.toLocaleString()}</td><td class="r">${v.ratio == null ? '—' : N(v.ratio, 2) + 'x'}</td><td class="r">${N(v.z, 1)}</td>
       <td class="r">${t.ok ? Math.round(t.bullShare * 100) + '%' : '—'} <span class="muted small">n${t.polar}</span></td><td class="r">${r.tone.delta == null ? '—' : (r.tone.delta >= 0 ? '+' : '') + Math.round(r.tone.delta * 100)}</td>
       <td class="r">${PC(p.ch24)}</td><td class="r">${PC(p.ch7d)}</td><td>${flags}</td></tr>` + (open === r.sym ? `<tr><td colspan="11" class="sdet">${det(r)}</td></tr>` : '');
@@ -33,7 +33,7 @@
   function det(r) {
     const d = detail[r.sym]; const posts = d?.topPosts || [];
     const news = (r.news?.items || []).slice(0, 4).map((n) => `<li>${E(n.name)} <span class="muted small">${E((n.updated || '').slice(0, 10))}</span></li>`).join('');
-    return `<div class="small">Query: <code>${E(r.query)}</code> · counts as of ${E(r.velocity.asOf)} · daily posts (oldest→newest): ${r.velocity.daily.join(', ')} · z vs market (BTC+ETH+SOL): ${N(r.zVsMarket, 1)}${r.weekend ? ' · weekend window' : ''}${r.grokNews ? ` · Grok headline tone ${r.grokNews.headlineTone} (n${r.grokNews.n})` : ''}</div>
+    return `${r.suppressed ? `<div class="small">⚠ Unreliable, excluded from the composite: ${E(r.suppressReason || '')}</div>` : ''}${r.regime ? `<div class="small">↺ ${E(r.regime.note)}</div>` : ''}<div class="small">Query: <code>${E(r.query)}</code> · counts as of ${E(r.velocity.asOf)} · daily posts (oldest→newest): ${r.velocity.daily.join(', ')} · z vs market (BTC+ETH+SOL): ${N(r.zVsMarket, 1)}${r.weekend ? ' · weekend window' : ''}${r.grokNews ? ` · Grok headline tone ${r.grokNews.headlineTone} (n${r.grokNews.n})` : ''}</div>
       ${r.divergences.map((f) => `<div class="small">⚑ ${E(f.text)}</div>`).join('')}${news ? `<div class="small"><b>X news</b><ul>${news}</ul></div>` : ''}
       <div class="small"><b>Top weighted posts (bots removed)</b>${posts.length ? '<ul>' + posts.slice(0, 6).map((p) => `<li>${p.compound >= 0.05 ? '🟢' : p.compound <= -0.05 ? '🔴' : '⚪'} @${E(p.username)} (${(p.followers || 0).toLocaleString()} followers): ${E(p.text.slice(0, 160))}</li>`).join('') + '</ul>' : ' loading…'}</div>`;
   }
@@ -43,7 +43,7 @@
     if (!D.tokens?.length) { box.innerHTML = `<div class="empty">${E(D.status)}</div>`; return; }
     const h = D.history; const callTxt = D.calls?.today ? `${D.calls.today.calls} collector X reads today` : '';
     box.innerHTML = `<div class="sent"><table class="tbl"><thead><tr><th>Token</th><th class="r">Osc ${I('sent_osc')}</th><th>Zone</th><th class="r">Posts 24h</th><th class="r">vs 7d</th><th class="r">z</th><th class="r">Bullish ${I('sent_tone')}</th><th class="r">Δ tone</th><th class="r">Px 24h</th><th class="r">Px 7d</th><th>Flags ${I('sent_div')}</th></tr></thead><tbody>${D.tokens.map(row).join('')}</tbody></table>
-      <div class="sfoot small muted">${h?.summary_line ? '<b>Proxy backtest</b> (Wikipedia/Trends attention, not X): ' + E(h.summary_line) + ' · ' : ''}${E(callTxt)} · source: free X read tools via the assistant collector; lexicon ${E(D.lexicon || '')} · not financial advice</div></div>`;
+      ${D.regime ? `<div class="small" style="margin:4px 0">↺ ${E(D.regime.text)}${D.regime.provisional ? ' Provisional until ' + E(D.regime.provisionalUntil.slice(0, 10)) + '.' : ''}${D.suppressed?.length ? ' Unreliable (shown, not scored): ' + D.suppressed.map((x) => E(x.sym)).join(', ') + '.' : ''} Signal strength: unproven.</div>` : ''}<div class="sfoot small muted">${h?.summary_line ? '<b>Proxy backtest</b> (Wikipedia/Trends attention, not X): ' + E(h.summary_line) + ' · ' : ''}${E(callTxt)} · source: free X read tools via the assistant collector; lexicon ${E(D.lexicon || '')} · not financial advice</div></div>`;
   }
   document.addEventListener('click', async (e) => {
     const tr = e.target.closest('#sentOut tr.srow'); if (!tr || e.target.closest('.ix')) return;
