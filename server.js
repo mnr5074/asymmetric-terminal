@@ -521,6 +521,7 @@ if (LIVE !== 'off' && process.env.POOLWATCH !== 'off') poolwatch.start();
 routes['/api/poolwatch'] = async () => poolwatch.status();
 Object.assign(routes, {
   async '/api/live'(q) { const f = live.feed(); const g = q.get('grade'), ch = q.get('chain'); let items = f.items; if (g) items = items.filter((x) => g.split(',').includes(x.grade)); if (ch && ch !== 'all') items = items.filter((x) => x.chain === ch); return { ...f, items: items.slice(0, +(q.get('limit') || 150)), status: live.status() }; },
+  async '/api/grades'() { return live.gradeInfo(); }, // live-feed grade v2 evidence (data/grade_rebuild.json, research/grades/ab_rebuild.py)
   async '/api/live/token'(q) { const k = q.get('key') || ''; const r = live.token(k); if (!r) throw Object.assign(new Error('not in live universe'), { status: 404 }); return { record: r, calls: calls.forKey(k) }; },
   async '/api/calls'(q) { return { calls: calls.list({ grade: q.get('grade'), limit: +(q.get('limit') || 200) }), total: calls.count() }; },
   async '/api/reportcard'() { const r = calls.reportCard(); for (const [f, k] of [['calls_options.json', 'options'], ['calls_airdrops.json', 'airdrops'], ['calls_sleepers.json', 'sleepers']]) { try { r[k] = readData(f).summary || null; } catch { r[k] = null; } } return { ...r, missed: calls.missedWinners(), recal: calls.recalState(), weights: live.getWeights() }; },
