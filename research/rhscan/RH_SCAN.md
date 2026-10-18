@@ -78,3 +78,71 @@ Caveats:
 **iNu** (0x63ee…1e18): 90% below its peak close, deeper than the pattern, so no entry under it. **HOOKR** (Hookr.fun, 0x18e6…ff5c): only 22% below its peak close. It would qualify only after a 50-60% pullback and a new base. A same-ticker copy, "Hookr" 0x98e6…ff5c (created Oct 17, ~$10.8M quoted liquidity, ~$5 volume), is excluded as likely fake liquidity.
 
 Utility checks use the GeckoTerminal description and website only (no site visits); manual overrides are listed in `UTIL_MANUAL` in the script. Contract checks come from GeckoTerminal's honeypot, holder and dev fields only; no bytecode audit. Not financial advice; no auto-trading.
+
+## Early tier: Coiled (added Oct 18 2026, 9 AM PT)
+
+Coiled = a very tight, quiet base after a 45-70% pullback, with volume starting to rise while price is still at or under the base top. Plan: a 1/4-size starter, a stop on a 4h close 2% under the base low, and the remaining 3/4 added only on a confirmed break of the base top (a close above it on volume ≥1.5x the base average, the same rule as Trigger). Code: `research/rhscan/coiled.py`. The test below was written into that file before any results were seen.
+
+Pre-declared test:
+
+```
+(fixed in this file before any result was seen; numbers in data/rh_scan.json -> coiled):
+  base        = the 12 bars (2 days) ending 3 bars before the signal bar; "recent" = the last 3 bars
+  context     = base-end close 45-70% below the highest close before it; base avg volume <= 50% of the
+                busiest 2-day stretch; >= 3 days of history
+  tightness T = base close range (max close / min close) <= T,       T in {1.15, 1.25, 1.35}
+  volume    V = recent 3-bar avg volume / base avg volume >= V,       V in {1.3, 1.6, 2.0}
+  position    = every recent close <= base top (max base close) and >= base low (min base low)
+  dedupe      = one signal per token per 7 days (per grid cell)
+  outcomes    = same as the Trigger replay: 2x before -30% from entry within 7 days (42 x 4h bars);
+                -30% first; plus false alarm = no 4h close above the base top within 3 days (18 bars),
+                and the plan stop (4h close under base low -2%) hit before 2x
+  display     = if no cell is chosen, current candidates are shown with the middle cell (T=1.25, V=1.6), labelled experimental
+  split       = median timestamp of the random-daily-entry sample (same tokens); earlier < split <= later
+  selection   = on the EARLIER split only: among cells with n >= 15, max (hit% - drop%), ties -> larger n
+  ship rule   = on the LATER split the chosen cell must have n >= 20 on >= 8 tokens AND
+                (hit% - drop%) >= random-daily (hit% - drop%) + 5 points AND hit% > random hit%.
+                Otherwise it is published only as 'experimental, did not beat random'.
+```
+
+**Decision: NOT shipped.** The tier is labelled *experimental — did not beat random* and sits in a collapsed section of the panel. Reason: no grid cell had n >= 15 on the earlier split. Strength: **unproven**.
+
+Split at 2026-09-13 08:00 UTC, the median date of the random-entry sample. Most token history on this chain falls after that date, so the earlier split is thin.
+
+### Grid (earlier / later split)
+
+| | n | tokens | 2x before -30% | -30% first | no base-top break in 3d (false alarm) | plan stop first |
+|---|---|---|---|---|---|---|
+| T≤1.15 V≥1.3 earlier | 0 | 0 | — | — | — | — |
+| T≤1.15 V≥1.3 later | 3 | 3 | 0.0% | 0.0% | 0.0% | 66.7% |
+| T≤1.15 V≥1.6 earlier | 0 | 0 | — | — | — | — |
+| T≤1.15 V≥1.6 later | 2 | 2 | 0.0% | 0.0% | 0.0% | 50.0% |
+| T≤1.15 V≥2.0 earlier | 0 | 0 | — | — | — | — |
+| T≤1.15 V≥2.0 later | 1 | 1 | 0.0% | 0.0% | 0.0% | 0.0% |
+| T≤1.25 V≥1.3 earlier | 2 | 2 | 0.0% | 0.0% | 0.0% | 100.0% |
+| T≤1.25 V≥1.3 later | 7 | 6 | 14.3% | 14.3% | 28.6% | 71.4% |
+| T≤1.25 V≥1.6 earlier | 1 | 1 | 0.0% | 0.0% | 0.0% | 100.0% |
+| T≤1.25 V≥1.6 later | 5 | 5 | 20.0% | 20.0% | 20.0% | 60.0% |
+| T≤1.25 V≥2.0 earlier | 0 | 0 | — | — | — | — |
+| T≤1.25 V≥2.0 later | 3 | 3 | 0.0% | 33.3% | 33.3% | 66.7% |
+| T≤1.35 V≥1.3 earlier | 5 | 5 | 0.0% | 40.0% | 60.0% | 100.0% |
+| T≤1.35 V≥1.3 later | 10 | 9 | 10.0% | 10.0% | 50.0% | 80.0% |
+| T≤1.35 V≥1.6 earlier | 4 | 4 | 25.0% | 25.0% | 50.0% | 75.0% |
+| T≤1.35 V≥1.6 later | 8 | 8 | 12.5% | 25.0% | 37.5% | 75.0% |
+| T≤1.35 V≥2.0 earlier | 1 | 1 | 0.0% | 0.0% | 100.0% | 100.0% |
+| T≤1.35 V≥2.0 later | 5 | 5 | 0.0% | 40.0% | 60.0% | 80.0% |
+
+### Comparison (later split)
+
+| | n | tokens | 2x before -30% | -30% first | no base-top break in 3d (false alarm) | plan stop first |
+|---|---|---|---|---|---|---|
+| Coiled: no cell chosen (none had n≥15 on the earlier split) | 0 | 0 | — | — | — | — |
+| Trigger (existing) | 23 | 17 | 21.7% | 26.1% | — | — |
+| Random daily entry, same tokens | 1013 | 47 | 12.0% | 16.6% | — | — |
+
+Full period for reference: T≤1.15 V≥1.3: n=3; T≤1.15 V≥1.6: n=2; T≤1.15 V≥2.0: n=1; T≤1.25 V≥1.3: n=9; T≤1.25 V≥1.6: n=6; T≤1.25 V≥2.0: n=3; T≤1.35 V≥1.3: n=15; T≤1.35 V≥1.6: n=12; T≤1.35 V≥2.0: n=6. Trigger: n=55. Random: n=2018.
+
+Read: across the whole grid there are only 1-15 Coiled signals in total, so the sample is too small to tell anything. In the most populated cell (T≤1.35, V≥1.3, all periods, n=15 on 11 tokens): 6.7% hit 2x before -30%, 20% dropped 30% first, 53% never broke the base top within 3 days, and 87% hit the tight plan stop first. That does not support an early-entry edge. Note that the Trigger itself did not beat random on net either in this split: on the later split it hit 21.7% vs random 12.0%, but dropped first 26.1% vs 16.6%.
+
+Current Coiled candidates: **none** under the display cell (T≤1.25, V≥1.6), and none under any of the 9 grid cells over the last 3 bars.
+

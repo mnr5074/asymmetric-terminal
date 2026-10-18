@@ -23,6 +23,8 @@ chain history it is 'unproven' or 'weak' by construction.
 usage: python3 research/rhscan/rh_scan.py [--pages 10] [--no-cache]
 """
 import json, os, sys, time, re, math, argparse, urllib.request, statistics as st
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import coiled as CO
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA = os.environ.get('DATA_DIR', os.path.join(ROOT, 'data'))
@@ -183,7 +185,7 @@ def backtest(series):
         for i in range(Q + 6, len(b) - 1):
             if (b[i]['t'] - b[0]['t']) / 86400 >= 3 and i % 6 == 0:
                 o = outcome(b, i)
-                if o: base.append({'token': addr, **o})
+                if o: base.append({'token': addr, 't': b[i]['t'], **o})
             s, trig, vr = state_at(b, i, cache)
             if trig and i - last >= FWD:
                 last = i; o = outcome(b, i)
@@ -304,6 +306,12 @@ def main():
         b = ohlcv(p['pool'], uc)
         if len(b) >= Q + 8: series[addr] = (p['symbol'], b)
     sig, basesig = backtest(series); summ = summarize(sig); bsumm = summarize(basesig); strg, why = strength(summ, bsumm)
+    coil = CO.run(series, sig, basesig)
+    cT, cV = (coil['chosen']['T'], coil['chosen']['V']) if coil['chosen'] else CO.DEFAULT_CELL
+    coil_now = {}
+    for addr, (sym, b) in series.items():
+        c = CO.coil_at(b, len(b) - 1, cT, cV)
+        if c: coil_now[addr] = c
     # current state
     rows = []
     for addr, (sym, b) in series.items():
@@ -312,7 +320,7 @@ def main():
         if f: f = {**f, 'volRise': vr, 'triggerNow': trig, 'setupBarUtc': time.strftime('%Y-%m-%d %H:%M', time.gmtime(b[f['j']]['t'])) if setup else None}
         rows.append((addr, sym, b, f, r))
     # enrich: anything in pullback zone or forced
-    focus = [x for x in rows if x[4].get('pullback') or x[0] in FORCE or (x[3] and 0.40 <= x[3].get('dd', 0) <= 0.75)]
+    focus = [x for x in rows if x[4].get('pullback') or x[0] in FORCE or x[0] in coil_now or (x[3] and 0.40 <= x[3].get('dd', 0) <= 0.75)]
     dsx = ds_pairs([x[0] for x in focus], uc)
     out = []
     for addr, sym, b, f, r in focus:
@@ -354,7 +362,18 @@ def main():
         if pl and x['state'] == 'Watch' and pl.get('entryTrigger'):
             pl['entry'] = 'Monitor only: fails the real-utility check (' + (x['utility'].get('manual') or 'no product description found') + '). Only if utility is confirmed by hand: ' + pl['entry']
             pl['monitorOnly'] = True
-    order = {'Trigger': 0, 'Setup': 1, 'Watch': 2, 'Extended': 3, 'Broke base': 4, 'Fails': 5}
+    for x in out:
+        c = coil_now.get(x['token'])
+        if not c: continue
+        full = x['checks'].get('cleanContract') and x['checks'].get('utility')
+        pl = CO.plan(x['symbol'], x['price'], c, x['liqUsd'], c['peakClose'])
+        if pl and not full:
+            pl['entry'] = 'Monitor only: ' + ('fails the clean-contract check' if not x['checks'].get('cleanContract') else 'fails the real-utility check') + '. ' + pl['entry']
+        x['coiled'] = {'live': coil['ship'] and bool(full), 'experimental': not coil['ship'], 'T': cT, 'V': cV,
+                       'reason': 'base closes in a %.2fx range (<= %.2fx), volume %.1fx the base average (>= %.1fx), price %.0f%% under the base top, %.0f%% below the prior peak close' % (c['range'], cT, c['volRatio'], cV, 100 * (1 - x['price'] / c['baseTop']), 100 * c['dd']),
+                       'baseTop': c['baseTop'], 'baseLow': c['baseLow'], 'plan': pl, 'monitorOnly': not full}
+        if coil['ship'] and full and x['state'] not in ('Trigger',): x['state'] = 'Coiled'
+    order = {'Trigger': 0, 'Coiled': 0.5, 'Setup': 1, 'Watch': 2, 'Extended': 3, 'Broke base': 4, 'Fails': 5}
     out.sort(key=lambda x: (order[x['state']], -(x['passed']), -(x['liqUsd'] or 0)))
     # PRIORS calibration: features at its base (Sep 29 2026 ~ the first volume-rising 4h bar)
     cal = None
@@ -376,6 +395,12 @@ def main():
         'rules': {'pullback': 'base bar 45-70% below the highest 4h close so far (best 50-60%)', 'quiet': f'{Q} bars (2 days) ending at the base bar close inside a <=2.1x range; their avg volume <=50% of the busiest 2-day stretch',
                   'volRising': 'within 6 days of the base: last 3 bars avg volume >=1.5x the base average and a close above the base high (and no more than 1.5x the old peak close: PRIORS volume arrived as it broke its old peak)', 'age': '>=3 days of history',
                   'cleanContract': 'GeckoTerminal: not honeypot, top-10 <=50%, dev <=10%, data present', 'utility': 'website + product description (keyword evidence; confirm manually)'},
+        'coiled': {**{k: coil[k] for k in ('split', 'grid', 'chosen', 'chosenResult', 'random', 'trigger', 'ship', 'shipWhy', 'signals')},
+                   'splitUtc': time.strftime('%Y-%m-%d %H:%M', time.gmtime(coil['split'])) if coil['split'] else None,
+                   'displayCell': {'T': cT, 'V': cV}, 'candidates': len(coil_now),
+                   'strength': 'weak' if coil['ship'] else 'unproven',
+                   'label': 'live tier (passed the pre-declared test on the later split)' if coil['ship'] else 'experimental, did not beat random (failed the pre-declared test: ' + coil['shipWhy'] + ')',
+                   'preDeclared': CO.__doc__.split('PRE-DECLARED TEST')[1].strip()},
         'baseline': {**bsumm, 'what': 'one entry per day on the same tokens after day 3 (no pattern), same 2x-before--30% rule'},
         'backtest': {**summ, 'forward': '7 days (42 x 4h bars)', 'win': 'best high >= 2x entry before any 4h low <= -30%', 'trigger': 'volume (last 3 bars) >=1.5x the base average AND close above the base high and no more than 1.5x the prior peak close, within 6 days of a base bar',
                      'caveats': ['Universe is today\'s survivors (pools still listed): dead tokens are missing, so results are biased upward.',
@@ -387,7 +412,7 @@ def main():
         'items': out,
     }
     with open(os.path.join(DATA, 'rh_scan.json'), 'w') as fh: json.dump(res, fh, indent=1)
-    print(json.dumps({'universe': res['universe'], 'backtest': summ, 'baseline': bsumm, 'strength': strg, 'states': {s: sum(1 for x in out if x['state'] == s) for s in order}, 'calls': CALLS, 'priors': cal}, indent=1))
+    print(json.dumps({'coiled': {k: res['coiled'][k] for k in ('chosen', 'ship', 'shipWhy', 'candidates', 'splitUtc')}, 'universe': res['universe'], 'backtest': summ, 'baseline': bsumm, 'strength': strg, 'states': {s: sum(1 for x in out if x['state'] == s) for s in order}, 'calls': CALLS, 'priors': cal}, indent=1))
 
 if __name__ == '__main__':
     main()
