@@ -56,3 +56,6 @@ research/insider_pattern/screen.json
 research/riskinfra/etherscan_labels_cache.json
 research/**/*.pdf
 research/*.pdf
+
+# Robinhood Chain scanner raw API cache (research/rhscan/rh_scan.py)
+research/rhscan/cache/
