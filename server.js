@@ -830,6 +830,8 @@ const versionAssets = (html) => html.replace(/(src|href)="\/([\w.-]+\.(?:js|css)
 
 // RENDER_LITE: data only changes on redeploy, so memoize GET API responses for 60s (one CPU-bound compute per minute per URL).
 const liteMemo = new Map();
+const asof = require('./lib/asof').createAsOf({ DATA_DIR, root: __dirname, lite: RENDER_LITE }); // data-as-of stamps (x-data-asof header + _asof)
+routes['/api/asof'] = async () => asof.info();
 const firstSeen = require('./lib/firstseen').createFirstSeen({ DATA_DIR, log: L }); // 'First posted / Updated' stamps on pick cards
 let optBody = null; // /api/options serialized + compressed cache
 
@@ -848,19 +850,20 @@ const server = http.createServer(async (req, res) => {
     if (u.pathname === '/api/options') { // 15 MB of picks on the box: serialize once per file version, floats to 5 significant digits, precompressed per encoding
       try {
         const data = await h(u.searchParams, req); const mt = fs.statSync(path.join(DATA_DIR, 'options.json')).mtimeMs;
-        if (!optBody || optBody.mt !== mt || optBody.refreshing !== data.refreshing) optBody = { mt, refreshing: data.refreshing, body: Buffer.from(JSON.stringify(prov.attach(u.pathname, firstSeen.annotate(u.pathname, data), DATA_DIR), (k, v) => (typeof v === 'number' && !Number.isInteger(v) ? +v.toPrecision(5) : v))), z: {} };
+        if (!optBody || optBody.mt !== mt || optBody.refreshing !== data.refreshing) { const o = prov.attach(u.pathname, firstSeen.annotate(u.pathname, data), DATA_DIR); const ao = asof.compute(o); optBody = { mt, refreshing: data.refreshing, ao, body: Buffer.from(JSON.stringify({ ...o, _asof: ao }, (k, v) => (typeof v === 'number' && !Number.isInteger(v) ? +v.toPrecision(5) : v))), z: {} }; }
         const enc = pickEnc(req); if (enc) res._precompressed = optBody.z[enc] ||= compressBody(enc, optBody.body, false);
-        res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' }); return res.end(optBody.body);
+        res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store', ...asof.header(optBody.ao) }); return res.end(optBody.body);
       } catch (e) { res.writeHead(e.status || 502, { 'content-type': 'application/json' }); return res.end(JSON.stringify({ error: String(e.message || e) })); }
     }
     const memoK = RENDER_LITE && !/^\/api\/(whoami|health|liveprice)/.test(u.pathname) ? u.pathname + '?' + u.searchParams.toString() : null;
     const hit = memoK && liteMemo.get(memoK);
-    if (hit && Date.now() - hit.t < 60e3) { res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' }); return res.end(hit.body); }
+    if (hit && Date.now() - hit.t < 60e3) { res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store', ...asof.header(hit.ao) }); return res.end(hit.body); }
     try {
       const data = await h(u.searchParams, req);
-      const body = JSON.stringify(prov.attach(u.pathname, firstSeen.annotate(u.pathname, data), DATA_DIR)); // adds `_prov` (shallow copy) — lib/provenance.js
-      if (memoK) { liteMemo.set(memoK, { t: Date.now(), body }); if (liteMemo.size > 500) liteMemo.delete(liteMemo.keys().next().value); }
-      res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' });
+      const o = prov.attach(u.pathname, firstSeen.annotate(u.pathname, data), DATA_DIR); // adds `_prov` (shallow copy) — lib/provenance.js
+      const ao = asof.compute(o); const body = JSON.stringify(ao && o && typeof o === 'object' && !Array.isArray(o) ? { ...o, _asof: ao } : o);
+      if (memoK) { liteMemo.set(memoK, { t: Date.now(), body, ao }); if (liteMemo.size > 500) liteMemo.delete(liteMemo.keys().next().value); }
+      res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store', ...asof.header(ao) });
       res.end(body);
     } catch (e) {
       res.writeHead(e.status || 502, { 'content-type': 'application/json' });

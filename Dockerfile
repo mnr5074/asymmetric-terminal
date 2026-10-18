@@ -13,6 +13,8 @@ COPY research ./research
 COPY scripts/start.sh ./scripts/start.sh
 # Seed snapshot of research outputs so every view works on an ephemeral disk (refreshed in the background once running)
 COPY data ./seed/
+# Build timestamp: shown by the data-as-of banner (lib/asof.js) as the deploy time of this frozen snapshot
+RUN date -u +%Y-%m-%dT%H:%M:%SZ > /app/BUILD_TIME
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000 PUBLIC_MODE=1 DATA_DIR=/app/data
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s CMD node -e "fetch('http://127.0.0.1:'+(process.env.PORT||8000)+'/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
