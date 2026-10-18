@@ -26,7 +26,7 @@
   }
   function renderDesks() {
     const order = [['crypto', 'Crypto'], ['options', 'Stocks & Options'], ['macro', 'Macro/Fed'], ['news', 'News'], ['airdrops', 'Airdrops'], ['sleepers', 'Sleepers']];
-    Q('#ccDesks').innerHTML = order.map(([k, n]) => { const d = DK[k]; return `<div class="desk"><div class="dh">${esc(n)} desk <span class="muted">${d?.updatedAt ? ago(d.updatedAt) + ' ago' : ''}</span></div><ul>${(d?.summary || ['warming up…']).map((l) => `<li>${esc(l)}</li>`).join('')}</ul></div>`; }).join('');
+    Q('#ccDesks').innerHTML = order.map(([k, n]) => { const d = DK[k]; return `<div class="desk" data-updated="${d?.updatedAt ? (typeof d.updatedAt === 'number' ? d.updatedAt : Date.parse(d.updatedAt)) || '' : ''}"><div class="dh">${esc(n)} desk</div><ul>${(d?.summary || ['warming up…']).map((l) => `<li>${esc(l)}</li>`).join('')}</ul></div>`; }).join('');
   }
   function renderTicker() {
     const it = (DK.news?.items || []).slice(0, 30);
