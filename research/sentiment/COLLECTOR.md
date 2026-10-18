@@ -33,11 +33,13 @@ python3 research/sentiment.py plan                      # writes research/sentim
 #   call x.<tool> with entry.arguments and write_to_file=true,
 #   copy the result file to research/sentiment/raw/<run>/<entry.file>   (e.g. counts__ZEC.txt, samples__ZEC__24h.txt, news__NEAR.txt)
 #   pace the calls at <= 25 per rolling minute (tool limit is 30/min, shared)
-python3 research/sentiment.py ingest research/sentiment/raw/<run>
+python3 research/sentiment.py ingest research/sentiment/raw/<run>   # or just `ingest`: auto-picks the newest run folder with results
 ```
 
 - **Raw files.** The raw `.txt` is the tool output exactly as written, including the "X reads left" footer, which `ingest` logs. Keep the last ~3 run folders and delete older ones.
 - **Options.**
+  - `plan --syms NEAR,SOL` limits the plan to those tokens; `--force` also re-fetches the prior-window sample.
+  - `ingest` skips any raw file whose plan.json query differs from the current `queries.json` query (never merges an old-query result under a new query) and does not double-count calls when a run is re-ingested.
   - `plan --tiers P` collects only the priority tier.
   - `--max-calls N` caps the run (default 40).
   - `--samples all|auto|none` controls post sampling.
@@ -63,29 +65,33 @@ That works out to about 48+24+4+6 (P) + 88+44+22 (W+C) ≈ **236 reads/day**. Th
 
 The full list is in `queries.json`. Each query is `"<token clause> <suffix>"`.
 
+**Regime break 2026-10-18.** The free X search tool now strips `$`, so a cashtag clause is just the bare word (`$NOT` matched "not": 16.9M posts/7d). 14 queries were rewritten to full names, contract addresses (the tool renders cashtags as `chain:address`, so a CA catches cashtag posts) and AND-combinations with crypto words. `ingest` drops a token's stored hourly history and sampled posts when its query changes and logs a `regimeBreaks` entry; `lib/sentiment.js` shows the break, cuts the composite weight to 0.4x (0.25 -> 0.1) for 3 days after the newest break, and never scores tokens whose `quality` is `unreliable`.
+
 **Counts suffix:**
 `-is:retweet lang:en -giveaway -giveaways -airdrop -"free mint" -whitelist -presale -"dm me" -"join now" -"claim now" -"claim your"`
 
 **Samples suffix:** the same, plus `-is:reply`. Reply threads are dominated by shill and bot replies.
 
-| sym | token clause | notes |
-|---|---|---|
-| NEAR | `($NEAR OR "NEAR Protocol" OR nearprotocol OR "NEAR Intents")` | bare "near" is a common word, so it is not used |
-| ZEC | `($ZEC OR zcash)` | |
-| STRK | `($STRK OR starknet)` | Starknet; the watchlist holds the Solana SPL wrapper |
-| QCAT | `($QCAT OR qcat)` | StonkFun reward coin |
-| BTC / ETH / SOL | `($BTC OR bitcoin)` / `($ETH OR ethereum)` / `($SOL OR solana)` | |
-| JUP | `($JUP OR "jupiter exchange" OR jupiterexchange)` | |
-| BONK | `($BONK OR bonkcoin OR "bonk coin")` | |
-| WIF | `($WIF OR dogwifhat)` | |
-| TROLL, BRETT, PNUT, SWARMS, MOODENG, CLANKER, CHILLGUY | cashtag only | the names are common words, the hippo, or slang |
-| PEPE | `($PEPE OR pepecoin)` | |
-| CAKE | `($CAKE OR pancakeswap)` | |
-| NOT | `($NOT OR notcoin)` | |
-| MINA | `($MINA OR "Mina Protocol")` | |
-| FARTCOIN, JELLYJELLY, ZEREBRO | `($X OR x)` | |
-| ROBO | `($ROBO OR "Fabric Protocol")` | |
-| GOAT | `($GOAT OR goatseus)` | |
+| sym | token clause (2026-10-18) | 7d posts old -> new | quality |
+|---|---|---|---|
+| NEAR | `("NEAR Protocol" OR nearprotocol OR "NEAR Intents" OR "NEAR token")` | 454,557 -> 7,070 | clean |
+| NOT | `(notcoin OR "Notcoin")` | 16,928,549 -> 543 | clean |
+| SOL | `(solana OR "SOL token")` | 479,764 -> 281,150 | clean |
+| CAKE | `(pancakeswap OR <BSC CA> OR "CAKE token")` | 115,745 -> 3,014 | clean |
+| BRETT | `(<Base CA> OR basedbrett OR "Brett on Base" OR "brett coin" OR (brett (memecoin OR "base chain" OR "boys club")))` | 97,723 -> 472 | clean |
+| TROLL | `(5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2 OR "troll coin" OR "TROLL token")` | 103,268 -> 467 | clean |
+| WIF | `(dogwifhat OR "dog wif hat" OR <CA> OR "WIF token")` | 5,453 -> 361 | clean (low volume) |
+| SWARMS | `(<CA> OR "swarms ai" OR swarms_corp OR "swarms token" OR (swarms (kyegomez OR solana OR memecoin)))` | 4,976 -> 277 | clean (low volume) |
+| PNUT | `(<CA> OR (pnut (memecoin OR coin OR token OR solana OR binance OR crypto)) OR ("Peanut the Squirrel" (...)))` | 1,413 -> 231 | clean (low volume) |
+| PEPE | `(<ETH CA> OR "PEPE token" OR (pepe (memecoin OR whale OR altcoin)))` | 39,578 -> 1,278 | **unreliable** (frog meme + hashtag spam; "pepecoin" is a different PoW coin) |
+| CLANKER | `(<Base CA> OR "clanker token" OR clankerworld OR "clanker.world" OR (clanker (farcaster OR tokenbot)))` | 5,604 -> 61 | **unreliable** (one copy-paste signal bot dominates) |
+| GOAT | `(goatseus OR "Goatseus Maximus" OR <CA>)` | 359,639 -> 68 | **unreliable** (too few posts) |
+| MOODENG | `(<CA> OR (moodeng (memecoin OR coin OR token OR solana OR binance OR crypto)))` | 499 -> 152 | **unreliable** (too few; hippo leaks in) |
+| CHILLGUY | `(<CA> OR (chillguy (memecoin OR coin OR token OR solana OR crypto)))` | 1,533 -> 118 | **unreliable** (too few) |
+| MINA | `($MINA OR "Mina Protocol")` (unchanged) | 43,969 | **unreliable** (matches the name Mina; rewrite pending) |
+| ZEC, STRK, QCAT, BTC, ETH, JUP, BONK, FARTCOIN, JELLYJELLY, ZEREBRO, ROBO | unchanged (name OR'd with the ticker) | | clean; JUP/BONK/ROBO bare words may add some noise |
+
+Exact strings (with contract addresses) are in `queries.json`; the pre-change clause is kept as `q_before_regime`.
 
 **Sample call arguments:**
 `max_results=25, sort_order=relevancy, expansions=author_id, post.fields=created_at,public_metrics,lang,author_id, user.fields=public_metrics,created_at,verified,description`

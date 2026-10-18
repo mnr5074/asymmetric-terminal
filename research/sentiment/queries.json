@@ -1,18 +1,25 @@
 {
  "version": 1,
- "notes": "Token query list for the free X read tools (namespace 'x'). 'q' is the token clause only; the collector appends the shared exclusion suffix (counts) or the sample suffix (samples). Keep each full query under 512 chars. Ambiguous words are only used inside quotes or with a cashtag. Tiers: P = priority watchlist (every wake), W = browser watchlist / majors, C = top composite tokens. See COLLECTOR.md.",
+ "notes": "Token query list for the free X read tools (namespace 'x'). 'q' is the token clause only; the collector appends the shared exclusion suffix (counts) or the sample suffix (samples). Keep each full query under 512 chars. Ambiguous words are only used inside quotes or with a cashtag. Tiers: P = priority watchlist (every wake), W = browser watchlist / majors, C = top composite tokens. See COLLECTOR.md. Since 2026-10-18 the free X search strips '$', so cashtags are NOT used as the only clause for ambiguous tickers: use full names, contract addresses (the tool renders cashtags as chain:address) and AND-combinations with crypto words. Per-token 'quality' = clean | unreliable (unreliable rows are shown but excluded from the composite); 'regime.since' marks a query change (older data not comparable).",
  "suffix_counts": "-is:retweet lang:en -giveaway -giveaways -airdrop -\"free mint\" -whitelist -presale -\"dm me\" -\"join now\" -\"claim now\" -\"claim your\"",
  "suffix_samples": "-is:retweet -is:reply lang:en -giveaway -giveaways -airdrop -\"free mint\" -whitelist -presale -\"dm me\" -\"join now\" -\"claim now\" -\"claim your\"",
  "tokens": [
   {
    "sym": "NEAR",
    "tier": "P",
-   "q": "($NEAR OR \"NEAR Protocol\" OR nearprotocol OR \"NEAR Intents\")",
+   "q": "(\"NEAR Protocol\" OR nearprotocol OR \"NEAR Intents\" OR \"NEAR token\")",
    "price": {
     "binance_spot": "NEARUSDT"
    },
    "cgId": "near",
-   "news_q": "NEAR Protocol"
+   "news_q": "NEAR Protocol",
+   "q_before_regime": "($NEAR OR \"NEAR Protocol\" OR nearprotocol OR \"NEAR Intents\")",
+   "quality": "clean",
+   "qualityNote": "phrases only; bare \"near\" and \"NEAR price\" match ordinary English",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   },
   {
    "sym": "ZEC",
@@ -66,11 +73,18 @@
   {
    "sym": "SOL",
    "tier": "W",
-   "q": "($SOL OR solana)",
+   "q": "(solana OR \"SOL token\")",
    "price": {
     "binance_spot": "SOLUSDT"
    },
-   "news_q": "Solana"
+   "news_q": "Solana",
+   "q_before_regime": "($SOL OR solana)",
+   "quality": "clean",
+   "qualityNote": "\"solana\" dominates; bare \"sol\" dropped",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   },
   {
    "sym": "JUP",
@@ -93,56 +107,98 @@
   {
    "sym": "WIF",
    "tier": "W",
-   "q": "($WIF OR dogwifhat)",
+   "q": "(dogwifhat OR \"dog wif hat\" OR EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm OR \"WIF token\")",
    "price": {
     "binance_spot": "WIFUSDT"
    },
-   "cgId": "dogwifcoin"
+   "cgId": "dogwifcoin",
+   "q_before_regime": "($WIF OR dogwifhat)",
+   "quality": "clean",
+   "qualityNote": "low volume (~200 posts/7d) but on-topic",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   },
   {
    "sym": "TROLL",
    "tier": "W",
-   "q": "($TROLL)",
+   "q": "(5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2 OR \"troll coin\" OR \"TROLL token\")",
    "price": {
     "geckoterminal_token": "solana:5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2"
    },
-   "key": "solana:5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2"
+   "key": "solana:5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2",
+   "q_before_regime": "($TROLL)",
+   "quality": "clean",
+   "qualityNote": "contract address + phrases; the X tool renders the $TROLL cashtag as solana:<CA>, so the CA catches cashtag posts",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   },
   {
    "sym": "PEPE",
    "tier": "W",
-   "q": "($PEPE OR pepecoin)",
+   "q": "(0x6982508145454ce325ddbe47a25d4ec3d2311933 OR \"PEPE token\" OR (pepe (memecoin OR whale OR altcoin)))",
    "price": {
     "binance_spot": "PEPEUSDT"
    },
-   "cgId": "pepe"
+   "cgId": "pepe",
+   "q_before_regime": "($PEPE OR pepecoin)",
+   "quality": "unreliable",
+   "qualityNote": "\"pepecoin\" is a different PoW coin and was removed; remaining matches mix the frog meme and hashtag spam",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   },
   {
    "sym": "BRETT",
    "tier": "W",
-   "q": "($BRETT)",
+   "q": "(0x532f27101965dd16442E59d40670FaF5eBB142E4 OR basedbrett OR \"Brett on Base\" OR \"brett coin\" OR (brett (memecoin OR \"base chain\" OR \"boys club\")))",
    "price": {
     "binance_fapi": "BRETTUSDT"
    },
-   "cgId": "based-brett"
+   "cgId": "based-brett",
+   "q_before_regime": "($BRETT)",
+   "quality": "clean",
+   "qualityNote": "mostly @BasedBrett community posts (on-topic, shill-heavy)",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   },
   {
    "sym": "CAKE",
    "tier": "W",
-   "q": "($CAKE OR pancakeswap)",
+   "q": "(pancakeswap OR 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82 OR \"CAKE token\")",
    "price": {
     "binance_spot": "CAKEUSDT"
    },
-   "cgId": "pancakeswap-token"
+   "cgId": "pancakeswap-token",
+   "q_before_regime": "($CAKE OR pancakeswap)",
+   "quality": "clean",
+   "qualityNote": "PancakeSwap name + BSC contract",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   },
   {
    "sym": "NOT",
    "tier": "W",
-   "q": "($NOT OR notcoin)",
+   "q": "(notcoin OR \"Notcoin\")",
    "price": {
     "binance_spot": "NOTUSDT"
    },
-   "cgId": "notcoin"
+   "cgId": "notcoin",
+   "q_before_regime": "($NOT OR notcoin)",
+   "quality": "clean",
+   "qualityNote": "old \"$NOT\" matched the word \"not\" (16.9M posts/7d); now ~1.1k/7d",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   },
   {
    "sym": "MINA",
@@ -151,7 +207,9 @@
    "price": {
     "binance_spot": "MINAUSDT"
    },
-   "cgId": "mina-protocol"
+   "cgId": "mina-protocol",
+   "quality": "unreliable",
+   "qualityNote": "\"$MINA\" now matches the name Mina (~44k posts/7d); not yet rewritten"
   },
   {
    "sym": "FARTCOIN",
@@ -174,11 +232,18 @@
   {
    "sym": "PNUT",
    "tier": "C",
-   "q": "($PNUT)",
+   "q": "(2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump OR (pnut (memecoin OR coin OR token OR solana OR binance OR crypto)) OR (\"Peanut the Squirrel\" (memecoin OR coin OR token OR crypto)))",
    "price": {
     "binance_spot": "PNUTUSDT"
    },
-   "cgId": "peanut-the-squirrel"
+   "cgId": "peanut-the-squirrel",
+   "q_before_regime": "($PNUT)",
+   "quality": "clean",
+   "qualityNote": "low volume (~190 posts/7d)",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   },
   {
    "sym": "ROBO",
@@ -192,11 +257,18 @@
   {
    "sym": "SWARMS",
    "tier": "C",
-   "q": "($SWARMS)",
+   "q": "(74SBV4zDXxTRgv1pEMoECskKBkZHc2yGPnc7GYVepump OR \"swarms ai\" OR swarms_corp OR \"swarms token\" OR (swarms (kyegomez OR solana OR memecoin)))",
    "price": {
     "binance_fapi": "SWARMSUSDT"
    },
-   "cgId": "swarms"
+   "cgId": "swarms",
+   "q_before_regime": "($SWARMS)",
+   "quality": "clean",
+   "qualityNote": "on-topic but mostly replies to @swarms_corp; low volume (~270/7d)",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   },
   {
    "sym": "ZEREBRO",
@@ -210,40 +282,68 @@
   {
    "sym": "MOODENG",
    "tier": "C",
-   "q": "($MOODENG)",
+   "q": "(ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY OR (moodeng (memecoin OR coin OR token OR solana OR binance OR crypto)))",
    "price": {
     "binance_fapi": "MOODENGUSDT"
    },
    "cgId": "moo-deng",
-   "note": "name query 'moo deng' excluded: mostly the hippo, not the coin"
+   "note": "name query 'moo deng' excluded: mostly the hippo, not the coin",
+   "q_before_regime": "($MOODENG)",
+   "quality": "unreliable",
+   "qualityNote": "~125 posts/7d and the hippo still leaks in",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   },
   {
    "sym": "GOAT",
    "tier": "C",
-   "q": "($GOAT OR goatseus)",
+   "q": "(goatseus OR \"Goatseus Maximus\" OR CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump)",
    "price": {
     "binance_fapi": "GOATUSDT"
    },
-   "cgId": "goatseus-maximus"
+   "cgId": "goatseus-maximus",
+   "q_before_regime": "($GOAT OR goatseus)",
+   "quality": "unreliable",
+   "qualityNote": "clean but tiny volume (~70 posts/7d): too few for a stable z-score",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   },
   {
    "sym": "CLANKER",
    "tier": "C",
-   "q": "($CLANKER)",
+   "q": "(0x1bc0c42215582d5a085795f4badbac3ff36d1bcb OR \"clanker token\" OR clankerworld OR \"clanker.world\" OR (clanker (farcaster OR tokenbot)))",
    "price": {
     "binance_fapi": "CLANKERUSDT"
    },
    "cgId": "tokenbot-2",
-   "note": "bare 'clanker' is slang for robots; cashtag only"
+   "note": "bare 'clanker' is slang for robots; cashtag only",
+   "q_before_regime": "($CLANKER)",
+   "quality": "unreliable",
+   "qualityNote": "sample dominated by one copy-paste trading-signal bot; ~100 posts/7d",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   },
   {
    "sym": "CHILLGUY",
    "tier": "C",
-   "q": "($CHILLGUY)",
+   "q": "(Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump OR (chillguy (memecoin OR coin OR token OR solana OR crypto)))",
    "price": {
     "binance_fapi": "CHILLGUYUSDT"
    },
-   "cgId": "chill-guy"
+   "cgId": "chill-guy",
+   "q_before_regime": "($CHILLGUY)",
+   "quality": "unreliable",
+   "qualityNote": "~70 posts/7d: too few",
+   "regime": {
+    "since": "2026-10-18T13:30:00Z",
+    "reason": "X search tool now strips '$': cashtag-only queries matched plain words. Query rewritten; history before this is not comparable."
+   }
   }
  ]
 }

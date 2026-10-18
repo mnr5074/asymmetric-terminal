@@ -48,8 +48,9 @@ def plan(args):
     S = rj(F_SAMPLES, {}) or {}; C = rj(F_COUNTS, {}) or {}
     t = now_ms(); calls = []
     start24, start7, end_prior = iso(t - 24 * 3600e3 + 120e3), iso(t - 7 * 86400e3 + 300e3), iso(t - 24 * 3600e3)
+    syms = set(x.strip().upper() for x in str(args['syms']).split(',')) if args.get('syms') else None
     for tok in c['tokens']:
-        if tok['tier'] not in tiers: continue
+        if tok['tier'] not in tiers or (syms and tok['sym'] not in syms): continue
         sym = tok['sym']; last_c = (C.get('tokens', {}).get(sym) or {}).get('fetchedAt'); age_c = (t - pms(last_c)) / 3600e3 if last_c else 1e9
         if age_c >= (CADENCE_H['P_counts'] if tok['tier'] == 'P' else CADENCE_H['counts']) - 0.1 or args.get('force'):
             calls.append({'file': f'counts__{sym}.txt', 'tool': 'get_posts_counts_recent', 'arguments': {'query': f"{tok['q']} {c['suffix_counts']}", 'granularity': 'hour'}})
@@ -58,7 +59,7 @@ def plan(args):
         if samples == 'all' or (samples == 'auto' and age_s >= (CADENCE_H['P_samples'] if tok['tier'] == 'P' else CADENCE_H['samples']) - 0.1) or args.get('force'):
             base = {'max_results': 25, 'sort_order': 'relevancy', 'expansions': 'author_id', 'post.fields': 'created_at,public_metrics,lang,author_id', 'user.fields': 'public_metrics,created_at,verified,description'}
             calls.append({'file': f'samples__{sym}__24h.txt', 'tool': 'search_posts_all', 'arguments': {**base, 'query': f"{tok['q']} {c['suffix_samples']}", 'start_time': start24}})
-            if not any(r.get('window') == 'prior' and t - pms(r['fetchedAt']) < 24 * 3600e3 for r in runs):  # prior-window baseline at most once a day
+            if args.get('force') or not any(r.get('window') == 'prior' and t - pms(r['fetchedAt']) < 24 * 3600e3 for r in runs):  # prior-window baseline at most once a day
                 calls.append({'file': f'samples__{sym}__prior.txt', 'tool': 'search_posts_all', 'arguments': {**base, 'query': f"{tok['q']} {c['suffix_samples']}", 'start_time': start7, 'end_time': end_prior}})
         nw = (S.get('tokens', {}).get(sym) or {}).get('news') or {}
         if tok.get('news_q') and tok['tier'] == 'P' and (not nw.get('fetchedAt') or (t - pms(nw['fetchedAt'])) / 3600e3 >= CADENCE_H['news'] - 0.1):
@@ -157,15 +158,34 @@ def fetch_price(tok):
     return {'source': None, 'error': '; '.join(errs)[:400], 'hourly': []}
 
 # ---------------------------------------------------------------- ingest
-def ingest(run_dir):
+def latest_run_dir():
+    """Newest folder in research/sentiment/raw/ (run ids sort by time) that holds raw .txt results; falls back to the newest folder."""
+    base = os.path.join(HERE, 'raw')
+    runs = sorted((d for d in os.listdir(base) if os.path.isdir(os.path.join(base, d))), reverse=True) if os.path.isdir(base) else []
+    if not runs: return None
+    for d in runs:
+        if any(f.endswith('.txt') for f in os.listdir(os.path.join(base, d))): return os.path.join(base, d)
+    return os.path.join(base, runs[0])
+
+def ingest(run_dir=None):
+    if not run_dir:
+        run_dir = latest_run_dir()
+        if not run_dir: print('ingest: no run folders in research/sentiment/raw/ (run `plan` first)'); return
+        print(f'ingest: no run dir given, using latest: {os.path.relpath(run_dir, ROOT)}')
     run_dir = os.path.join(ROOT, run_dir) if not os.path.isabs(run_dir) else run_dir
+    if not os.path.isdir(run_dir): print(f'ingest: {run_dir} is not a directory'); return
     c = cfg(); toks = {t['sym']: t for t in c['tokens']}
     C = rj(F_COUNTS) or {'version': 1, 'tokens': {}}; S = rj(F_SAMPLES) or {'version': 1, 'tokens': {}}; L = rj(F_CALLS) or {'version': 1, 'runs': []}
     files = sorted(f for f in os.listdir(run_dir) if f.endswith('.txt'))
+    planq = {x['file']: (x.get('arguments') or {}).get('query') for x in ((rj(os.path.join(run_dir, 'plan.json')) or {}).get('calls') or [])}
+    rerun = any(r.get('run') == os.path.basename(run_dir.rstrip('/')) for r in L.get('runs') or [])
     t0 = now_ms(); used = Counter(); left = None; seen_syms = set(); report = []
     for f in files:
         kind, sym, *rest = f[:-4].split('__'); tok = toks.get(sym)
         if not tok: report.append(f'skip {f}: unknown symbol'); continue
+        want = f"{tok['q']} {c['suffix_counts'] if kind == 'counts' else c['suffix_samples']}" if kind in ('counts', 'samples') else None
+        if want and f in planq and planq[f] != want:   # raw result was fetched with an older query (regime break) -> never merge it under the new query
+            report.append(f'skip {f}: fetched with a different query than queries.json now has (query changed since the plan)'); continue
         obj, l = parse_raw(os.path.join(run_dir, f)); left = min(left, l) if (l is not None and left is not None) else (l if l is not None else left); used[kind] += 1
         fetched = iso(int(os.path.getmtime(os.path.join(run_dir, f)) * 1000))
         if obj is None or ('data' not in obj and 'meta' not in obj):
@@ -177,6 +197,9 @@ def ingest(run_dir):
             prev = C['tokens'].get(sym) or {}
             q = f"{tok['q']} {c['suffix_counts']}"
             old = (prev.get('hourly') or []) if prev.get('query') == q else []
+            breaks = list(prev.get('regimeBreaks') or [])
+            if prev.get('query') and prev.get('query') != q:   # query changed: older buckets are a different series -> dropped, break logged
+                breaks.append({'at': iso(now_ms()), 'oldQuery': prev['query'][:300], 'droppedBuckets': len(prev.get('hourly') or []), 'reason': (tok.get('regime') or {}).get('reason') or 'query changed'})
             ws = rows[0][0]
             keep = [r for r in old if r[1] <= ws]                 # history strictly before the new 7d window
             ov = [r for r in old if r[0] < ws < r[1]]            # an older full bucket covering the new partial first bucket wins
@@ -185,12 +208,19 @@ def ingest(run_dir):
             fetched = iso(rows[-1][1])
             C['tokens'][sym] = {'sym': sym, 'tier': tok['tier'], 'key': tok.get('key'), 'query': q, 'granularity': 'hour', 'fetchedAt': fetched,
                                 'windowStart': iso(rows[0][0]), 'windowEnd': iso(rows[-1][1]), 'total7d': int((obj.get('meta') or {}).get('total_tweet_count') or sum(r[2] for r in rows)),
-                                'hourly': hourly, 'price': prev.get('price')}
+                                'hourly': hourly, 'price': prev.get('price'), 'regimeBreaks': breaks[-5:],
+                                'regimeSince': (tok.get('regime') or {}).get('since'), 'quality': tok.get('quality', 'clean'), 'qualityNote': tok.get('qualityNote')}
             report.append(f'{sym}: counts {len(rows)} buckets, 7d total {C["tokens"][sym]["total7d"]}')
         elif kind == 'samples':
             window = rest[0] if rest else '24h'
             users = {u['id']: u for u in (obj.get('includes') or {}).get('users', [])}
             T = S['tokens'].setdefault(sym, {'sym': sym, 'runs': [], 'posts': []})
+            qs = f"{tok['q']} {c['suffix_samples']}"
+            if T.get('query') != qs:
+                if T.get('query') or (tok.get('regime') and T['posts'] and not T.get('regimeSince')):   # posts sampled with the old query are off-topic -> reset
+                    T['regimeBreaks'] = (T.get('regimeBreaks') or []) + [{'at': iso(now_ms()), 'droppedPosts': len(T['posts'])}]
+                    T['posts'] = []; T['runs'] = []
+                T['query'] = qs; T['regimeSince'] = (tok.get('regime') or {}).get('since')
             have = {p['id'] for p in T['posts']}; dups = Counter(norm_dup(p['text']) for p in T['posts'] if not p.get('bot'))
             per_author = Counter(p.get('author_id') for p in obj.get('data') or [])
             kept = dropped = 0; why = Counter(); fetched_ms = now_ms()
@@ -244,7 +274,8 @@ def ingest(run_dir):
     C.update({'version': 1, 'updatedAt': stamp, 'source': "free X read tools (MCP namespace 'x', get_posts_counts_recent, granularity=hour) collected by the assistant; prices from Binance public klines / GeckoTerminal / CoinGecko", 'spec': 'research/sentiment/COLLECTOR.md'})
     S.update({'version': 1, 'updatedAt': stamp, 'source': "free X read tools (MCP namespace 'x', search_posts_all, 25 posts/call, relevancy order)", 'lexicon': 'VADER 3.3.2 + ' + sia()[1]['version'], 'spec': 'research/sentiment/COLLECTOR.md'})
     wj(F_COUNTS, C); wj(F_SAMPLES, S)
-    L['runs'].append({'run': os.path.basename(run_dir.rstrip('/')), 'ingestedAt': stamp, 'calls': dict(used), 'total': sum(used.values()), 'xReadsLeftToday': left})
+    if rerun: print('note: this run was already ingested; data merged again (idempotent) but calls are not counted twice')
+    else: L['runs'].append({'run': os.path.basename(run_dir.rstrip('/')), 'ingestedAt': stamp, 'calls': dict(used), 'total': sum(used.values()), 'xReadsLeftToday': left})
     L['runs'] = L['runs'][-500:]
     day = stamp[:10]; L['today'] = {'date': day, 'calls': sum(r['total'] for r in L['runs'] if r['ingestedAt'][:10] == day)}
     wj(F_CALLS, L)
@@ -260,7 +291,7 @@ def main():
             k = x[2:]; v = rest[i + 1] if i + 1 < len(rest) and not rest[i + 1].startswith('--') else True; kv[k] = v
         elif not (i and rest[i - 1].startswith('--') and kv.get(rest[i - 1][2:]) == x): pos.append(x)
     if cmd == 'plan': plan(kv)
-    elif cmd == 'ingest': ingest(pos[0])
+    elif cmd == 'ingest': ingest(pos[0] if pos else None)
     elif cmd == 'score':  # rescore stored posts after a lexicon change
         S = rj(F_SAMPLES)
         for T in S['tokens'].values():
