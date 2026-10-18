@@ -1,0 +1,3410 @@
+{
+ "v": 1,
+ "generatedAt": 1792332554417,
+ "dataAsOf": 1792332554417,
+ "lastBarAt": 1792324800000,
+ "chain": "Robinhood Chain (GeckoTerminal \"robinhood\", DexScreener \"robinhood\")",
+ "sources": [
+  "GeckoTerminal API v2 (free)",
+  "DexScreener API (free)"
+ ],
+ "calls": {
+  "gt": 0,
+  "ds": 1,
+  "cache": 146
+ },
+ "elapsedSec": 45,
+ "universe": {
+  "poolsSeen": 291,
+  "tokens": 185,
+  "withMinLiquidity": 101,
+  "withHistory": 52,
+  "minLiqUsd": 20000
+ },
+ "rules": {
+  "pullback": "base bar 45-70% below the highest 4h close so far (best 50-60%)",
+  "quiet": "12 bars (2 days) ending at the base bar close inside a <=2.1x range; their avg volume <=50% of the busiest 2-day stretch",
+  "volRising": "within 6 days of the base: last 3 bars avg volume >=1.5x the base average and a close above the base high (and no more than 1.5x the old peak close: PRIORS volume arrived as it broke its old peak)",
+  "age": ">=3 days of history",
+  "cleanContract": "GeckoTerminal: not honeypot, top-10 <=50%, dev <=10%, data present",
+  "utility": "website + product description (keyword evidence; confirm manually)"
+ },
+ "baseline": {
+  "n": 2018,
+  "tokens": 47,
+  "hit2xBeforeStop": 392,
+  "hit2xBeforeStopPct": 19.4,
+  "reached2x": 548,
+  "stoppedFirst": 349,
+  "stoppedFirstPct": 17.3,
+  "medianBest7d": 1.29,
+  "medianEnd7d": 1.0,
+  "incomplete": 335,
+  "what": "one entry per day on the same tokens after day 3 (no pattern), same 2x-before--30% rule"
+ },
+ "backtest": {
+  "n": 55,
+  "tokens": 22,
+  "hit2xBeforeStop": 16,
+  "hit2xBeforeStopPct": 29.1,
+  "reached2x": 23,
+  "stoppedFirst": 18,
+  "stoppedFirstPct": 32.7,
+  "medianBest7d": 1.78,
+  "medianEnd7d": 1.09,
+  "incomplete": 6,
+  "forward": "7 days (42 x 4h bars)",
+  "win": "best high >= 2x entry before any 4h low <= -30%",
+  "trigger": "volume (last 3 bars) >=1.5x the base average AND close above the base high and no more than 1.5x the prior peak close, within 6 days of a base bar",
+  "caveats": [
+   "Universe is today's survivors (pools still listed): dead tokens are missing, so results are biased upward.",
+   "Chain history is only weeks long; liquidity at signal time is unknown (today's is used for the filter).",
+   "Rules 4-5 (contract, utility) cannot be replayed historically; only price/volume rules 1-3 are tested."
+  ],
+  "signals": [
+   {
+    "symbol": "PRIORS",
+    "token": "0xedbf91223639800bcd5756815caf908df3b890be",
+    "t": 1792296000,
+    "best7d": 1.053,
+    "stopFirst": false,
+    "end7d": 1.048,
+    "complete": false
+   },
+   {
+    "symbol": "TORCH",
+    "token": "0x000050e18ffa3f8f7ad170eb9cef160eb3ed1111",
+    "t": 1792281600,
+    "best7d": 1.253,
+    "stopFirst": false,
+    "end7d": 1.251,
+    "complete": false
+   },
+   {
+    "symbol": "TIBBIR",
+    "token": "0x4db7374e966097be94c6680d49156d580f097bbf",
+    "t": 1792152000,
+    "best7d": 1.001,
+    "stopFirst": false,
+    "end7d": 0.812,
+    "complete": false
+   },
+   {
+    "symbol": "HOOKR",
+    "token": "0x18e674231a58c239dc7daedcffe15ec3a24cff5c",
+    "t": 1791864000,
+    "best7d": 1.408,
+    "stopFirst": false,
+    "end7d": 0.983,
+    "complete": false
+   },
+   {
+    "symbol": "SURPLUS",
+    "token": "0xe1838f0dff03a9327dea87b2a2285850791297ec",
+    "t": 1791792000,
+    "best7d": 3.873,
+    "stopFirst": false,
+    "end7d": 0.861,
+    "complete": false
+   },
+   {
+    "symbol": "V4",
+    "token": "0xc60ba256b44334a0cd2c7242e98b88f031abb006",
+    "t": 1791763200,
+    "best7d": 1.252,
+    "stopFirst": false,
+    "end7d": 1.109,
+    "complete": false
+   },
+   {
+    "symbol": "PRIORS",
+    "token": "0xedbf91223639800bcd5756815caf908df3b890be",
+    "t": 1791576000,
+    "best7d": 1.597,
+    "stopFirst": true,
+    "end7d": 1.241,
+    "complete": true
+   },
+   {
+    "symbol": "V4",
+    "token": "0xc60ba256b44334a0cd2c7242e98b88f031abb006",
+    "t": 1791158400,
+    "best7d": 3.059,
+    "stopFirst": false,
+    "end7d": 1.738,
+    "complete": true
+   },
+   {
+    "symbol": "VERDEX",
+    "token": "0x96f455a90a80dcf0c2df6703ea4ba3bedf286e43",
+    "t": 1791129600,
+    "best7d": 1.03,
+    "stopFirst": true,
+    "end7d": 0.31,
+    "complete": true
+   },
+   {
+    "symbol": "HARMONIC",
+    "token": "0xdee52f2ab639b6942b0d0f0565400b93b7a0fbe5",
+    "t": 1790985600,
+    "best7d": 1.343,
+    "stopFirst": false,
+    "end7d": 0.858,
+    "complete": true
+   },
+   {
+    "symbol": "BONER",
+    "token": "0x98096d17e191b3da1d5f99a6d7b3584351b11e18",
+    "t": 1790971200,
+    "best7d": 1.471,
+    "stopFirst": false,
+    "end7d": 0.806,
+    "complete": true
+   },
+   {
+    "symbol": "HOOKR",
+    "token": "0x18e674231a58c239dc7daedcffe15ec3a24cff5c",
+    "t": 1790956800,
+    "best7d": 1.563,
+    "stopFirst": false,
+    "end7d": 1.225,
+    "complete": true
+   },
+   {
+    "symbol": "SLIPPY",
+    "token": "0xf0568863195770965a6d8abb0aa87f4314b80320",
+    "t": 1790899200,
+    "best7d": 1.198,
+    "stopFirst": true,
+    "end7d": 0.723,
+    "complete": true
+   },
+   {
+    "symbol": "GOLD",
+    "token": "0xa62f748f8d16009cb19366da8d1160fb29de428f",
+    "t": 1790784000,
+    "best7d": 5.95,
+    "stopFirst": false,
+    "end7d": 4.416,
+    "complete": true
+   },
+   {
+    "symbol": "PONS",
+    "token": "0x39dbed3a2bd333467115de45665cc57f813c4571",
+    "t": 1790740800,
+    "best7d": 1.048,
+    "stopFirst": false,
+    "end7d": 0.75,
+    "complete": true
+   },
+   {
+    "symbol": "PRIORS",
+    "token": "0xedbf91223639800bcd5756815caf908df3b890be",
+    "t": 1790654400,
+    "best7d": 4.146,
+    "stopFirst": false,
+    "end7d": 2.937,
+    "complete": true
+   },
+   {
+    "symbol": "WALLET",
+    "token": "0x0339f5459fc690ac85f1782e15782a151b4a9e1b",
+    "t": 1790553600,
+    "best7d": 1.166,
+    "stopFirst": false,
+    "end7d": 0.543,
+    "complete": true
+   },
+   {
+    "symbol": "GRIFT",
+    "token": "0x9f4ba41f91a59a34e17ee8c9eb3a51363b11abd5",
+    "t": 1790452800,
+    "best7d": 4.087,
+    "stopFirst": false,
+    "end7d": 3.301,
+    "complete": true
+   },
+   {
+    "symbol": "CASHCAT",
+    "token": "0x020bfc650a365f8bb26819deaabf3e21291018b4",
+    "t": 1790337600,
+    "best7d": 1.169,
+    "stopFirst": false,
+    "end7d": 0.965,
+    "complete": true
+   },
+   {
+    "symbol": "HOOKR",
+    "token": "0x18e674231a58c239dc7daedcffe15ec3a24cff5c",
+    "t": 1790337600,
+    "best7d": 1.568,
+    "stopFirst": true,
+    "end7d": 1.091,
+    "complete": true
+   },
+   {
+    "symbol": "HARMONIC",
+    "token": "0xdee52f2ab639b6942b0d0f0565400b93b7a0fbe5",
+    "t": 1790265600,
+    "best7d": 3.753,
+    "stopFirst": false,
+    "end7d": 3.138,
+    "complete": true
+   },
+   {
+    "symbol": "PRISM",
+    "token": "0x20024e485c0b22b42855589700721b28320a7777",
+    "t": 1790164800,
+    "best7d": 1.496,
+    "stopFirst": false,
+    "end7d": 0.466,
+    "complete": true
+   },
+   {
+    "symbol": "INU",
+    "token": "0x63ee32ac3077d1fbd8a77ebba2a6ed4b8e9c1e18",
+    "t": 1790107200,
+    "best7d": 1.358,
+    "stopFirst": true,
+    "end7d": 0.636,
+    "complete": true
+   },
+   {
+    "symbol": "WORM",
+    "token": "0x3ba500f1ababbcf0f0247d06d1c56fd7e6c4c09d",
+    "t": 1790020800,
+    "best7d": 1.154,
+    "stopFirst": false,
+    "end7d": 0.284,
+    "complete": true
+   },
+   {
+    "symbol": "DELTA",
+    "token": "0xe8ffd7e24187f72afb08d75b1bb13088a989a791",
+    "t": 1789992000,
+    "best7d": 1.887,
+    "stopFirst": false,
+    "end7d": 1.145,
+    "complete": true
+   },
+   {
+    "symbol": "WTH",
+    "token": "0xb8fa8010833463aac5595b55b9045479239eff79",
+    "t": 1789718400,
+    "best7d": 1.494,
+    "stopFirst": false,
+    "end7d": 1.477,
+    "complete": true
+   },
+   {
+    "symbol": "HOOKR",
+    "token": "0x18e674231a58c239dc7daedcffe15ec3a24cff5c",
+    "t": 1789689600,
+    "best7d": 1.519,
+    "stopFirst": false,
+    "end7d": 1.04,
+    "complete": true
+   },
+   {
+    "symbol": "CASHCAT",
+    "token": "0x020bfc650a365f8bb26819deaabf3e21291018b4",
+    "t": 1789646400,
+    "best7d": 1.147,
+    "stopFirst": false,
+    "end7d": 0.791,
+    "complete": true
+   },
+   {
+    "symbol": "BONER",
+    "token": "0x98096d17e191b3da1d5f99a6d7b3584351b11e18",
+    "t": 1789401600,
+    "best7d": 1.893,
+    "stopFirst": true,
+    "end7d": 0.818,
+    "complete": true
+   },
+   {
+    "symbol": "SLIPPY",
+    "token": "0xf0568863195770965a6d8abb0aa87f4314b80320",
+    "t": 1789272000,
+    "best7d": 1.333,
+    "stopFirst": false,
+    "end7d": 0.885,
+    "complete": true
+   },
+   {
+    "symbol": "HARMONIC",
+    "token": "0xdee52f2ab639b6942b0d0f0565400b93b7a0fbe5",
+    "t": 1789228800,
+    "best7d": 1.786,
+    "stopFirst": true,
+    "end7d": 1.108,
+    "complete": true
+   },
+   {
+    "symbol": "INDEX",
+    "token": "0x56910d4409f3a0c78c64dd8d0545ff0705389870",
+    "t": 1789128000,
+    "best7d": 1.034,
+    "stopFirst": true,
+    "end7d": 1.0,
+    "complete": true
+   },
+   {
+    "symbol": "SCHIFFY",
+    "token": "0x42afa2124ca5a2b83898e46b2da9a190995b1e18",
+    "t": 1789113600,
+    "best7d": 3.073,
+    "stopFirst": false,
+    "end7d": 2.641,
+    "complete": true
+   },
+   {
+    "symbol": "PRISM",
+    "token": "0x20024e485c0b22b42855589700721b28320a7777",
+    "t": 1789099200,
+    "best7d": 5.159,
+    "stopFirst": true,
+    "end7d": 4.379,
+    "complete": true
+   },
+   {
+    "symbol": "FRONG",
+    "token": "0x6245e67affa44a23077f0ea7f981a8dc743a0c47",
+    "t": 1789041600,
+    "best7d": 1.333,
+    "stopFirst": false,
+    "end7d": 0.726,
+    "complete": true
+   },
+   {
+    "symbol": "BONER",
+    "token": "0x98096d17e191b3da1d5f99a6d7b3584351b11e18",
+    "t": 1788724800,
+    "best7d": 1.237,
+    "stopFirst": false,
+    "end7d": 0.47,
+    "complete": true
+   },
+   {
+    "symbol": "HARMONIC",
+    "token": "0xdee52f2ab639b6942b0d0f0565400b93b7a0fbe5",
+    "t": 1788595200,
+    "best7d": 2.251,
+    "stopFirst": true,
+    "end7d": 1.739,
+    "complete": true
+   },
+   {
+    "symbol": "WALLET",
+    "token": "0x0339f5459fc690ac85f1782e15782a151b4a9e1b",
+    "t": 1788523200,
+    "best7d": 3.85,
+    "stopFirst": false,
+    "end7d": 2.74,
+    "complete": true
+   },
+   {
+    "symbol": "HOOKR",
+    "token": "0x18e674231a58c239dc7daedcffe15ec3a24cff5c",
+    "t": 1788451200,
+    "best7d": 1.801,
+    "stopFirst": false,
+    "end7d": 0.877,
+    "complete": true
+   },
+   {
+    "symbol": "FRONG",
+    "token": "0x6245e67affa44a23077f0ea7f981a8dc743a0c47",
+    "t": 1788321600,
+    "best7d": 1.131,
+    "stopFirst": false,
+    "end7d": 0.487,
+    "complete": true
+   },
+   {
+    "symbol": "SLIPPY",
+    "token": "0xf0568863195770965a6d8abb0aa87f4314b80320",
+    "t": 1788177600,
+    "best7d": 2.099,
+    "stopFirst": false,
+    "end7d": 1.154,
+    "complete": true
+   },
+   {
+    "symbol": "INDEX",
+    "token": "0x56910d4409f3a0c78c64dd8d0545ff0705389870",
+    "t": 1788048000,
+    "best7d": 2.354,
+    "stopFirst": true,
+    "end7d": 1.415,
+    "complete": true
+   },
+   {
+    "symbol": "WALLET",
+    "token": "0x0339f5459fc690ac85f1782e15782a151b4a9e1b",
+    "t": 1787918400,
+    "best7d": 1.782,
+    "stopFirst": true,
+    "end7d": 1.385,
+    "complete": true
+   },
+   {
+    "symbol": "CASHCAT",
+    "token": "0x020bfc650a365f8bb26819deaabf3e21291018b4",
+    "t": 1787788800,
+    "best7d": 1.227,
+    "stopFirst": false,
+    "end7d": 1.115,
+    "complete": true
+   },
+   {
+    "symbol": "BONER",
+    "token": "0x98096d17e191b3da1d5f99a6d7b3584351b11e18",
+    "t": 1787702400,
+    "best7d": 629.549,
+    "stopFirst": true,
+    "end7d": 403.43,
+    "complete": true
+   },
+   {
+    "symbol": "WALLET",
+    "token": "0x0339f5459fc690ac85f1782e15782a151b4a9e1b",
+    "t": 1787313600,
+    "best7d": 2.088,
+    "stopFirst": true,
+    "end7d": 1.873,
+    "complete": true
+   },
+   {
+    "symbol": "CASHCAT",
+    "token": "0x020bfc650a365f8bb26819deaabf3e21291018b4",
+    "t": 1787184000,
+    "best7d": 2.052,
+    "stopFirst": false,
+    "end7d": 1.933,
+    "complete": true
+   },
+   {
+    "symbol": "PONS",
+    "token": "0x39dbed3a2bd333467115de45665cc57f813c4571",
+    "t": 1787169600,
+    "best7d": 3.438,
+    "stopFirst": false,
+    "end7d": 3.082,
+    "complete": true
+   },
+   {
+    "symbol": "PRISM",
+    "token": "0x20024e485c0b22b42855589700721b28320a7777",
+    "t": 1787169600,
+    "best7d": 15.49,
+    "stopFirst": false,
+    "end7d": 12.377,
+    "complete": true
+   },
+   {
+    "symbol": "HOOKR",
+    "token": "0x18e674231a58c239dc7daedcffe15ec3a24cff5c",
+    "t": 1787097600,
+    "best7d": 12.161,
+    "stopFirst": false,
+    "end7d": 11.044,
+    "complete": true
+   },
+   {
+    "symbol": "AI",
+    "token": "0x2e8c31162b855a2ffa90f6f8634643ad6f111e18",
+    "t": 1787083200,
+    "best7d": 5.396,
+    "stopFirst": false,
+    "end7d": 4.297,
+    "complete": true
+   },
+   {
+    "symbol": "DELTA",
+    "token": "0xe8ffd7e24187f72afb08d75b1bb13088a989a791",
+    "t": 1787083200,
+    "best7d": 3.493,
+    "stopFirst": true,
+    "end7d": 2.468,
+    "complete": true
+   },
+   {
+    "symbol": "PRISM",
+    "token": "0x20024e485c0b22b42855589700721b28320a7777",
+    "t": 1786550400,
+    "best7d": 1.23,
+    "stopFirst": true,
+    "end7d": 0.834,
+    "complete": true
+   },
+   {
+    "symbol": "HOOKR",
+    "token": "0x18e674231a58c239dc7daedcffe15ec3a24cff5c",
+    "t": 1786464000,
+    "best7d": 1.369,
+    "stopFirst": true,
+    "end7d": 0.531,
+    "complete": true
+   },
+   {
+    "symbol": "AI",
+    "token": "0x2e8c31162b855a2ffa90f6f8634643ad6f111e18",
+    "t": 1786320000,
+    "best7d": 2.277,
+    "stopFirst": false,
+    "end7d": 1.092,
+    "complete": true
+   },
+   {
+    "symbol": "CASHCAT",
+    "token": "0x020bfc650a365f8bb26819deaabf3e21291018b4",
+    "t": 1786291200,
+    "best7d": 1.173,
+    "stopFirst": false,
+    "end7d": 0.758,
+    "complete": true
+   },
+   {
+    "symbol": "NET",
+    "token": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+    "t": 1786104000,
+    "best7d": 2.554,
+    "stopFirst": false,
+    "end7d": 1.949,
+    "complete": true
+   },
+   {
+    "symbol": "WALLET",
+    "token": "0x0339f5459fc690ac85f1782e15782a151b4a9e1b",
+    "t": 1785859200,
+    "best7d": 1.288,
+    "stopFirst": false,
+    "end7d": 0.922,
+    "complete": true
+   },
+   {
+    "symbol": "NET",
+    "token": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+    "t": 1785427200,
+    "best7d": 1.271,
+    "stopFirst": false,
+    "end7d": 0.774,
+    "complete": true
+   },
+   {
+    "symbol": "NET",
+    "token": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+    "t": 1784606400,
+    "best7d": 3.216,
+    "stopFirst": false,
+    "end7d": 0.557,
+    "complete": true
+   }
+  ]
+ },
+ "strength": "weak",
+ "strengthWhy": "55 triggers; 29.1% hit 2x before -30% vs baseline 19.4% (n=2018); survivor-biased universe",
+ "priorsCalibration": {
+  "setupBarsUtc": [
+   "2026-09-26 12:00",
+   "2026-09-26 16:00",
+   "2026-09-26 20:00",
+   "2026-09-27 00:00",
+   "2026-09-27 04:00",
+   "2026-10-06 20:00",
+   "2026-10-07 00:00",
+   "2026-10-07 04:00",
+   "2026-10-07 12:00",
+   "2026-10-07 20:00",
+   "2026-10-08 00:00",
+   "2026-10-08 04:00"
+  ],
+  "triggers": [
+   {
+    "barUtc": "2026-09-29 04:00",
+    "close": 0.00342335250677768,
+    "best7d": 4.146,
+    "stopFirst": false,
+    "end7d": 2.937,
+    "complete": true
+   },
+   {
+    "barUtc": "2026-09-29 08:00",
+    "close": 0.00316414201389423,
+    "best7d": 4.486,
+    "stopFirst": false,
+    "end7d": 2.949,
+    "complete": true
+   },
+   {
+    "barUtc": "2026-09-29 12:00",
+    "close": 0.00358320638938338,
+    "best7d": 3.961,
+    "stopFirst": true,
+    "end7d": 2.226,
+    "complete": true
+   },
+   {
+    "barUtc": "2026-10-09 20:00",
+    "close": 0.0076113127636734,
+    "best7d": 1.597,
+    "stopFirst": true,
+    "end7d": 1.241,
+    "complete": true
+   },
+   {
+    "barUtc": "2026-10-10 00:00",
+    "close": 0.00699075487672073,
+    "best7d": 1.739,
+    "stopFirst": true,
+    "end7d": 1.361,
+    "complete": true
+   },
+   {
+    "barUtc": "2026-10-13 20:00",
+    "close": 0.00976103715243164,
+    "best7d": 1.444,
+    "stopFirst": true,
+    "end7d": 1.369,
+    "complete": false
+   },
+   {
+    "barUtc": "2026-10-14 00:00",
+    "close": 0.009051097028238,
+    "best7d": 1.557,
+    "stopFirst": true,
+    "end7d": 1.476,
+    "complete": false
+   },
+   {
+    "barUtc": "2026-10-14 04:00",
+    "close": 0.00891666024923588,
+    "best7d": 1.581,
+    "stopFirst": true,
+    "end7d": 1.499,
+    "complete": false
+   },
+   {
+    "barUtc": "2026-10-14 08:00",
+    "close": 0.00884929444845518,
+    "best7d": 1.593,
+    "stopFirst": true,
+    "end7d": 1.51,
+    "complete": false
+   },
+   {
+    "barUtc": "2026-10-14 12:00",
+    "close": 0.00733440170563034,
+    "best7d": 1.922,
+    "stopFirst": false,
+    "end7d": 1.822,
+    "complete": false
+   },
+   {
+    "barUtc": "2026-10-14 16:00",
+    "close": 0.0070594010983705,
+    "best7d": 1.997,
+    "stopFirst": false,
+    "end7d": 1.893,
+    "complete": false
+   },
+   {
+    "barUtc": "2026-10-14 20:00",
+    "close": 0.00830349949979312,
+    "best7d": 1.697,
+    "stopFirst": false,
+    "end7d": 1.609,
+    "complete": false
+   }
+  ],
+  "note": "Rules were tuned on this one example (n=1), so PRIORS matching them proves nothing; the replay on other tokens is the test."
+ },
+ "impostors": [
+  {
+   "token": "0x98e670d2e53a9176dcf0084c80cf6a8df939ff5c",
+   "why": "HOOKR copy \"Hookr\" created 2026-10-17 with ~$10.8M quoted liquidity and ~$5 volume: likely fake liquidity"
+  }
+ ],
+ "items": [
+  {
+   "token": "0x020bfc650a365f8bb26819deaabf3e21291018b4",
+   "symbol": "CASHCAT",
+   "name": "Cash Cat",
+   "named": null,
+   "pool": "0xa70fc67c9f69da90b63a0e4c05d229954574e313",
+   "state": "Watch",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": false,
+    "baseIntact": true
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-18 12:00 UTC: pullback 65% from peak close (want 45-70%, best 50-60%)",
+    "price is inside the base: waiting for the volume trigger",
+    "quiet stretch: closes in a 1.13x range (want <=2.1x), volume 0% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.4x the base average",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.103354495297067,
+   "priceAt": 1792324800000,
+   "liqUsd": 2453794.7018,
+   "fdvUsd": 102090907.642473,
+   "vol24Usd": 227532.062281627,
+   "ageDays": 111.3,
+   "m": {
+    "j": 667,
+    "dd": 0.653374,
+    "peakClose": 0.298173,
+    "qRange": 1.133803,
+    "qVol": 50641.698832,
+    "qVolVsPeak": 0.004308,
+    "baseHigh": 0.108759,
+    "baseLow": 0.098646,
+    "ageDays": 111.333333,
+    "volRise": 0.414606,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-18 12:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 37.5262,
+    "devPct": null,
+    "holders": 113890,
+    "honeypot": false,
+    "gtScore": 90.47619047619048,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T13:28:02Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://cashcat.cc/",
+     "https://cashcattoken.xyz",
+     "https://letscash.fun/"
+    ],
+    "keywords": [],
+    "categories": [
+     "Animal",
+     "Yoinkdotfun Launchpad"
+    ],
+    "description": "",
+    "twitter": "cashcat_token",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "in",
+   "plan": {
+    "entry": "Monitor only: fails the real-utility check (no product description found). Only if utility is confirmed by hand: Wait. Buy only on a 4h close above 0.108759 (top of the base) with volume >=1.5x the base average; skip it if it is already more than 15% above (0.125073).",
+    "entryTrigger": 0.108759337410673,
+    "chaseLimit": 0.12507323802227394,
+    "size": "1.0% of portfolio (risks 0.5% at the walk-away; capped at 1% because the signal is weak/unproven); and never more than $24,538 (1% of pool liquidity)",
+    "sizePct": 1.0,
+    "maxUsdByLiquidity": 24538,
+    "sells": [
+     "Sell 1/3 at 0.217519 (2x from entry)",
+     "Sell 1/3 at 0.298173 (prior peak close)",
+     "Trail the last 1/3: exit on a 4h close 35% below the highest close since entry"
+    ],
+    "sellLevels": [
+     0.217518674821346,
+     0.29817284445736
+    ],
+    "walkAway": [
+     "4h close below 0.0986456: exit all (the base low)",
+     "No +30% within 7 days of entry: exit (time stop)",
+     "Pool liquidity drops 40%+ from entry, top-10 holders rise above 50%, or a honeypot/tax flag appears: exit"
+    ],
+    "walkAwayLevel": 0.0986455560742951,
+    "riskToWalkAwayPct": 9.3,
+    "backtestNote": "Replay on Robinhood Chain: 16 of 55 past triggers reached 2x before -30%; median best in 7 days 1.78x.",
+    "monitorOnly": true
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0xa70fc67c9f69da90b63a0e4c05d229954574e313",
+   "strength": "weak"
+  },
+  {
+   "token": "0x0339f5459fc690ac85f1782e15782a151b4a9e1b",
+   "symbol": "WALLET",
+   "name": "Wallet",
+   "named": null,
+   "pool": "0x9501a20bedb8bea0798fe5d4c411f5e270965d49",
+   "state": "Watch",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": false,
+    "baseIntact": true
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-18 00:00 UTC: pullback 70% from peak close (want 45-70%, best 50-60%)",
+    "price is inside the base: waiting for the volume trigger",
+    "quiet stretch: closes in a 1.20x range (want <=2.1x), volume 2% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.4x the base average",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.0231052997217341,
+   "priceAt": 1792324800000,
+   "liqUsd": 2237381.3015,
+   "fdvUsd": 22706250.01,
+   "vol24Usd": 197034.025279615,
+   "ageDays": 100.5,
+   "m": {
+    "j": 600,
+    "dd": 0.69664,
+    "peakClose": 0.079343,
+    "qRange": 1.199563,
+    "qVol": 48698.649243,
+    "qVolVsPeak": 0.022404,
+    "baseHigh": 0.025414,
+    "baseLow": 0.021309,
+    "ageDays": 100.0,
+    "volRise": 0.352846,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-18 00:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 26.1739,
+    "devPct": null,
+    "holders": 9994,
+    "honeypot": false,
+    "gtScore": 75.04761904761905,
+    "gtVerified": false,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T13:41:51Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [],
+    "keywords": [],
+    "categories": [
+     "Wallet"
+    ],
+    "description": "",
+    "twitter": "",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "in",
+   "plan": {
+    "entry": "Monitor only: fails the real-utility check (no product description found). Only if utility is confirmed by hand: Wait. Buy only on a 4h close above 0.0254143 (top of the base) with volume >=1.5x the base average; skip it if it is already more than 15% above (0.0292264).",
+    "entryTrigger": 0.0254142784277819,
+    "chaseLimit": 0.02922642019194918,
+    "size": "1.0% of portfolio (risks 0.5% at the walk-away; capped at 1% because the signal is weak/unproven); and never more than $22,374 (1% of pool liquidity)",
+    "sizePct": 1.0,
+    "maxUsdByLiquidity": 22374,
+    "sells": [
+     "Sell 1/3 at 0.0508286 (2x from entry)",
+     "Sell 1/3 at 0.0793429 (prior peak close)",
+     "Trail the last 1/3: exit on a 4h close 35% below the highest close since entry"
+    ],
+    "sellLevels": [
+     0.0508285568555638,
+     0.079342880131082
+    ],
+    "walkAway": [
+     "4h close below 0.0213094: exit all (the base low)",
+     "No +30% within 7 days of entry: exit (time stop)",
+     "Pool liquidity drops 40%+ from entry, top-10 holders rise above 50%, or a honeypot/tax flag appears: exit"
+    ],
+    "walkAwayLevel": 0.0213093553889167,
+    "riskToWalkAwayPct": 16.2,
+    "backtestNote": "Replay on Robinhood Chain: 16 of 55 past triggers reached 2x before -30%; median best in 7 days 1.78x.",
+    "monitorOnly": true
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0x9501a20bedb8bea0798fe5d4c411f5e270965d49",
+   "strength": "weak"
+  },
+  {
+   "token": "0xe8ffd7e24187f72afb08d75b1bb13088a989a791",
+   "symbol": "DELTA",
+   "name": "Delta",
+   "named": null,
+   "pool": "0xd64fbda67e1015df43fa5e49f02ca844729e5f94",
+   "state": "Watch",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": false,
+    "baseIntact": true
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-18 12:00 UTC: pullback 64% from peak close (want 45-70%, best 50-60%)",
+    "price is inside the base: waiting for the volume trigger",
+    "quiet stretch: closes in a 1.20x range (want <=2.1x), volume 2% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.6x the base average",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.0107586357961328,
+   "priceAt": 1792324800000,
+   "liqUsd": 873547.9809,
+   "fdvUsd": 10693086.271675,
+   "vol24Usd": 112677.881332007,
+   "ageDays": 78.7,
+   "m": {
+    "j": 472,
+    "dd": 0.644057,
+    "peakClose": 0.030226,
+    "qRange": 1.19716,
+    "qVol": 29907.022268,
+    "qVolVsPeak": 0.016928,
+    "baseHigh": 0.011716,
+    "baseLow": 0.010689,
+    "ageDays": 78.666667,
+    "volRise": 0.555816,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-18 12:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 29.3308,
+    "devPct": null,
+    "holders": 17166,
+    "honeypot": false,
+    "gtScore": 78.53968253968254,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T10:37:31Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://deltaliquidity.app",
+     "https://deltaliquidity.app/"
+    ],
+    "keywords": [],
+    "categories": [],
+    "description": "",
+    "twitter": "deltaliquidity",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "in",
+   "plan": {
+    "entry": "Monitor only: fails the real-utility check (no product description found). Only if utility is confirmed by hand: Wait. Buy only on a 4h close above 0.0117158 (top of the base) with volume >=1.5x the base average; skip it if it is already more than 15% above (0.0134731).",
+    "entryTrigger": 0.0117157647783073,
+    "chaseLimit": 0.013473129495053394,
+    "size": "1.0% of portfolio (risks 0.5% at the walk-away; capped at 1% because the signal is weak/unproven); and never more than $8,735 (1% of pool liquidity)",
+    "sizePct": 1.0,
+    "maxUsdByLiquidity": 8735,
+    "sells": [
+     "Sell 1/3 at 0.0234315 (2x from entry)",
+     "Sell 1/3 at 0.0302258 (prior peak close)",
+     "Trail the last 1/3: exit on a 4h close 35% below the highest close since entry"
+    ],
+    "sellLevels": [
+     0.0234315295566146,
+     0.0302257522692596
+    ],
+    "walkAway": [
+     "4h close below 0.010689: exit all (the base low)",
+     "No +30% within 7 days of entry: exit (time stop)",
+     "Pool liquidity drops 40%+ from entry, top-10 holders rise above 50%, or a honeypot/tax flag appears: exit"
+    ],
+    "walkAwayLevel": 0.0106890259649723,
+    "riskToWalkAwayPct": 8.8,
+    "backtestNote": "Replay on Robinhood Chain: 16 of 55 past triggers reached 2x before -30%; median best in 7 days 1.78x.",
+    "monitorOnly": true
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0xd64fbda67e1015df43fa5e49f02ca844729e5f94",
+   "strength": "weak"
+  },
+  {
+   "token": "0x42afa2124ca5a2b83898e46b2da9a190995b1e18",
+   "symbol": "SCHIFFY",
+   "name": "SCHIFFY",
+   "named": null,
+   "pool": "0xc749412e31087a6e6f9210af575bc9100159fbc9f45da3ca8b26b31f3bf5777e",
+   "state": "Watch",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": false,
+    "baseIntact": true
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-18 12:00 UTC: pullback 67% from peak close (want 45-70%, best 50-60%)",
+    "price is inside the base: waiting for the volume trigger",
+    "quiet stretch: closes in a 1.35x range (want <=2.1x), volume 4% of its busiest 2 days (want <=50%)",
+    "last-12h volume 1.0x the base average",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.00364417148204248,
+   "priceAt": 1792324800000,
+   "liqUsd": 498001.3679,
+   "fdvUsd": 3584394.48493606,
+   "vol24Usd": 100544.244591645,
+   "ageDays": 49.8,
+   "m": {
+    "j": 299,
+    "dd": 0.67125,
+    "peakClose": 0.011085,
+    "qRange": 1.349392,
+    "qVol": 21236.915215,
+    "qVolVsPeak": 0.037084,
+    "baseHigh": 0.003825,
+    "baseLow": 0.003004,
+    "ageDays": 49.833333,
+    "volRise": 1.024638,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-18 12:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 22.957,
+    "devPct": null,
+    "holders": 4722,
+    "honeypot": false,
+    "gtScore": 69.01587301587301,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T10:50:59Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://schiffy.gold",
+     "https://t.co/8zv22DgJl8"
+    ],
+    "keywords": [],
+    "categories": [
+     "Stock Paired Tokens",
+     "Meme"
+    ],
+    "description": "",
+    "twitter": "schiffygld",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "in",
+   "plan": {
+    "entry": "Monitor only: fails the real-utility check (no product description found). Only if utility is confirmed by hand: Wait. Buy only on a 4h close above 0.00382542 (top of the base) with volume >=1.5x the base average; skip it if it is already more than 15% above (0.00439923).",
+    "entryTrigger": 0.0038254190748176,
+    "chaseLimit": 0.00439923193604024,
+    "size": "1.0% of portfolio (risks 0.5% at the walk-away; capped at 1% because the signal is weak/unproven); and never more than $4,980 (1% of pool liquidity)",
+    "sizePct": 1.0,
+    "maxUsdByLiquidity": 4980,
+    "sells": [
+     "Sell 1/3 at 0.00765084 (2x from entry)",
+     "Sell 1/3 at 0.0110849 (prior peak close)",
+     "Trail the last 1/3: exit on a 4h close 35% below the highest close since entry"
+    ],
+    "sellLevels": [
+     0.0076508381496352,
+     0.0110849300230937
+    ],
+    "walkAway": [
+     "4h close below 0.0030043: exit all (the base low)",
+     "No +30% within 7 days of entry: exit (time stop)",
+     "Pool liquidity drops 40%+ from entry, top-10 holders rise above 50%, or a honeypot/tax flag appears: exit"
+    ],
+    "walkAwayLevel": 0.00300429877819258,
+    "riskToWalkAwayPct": 21.5,
+    "backtestNote": "Replay on Robinhood Chain: 16 of 55 past triggers reached 2x before -30%; median best in 7 days 1.78x.",
+    "monitorOnly": true
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0xc749412e31087a6e6f9210af575bc9100159fbc9f45da3ca8b26b31f3bf5777e",
+   "strength": "weak"
+  },
+  {
+   "token": "0x94641b97010608c3827fb058074889f19868ff33",
+   "symbol": "VRAX",
+   "name": "Commander Vrax",
+   "named": null,
+   "pool": "0x435ea42b2792a22de296bee4e8013f4fa102f0cc04983443ff79549f847db577",
+   "state": "Watch",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": false,
+    "baseIntact": true
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-18 08:00 UTC: pullback 51% from peak close (want 45-70%, best 50-60%)",
+    "price is inside the base: waiting for the volume trigger",
+    "quiet stretch: closes in a 1.47x range (want <=2.1x), volume 15% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.5x the base average",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.00547801017758926,
+   "priceAt": 1792324800000,
+   "liqUsd": 314806.4109,
+   "fdvUsd": 5477986.08771795,
+   "vol24Usd": 426045.641019122,
+   "ageDays": 18.7,
+   "m": {
+    "j": 111,
+    "dd": 0.510652,
+    "peakClose": 0.009047,
+    "qRange": 1.467431,
+    "qVol": 86700.923956,
+    "qVolVsPeak": 0.153756,
+    "baseHigh": 0.005702,
+    "baseLow": 0.004123,
+    "ageDays": 18.5,
+    "volRise": 0.468776,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-18 08:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 26.2108,
+    "devPct": 0.0,
+    "holders": 6885,
+    "honeypot": false,
+    "gtScore": 79.68253968253968,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T13:14:58Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://x.com/i/communities/1938037054174335045",
+     "https://x.com/i/communities/1955810517324378359"
+    ],
+    "keywords": [],
+    "categories": [],
+    "description": "",
+    "twitter": "Vraxrh",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "in",
+   "plan": {
+    "entry": "Monitor only: fails the real-utility check (no product description found). Only if utility is confirmed by hand: Wait. Buy only on a 4h close above 0.00570209 (top of the base) with volume >=1.5x the base average; skip it if it is already more than 15% above (0.00655741).",
+    "entryTrigger": 0.00570209294899056,
+    "chaseLimit": 0.006557406891339144,
+    "size": "1.0% of portfolio (risks 0.5% at the walk-away; capped at 1% because the signal is weak/unproven); and never more than $3,148 (1% of pool liquidity)",
+    "sizePct": 1.0,
+    "maxUsdByLiquidity": 3148,
+    "sells": [
+     "Sell 1/3 at 0.00904688 (prior peak close)",
+     "Sell 1/3 at 0.0114042 (2x from entry)",
+     "Trail the last 1/3: exit on a 4h close 35% below the highest close since entry"
+    ],
+    "sellLevels": [
+     0.00904688089502666,
+     0.01140418589798112
+    ],
+    "walkAway": [
+     "4h close below 0.00412342: exit all (the base low)",
+     "No +30% within 7 days of entry: exit (time stop)",
+     "Pool liquidity drops 40%+ from entry, top-10 holders rise above 50%, or a honeypot/tax flag appears: exit"
+    ],
+    "walkAwayLevel": 0.004123417805666,
+    "riskToWalkAwayPct": 27.7,
+    "backtestNote": "Replay on Robinhood Chain: 16 of 55 past triggers reached 2x before -30%; median best in 7 days 1.78x.",
+    "monitorOnly": true
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0x435ea42b2792a22de296bee4e8013f4fa102f0cc04983443ff79549f847db577",
+   "strength": "weak"
+  },
+  {
+   "token": "0xf0568863195770965a6d8abb0aa87f4314b80320",
+   "symbol": "SLIPPY",
+   "name": "SLIPPY",
+   "named": null,
+   "pool": "0x4e2d19ece3b24abc30ec935a3a5fadd69cc6b976983548a5e53d514b475850a4",
+   "state": "Watch",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": false,
+    "baseIntact": true
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-18 12:00 UTC: pullback 54% from peak close (want 45-70%, best 50-60%)",
+    "price is inside the base: waiting for the volume trigger",
+    "quiet stretch: closes in a 1.51x range (want <=2.1x), volume 3% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.5x the base average",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.00150565900985496,
+   "priceAt": 1792324800000,
+   "liqUsd": 174933.7122,
+   "fdvUsd": 1505657.09796893,
+   "vol24Usd": 32525.3780658748,
+   "ageDays": 94.0,
+   "m": {
+    "j": 564,
+    "dd": 0.540747,
+    "peakClose": 0.003278,
+    "qRange": 1.507338,
+    "qVol": 6351.469665,
+    "qVolVsPeak": 0.027646,
+    "baseHigh": 0.001732,
+    "baseLow": 0.001146,
+    "ageDays": 94.0,
+    "volRise": 0.544656,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-18 12:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 21.3412,
+    "devPct": null,
+    "holders": 4199,
+    "honeypot": false,
+    "gtScore": 62.920634920634924,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-17T14:11:03Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://www.slippy.club",
+     "https://www.slippy.club/"
+    ],
+    "keywords": [],
+    "categories": [],
+    "description": "",
+    "twitter": "Slippyclub",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "in",
+   "plan": {
+    "entry": "Monitor only: fails the real-utility check (no product description found). Only if utility is confirmed by hand: Wait. Buy only on a 4h close above 0.00173171 (top of the base) with volume >=1.5x the base average; skip it if it is already more than 15% above (0.00199147).",
+    "entryTrigger": 0.00173171335029791,
+    "chaseLimit": 0.0019914703528425962,
+    "size": "1.0% of portfolio (risks 0.5% at the walk-away; capped at 1% because the signal is weak/unproven); and never more than $1,749 (1% of pool liquidity)",
+    "sizePct": 1.0,
+    "maxUsdByLiquidity": 1749,
+    "sells": [
+     "Sell 1/3 at 0.0032785 (prior peak close)",
+     "Sell 1/3 at 0.00346343 (2x from entry)",
+     "Trail the last 1/3: exit on a 4h close 35% below the highest close since entry"
+    ],
+    "sellLevels": [
+     0.0032784955563984,
+     0.00346342670059582
+    ],
+    "walkAway": [
+     "4h close below 0.0012122: exit all (-30% from entry; the base low is deeper)",
+     "No +30% within 7 days of entry: exit (time stop)",
+     "Pool liquidity drops 40%+ from entry, top-10 holders rise above 50%, or a honeypot/tax flag appears: exit"
+    ],
+    "walkAwayLevel": 0.0012121993452085368,
+    "riskToWalkAwayPct": 30.0,
+    "backtestNote": "Replay on Robinhood Chain: 16 of 55 past triggers reached 2x before -30%; median best in 7 days 1.78x.",
+    "monitorOnly": true
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0x4e2d19ece3b24abc30ec935a3a5fadd69cc6b976983548a5e53d514b475850a4",
+   "strength": "weak"
+  },
+  {
+   "token": "0x9f4ba41f91a59a34e17ee8c9eb3a51363b11abd5",
+   "symbol": "GRIFT",
+   "name": "grift.world",
+   "named": null,
+   "pool": "0xd23635812197b00b0ea0fd0e36021740c7951fb34ff1ca79260052b47e9769bc",
+   "state": "Watch",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": false,
+    "baseIntact": true
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-16 16:00 UTC: pullback 49% from peak close (want 45-70%, best 50-60%)",
+    "price is inside the base: waiting for the volume trigger",
+    "quiet stretch: closes in a 1.91x range (want <=2.1x), volume 39% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.9x the base average",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.000655429281469412,
+   "priceAt": 1792324800000,
+   "liqUsd": 87322.3696,
+   "fdvUsd": 617341.47956195,
+   "vol24Usd": 61011.0012747837,
+   "ageDays": 31.0,
+   "m": {
+    "j": 175,
+    "dd": 0.488315,
+    "peakClose": 0.001134,
+    "qRange": 1.906158,
+    "qVol": 11972.846637,
+    "qVolVsPeak": 0.387064,
+    "baseHigh": 0.000839,
+    "baseLow": 0.000487,
+    "ageDays": 29.166667,
+    "volRise": 0.891654,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-16 16:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 38.4159,
+    "devPct": 0.0,
+    "holders": 728,
+    "honeypot": false,
+    "gtScore": 57.07936507936508,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T09:04:05Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://www.grift.world",
+     "https://www.grift.world/"
+    ],
+    "keywords": [
+     "game"
+    ],
+    "categories": [],
+    "description": "Open-world crime game. Chase money, trade the city, own what you earn. A dual-sink economy built into the world.",
+    "twitter": "Griftwrld",
+    "manual": "grift.world: game described in one line; product status unverified",
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "in",
+   "plan": {
+    "entry": "Monitor only: fails the real-utility check (grift.world: game described in one line; product status unverified). Only if utility is confirmed by hand: Wait. Buy only on a 4h close above 0.000838535 (top of the base) with volume >=1.5x the base average; skip it if it is already more than 15% above (0.000964316).",
+    "entryTrigger": 0.000838535423763248,
+    "chaseLimit": 0.0009643157373277351,
+    "size": "1.0% of portfolio (risks 0.5% at the walk-away; capped at 1% because the signal is weak/unproven); and never more than $873 (1% of pool liquidity)",
+    "sizePct": 1.0,
+    "maxUsdByLiquidity": 873,
+    "sells": [
+     "Sell 1/3 at 0.00113371 (prior peak close)",
+     "Sell 1/3 at 0.00167707 (2x from entry)",
+     "Trail the last 1/3: exit on a 4h close 35% below the highest close since entry"
+    ],
+    "sellLevels": [
+     0.00113371178541794,
+     0.001677070847526496
+    ],
+    "walkAway": [
+     "4h close below 0.000586975: exit all (-30% from entry; the base low is deeper)",
+     "No +30% within 7 days of entry: exit (time stop)",
+     "Pool liquidity drops 40%+ from entry, top-10 holders rise above 50%, or a honeypot/tax flag appears: exit"
+    ],
+    "walkAwayLevel": 0.0005869747966342735,
+    "riskToWalkAwayPct": 30.0,
+    "backtestNote": "Replay on Robinhood Chain: 16 of 55 past triggers reached 2x before -30%; median best in 7 days 1.78x.",
+    "monitorOnly": true
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0xd23635812197b00b0ea0fd0e36021740c7951fb34ff1ca79260052b47e9769bc",
+   "strength": "weak"
+  },
+  {
+   "token": "0xa62f748f8d16009cb19366da8d1160fb29de428f",
+   "symbol": "GOLD",
+   "name": "GOLD",
+   "named": null,
+   "pool": "0x759a3bf6f931becca073a4065cfbdfc1c23eecc96646697db5ba765f4b59a8d5",
+   "state": "Watch",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": false,
+    "baseIntact": true
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-16 08:00 UTC: pullback 52% from peak close (want 45-70%, best 50-60%)",
+    "price is inside the base: waiting for the volume trigger",
+    "quiet stretch: closes in a 1.78x range (want <=2.1x), volume 45% of its busiest 2 days (want <=50%)",
+    "last-12h volume 1.8x the base average",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.000464731451365615,
+   "priceAt": 1792324800000,
+   "liqUsd": 41443.9942,
+   "fdvUsd": 464713.5344,
+   "vol24Usd": 25769.0504809589,
+   "ageDays": 25.8,
+   "m": {
+    "j": 118,
+    "dd": 0.524975,
+    "peakClose": 0.001103,
+    "qRange": 1.779317,
+    "qVol": 1853.61438,
+    "qVolVsPeak": 0.450303,
+    "baseHigh": 0.000738,
+    "baseLow": 0.00045,
+    "ageDays": 23.666667,
+    "volRise": 1.770468,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-16 08:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 29.7491,
+    "devPct": 0.0,
+    "holders": 311,
+    "honeypot": false,
+    "gtScore": 42.6031746031746,
+    "gtVerified": false,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T02:53:33Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://www.enginesofcreation.gold/"
+    ],
+    "keywords": [],
+    "categories": [],
+    "description": "Before days, En\u2011Me\u2011Bala was.\nHe fashioned heaven and earth as a dream.\nMind fashioned life; life fashioned mind.\nThe cycle closes. The gate opens.",
+    "twitter": null,
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "in",
+   "plan": {
+    "entry": "Monitor only: fails the real-utility check (no product description found). Only if utility is confirmed by hand: Wait. Buy only on a 4h close above 0.000738211 (top of the base) with volume >=1.5x the base average; skip it if it is already more than 15% above (0.000848943).",
+    "entryTrigger": 0.000738211480374155,
+    "chaseLimit": 0.0008489432024302782,
+    "size": "1.0% of portfolio (risks 0.5% at the walk-away; capped at 1% because the signal is weak/unproven); and never more than $414 (1% of pool liquidity)",
+    "sizePct": 1.0,
+    "maxUsdByLiquidity": 414,
+    "sells": [
+     "Sell 1/3 at 0.00110325 (prior peak close)",
+     "Sell 1/3 at 0.00147642 (2x from entry)",
+     "Trail the last 1/3: exit on a 4h close 35% below the highest close since entry"
+    ],
+    "sellLevels": [
+     0.00110325270772353,
+     0.00147642296074831
+    ],
+    "walkAway": [
+     "4h close below 0.000516748: exit all (-30% from entry; the base low is deeper)",
+     "No +30% within 7 days of entry: exit (time stop)",
+     "Pool liquidity drops 40%+ from entry, top-10 holders rise above 50%, or a honeypot/tax flag appears: exit"
+    ],
+    "walkAwayLevel": 0.0005167480362619084,
+    "riskToWalkAwayPct": 30.0,
+    "backtestNote": "Replay on Robinhood Chain: 16 of 55 past triggers reached 2x before -30%; median best in 7 days 1.78x.",
+    "monitorOnly": true
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0x759a3bf6f931becca073a4065cfbdfc1c23eecc96646697db5ba765f4b59a8d5",
+   "strength": "weak"
+  },
+  {
+   "token": "0x000050e18ffa3f8f7ad170eb9cef160eb3ed1111",
+   "symbol": "TORCH",
+   "name": "Torch",
+   "named": null,
+   "pool": "0x1649550af1e3363b4c25236434530af7e6886b183e1f574a98fdd1d04d287a2d",
+   "state": "Extended",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": true,
+    "baseIntact": false
+   },
+   "passed": 5,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-15 08:00 UTC: pullback 49% from peak close (want 45-70%, best 50-60%)",
+    "price is now 2.3x the base high: it left the base (no qualifying volume trigger inside the chase limit), no entry; wait for a new base",
+    "quiet stretch: closes in a 1.60x range (want <=2.1x), volume 29% of its busiest 2 days (want <=50%)",
+    "last-12h volume 1.4x the base average",
+    "contract: clean",
+    "utility evidence: bot, bridge, launchpad, platform"
+   ],
+   "price": 0.0057957637669313,
+   "priceAt": 1792324800000,
+   "liqUsd": 916839.7337,
+   "fdvUsd": 5633798.45260404,
+   "vol24Usd": 555771.538155099,
+   "ageDays": 7.8,
+   "m": {
+    "j": 28,
+    "dd": 0.488055,
+    "peakClose": 0.003669,
+    "qRange": 1.598878,
+    "qVol": 61013.971383,
+    "qVolVsPeak": 0.28787,
+    "baseHigh": 0.002569,
+    "baseLow": 0.001728,
+    "ageDays": 4.666667,
+    "volRise": 1.422439,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-15 08:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 39.4585,
+    "devPct": null,
+    "holders": 1739,
+    "honeypot": false,
+    "gtScore": 77.14285714285715,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T13:21:26Z)"
+   },
+   "utility": {
+    "evidence": true,
+    "websites": [
+     "https://torchpad.fun"
+    ],
+    "keywords": [
+     "bot",
+     "bridge",
+     "launchpad",
+     "platform",
+     "swap",
+     "terminal",
+     "trading",
+     "wallet"
+    ],
+    "categories": [],
+    "description": "Torch is a multi chain trading and token launch platform built on Robinhood Chain. It combines a fair launch launchpad, a web trading terminal and a Telegram trading bot in one ecosystem, all running from a single non custodial wallet and a single balance. Users can launch tokens",
+    "twitter": "Torchpaddotfun",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "above",
+   "plan": {
+    "entry": "No entry: price is 2.3x the base high, above the 15% chase limit; chasing is outside the plan. Re-scan for a new base.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position"
+    ],
+    "walkAwayLevel": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0x1649550af1e3363b4c25236434530af7e6886b183e1f574a98fdd1d04d287a2d",
+   "strength": "weak"
+  },
+  {
+   "token": "0xedbf91223639800bcd5756815caf908df3b890be",
+   "symbol": "PRIORS",
+   "name": "Priors Agents",
+   "named": "PRIORS (reference pattern)",
+   "pool": "0xff7b3bd2db34d9ed8160e6dedf1d448777abaa1fa6fc8a31144930a1a656fd92",
+   "state": "Extended",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": true,
+    "baseIntact": false
+   },
+   "passed": 5,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-15 00:00 UTC: pullback 45% from peak close (want 45-70%, best 50-60%)",
+    "price is now 1.5x the base high: it left the base (no qualifying volume trigger inside the chase limit), no entry; wait for a new base",
+    "quiet stretch: closes in a 1.62x range (want <=2.1x), volume 16% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.4x the base average",
+    "contract: clean",
+    "utility evidence: agent, agents, ai, credit"
+   ],
+   "price": 0.0133631067037442,
+   "priceAt": 1792324800000,
+   "liqUsd": 764892.4612,
+   "fdvUsd": 13417217.0040869,
+   "vol24Usd": 119805.126536299,
+   "ageDays": 28.8,
+   "m": {
+    "j": 152,
+    "dd": 0.450669,
+    "peakClose": 0.012389,
+    "qRange": 1.616473,
+    "qVol": 21894.750817,
+    "qVolVsPeak": 0.155221,
+    "baseHigh": 0.008917,
+    "baseLow": 0.005869,
+    "ageDays": 25.333333,
+    "volRise": 0.380354,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-15 00:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 34.8432,
+    "devPct": 0.0,
+    "holders": 4093,
+    "honeypot": false,
+    "gtScore": 72.06349206349208,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T13:07:05Z)"
+   },
+   "utility": {
+    "evidence": true,
+    "websites": [
+     "https://priors.trade",
+     "https://priors.trade/"
+    ],
+    "keywords": [
+     "agent",
+     "agents",
+     "ai",
+     "credit",
+     "stablecoin"
+    ],
+    "categories": [
+     "Ai Agents"
+    ],
+    "description": "Priors is an on-chain credit pool and public credit record for AI agents on Robinhood Chain (chain ID 4663). It lends USDG, a dollar stablecoin, to AI agents registered under ERC-8004, the Ethereum standard for agent identities. A new agent gets a $5 first line from the Priors tr",
+    "twitter": "priors_trade",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "above",
+   "plan": {
+    "entry": "No entry: price is 1.5x the base high, above the 15% chase limit; chasing is outside the plan. Re-scan for a new base.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position"
+    ],
+    "walkAwayLevel": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0xff7b3bd2db34d9ed8160e6dedf1d448777abaa1fa6fc8a31144930a1a656fd92",
+   "strength": "weak"
+  },
+  {
+   "token": "0xaa5751ff3fb61e613993b2eb4eab1fce017081fc",
+   "symbol": "HYDX",
+   "name": "HyperDex",
+   "named": null,
+   "pool": "0x2f509c6e2675a1a7945902c64ba4aefaef32b2fbf34245f12078a1d0573db170",
+   "state": "Extended",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": true,
+    "baseIntact": false
+   },
+   "passed": 5,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-17 20:00 UTC: pullback 46% from peak close (want 45-70%, best 50-60%)",
+    "price is now 1.2x the base high: it left the base (no qualifying volume trigger inside the chase limit), no entry; wait for a new base",
+    "quiet stretch: closes in a 1.55x range (want <=2.1x), volume 6% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.7x the base average",
+    "contract: clean",
+    "utility evidence: app, lend, marketplace, platform"
+   ],
+   "price": 0.00239425262586114,
+   "priceAt": 1792324800000,
+   "liqUsd": 154938.9449,
+   "fdvUsd": 2351365.68976646,
+   "vol24Usd": 68297.0494962628,
+   "ageDays": 23.8,
+   "m": {
+    "j": 139,
+    "dd": 0.464366,
+    "peakClose": 0.003674,
+    "qRange": 1.553185,
+    "qVol": 13297.491447,
+    "qVolVsPeak": 0.059187,
+    "baseHigh": 0.00208,
+    "baseLow": 0.001568,
+    "ageDays": 23.166667,
+    "volRise": 0.702795,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-17 20:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 37.5343,
+    "devPct": 0.0,
+    "holders": 1971,
+    "honeypot": false,
+    "gtScore": 65.84126984126985,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T08:26:52Z)"
+   },
+   "utility": {
+    "evidence": true,
+    "websites": [
+     "https://hyperdex.app"
+    ],
+    "keywords": [
+     "app",
+     "lend",
+     "marketplace",
+     "platform",
+     "protocol",
+     "tokenized",
+     "trading"
+    ],
+    "categories": [],
+    "description": "HyperDex is a unified marketplace for tokenized assets and RWAs, live at hyperdex.app. Users can buy, sell, lend, borrow and discover tokenized stocks, ETFs, treasuries and other real-world assets across 50+ chains from one interface, without giving up custody. Trading is aggrega",
+    "twitter": "Hyperdex_app",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "above",
+   "plan": {
+    "entry": "No entry: price is 1.2x the base high, above the 15% chase limit; chasing is outside the plan. Re-scan for a new base.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position"
+    ],
+    "walkAwayLevel": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0x2f509c6e2675a1a7945902c64ba4aefaef32b2fbf34245f12078a1d0573db170",
+   "strength": "weak"
+  },
+  {
+   "token": "0xc60ba256b44334a0cd2c7242e98b88f031abb006",
+   "symbol": "V4",
+   "name": "Programmable",
+   "named": null,
+   "pool": "0x3df16f271060e4941c0386047def159f42e629dc0455db623c5b363eeacbcc1d",
+   "state": "Extended",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": false,
+    "baseIntact": false
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-17 08:00 UTC: pullback 46% from peak close (want 45-70%, best 50-60%)",
+    "price is now 1.3x the base high: it left the base (no qualifying volume trigger inside the chase limit), no entry; wait for a new base",
+    "quiet stretch: closes in a 1.30x range (want <=2.1x), volume 17% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.6x the base average",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.00537440914810916,
+   "priceAt": 1792324800000,
+   "liqUsd": 373474.7554,
+   "fdvUsd": 5028802.86179958,
+   "vol24Usd": 545190.149041832,
+   "ageDays": 44.5,
+   "m": {
+    "j": 260,
+    "dd": 0.461928,
+    "peakClose": 0.006741,
+    "qRange": 1.29708,
+    "qVol": 94034.43953,
+    "qVolVsPeak": 0.166392,
+    "baseHigh": 0.004239,
+    "baseLow": 0.002904,
+    "ageDays": 43.333333,
+    "volRise": 0.595833,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-17 08:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 28.8605,
+    "devPct": null,
+    "holders": 3669,
+    "honeypot": false,
+    "gtScore": 72.06349206349208,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T13:35:49Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://dune.com/programmablehq/analytics",
+     "https://programmable.market",
+     "https://programmable.market/"
+    ],
+    "keywords": [],
+    "categories": [],
+    "description": "",
+    "twitter": "ProgrammableHQ",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "above",
+   "plan": {
+    "entry": "No entry: price is 1.3x the base high, above the 15% chase limit; chasing is outside the plan. Re-scan for a new base.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position"
+    ],
+    "walkAwayLevel": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0x3df16f271060e4941c0386047def159f42e629dc0455db623c5b363eeacbcc1d",
+   "strength": "weak"
+  },
+  {
+   "token": "0x3ba500f1ababbcf0f0247d06d1c56fd7e6c4c09d",
+   "symbol": "WORM",
+   "name": "Agent Wormhole",
+   "named": null,
+   "pool": "0xf49ee5b66c4e7163026e5d25e6a1f93cff46dca4d3752f712d181d9392c1d567",
+   "state": "Broke base",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": true,
+    "baseIntact": false
+   },
+   "passed": 5,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-15 12:00 UTC: pullback 69% from peak close (want 45-70%, best 50-60%)",
+    "price is now under the base low 0.00169213: base broken, pattern void",
+    "quiet stretch: closes in a 1.30x range (want <=2.1x), volume 15% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.3x the base average",
+    "contract: clean",
+    "utility evidence: agent, agents, ai, payment"
+   ],
+   "price": 0.000892140378351836,
+   "priceAt": 1792324800000,
+   "liqUsd": 140495.2238,
+   "fdvUsd": 848977.997223162,
+   "vol24Usd": 157350.462616173,
+   "ageDays": 39.8,
+   "m": {
+    "j": 221,
+    "dd": 0.690712,
+    "peakClose": 0.007524,
+    "qRange": 1.300672,
+    "qVol": 39283.686981,
+    "qVolVsPeak": 0.15346,
+    "baseHigh": 0.002327,
+    "baseLow": 0.001692,
+    "ageDays": 36.833333,
+    "volRise": 0.308029,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-15 12:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 33.0851,
+    "devPct": 0.0,
+    "holders": 9051,
+    "honeypot": false,
+    "gtScore": 72.82539682539682,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T12:26:50Z)"
+   },
+   "utility": {
+    "evidence": true,
+    "websites": [
+     "https://www.agentwormhole.com/"
+    ],
+    "keywords": [
+     "agent",
+     "agents",
+     "ai",
+     "payment",
+     "tool"
+    ],
+    "categories": [
+     "Ai Agents"
+    ],
+    "description": "Agent Wormhole is a security layer for AI agents that transact with money. The project addresses a specific attack surface: AI agents read text (token metadata, tool descriptions, web pages, messages from other agents) and act on it, which allows hidden instructions in that text ",
+    "twitter": "agentwormhole",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "below",
+   "plan": {
+    "entry": "No entry: price fell below the base low 0.00169213, so the setup failed.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position"
+    ],
+    "walkAwayLevel": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0xf49ee5b66c4e7163026e5d25e6a1f93cff46dca4d3752f712d181d9392c1d567",
+   "strength": "weak"
+  },
+  {
+   "token": "0x96f455a90a80dcf0c2df6703ea4ba3bedf286e43",
+   "symbol": "VERDEX",
+   "name": "Verdex",
+   "named": null,
+   "pool": "0xfd3020c84a9ab445186b3c7f4b30afdf7cb6d0ab2c720972511f8607d6e646d3",
+   "state": "Broke base",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": true,
+    "baseIntact": false
+   },
+   "passed": 5,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-16 08:00 UTC: pullback 51% from peak close (want 45-70%, best 50-60%)",
+    "price is now under the base low 0.000119038: base broken, pattern void",
+    "quiet stretch: closes in a 1.44x range (want <=2.1x), volume 17% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.2x the base average",
+    "contract: clean",
+    "utility evidence: app, lending, tokenized, tools"
+   ],
+   "price": 6.56776080309892e-05,
+   "priceAt": 1792324800000,
+   "liqUsd": 37762.835,
+   "fdvUsd": 65198.7973116006,
+   "vol24Usd": 18350.2972995538,
+   "ageDays": 20.0,
+   "m": {
+    "j": 107,
+    "dd": 0.506806,
+    "peakClose": 0.000272,
+    "qRange": 1.444713,
+    "qVol": 8084.781782,
+    "qVolVsPeak": 0.170473,
+    "baseHigh": 0.000181,
+    "baseLow": 0.000119,
+    "ageDays": 17.833333,
+    "volRise": 0.191078,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-16 08:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 46.4793,
+    "devPct": 0.0,
+    "holders": 523,
+    "honeypot": false,
+    "gtScore": 48.952380952380956,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-17T21:36:07Z)"
+   },
+   "utility": {
+    "evidence": true,
+    "websites": [
+     "https://useverdex.xyz",
+     "https://useverdex.xyz/",
+     "https://useverdex.xyz/verdex"
+    ],
+    "keywords": [
+     "app",
+     "lending",
+     "tokenized",
+     "tools",
+     "wallet"
+    ],
+    "categories": [],
+    "description": "Verdex (useverdex.xyz) is a non-custodial web app for buying, selling and managing tokenized real-world assets: stocks, ETFs, commodities and treasuries issued onchain by 12 issuers such as Robinhood, Ondo, xStocks and Coinbase, across 70 chains. Users connect their own wallet an",
+    "twitter": "useverdex",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "below",
+   "plan": {
+    "entry": "No entry: price fell below the base low 0.000119038, so the setup failed.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position"
+    ],
+    "walkAwayLevel": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0xfd3020c84a9ab445186b3c7f4b30afdf7cb6d0ab2c720972511f8607d6e646d3",
+   "strength": "weak"
+  },
+  {
+   "token": "0x2e8c31162b855a2ffa90f6f8634643ad6f111e18",
+   "symbol": "AI",
+   "name": "Artificial Inu",
+   "named": null,
+   "pool": "0xcbdfea90430a30ee4469c9902e120a77e7c7e4711d5643671c1d1957f2f1ce27",
+   "state": "Broke base",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": false,
+    "baseIntact": false
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-16 08:00 UTC: pullback 69% from peak close (want 45-70%, best 50-60%)",
+    "price is now under the base low 0.0838775: base broken, pattern void",
+    "quiet stretch: closes in a 1.30x range (want <=2.1x), volume 7% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.4x the base average",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.0760040420706491,
+   "priceAt": 1792324800000,
+   "liqUsd": 3330393.2997,
+   "fdvUsd": 75986372.7249511,
+   "vol24Usd": 288771.55995936,
+   "ageDays": 90.2,
+   "m": {
+    "j": 528,
+    "dd": 0.685187,
+    "peakClose": 0.354579,
+    "qRange": 1.29623,
+    "qVol": 98096.849033,
+    "qVolVsPeak": 0.068565,
+    "baseHigh": 0.111626,
+    "baseLow": 0.083877,
+    "ageDays": 88.0,
+    "volRise": 0.436292,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-16 08:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 20.0325,
+    "devPct": null,
+    "holders": 57721,
+    "honeypot": false,
+    "gtScore": 93.65079365079364,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T13:59:21Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://artificialinu.com",
+     "https://artificialinu.com/"
+    ],
+    "keywords": [
+     "ai",
+     "stablecoin",
+     "tokenized",
+     "trading",
+     "vault"
+    ],
+    "categories": [
+     "Inu",
+     "Stock Paired Tokens"
+    ],
+    "description": "Artificial Inu (AI) is an ERC-20 community token launched through LONG on Robinhood Chain. Its principal market pairs AI directly with Robinhood's tokenized NVDA Stock Token through an onchain liquidity pool rather than a conventional stablecoin quote. Creator-fee routing from tr",
+    "twitter": "artificiallyinu",
+    "manual": "Artificial Inu: community token paired with tokenized NVDA; keywords describe the pair, not a product",
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "below",
+   "plan": {
+    "entry": "No entry: price fell below the base low 0.0838775, so the setup failed.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position"
+    ],
+    "walkAwayLevel": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0xcbdfea90430a30ee4469c9902e120a77e7c7e4711d5643671c1d1957f2f1ce27",
+   "strength": "weak"
+  },
+  {
+   "token": "0x98096d17e191b3da1d5f99a6d7b3584351b11e18",
+   "symbol": "BONER",
+   "name": "Boner Coin",
+   "named": null,
+   "pool": "0x9c89b04303dfa76f3f6fb02c2b77be0e8a00ab8fa00d507119acd54ab3e8640d",
+   "state": "Broke base",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": false,
+    "baseIntact": false
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-14 16:00 UTC: pullback 69% from peak close (want 45-70%, best 50-60%)",
+    "price is now under the base low 0.0192994: base broken, pattern void",
+    "quiet stretch: closes in a 1.44x range (want <=2.1x), volume 10% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.4x the base average",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.0128444741651134,
+   "priceAt": 1792324800000,
+   "liqUsd": 1491553.9432,
+   "fdvUsd": 12843704.621304,
+   "vol24Usd": 379645.013631171,
+   "ageDays": 58.7,
+   "m": {
+    "j": 329,
+    "dd": 0.686003,
+    "peakClose": 0.072924,
+    "qRange": 1.439525,
+    "qVol": 161473.586526,
+    "qVolVsPeak": 0.101102,
+    "baseHigh": 0.027898,
+    "baseLow": 0.019299,
+    "ageDays": 54.833333,
+    "volRise": 0.409075,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-14 16:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 22.9552,
+    "devPct": null,
+    "holders": 21166,
+    "honeypot": false,
+    "gtScore": 89.84126984126985,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T13:41:56Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://boneronlong.xyz",
+     "https://boneronlong.xyz/"
+    ],
+    "keywords": [],
+    "categories": [
+     "Stock Paired Tokens",
+     "Meme"
+    ],
+    "description": "",
+    "twitter": "bonercoinlong",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "below",
+   "plan": {
+    "entry": "No entry: price fell below the base low 0.0192994, so the setup failed.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position"
+    ],
+    "walkAwayLevel": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0x9c89b04303dfa76f3f6fb02c2b77be0e8a00ab8fa00d507119acd54ab3e8640d",
+   "strength": "weak"
+  },
+  {
+   "token": "0xdee52f2ab639b6942b0d0f0565400b93b7a0fbe5",
+   "symbol": "HARMONIC",
+   "name": "Harmonic Agent",
+   "named": null,
+   "pool": "0x77ea11bbfb8f1259c702cb0ebc2105b7c007db89cf30c2f1a8776886a4467c07",
+   "state": "Broke base",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": false,
+    "baseIntact": false
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-14 20:00 UTC: pullback 69% from peak close (want 45-70%, best 50-60%)",
+    "price is now under the base low 0.00236394: base broken, pattern void",
+    "quiet stretch: closes in a 1.31x range (want <=2.1x), volume 10% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.3x the base average",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.00143748776714866,
+   "priceAt": 1792324800000,
+   "liqUsd": 146045.1894,
+   "fdvUsd": 1297190.73183182,
+   "vol24Usd": 116933.870469104,
+   "ageDays": 50.3,
+   "m": {
+    "j": 280,
+    "dd": 0.694942,
+    "peakClose": 0.008106,
+    "qRange": 1.314251,
+    "qVol": 18844.152927,
+    "qVolVsPeak": 0.095962,
+    "baseHigh": 0.002948,
+    "baseLow": 0.002364,
+    "ageDays": 46.666667,
+    "volRise": 0.326937,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-14 20:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 38.9214,
+    "devPct": 0.0,
+    "holders": 2890,
+    "honeypot": false,
+    "gtScore": 69.01587301587301,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T04:01:22Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://harmonicagent.solutions",
+     "https://harmonicagent.solutions/"
+    ],
+    "keywords": [
+     "agent"
+    ],
+    "categories": [
+     "Ai Agents"
+    ],
+    "description": "An autonomous harmonic agent that proves its mathematics before it speaks. It claims its own creator fees, buys its own coin, and burns every token it buys.",
+    "twitter": "HarmonicAgents",
+    "manual": "Harmonic Agent: self-buyback/burn agent token; no product described",
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "below",
+   "plan": {
+    "entry": "No entry: price fell below the base low 0.00236394, so the setup failed.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position"
+    ],
+    "walkAwayLevel": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0x77ea11bbfb8f1259c702cb0ebc2105b7c007db89cf30c2f1a8776886a4467c07",
+   "strength": "weak"
+  },
+  {
+   "token": "0xe1838f0dff03a9327dea87b2a2285850791297ec",
+   "symbol": "SURPLUS",
+   "name": "SurplusLLM",
+   "named": null,
+   "pool": "0xf179149396b6c6bb79694ba0935ce0862ddd0bb844283f566993f1e6303c33d4",
+   "state": "Broke base",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": false,
+    "utility": true,
+    "baseIntact": false
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-17 08:00 UTC: pullback 67% from peak close (want 45-70%, best 50-60%)",
+    "price is now under the base low 0.00030472: base broken, pattern void",
+    "quiet stretch: closes in a 1.91x range (want <=2.1x), volume 15% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.9x the base average",
+    "contract: top-10 holders own 55.6%",
+    "utility evidence: ai, api, app, credit"
+   ],
+   "price": 0.000253778263933378,
+   "priceAt": 1792324800000,
+   "liqUsd": 68180.7067,
+   "fdvUsd": 235001.692678286,
+   "vol24Usd": 70416.1034025311,
+   "ageDays": 13.8,
+   "m": {
+    "j": 76,
+    "dd": 0.670114,
+    "peakClose": 0.001088,
+    "qRange": 1.913676,
+    "qVol": 9738.678407,
+    "qVolVsPeak": 0.150423,
+    "baseHigh": 0.000527,
+    "baseLow": 0.000305,
+    "ageDays": 12.666667,
+    "volRise": 0.936147,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-17 08:00"
+   },
+   "contract": {
+    "clean": false,
+    "flags": [
+     "top-10 holders own 55.6%"
+    ],
+    "unknown": false,
+    "top10": 55.6328,
+    "devPct": 0.0,
+    "holders": 691,
+    "honeypot": false,
+    "gtScore": 53.90476190476191,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T07:15:54Z)"
+   },
+   "utility": {
+    "evidence": true,
+    "websites": [
+     "https://surplusllm.com",
+     "https://surplusllm.com/"
+    ],
+    "keywords": [
+     "ai",
+     "api",
+     "app",
+     "credit",
+     "marketplace",
+     "sdk"
+    ],
+    "categories": [],
+    "description": "Surplus is a marketplace for AI model inference built on Robinhood Chain. It provides an API for Claude models, including Opus, Sonnet and Fable, that is compatible with the standard Anthropic SDK, so existing applications can switch to it by changing the base URL and API key. Us",
+    "twitter": "SurplusRH",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "below",
+   "plan": {
+    "entry": "No entry: price fell below the base low 0.00030472, so the setup failed.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position"
+    ],
+    "walkAwayLevel": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0xf179149396b6c6bb79694ba0935ce0862ddd0bb844283f566993f1e6303c33d4",
+   "strength": "weak"
+  },
+  {
+   "token": "0xc9675fe679c7d4e1b94416f66d61c96127eb964a",
+   "symbol": "GIGATENEV",
+   "name": "Giga Tenev",
+   "named": null,
+   "pool": "0xe96c99be1ffcc204714ebce32870ab12b8b362308fa50b9352c03b2486a5d448",
+   "state": "Broke base",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": true,
+    "utility": false,
+    "baseIntact": false
+   },
+   "passed": 4,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-17 04:00 UTC: pullback 70% from peak close (want 45-70%, best 50-60%)",
+    "price is now under the base low 0.000484032: base broken, pattern void",
+    "quiet stretch: closes in a 1.22x range (want <=2.1x), volume 41% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.6x the base average",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.000424933165808948,
+   "priceAt": 1792324800000,
+   "liqUsd": 66758.7545,
+   "fdvUsd": 426218.4193,
+   "vol24Usd": 659124.267809186,
+   "ageDays": 8.8,
+   "m": {
+    "j": 45,
+    "dd": 0.699373,
+    "peakClose": 0.001702,
+    "qRange": 1.222163,
+    "qVol": 132954.169218,
+    "qVolVsPeak": 0.405432,
+    "baseHigh": 0.000625,
+    "baseLow": 0.000484,
+    "ageDays": 7.5,
+    "volRise": 0.556943,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-17 04:00"
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 13.9405,
+    "devPct": null,
+    "holders": 8160,
+    "honeypot": false,
+    "gtScore": 72.38095238095238,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T13:10:57Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://gigatenev.com"
+    ],
+    "keywords": [],
+    "categories": [
+     "Meme"
+    ],
+    "description": "Giga Tenev is a black and white GigaChad meme coin on the Robinhood Chain. He is the mascot the chain deserves: slicked hair, shoulders squared, and a jaw that enters the room three seconds before the rest of him. Chin permanently up, eyes fixed slightly above whatever you are wo",
+    "twitter": "GigaTenevRH",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "below",
+   "plan": {
+    "entry": "No entry: price fell below the base low 0.000484032, so the setup failed.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position"
+    ],
+    "walkAwayLevel": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0xe96c99be1ffcc204714ebce32870ab12b8b362308fa50b9352c03b2486a5d448",
+   "strength": "weak"
+  },
+  {
+   "token": "0x39dbed3a2bd333467115de45665cc57f813c4571",
+   "symbol": "PONS",
+   "name": "Pons",
+   "named": null,
+   "pool": "0x10cc6bd38112cac182db90b6a71d8bb5939526ba",
+   "state": "Broke base",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": false,
+    "utility": false,
+    "baseIntact": false
+   },
+   "passed": 3,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-18 08:00 UTC: pullback 70% from peak close (want 45-70%, best 50-60%)",
+    "price is now under the base low 0.274306: base broken, pattern void",
+    "quiet stretch: closes in a 1.18x range (want <=2.1x), volume 3% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.8x the base average",
+    "contract: top-10 holders own 80.4%",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.271171840882217,
+   "priceAt": 1792324800000,
+   "liqUsd": 2763789.6578,
+   "fdvUsd": 182874422.8952,
+   "vol24Usd": 491678.303773861,
+   "ageDays": 96.7,
+   "m": {
+    "j": 579,
+    "dd": 0.696811,
+    "peakClose": 0.929661,
+    "qRange": 1.183981,
+    "qVol": 70307.453459,
+    "qVolVsPeak": 0.027595,
+    "baseHigh": 0.297915,
+    "baseLow": 0.274306,
+    "ageDays": 96.5,
+    "volRise": 0.766557,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-18 08:00"
+   },
+   "contract": {
+    "clean": false,
+    "flags": [
+     "top-10 holders own 80.4%"
+    ],
+    "unknown": false,
+    "top10": 80.3682,
+    "devPct": null,
+    "holders": 103613,
+    "honeypot": false,
+    "gtScore": 85.39682539682539,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T13:28:09Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://ponsfamily.com",
+     "https://ponsfamily.com/launchpad"
+    ],
+    "keywords": [],
+    "categories": [
+     "Pons Launchpad"
+    ],
+    "description": "",
+    "twitter": "ponsdotfamily",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "below",
+   "plan": {
+    "entry": "No entry: price fell below the base low 0.274306, so the setup failed.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position"
+    ],
+    "walkAwayLevel": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0x10cc6bd38112cac182db90b6a71d8bb5939526ba",
+   "strength": "weak"
+  },
+  {
+   "token": "0xaa07a0e9209e16ac99708c3ec70159c6ef3128a3",
+   "symbol": "ORBIO",
+   "name": "Orbio.so",
+   "named": null,
+   "pool": "0xea9f200e13055b82f175f44f592c4c13dd8c9d9320a66487d3c5cd90d68550ef",
+   "state": "Broke base",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": false,
+    "utility": false,
+    "baseIntact": false
+   },
+   "passed": 3,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-14 08:00 UTC: pullback 66% from peak close (want 45-70%, best 50-60%)",
+    "price is now under the base low 0.0296657: base broken, pattern void",
+    "quiet stretch: closes in a 1.27x range (want <=2.1x), volume 18% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.2x the base average",
+    "contract: top-10 holders own 57.3%",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.0213686867035961,
+   "priceAt": 1792324800000,
+   "liqUsd": 504802.2452,
+   "fdvUsd": 20432350.0447695,
+   "vol24Usd": 148210.591267808,
+   "ageDays": 28.3,
+   "m": {
+    "j": 145,
+    "dd": 0.65549,
+    "peakClose": 0.121137,
+    "qRange": 1.270983,
+    "qVol": 168726.700892,
+    "qVolVsPeak": 0.177599,
+    "baseHigh": 0.042431,
+    "baseLow": 0.029666,
+    "ageDays": 24.166667,
+    "volRise": 0.155777,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-14 08:00"
+   },
+   "contract": {
+    "clean": false,
+    "flags": [
+     "top-10 holders own 57.3%"
+    ],
+    "unknown": false,
+    "top10": 57.2767,
+    "devPct": 0.0,
+    "holders": 14939,
+    "honeypot": false,
+    "gtScore": 80.31746031746032,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T13:40:30Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://orbio.so/",
+     "https://www.orbio.so"
+    ],
+    "keywords": [
+     "trading"
+    ],
+    "categories": [],
+    "description": "Hold $ORBIO, earn OpenRouter credits. Half of trading fees are converted into inference credits and paid to holders, in dollars.",
+    "twitter": "orbiodotso",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "below",
+   "plan": {
+    "entry": "No entry: price fell below the base low 0.0296657, so the setup failed.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position"
+    ],
+    "walkAwayLevel": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0xea9f200e13055b82f175f44f592c4c13dd8c9d9320a66487d3c5cd90d68550ef",
+   "strength": "weak"
+  },
+  {
+   "token": "0x4db7374e966097be94c6680d49156d580f097bbf",
+   "symbol": "TIBBIR",
+   "name": "Ribbita",
+   "named": null,
+   "pool": "0xbf7dc545ff6d3b0e23f6264f7c23d4fa16a0f3bb1b26eda350593bd63a94da97",
+   "state": "Fails",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": false,
+    "utility": false,
+    "baseIntact": true
+   },
+   "passed": 3,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-16 08:00 UTC: pullback 50% from peak close (want 45-70%, best 50-60%)",
+    "price is inside the base: waiting for the volume trigger",
+    "quiet stretch: closes in a 1.16x range (want <=2.1x), volume 31% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.2x the base average",
+    "contract: top-10 holders own 62.6%",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.223799830018438,
+   "priceAt": 1792324800000,
+   "liqUsd": 837228.6898,
+   "fdvUsd": 223778510.238445,
+   "vol24Usd": 123824.438026594,
+   "ageDays": 18.8,
+   "m": {
+    "j": 100,
+    "dd": 0.49635,
+    "peakClose": 0.406693,
+    "qRange": 1.159358,
+    "qVol": 67417.648287,
+    "qVolVsPeak": 0.309069,
+    "baseHigh": 0.204831,
+    "baseLow": 0.168118,
+    "ageDays": 16.666667,
+    "volRise": 0.188159,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-16 08:00"
+   },
+   "contract": {
+    "clean": false,
+    "flags": [
+     "top-10 holders own 62.6%"
+    ],
+    "unknown": false,
+    "top10": 62.5508,
+    "devPct": null,
+    "holders": 3606,
+    "honeypot": false,
+    "gtScore": 70.92063492063491,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T12:09:26Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://app.virtuals.io/virtuals/18820"
+    ],
+    "keywords": [
+     "ai"
+    ],
+    "categories": [],
+    "description": "Tibbir is a stealth-launched cryptocurrency project that aims to enhance efficiency and security within the crypto and artificial intelligence (AI) sectors. The project is closely associated with Ribbit Capital, a venture capital firm known for its investments in innovative finan",
+    "twitter": "ribbita2012",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "in",
+   "plan": null,
+   "dexscreener": "https://dexscreener.com/robinhood/0xbf7dc545ff6d3b0e23f6264f7c23d4fa16a0f3bb1b26eda350593bd63a94da97",
+   "strength": "weak"
+  },
+  {
+   "token": "0x5d102d1e69e77591d486aa4f663b3645151bbdf6",
+   "symbol": "VOLT",
+   "name": "Volt Inu",
+   "named": null,
+   "pool": "0x02d356acd227e12a9573f0499f133c6e3b0af1c9",
+   "state": "Fails",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": false,
+    "utility": false,
+    "baseIntact": true
+   },
+   "passed": 3,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-18 12:00 UTC: pullback 56% from peak close (want 45-70%, best 50-60%)",
+    "price is inside the base: waiting for the volume trigger",
+    "quiet stretch: closes in a 1.38x range (want <=2.1x), volume 10% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.3x the base average",
+    "contract: unknown (GeckoTerminal has no holder/honeypot data)",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.0124279718653777,
+   "priceAt": 1792324800000,
+   "liqUsd": 339025.2289,
+   "fdvUsd": 3716910.07686738,
+   "vol24Usd": 61561.6754957184,
+   "ageDays": 30.5,
+   "m": {
+    "j": 183,
+    "dd": 0.560127,
+    "peakClose": 0.028254,
+    "qRange": 1.375012,
+    "qVol": 9413.643746,
+    "qVolVsPeak": 0.0979,
+    "baseHigh": 0.015145,
+    "baseLow": 0.009858,
+    "ageDays": 30.5,
+    "volRise": 0.313123,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-18 12:00"
+   },
+   "contract": {
+    "clean": false,
+    "flags": [],
+    "unknown": true,
+    "top10": null,
+    "devPct": null,
+    "holders": 2260,
+    "honeypot": false,
+    "gtScore": 62.7936507936508,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T03:12:10Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://voltinu.meme",
+     "https://voltinu.meme/",
+     "https://youtu.be/MOFtDW7SqPs?is=eTr_Z99imu9rm6My"
+    ],
+    "keywords": [
+     "tools"
+    ],
+    "categories": [
+     "Inu"
+    ],
+    "description": "2021 The brand is born. An Inu with a lightning bolt, a fair launch mentality, and a community that decided this was not a one-week ticker. 2022 $240 million ATH. Listings. Expansion. Utility wave. Community leaders on the Nasdaq MarketSite. The Army proved a meme could print a r",
+    "twitter": "voltinu_rh",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "in",
+   "plan": null,
+   "dexscreener": "https://dexscreener.com/robinhood/0x02d356acd227e12a9573f0499f133c6e3b0af1c9",
+   "strength": "weak"
+  },
+  {
+   "token": "0xa5c8cc9fbe4b41b383edb70348d28dd287c63e18",
+   "symbol": "LM",
+   "name": "LootMarch",
+   "named": null,
+   "pool": "0xddc30709002e268d820bda2b6f8b59675e7e9b2f42c3bc5c80caa123f77336f3",
+   "state": "Fails",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": false,
+    "utility": false,
+    "baseIntact": true
+   },
+   "passed": 3,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-18 08:00 UTC: pullback 70% from peak close (want 45-70%, best 50-60%)",
+    "price is inside the base: waiting for the volume trigger",
+    "quiet stretch: closes in a 1.32x range (want <=2.1x), volume 7% of its busiest 2 days (want <=50%)",
+    "last-12h volume 0.2x the base average",
+    "contract: top-10 holders own 79.8%",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 4.58185970200578e-05,
+   "priceAt": 1792324800000,
+   "liqUsd": 22466.0292,
+   "fdvUsd": 44950.0610397538,
+   "vol24Usd": 3780.7495789985,
+   "ageDays": 13.8,
+   "m": {
+    "j": 82,
+    "dd": 0.699738,
+    "peakClose": 0.000156,
+    "qRange": 1.318275,
+    "qVol": 1016.175749,
+    "qVolVsPeak": 0.073373,
+    "baseHigh": 4.7e-05,
+    "baseLow": 4.1e-05,
+    "ageDays": 13.666667,
+    "volRise": 0.191315,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-18 08:00"
+   },
+   "contract": {
+    "clean": false,
+    "flags": [
+     "top-10 holders own 79.8%"
+    ],
+    "unknown": false,
+    "top10": 79.7529,
+    "devPct": 1.88,
+    "holders": 3881,
+    "honeypot": false,
+    "gtScore": 43.49206349206349,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T07:14:11Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://lootmarch.xyz",
+     "https://lootmarch.xyz/docs",
+     "https://lootmarch.xyz/play"
+    ],
+    "keywords": [],
+    "categories": [],
+    "description": "The token of LootMarch, a free-to-play idle dungeon crawler.",
+    "twitter": "PlayLootMarch",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "in",
+   "plan": null,
+   "dexscreener": "https://dexscreener.com/robinhood/0xddc30709002e268d820bda2b6f8b59675e7e9b2f42c3bc5c80caa123f77336f3",
+   "strength": "weak"
+  },
+  {
+   "token": "0x6a08b947170a5d44d3e1358df49bdbca8ba92527",
+   "symbol": "INCOME",
+   "name": "Universal High Income",
+   "named": null,
+   "pool": "0x9b8df8ce919cc80f38088172d5f9597679325d0dbb5d6ad5258858efae465607",
+   "state": "Fails",
+   "checks": {
+    "pullback": true,
+    "quiet": true,
+    "volRising": false,
+    "age": true,
+    "cleanContract": false,
+    "utility": false,
+    "baseIntact": true
+   },
+   "passed": 3,
+   "of": 7,
+   "reasons": [
+    "base at 2026-10-18 12:00 UTC: pullback 47% from peak close (want 45-70%, best 50-60%)",
+    "price is inside the base: waiting for the volume trigger",
+    "quiet stretch: closes in a 1.03x range (want <=2.1x), volume 6% of its busiest 2 days (want <=50%)",
+    "last-12h volume 1.1x the base average",
+    "contract: top-10 holders own 62.6%",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 6.28844387503124e-05,
+   "priceAt": 1792324800000,
+   "liqUsd": 20669.5551,
+   "fdvUsd": 31442.219375,
+   "vol24Usd": 9180.5668879322,
+   "ageDays": 17.0,
+   "m": {
+    "j": 102,
+    "dd": 0.472938,
+    "peakClose": 0.000119,
+    "qRange": 1.025748,
+    "qVol": 1565.866255,
+    "qVolVsPeak": 0.060722,
+    "baseHigh": 6.4e-05,
+    "baseLow": 6.2e-05,
+    "ageDays": 17.0,
+    "volRise": 1.144162,
+    "triggerNow": false,
+    "setupBarUtc": "2026-10-18 12:00"
+   },
+   "contract": {
+    "clean": false,
+    "flags": [
+     "top-10 holders own 62.6%"
+    ],
+    "unknown": false,
+    "top10": 62.6073,
+    "devPct": null,
+    "holders": 1931,
+    "honeypot": false,
+    "gtScore": 38.60317460317461,
+    "gtVerified": false,
+    "source": "GeckoTerminal token info (holders updated 2026-10-17T13:47:11Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://income.one",
+     "https://income.one/docs",
+     "https://income.one/payouts"
+    ],
+    "keywords": [],
+    "categories": [],
+    "description": "",
+    "twitter": null,
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": "in",
+   "plan": null,
+   "dexscreener": "https://dexscreener.com/robinhood/0x9b8df8ce919cc80f38088172d5f9597679325d0dbb5d6ad5258858efae465607",
+   "strength": "weak"
+  },
+  {
+   "token": "0x18e674231a58c239dc7daedcffe15ec3a24cff5c",
+   "symbol": "HOOKR",
+   "name": "Hookr.fun",
+   "named": "HOOKR (Hookr.fun)",
+   "pool": "0x590dcb6a87828bf688b48089a62239b693378f1fb64d2286e6a399ed8c005fdf",
+   "state": "Fails",
+   "checks": {
+    "pullback": false,
+    "quiet": false,
+    "volRising": false,
+    "age": false,
+    "cleanContract": true,
+    "utility": true
+   },
+   "passed": 2,
+   "of": 6,
+   "reasons": [
+    "now: pullback 22% from peak close (want 45-70%, best 50-60%)",
+    "quiet stretch: closes in a 1.20x range (want <=2.1x), volume 18% of its busiest 2 days (want <=50%)",
+    "no base yet, so no volume trigger",
+    "contract: clean",
+    "utility evidence: "
+   ],
+   "price": 0.0255659175916333,
+   "priceAt": 1792324800000,
+   "liqUsd": 1163171.2363,
+   "fdvUsd": 25392728.8728171,
+   "vol24Usd": 806248.551510185,
+   "ageDays": 73.3,
+   "m": {
+    "j": 440,
+    "dd": 0.221116,
+    "peakClose": 0.032824,
+    "qRange": 1.195175,
+    "qVol": 187047.357782,
+    "qVolVsPeak": 0.175149,
+    "baseHigh": 0.02701,
+    "baseLow": 0.0243,
+    "ageDays": 73.333333,
+    "volRise": null,
+    "triggerNow": false,
+    "setupBarUtc": null
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 17.643,
+    "devPct": null,
+    "holders": 9747,
+    "honeypot": false,
+    "gtScore": 89.84126984126985,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T13:47:37Z)"
+   },
+   "utility": {
+    "evidence": true,
+    "websites": [
+     "https://hookr.fun",
+     "https://hookr.fun/",
+     "https://hookr.fun/docs"
+    ],
+    "keywords": [],
+    "categories": [],
+    "description": "",
+    "twitter": "Hookrfun",
+    "manual": "Hookr.fun: token launchpad (site + docs); no description on GeckoTerminal; usage unverified",
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": null,
+   "plan": {
+    "entry": "No entry: not in the PRIORS pattern (only 22% below its peak close 0.0328238). It would qualify only after a 50-60% pullback (0.0131295-0.0180531), a 2-day quiet base, then a volume close above the base.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position under this pattern"
+    ],
+    "walkAwayLevel": null,
+    "qualifyZone": [
+     0.0131295099092134,
+     0.018053076125168425
+    ],
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0x590dcb6a87828bf688b48089a62239b693378f1fb64d2286e6a399ed8c005fdf",
+   "strength": "weak"
+  },
+  {
+   "token": "0x63ee32ac3077d1fbd8a77ebba2a6ed4b8e9c1e18",
+   "symbol": "INU",
+   "name": "iNu",
+   "named": "iNu",
+   "pool": "0x7e271c400427ecb727f5fbb27dec69254bce7c4219e95e3535d0ed128f79648a",
+   "state": "Fails",
+   "checks": {
+    "pullback": false,
+    "quiet": false,
+    "volRising": false,
+    "age": false,
+    "cleanContract": true,
+    "utility": false
+   },
+   "passed": 1,
+   "of": 6,
+   "reasons": [
+    "now: pullback 90% from peak close (want 45-70%, best 50-60%)",
+    "quiet stretch: closes in a 1.19x range (want <=2.1x), volume 3% of its busiest 2 days (want <=50%)",
+    "no base yet, so no volume trigger",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.00161692891765949,
+   "priceAt": 1792324800000,
+   "liqUsd": 513337.5744,
+   "fdvUsd": 1608613.72122198,
+   "vol24Usd": 88943.6606326431,
+   "ageDays": 37.5,
+   "m": {
+    "j": 225,
+    "dd": 0.899974,
+    "peakClose": 0.016165,
+    "qRange": 1.19262,
+    "qVol": 18774.553319,
+    "qVolVsPeak": 0.025725,
+    "baseHigh": 0.001712,
+    "baseLow": 0.001563,
+    "ageDays": 37.5,
+    "volRise": null,
+    "triggerNow": false,
+    "setupBarUtc": null
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 30.4291,
+    "devPct": null,
+    "holders": 6884,
+    "honeypot": false,
+    "gtScore": 77.9047619047619,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T09:26:41Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://inuapple.com",
+     "https://tickerinu.ai"
+    ],
+    "keywords": [],
+    "categories": [
+     "Inu"
+    ],
+    "description": "",
+    "twitter": "iNuApple",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": null,
+   "plan": {
+    "entry": "No entry: 90% below its peak close 0.0161651: deeper than the pattern (45-70%). The pattern does not apply; treat it as a separate thesis.",
+    "entryTrigger": null,
+    "size": "0% under this pattern",
+    "sizePct": 0,
+    "sells": [],
+    "sellLevels": [],
+    "walkAway": [
+     "Not applicable: no position under this pattern"
+    ],
+    "walkAwayLevel": null,
+    "qualifyZone": null,
+    "backtestNote": ""
+   },
+   "dexscreener": "https://dexscreener.com/robinhood/0x7e271c400427ecb727f5fbb27dec69254bce7c4219e95e3535d0ed128f79648a",
+   "strength": "weak"
+  },
+  {
+   "token": "0x6adb9cd443f4653572101e2f91b35ea1ed5f6b69",
+   "symbol": "SEED",
+   "name": "RobinSeed",
+   "named": null,
+   "pool": "0x574596ca78e0ec91044f9c72d3a07c952892ee3219e6a2fb0f85d4e424d62237",
+   "state": "Fails",
+   "checks": {
+    "pullback": false,
+    "quiet": false,
+    "volRising": false,
+    "age": false,
+    "cleanContract": true,
+    "utility": false
+   },
+   "passed": 1,
+   "of": 6,
+   "reasons": [
+    "now: pullback 64% from peak close (want 45-70%, best 50-60%)",
+    "quiet stretch: closes in a 1.84x range (want <=2.1x), volume 81% of its busiest 2 days (want <=50%)",
+    "no base yet, so no volume trigger",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 7.14794234344657e-05,
+   "priceAt": 1792324800000,
+   "liqUsd": 55120.9723,
+   "fdvUsd": 71315.9680518855,
+   "vol24Usd": 46798.5875113826,
+   "ageDays": 3.5,
+   "m": {
+    "j": 21,
+    "dd": 0.638031,
+    "peakClose": 0.000197,
+    "qRange": 1.838597,
+    "qVol": 5043.927254,
+    "qVolVsPeak": 0.81348,
+    "baseHigh": 7.9e-05,
+    "baseLow": 6.5e-05,
+    "ageDays": 3.5,
+    "volRise": null,
+    "triggerNow": false,
+    "setupBarUtc": null
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 48.2312,
+    "devPct": null,
+    "holders": 121,
+    "honeypot": false,
+    "gtScore": 50.857142857142854,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-17T17:29:39Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://robinseed.xyz",
+     "https://robinseed.xyz/",
+     "https://robinseed.xyz/dashboard/docs"
+    ],
+    "keywords": [],
+    "categories": [],
+    "description": "",
+    "twitter": "robinseed_xyz",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": null,
+   "plan": null,
+   "dexscreener": "https://dexscreener.com/robinhood/0x574596ca78e0ec91044f9c72d3a07c952892ee3219e6a2fb0f85d4e424d62237",
+   "strength": "weak"
+  },
+  {
+   "token": "0x316fa3ab9a8fd8d7567a823dedecf28d9fee2894",
+   "symbol": "ZERO",
+   "name": "zerotrace",
+   "named": null,
+   "pool": "0x68fc670895858c47340536540de932fdbc4f6a5deb3bb10b3198af5dd9bc1441",
+   "state": "Fails",
+   "checks": {
+    "pullback": false,
+    "quiet": false,
+    "volRising": false,
+    "age": false,
+    "cleanContract": true,
+    "utility": false
+   },
+   "passed": 1,
+   "of": 6,
+   "reasons": [
+    "now: pullback 59% from peak close (want 45-70%, best 50-60%)",
+    "quiet stretch: closes in a 2.95x range (want <=2.1x), volume 8% of its busiest 2 days (want <=50%)",
+    "no base yet, so no volume trigger",
+    "contract: clean",
+    "utility: not evidenced (no site/description or meme category)"
+   ],
+   "price": 0.000805699156182332,
+   "priceAt": 1792324800000,
+   "liqUsd": 49496.4742,
+   "fdvUsd": 799122.047,
+   "vol24Usd": 357851.546271784,
+   "ageDays": 15.7,
+   "m": {
+    "j": 94,
+    "dd": 0.585593,
+    "peakClose": 0.001944,
+    "qRange": 2.947877,
+    "qVol": 39461.118153,
+    "qVolVsPeak": 0.07945,
+    "baseHigh": 0.000963,
+    "baseLow": 0.000292,
+    "ageDays": 15.666667,
+    "volRise": null,
+    "triggerNow": false,
+    "setupBarUtc": null
+   },
+   "contract": {
+    "clean": true,
+    "flags": [],
+    "unknown": false,
+    "top10": 38.7866,
+    "devPct": 0.0,
+    "holders": 2414,
+    "honeypot": false,
+    "gtScore": 55.68253968253968,
+    "gtVerified": true,
+    "source": "GeckoTerminal token info (holders updated 2026-10-18T05:30:29Z)"
+   },
+   "utility": {
+    "evidence": false,
+    "websites": [
+     "https://zerotrace.so",
+     "https://zerotrace.so/"
+    ],
+    "keywords": [],
+    "categories": [],
+    "description": "The first EVM privacy token.",
+    "twitter": "Zerotrace_so",
+    "manual": null,
+    "note": "keyword evidence only: confirm the product exists and is used before buying"
+   },
+   "basePosition": null,
+   "plan": null,
+   "dexscreener": "https://dexscreener.com/robinhood/0x68fc670895858c47340536540de932fdbc4f6a5deb3bb10b3198af5dd9bc1441",
+   "strength": "weak"
+  }
+ ]
+}

@@ -905,6 +905,19 @@ if (!RENDER_LITE && process.env.FLATBASE !== 'off') {
   setTimeout(backfill, 10 * 60e3).unref(); setInterval(backfill, 24 * 3600e3).unref(); // cached files < 20h old are skipped
 }
 
+// Robinhood Chain utility scanner: PRIORS pre-breakout pattern (research/rhscan/rh_scan.py -> data/rh_scan.json).
+// Free sources only (GeckoTerminal + DexScreener); raw responses cached 6h/24h; strength label comes from its own replay.
+let rhCache = { m: 0, v: null };
+routes['/api/rhscan'] = async () => {
+  const f = path.join(DATA_DIR, 'rh_scan.json');
+  try { const m = fs.statSync(f).mtimeMs; if (m !== rhCache.m) rhCache = { m, v: JSON.parse(fs.readFileSync(f, 'utf8')) }; return rhCache.v; }
+  catch { return { error: 'no Robinhood Chain scan yet (run research/rhscan/rh_scan.py)', items: [] }; }
+};
+if (!RENDER_LITE && process.env.RHSCAN !== 'off') {
+  const rhscan = () => { const ch = spawn('nice', ['-n', '10', 'python3', 'research/rhscan/rh_scan.py'], { cwd: __dirname, env: { ...process.env, DATA_DIR }, stdio: 'ignore' }); ch.on('error', () => {}); };
+  setTimeout(rhscan, 15 * 60e3).unref(); setInterval(rhscan, 6 * 3600e3).unref(); // ~130 GeckoTerminal calls cold, ~1-20 warm
+}
+
 // Heavy Accumulation desk (lib/accumulation.js -> data/accumulation.json): scores tokens from data other desks already collected (0 credits).
 const accumulation = require('./lib/accumulation').createAccumulation({ DATA_DIR, log: L });
 routes['/api/accumulation'] = async () => accumulation.api();
