@@ -54,10 +54,13 @@ The tool limits are 30 reads/min and 1000/day per user. That budget is **shared*
 | Tier | Tokens | Counts | 24h sample | Prior-6-day sample | News |
 |---|---|---|---|---|---|
 | P (priority watchlist) | NEAR, ZEC, STRK, QCAT | every 2 h | every 4 h | 1×/day | every 12 h (NEAR, ZEC, STRK) |
+| P, hourly override | CYBERLEEK (added 2026-10-19, `cadence_h: {counts: 1, samples: 1}`) | every 1 h | every 1 h | 1×/day | every 12 h |
 | W (watchlist + majors) | BTC, ETH, SOL, JUP, BONK, WIF, TROLL, PEPE, BRETT, CAKE, NOT | every 6 h | every 12 h | 1×/day | – |
 | C (top composite perps) | MINA, FARTCOIN, JELLYJELLY, PNUT, ROBO, SWARMS, ZEREBRO, MOODENG, GOAT, CLANKER, CHILLGUY | every 6 h | every 12 h | 1×/day | – |
 
 That works out to about 48+24+4+6 (P) + 88+44+22 (W+C) ≈ **236 reads/day**. The hourly wake usually makes 4–30 calls. Change `CADENCE_H` in `research/sentiment.py` to tune this.
+
+**Per-token overrides:** `cadence_h` (`{"counts": h, "samples": h}`) replaces the tier cadence for one token (CYBERLEEK adds about 24+24+1+2 = 51 reads/day). `provisionalDays` sets how long a newly added token stays provisional (composite weight 0.4x); a `regime.reason` starting with "new token" marks it provisional on its own and does not reset the global regime window for other tokens.
 
 **Adding a token:** append it to `queries.json` with a `sym`, a `tier`, `q`, and `price`. Add `key: "chain:address"` too if the token lives in the live feed. The composite matches live-feed rows **only** by `key`, because live-feed symbols collide.
 

@@ -52,11 +52,12 @@ def plan(args):
     for tok in c['tokens']:
         if tok['tier'] not in tiers or (syms and tok['sym'] not in syms): continue
         sym = tok['sym']; last_c = (C.get('tokens', {}).get(sym) or {}).get('fetchedAt'); age_c = (t - pms(last_c)) / 3600e3 if last_c else 1e9
-        if age_c >= (CADENCE_H['P_counts'] if tok['tier'] == 'P' else CADENCE_H['counts']) - 0.1 or args.get('force'):
+        cad = tok.get('cadence_h') or {}   # per-token override, e.g. {"counts": 1, "samples": 1} for an hourly watch
+        if age_c >= cad.get('counts', CADENCE_H['P_counts'] if tok['tier'] == 'P' else CADENCE_H['counts']) - 0.1 or args.get('force'):
             calls.append({'file': f'counts__{sym}.txt', 'tool': 'get_posts_counts_recent', 'arguments': {'query': f"{tok['q']} {c['suffix_counts']}", 'granularity': 'hour'}})
         runs = (S.get('tokens', {}).get(sym) or {}).get('runs') or []
         last_s = max([pms(r['fetchedAt']) for r in runs if r.get('window') == '24h'] or [0]); age_s = (t - last_s) / 3600e3
-        if samples == 'all' or (samples == 'auto' and age_s >= (CADENCE_H['P_samples'] if tok['tier'] == 'P' else CADENCE_H['samples']) - 0.1) or args.get('force'):
+        if samples == 'all' or (samples == 'auto' and age_s >= cad.get('samples', CADENCE_H['P_samples'] if tok['tier'] == 'P' else CADENCE_H['samples']) - 0.1) or args.get('force'):
             base = {'max_results': 25, 'sort_order': 'relevancy', 'expansions': 'author_id', 'post.fields': 'created_at,public_metrics,lang,author_id', 'user.fields': 'public_metrics,created_at,verified,description'}
             calls.append({'file': f'samples__{sym}__24h.txt', 'tool': 'search_posts_all', 'arguments': {**base, 'query': f"{tok['q']} {c['suffix_samples']}", 'start_time': start24}})
             if args.get('force') or not any(r.get('window') == 'prior' and t - pms(r['fetchedAt']) < 24 * 3600e3 for r in runs):  # prior-window baseline at most once a day
@@ -209,7 +210,7 @@ def ingest(run_dir=None):
             C['tokens'][sym] = {'sym': sym, 'tier': tok['tier'], 'key': tok.get('key'), 'query': q, 'granularity': 'hour', 'fetchedAt': fetched,
                                 'windowStart': iso(rows[0][0]), 'windowEnd': iso(rows[-1][1]), 'total7d': int((obj.get('meta') or {}).get('total_tweet_count') or sum(r[2] for r in rows)),
                                 'hourly': hourly, 'price': prev.get('price'), 'regimeBreaks': breaks[-5:],
-                                'regimeSince': (tok.get('regime') or {}).get('since'), 'quality': tok.get('quality', 'clean'), 'qualityNote': tok.get('qualityNote')}
+                                'regimeSince': (tok.get('regime') or {}).get('since'), 'regimeReason': (tok.get('regime') or {}).get('reason'), 'provisionalDays': tok.get('provisionalDays'), 'quality': tok.get('quality', 'clean'), 'qualityNote': tok.get('qualityNote')}
             report.append(f'{sym}: counts {len(rows)} buckets, 7d total {C["tokens"][sym]["total7d"]}')
         elif kind == 'samples':
             window = rest[0] if rest else '24h'
