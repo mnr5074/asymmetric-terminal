@@ -1,0 +1,4421 @@
+{
+ "generatedAt": 1792430688337,
+ "reviewedAt": "2026-10-19",
+ "candidates": [
+  {
+   "sym": "NEAR",
+   "name": "NEAR Protocol",
+   "theme": "quantum",
+   "bucket": "core",
+   "capPct": 8,
+   "thesis": "First large L1 with opt-in NIST ML-DSA-65 account signatures live on mainnet (July 2026); rotatable access keys make migration cheap.",
+   "claims": [
+    {
+     "claim": "ML-DSA-65 (FIPS 204) transaction signatures and access keys",
+     "status": "shipped",
+     "date": "2026-07-20",
+     "note": "Protocol v85, neard 2.13. Opt-in; Ed25519/secp256k1 not deprecated. NEP-645 still marked Draft.",
+     "sources": [
+      "https://github.com/near/NEPs/blob/master/neps/nep-0645.md",
+      "https://github.com/near/nearcore/releases/tag/2.13.0",
+      "https://github.com/near/nearcore/commit/ab0dc49",
+      "https://www.prnewswire.com/news-releases/near-protocol-brings-quantum-safe-signing-to-mainnet-302829646.html"
+     ]
+    },
+    {
+     "claim": "Validator keys, block/chunk signatures quantum-safe",
+     "status": "roadmap",
+     "date": "2026",
+     "note": "Explicitly out of scope of the first milestone; consensus stays classical.",
+     "sources": [
+      "https://github.com/near/nearcore/blob/master/docs/architecture/how/post_quantum_signatures.md",
+      "https://www.near.org/blog/near-quantum-safe-roadmap"
+     ]
+    },
+    {
+     "claim": "ml_dsa_verify host function for contracts",
+     "status": "testnet",
+     "date": "2026",
+     "note": "Gated separately from the transaction feature in nearcore docs; activation on mainnet not confirmed in the 2.13 notes.",
+     "sources": [
+      "https://github.com/near/nearcore/blob/master/docs/architecture/how/post_quantum_signatures.md"
+     ]
+    },
+    {
+     "claim": "Quantum-safe custody of other chains' assets via Chain Signatures / Intents",
+     "status": "marketing",
+     "date": "2026",
+     "note": "Chain Signatures MPC and the destination chains remain elliptic-curve; only the NEAR account key is PQ.",
+     "sources": [
+      "https://www.near.org/blog/near-quantum-safe-roadmap"
+     ]
+    }
+   ],
+   "risks": [
+    "PQ is opt-in: most accounts stay Ed25519 until users rotate",
+    "Consensus/validator crypto still classical",
+    "Chain fees are small (~$1.3M/yr DefiLlama) so the token has no revenue support; it is a narrative + L1 adoption bet",
+    "Inflationary staking issuance (~5%/yr nominal, part burned via fees)"
+   ],
+   "thesisBreak": [
+    "ML-DSA rolled back or a critical bug found in the PQ path",
+    "No validator/consensus PQ work shipped by end-2027 (roadmap slips)",
+    "Price makes a new 1y low after a sentiment 'euphoric' reading (narrative exhausted)"
+   ],
+   "sentimentSym": "NEAR",
+   "cgId": "near",
+   "market": {
+    "price": 4.96,
+    "mcap": 6503459303,
+    "fdv": 6503459398,
+    "circ": 1309375501.0,
+    "total": 1309375520.0,
+    "max": null,
+    "circPct": 100.0,
+    "ath": 20.44,
+    "athDate": "2022-01-16T14:09:45.000Z",
+    "athDDPct": -75.7,
+    "asOf": 1792430336279,
+    "src": "coingecko /coins"
+   },
+   "liquidity": {
+    "vol24h": 758337521,
+    "venues": 68,
+    "majors": [
+     "Binance",
+     "Coinbase Exchange",
+     "OKX",
+     "Bybit",
+     "Kraken",
+     "Bitget",
+     "KuCoin",
+     "Gate"
+    ],
+    "cgTickersNote": "first page of CoinGecko tickers (up to 100)"
+   },
+   "unlocks": {
+    "next": [],
+    "unlock30dPctCirc": 0.0,
+    "insider30dPctCirc": 0.0,
+    "llamaCirc": 1304884718.157489,
+    "llamaMax": 1304884718.157489,
+    "asOf": 1791713851850,
+    "src": "defillama.com/unlocks (scraped by research/unlocks.py)"
+   },
+   "revenue": {
+    "chainFees": {
+     "asOf": "2026-10-18",
+     "d30": 223585,
+     "y1": 1255790
+    }
+   },
+   "priceToRevenue": {
+    "chainFees": 5178.8
+   },
+   "holdersYieldPct": null,
+   "derived": [],
+   "price": {
+    "y1": {
+     "high": 5.896,
+     "ddPct": -13.8,
+     "fullWindow": true
+    },
+    "y3": {
+     "high": 8.861,
+     "ddPct": -42.6,
+     "fullWindow": true
+    },
+    "lastClose": 5.083,
+    "lastDay": "2026-10-19",
+    "src": "binance daily (data/flatbase_series)",
+    "sma200": 2.324165,
+    "xSma200": 2.187,
+    "zone": {
+     "buyBelow": 1.7688,
+     "inZone": false,
+     "quietNow": false,
+     "ruleFiresNow": false,
+     "distPct": -65.2
+    },
+    "trim": [
+     {
+      "mult": 1.8,
+      "price": 4.183497
+     },
+     {
+      "mult": 2.5,
+      "price": 5.810413
+     },
+     {
+      "mult": 3.5,
+      "price": 8.134578
+     }
+    ]
+   },
+   "netSupply": {
+    "asOf": 1791972483660,
+    "circBasis": 1304860702.9142516,
+    "basis": null,
+    "unlockSource": "DefiLlama full schedule (lib/unlocks)",
+    "windows": {
+     "1m": {
+      "unlockPctCirc": 0
+     },
+     "3m": {
+      "unlockPctCirc": 0
+     },
+     "6m": {
+      "unlockPctCirc": 0
+     },
+     "9m": {
+      "unlockPctCirc": 0
+     },
+     "1y": {
+      "unlockPctCirc": 0
+     },
+     "2y": {
+      "unlockPctCirc": 0
+     },
+     "3y": {
+      "unlockPctCirc": 0
+     }
+    }
+   },
+   "plan": {
+    "weeklyPctOfBudget": 0.244,
+    "weightPct": 12.7,
+    "split": "50% fixed weekly DCA; 50% saved and deployed only in weeks the accumulation rule fires (the \"half\" strategy in the backtest)"
+   }
+  },
+  {
+   "sym": "ALGO",
+   "name": "Algorand",
+   "theme": "quantum",
+   "bucket": "core",
+   "capPct": 5,
+   "thesis": "Longest live PQ track record: Falcon-signed State Proofs since 2022 and native Falcon-1024 accounts on mainnet since Aug 2026.",
+   "claims": [
+    {
+     "claim": "Falcon-signed State Proofs (chain history)",
+     "status": "shipped",
+     "date": "2022-09",
+     "note": "Every 256 rounds, signed by a stake supermajority.",
+     "sources": [
+      "https://algorand.co/technology/post-quantum"
+     ]
+    },
+    {
+     "claim": "Native Falcon-1024 accounts (pqsig)",
+     "status": "shipped",
+     "date": "2026-08-12",
+     "note": "Consensus v42 in go-algorand v5.0.0; existing accounts can rekey. Higher min fee (3,000 microAlgo).",
+     "sources": [
+      "https://github.com/algorand/go-algorand/releases/tag/v5.0.0-stable",
+      "https://dev.algorand.co/concepts/accounts/post-quantum/"
+     ]
+    },
+    {
+     "claim": "PQ multisig, PQ VRF/consensus signatures",
+     "status": "roadmap",
+     "date": "target end-2027",
+     "note": "Consensus participation keys and VRF are still classical.",
+     "sources": [
+      "https://algorand.co/blog/algorand-targets-broad-quantum-resilience-by-2027"
+     ]
+    }
+   ],
+   "risks": [
+    "Very low fee revenue (DefiLlama ~$6K/yr) and low on-chain demand",
+    "Foundation-driven ecosystem; adoption has lagged its tech for years",
+    "Consensus still classical"
+   ],
+   "thesisBreak": [
+    "PQ multisig / consensus milestones slip past 2027",
+    "Falcon implementation flaw",
+    "Daily volume and listings shrink (delisting risk)"
+   ],
+   "sentimentSym": null,
+   "cgId": "algorand",
+   "market": {
+    "price": 0.108977,
+    "mcap": 988833720,
+    "fdv": 988849721,
+    "circ": 9073302566.253897,
+    "total": 9073449393.226503,
+    "max": 10000000000.0,
+    "circPct": 90.7,
+    "ath": 3.56,
+    "athDate": "2019-06-20T06:51:19.000Z",
+    "athDDPct": -96.9,
+    "asOf": 1792430344355,
+    "src": "coingecko /coins"
+   },
+   "liquidity": {
+    "vol24h": 48078156,
+    "venues": 65,
+    "majors": [
+     "Binance",
+     "Coinbase Exchange",
+     "OKX",
+     "Bybit",
+     "Kraken",
+     "Bitget",
+     "KuCoin",
+     "Gate"
+    ],
+    "cgTickersNote": "first page of CoinGecko tickers (up to 100)"
+   },
+   "unlocks": {
+    "note": "not in DefiLlama unlocks data",
+    "asOf": 1791713851850
+   },
+   "revenue": {
+    "chainFees": {
+     "asOf": "2026-10-19",
+     "d30": 568,
+     "y1": 6463
+    }
+   },
+   "priceToRevenue": {
+    "chainFees": 152999.2
+   },
+   "holdersYieldPct": null,
+   "derived": [],
+   "price": {
+    "y1": {
+     "high": 0.1907,
+     "ddPct": -41.3,
+     "fullWindow": true
+    },
+    "y3": {
+     "high": 0.5091,
+     "ddPct": -78.0,
+     "fullWindow": true
+    },
+    "lastClose": 0.1119,
+    "lastDay": "2026-10-19",
+    "src": "binance daily (data/flatbase_series)",
+    "sma200": 0.100905,
+    "xSma200": 1.109,
+    "zone": {
+     "buyBelow": 0.05721,
+     "inZone": false,
+     "quietNow": false,
+     "ruleFiresNow": false,
+     "distPct": -48.9
+    },
+    "trim": [
+     {
+      "mult": 1.8,
+      "price": 0.181629
+     },
+     {
+      "mult": 2.5,
+      "price": 0.252263
+     },
+     {
+      "mult": 3.5,
+      "price": 0.353168
+     }
+    ]
+   },
+   "netSupply": null,
+   "plan": {
+    "weeklyPctOfBudget": 0.153,
+    "weightPct": 7.9,
+    "split": "50% fixed weekly DCA; 50% saved and deployed only in weeks the accumulation rule fires (the \"half\" strategy in the backtest)"
+   }
+  },
+  {
+   "sym": "QRL",
+   "name": "Quantum Resistant Ledger",
+   "theme": "quantum",
+   "bucket": "speculative",
+   "capPct": 2,
+   "thesis": "Purpose-built PQ chain: XMSS mainnet since 2018; QRL 2.0 (ML-DSA-87, EVM-like) on testnet, mainnet gated on audits.",
+   "claims": [
+    {
+     "claim": "QRL 1.x mainnet secured by hash-based XMSS signatures",
+     "status": "shipped",
+     "date": "2018-06-26",
+     "note": "Proof-of-work chain, no smart contracts.",
+     "sources": [
+      "https://www.theqrl.org/"
+     ]
+    },
+    {
+     "claim": "QRL 2.0 Zond: ML-DSA-87 accounts + validators, Hyperion/QRVM smart contracts",
+     "status": "testnet",
+     "date": "2026-03-31",
+     "note": "Testnet V2. No mainnet date; audits & remediation 60% as of 2026-09-18.",
+     "sources": [
+      "https://www.theqrl.org/press/qrl-launches-testnet-v2-for-its-postquantum-evmfriendly-blockchain/",
+      "https://www.theqrl.org/weekly/2026-september-18/"
+     ]
+    },
+    {
+     "claim": "SLH-DSA support",
+     "status": "roadmap",
+     "date": "post-mainnet",
+     "note": "Deferred to after 2.0 mainnet.",
+     "sources": [
+      "https://www.theqrl.org/blog/qrl-2.0-building-the-bridge-to-the-next-era/"
+     ]
+    }
+   ],
+   "risks": [
+    "Tiny liquidity and few listings (size must be small)",
+    "2.0 mainnet date not set; past roadmap targets slipped",
+    "No protocol revenue",
+    "No free price history beyond 365 days in the terminal (backtest excluded)"
+   ],
+   "thesisBreak": [
+    "Audit finds critical issues and mainnet slips into 2027 H2+",
+    "Major exchange delisting",
+    "Liquidity under $100K/day"
+   ],
+   "sentimentSym": null,
+   "cgId": "quantum-resistant-ledger",
+   "market": {
+    "price": 1.2,
+    "mcap": 94210587,
+    "fdv": 94210587,
+    "circ": 78392960.0,
+    "total": 78392960.0,
+    "max": 105000000.0,
+    "circPct": 74.7,
+    "ath": 3.87,
+    "athDate": "2018-01-08T16:00:00.000Z",
+    "athDDPct": -69.0,
+    "asOf": 1792430351851,
+    "src": "coingecko /coins"
+   },
+   "liquidity": {
+    "vol24h": 133547,
+    "venues": 3,
+    "majors": [],
+    "cgTickersNote": "first page of CoinGecko tickers (up to 100)"
+   },
+   "unlocks": {
+    "note": "not in DefiLlama unlocks data",
+    "asOf": 1791713851850
+   },
+   "revenue": {},
+   "priceToRevenue": {},
+   "holdersYieldPct": null,
+   "derived": [],
+   "price": {
+    "y1": {
+     "high": 3.2591152227099993,
+     "ddPct": -63.1,
+     "fullWindow": true
+    },
+    "y3": {
+     "high": 3.2591152227099993,
+     "ddPct": -63.1,
+     "fullWindow": false
+    },
+    "lastClose": 1.2017735653697361,
+    "lastDay": "2026-10-19",
+    "src": "coingecko 365d",
+    "sma200": 0.984042,
+    "xSma200": 1.221,
+    "zone": {
+     "buyBelow": 0.977735,
+     "inZone": false,
+     "quietNow": false,
+     "ruleFiresNow": false,
+     "distPct": -18.6
+    },
+    "trim": [
+     {
+      "mult": 1.8,
+      "price": 1.771276
+     },
+     {
+      "mult": 2.5,
+      "price": 2.460105
+     },
+     {
+      "mult": 3.5,
+      "price": 3.444147
+     }
+    ]
+   },
+   "netSupply": null,
+   "plan": {
+    "weeklyPctOfBudget": 0.061,
+    "weightPct": 3.2,
+    "split": "50% fixed weekly DCA; 50% saved and deployed only in weeks the accumulation rule fires (the \"half\" strategy in the backtest)"
+   }
+  },
+  {
+   "sym": "ZEC",
+   "name": "Zcash",
+   "theme": "quantum",
+   "bucket": "core",
+   "capPct": 8,
+   "thesis": "Privacy coin with a concrete PQ migration path: Ironwood notes are quantum-recoverable since NU6.3 (Jul 2026). Not quantum-safe yet.",
+   "claims": [
+    {
+     "claim": "Zcash is quantum resistant",
+     "status": "marketing",
+     "date": "2026",
+     "note": "False today: ZIP 2005 says it 'does not by itself make the protocol secure against quantum adversaries'.",
+     "sources": [
+      "https://zips.z.cash/zip-2005"
+     ]
+    },
+    {
+     "claim": "Quantum-recoverable Ironwood notes (ZIP 2005)",
+     "status": "shipped",
+     "date": "2026-07-28",
+     "note": "NU6.3 at block 3,428,143. Only funds moved into Ironwood are covered; ZIP status Proposed.",
+     "sources": [
+      "https://zips.z.cash/zip-2005",
+      "https://zips.z.cash/zip-0258",
+      "https://zcash.github.io/ironwood/concepts/quantum-recoverability.html"
+     ]
+    },
+    {
+     "claim": "Recovery Protocol (PQ spend of recoverable notes)",
+     "status": "roadmap",
+     "date": "undated",
+     "note": "Described 'in outline but not in detail'; not in consensus.",
+     "sources": [
+      "https://zips.z.cash/zip-2005"
+     ]
+    }
+   ],
+   "risks": [
+    "Price already ran very far (see 1y drawdown / 200d multiple): late-cycle entry risk",
+    "Privacy-coin delisting / regulatory risk",
+    "Sapling/Orchard/transparent funds not recoverable unless moved",
+    "PoW issuance, no buyback"
+   ],
+   "thesisBreak": [
+    "Exchange delistings in a major market",
+    "Recovery Protocol work stalls (no ZIP progress in 12 months)",
+    "Shielded share falls back (terminal zec_shielded desk)"
+   ],
+   "sentimentSym": "ZEC",
+   "cgId": "zcash",
+   "market": {
+    "price": 1138.35,
+    "mcap": 19323063582,
+    "fdv": 19323415346,
+    "circ": 16994573.6030448,
+    "total": 16994882.9780448,
+    "max": 21000000.0,
+    "circPct": 80.9,
+    "ath": 3191.93,
+    "athDate": "2016-10-28T16:00:00.000Z",
+    "athDDPct": -64.3,
+    "asOf": 1792430359171,
+    "src": "coingecko /coins"
+   },
+   "liquidity": {
+    "vol24h": 1008931976,
+    "venues": 47,
+    "majors": [
+     "Binance",
+     "Coinbase Exchange",
+     "OKX",
+     "Kraken",
+     "Bitget",
+     "KuCoin",
+     "Gate"
+    ],
+    "cgTickersNote": "first page of CoinGecko tickers (up to 100)"
+   },
+   "unlocks": {
+    "note": "not in DefiLlama unlocks data",
+    "asOf": 1791713851850
+   },
+   "revenue": {
+    "chainFees": {
+     "asOf": "2026-10-18",
+     "d30": 121237,
+     "y1": 720097
+    }
+   },
+   "priceToRevenue": {
+    "chainFees": 26834.0
+   },
+   "holdersYieldPct": null,
+   "derived": [],
+   "price": {
+    "y1": {
+     "high": 1653.12,
+     "ddPct": -29.1,
+     "fullWindow": true
+    },
+    "y3": {
+     "high": 1653.12,
+     "ddPct": -29.1,
+     "fullWindow": true
+    },
+    "lastClose": 1172.11,
+    "lastDay": "2026-10-19",
+    "src": "binance daily (data/flatbase_series)",
+    "sma200": 682.6236,
+    "xSma200": 1.717,
+    "zone": {
+     "buyBelow": 495.936,
+     "inZone": false,
+     "quietNow": true,
+     "ruleFiresNow": false,
+     "distPct": -57.7
+    },
+    "trim": [
+     {
+      "mult": 1.8,
+      "price": 1228.72248
+     },
+     {
+      "mult": 2.5,
+      "price": 1706.559
+     },
+     {
+      "mult": 3.5,
+      "price": 2389.1826
+     }
+    ]
+   },
+   "netSupply": null,
+   "extra": {
+    "zecShielded": {
+     "date": "2026-10-19",
+     "sharePct": 29.19,
+     "ironwoodPct": 24.21,
+     "src": "zecstats"
+    }
+   },
+   "plan": {
+    "weeklyPctOfBudget": 0.244,
+    "weightPct": 12.7,
+    "split": "50% fixed weekly DCA; 50% saved and deployed only in weeks the accumulation rule fires (the \"half\" strategy in the backtest)"
+   }
+  },
+  {
+   "sym": "SUI",
+   "name": "Sui",
+   "theme": "quantum",
+   "bucket": "core",
+   "capPct": 5,
+   "thesis": "Credible PQ roadmap (ML-DSA-65 native accounts, SLH-DSA vaults) on a high-usage L1, but nothing PQ on mainnet yet.",
+   "claims": [
+    {
+     "claim": "SLH-DSA quantum-safe vaults in Move",
+     "status": "roadmap",
+     "date": "target 2026 mainnet",
+     "note": "Core implementation built; audits underway.",
+     "sources": [
+      "https://www.sui.io/blog/making-sui-quantum-ready"
+     ]
+    },
+    {
+     "claim": "Native ML-DSA-65 accounts",
+     "status": "roadmap",
+     "date": "testnet end-2026, mainnet target Q1 2027",
+     "note": "Timelines 'remain open'.",
+     "sources": [
+      "https://www.sui.io/blog/making-sui-quantum-ready",
+      "https://www.sui.io/blog/suis-post-quantum-signature-schemes"
+     ]
+    }
+   ],
+   "risks": [
+    "Large ongoing unlocks (only ~41% of 10B circulating per DefiLlama unlocks)",
+    "PQ is roadmap-only today",
+    "Validator set and token concentrated with foundation/insiders"
+   ],
+   "thesisBreak": [
+    "ML-DSA testnet misses end-2026",
+    "Unlock-driven supply growth with falling fees"
+   ],
+   "sentimentSym": null,
+   "cgId": "sui",
+   "market": {
+    "price": 0.990829,
+    "mcap": 4076825619,
+    "fdv": 9899363510,
+    "circ": 4118270447.6403894,
+    "total": 10000000000.0,
+    "max": 10000000000.0,
+    "circPct": 41.2,
+    "ath": 5.35,
+    "athDate": "2025-01-04T14:56:18.000Z",
+    "athDDPct": -81.5,
+    "asOf": 1792430366699,
+    "src": "coingecko /coins"
+   },
+   "liquidity": {
+    "vol24h": 715412849,
+    "venues": 63,
+    "majors": [
+     "Binance",
+     "Coinbase Exchange",
+     "OKX",
+     "Bybit",
+     "Kraken",
+     "Bitget",
+     "KuCoin",
+     "Gate"
+    ],
+    "cgTickersNote": "first page of CoinGecko tickers (up to 100)"
+   },
+   "unlocks": {
+    "next": [
+     {
+      "date": "2026-10-31",
+      "tokens": 2069367,
+      "category": "noncirculating"
+     },
+     {
+      "date": "2026-10-31",
+      "tokens": 4000000,
+      "category": "noncirculating"
+     },
+     {
+      "date": "2026-11-01",
+      "tokens": 7295806.783298776,
+      "category": "insiders"
+     },
+     {
+      "date": "2026-11-01",
+      "tokens": 7054211.704377605,
+      "category": "staking"
+     }
+    ],
+    "unlock30dPctCirc": 0.49,
+    "insider30dPctCirc": 0.18,
+    "llamaCirc": 4134866817.52956,
+    "llamaMax": 10000000000,
+    "asOf": 1791713851850,
+    "src": "defillama.com/unlocks (scraped by research/unlocks.py)"
+   },
+   "revenue": {
+    "chainFees": {
+     "asOf": "2026-10-19",
+     "d30": 222062,
+     "y1": 3054065
+    }
+   },
+   "priceToRevenue": {
+    "chainFees": 1334.9
+   },
+   "holdersYieldPct": null,
+   "derived": [],
+   "price": {
+    "y1": {
+     "high": 2.6761,
+     "ddPct": -62.2,
+     "fullWindow": true
+    },
+    "y3": {
+     "high": 5.2902,
+     "ddPct": -80.9,
+     "fullWindow": true
+    },
+    "lastClose": 1.0117,
+    "lastDay": "2026-10-19",
+    "src": "binance daily (data/flatbase_series)",
+    "sma200": 0.863789,
+    "xSma200": 1.171,
+    "zone": {
+     "buyBelow": 0.80283,
+     "inZone": false,
+     "quietNow": false,
+     "ruleFiresNow": false,
+     "distPct": -20.6
+    },
+    "trim": [
+     {
+      "mult": 1.8,
+      "price": 1.55482
+     },
+     {
+      "mult": 2.5,
+      "price": 2.159473
+     },
+     {
+      "mult": 3.5,
+      "price": 3.023262
+     }
+    ]
+   },
+   "netSupply": null,
+   "plan": {
+    "weeklyPctOfBudget": 0.153,
+    "weightPct": 7.9,
+    "split": "50% fixed weekly DCA; 50% saved and deployed only in weeks the accumulation rule fires (the \"half\" strategy in the backtest)"
+   }
+  },
+  {
+   "sym": "HYPE",
+   "name": "Hyperliquid",
+   "theme": "buyback",
+   "bucket": "core",
+   "capPct": 12,
+   "thesis": "Largest real buyback in crypto: ~all trading fees go to the Assistance Fund, which buys HYPE; validators voted (Dec 2025) to treat it as burned.",
+   "claims": [
+    {
+     "claim": "Trading fees buy HYPE via the Assistance Fund",
+     "status": "verified",
+     "date": "2024-12 onward",
+     "note": "DefiLlama holdersRevenue = revenue; daily, no gaps in the terminal's buyburn study.",
+     "sources": [
+      "https://defillama.com/protocol/hyperliquid",
+      "https://crypto.news/hyper-foundation-confirms-hype-burn-as-validators-back-assistance-fund-vote/"
+     ]
+    },
+    {
+     "claim": "Assistance Fund HYPE is permanently burned",
+     "status": "verified",
+     "date": "2025-12-24",
+     "note": "Validator vote (85% stake) to treat 0xfefe...fe balance as burned; no transfer to a burn address.",
+     "sources": [
+      "https://t.me/s/hyperliquid_announcements?before=509",
+      "https://crypto.news/hyper-foundation-confirms-hype-burn-as-validators-back-assistance-fund-vote/"
+     ]
+    },
+    {
+     "claim": "Net supply falling",
+     "status": "partly",
+     "date": "2026",
+     "note": "Team tokens vest monthly after the Nov 2025 cliff; no official dated calendar, actual claims often below entitlement. Net change depends on claims vs buybacks.",
+     "sources": [
+      "https://mahex.io/en/burn/hype",
+      "https://cryptoticker.io/en/hyperliquid-hype-unlock-dilution/"
+     ]
+    }
+   ],
+   "risks": [
+    "Team vesting (~24% of supply) adds supply monthly",
+    "Revenue is cyclical (perp volume); buybacks fall with volume",
+    "Validator/foundation concentration; L1 outage or exploit risk",
+    "Competition from other perp DEXs"
+   ],
+   "thesisBreak": [
+    "30d holders revenue falls below 40% of its 1y monthly average",
+    "Assistance Fund policy changed away from buy-and-hold/burn",
+    "Major exploit or prolonged chain halt"
+   ],
+   "sentimentSym": null,
+   "cgId": "hyperliquid",
+   "market": {
+    "price": 78.3,
+    "mcap": 17406474174,
+    "fdv": 74753195744,
+    "circ": 222445714.07414138,
+    "total": 955307079.4341414,
+    "max": 1000000000.0,
+    "circPct": 22.2,
+    "ath": 97.96,
+    "athDate": "2026-09-23T05:16:50.000Z",
+    "athDDPct": -20.1,
+    "asOf": 1792430374367,
+    "src": "coingecko /coins"
+   },
+   "liquidity": {
+    "vol24h": 569209219,
+    "venues": 67,
+    "majors": [
+     "Binance",
+     "Coinbase Exchange",
+     "OKX",
+     "Bybit",
+     "Kraken",
+     "Bitget",
+     "KuCoin",
+     "Gate",
+     "Hyperliquid"
+    ],
+    "cgTickersNote": "first page of CoinGecko tickers (up to 100)"
+   },
+   "unlocks": {
+    "next": [],
+    "unlock30dPctCirc": 0.0,
+    "insider30dPctCirc": 0.0,
+    "llamaCirc": 390867246.98746365,
+    "llamaMax": 1000000000,
+    "asOf": 1791713851850,
+    "src": "defillama.com/unlocks (scraped by research/unlocks.py)"
+   },
+   "revenue": {
+    "fees": {
+     "asOf": "2026-10-18",
+     "d30": 84861023,
+     "d90": 236364775,
+     "y1": 906686575,
+     "monthlyAvg1y": 75557215
+    },
+    "revenue": {
+     "asOf": "2026-10-18",
+     "d30": 68427801,
+     "d90": 187118152,
+     "y1": 690096628,
+     "monthlyAvg1y": 57508052
+    },
+    "holdersRevenue": {
+     "asOf": "2026-10-18",
+     "d30": 68427801,
+     "d90": 187118152,
+     "y1": 690096628,
+     "monthlyAvg1y": 57508052
+    }
+   },
+   "priceToRevenue": {
+    "fees": 19.2,
+    "revenue": 25.2,
+    "holdersRevenue": 25.2
+   },
+   "holdersYieldPct": 3.96,
+   "derived": [],
+   "price": {
+    "y1": {
+     "high": 97.195,
+     "ddPct": -19.4,
+     "fullWindow": true
+    },
+    "y3": {
+     "high": 97.195,
+     "ddPct": -19.4,
+     "fullWindow": false
+    },
+    "lastClose": 78.327,
+    "lastDay": "2026-10-19",
+    "src": "hyperliquid spot candles",
+    "sma200": 64.100355,
+    "xSma200": 1.222,
+    "zone": {
+     "buyBelow": 29.1585,
+     "inZone": false,
+     "quietNow": true,
+     "ruleFiresNow": false,
+     "distPct": -62.8
+    },
+    "trim": [
+     {
+      "mult": 1.8,
+      "price": 115.380639
+     },
+     {
+      "mult": 2.5,
+      "price": 160.250887
+     },
+     {
+      "mult": 3.5,
+      "price": 224.351242
+     }
+    ]
+   },
+   "netSupply": {
+    "asOf": 1791972483660,
+    "circBasis": 222445714.07414138,
+    "basis": "DefiLlama holdersRevenue last-90d avg / daily price",
+    "unlockSource": "buy-burn worker trailing-rate estimate (DefiLlama has no forward schedule)",
+    "windows": {
+     "1m": {
+      "unlockPctCirc": 0.692,
+      "burnPctCirc": 0.355,
+      "netPctCirc": 0.336
+     },
+     "3m": {
+      "unlockPctCirc": 2.098,
+      "burnPctCirc": 1.078,
+      "netPctCirc": 1.02
+     },
+     "6m": {
+      "unlockPctCirc": 4.197,
+      "burnPctCirc": 2.156,
+      "netPctCirc": 2.04
+     },
+     "9m": {
+      "unlockPctCirc": 6.295,
+      "burnPctCirc": 3.235,
+      "netPctCirc": 3.06
+     },
+     "1y": {
+      "unlockPctCirc": 8.417,
+      "burnPctCirc": 4.325,
+      "netPctCirc": 4.092
+     },
+     "2y": {
+      "unlockPctCirc": 16.833,
+      "burnPctCirc": 8.65,
+      "netPctCirc": 8.183
+     },
+     "3y": {
+      "unlockPctCirc": 25.25,
+      "burnPctCirc": 12.974,
+      "netPctCirc": 12.275
+     }
+    }
+   },
+   "consistency": {
+    "asOf": "2026-10-11",
+    "frequency": "daily",
+    "uptime": 1.0,
+    "nGaps": 0,
+    "gaps": [],
+    "nEvents": 653
+   },
+   "plan": {
+    "weeklyPctOfBudget": 0.366,
+    "weightPct": 19.0,
+    "split": "50% fixed weekly DCA; 50% saved and deployed only in weeks the accumulation rule fires (the \"half\" strategy in the backtest)"
+   }
+  },
+  {
+   "sym": "DRV",
+   "name": "Derive",
+   "theme": "buyback",
+   "bucket": "speculative",
+   "capPct": 2,
+   "thesis": "Dominant on-chain options venue (~87% of on-chain premiums) buying back DRV weekly with 35% of fees, 50% after the Sep 2026 DIP.",
+   "claims": [
+    {
+     "claim": "35% of applicable protocol fees to weekly DRV buybacks (50% passed Oct 2-5, 2026 Snapshot)",
+     "status": "partly",
+     "date": "2026-09-24 DIP",
+     "note": "Mechanism documented; DefiLlama does NOT track it (holdersRevenue = $0). Amounts are self-reported weekly.",
+     "sources": [
+      "https://forums.derive.xyz/t/dip-increase-drv-buyback-allocation-from-35-to-50-of-protocol-fees/324",
+      "https://defillama.com/protocol/derive"
+     ]
+    },
+    {
+     "claim": "Buybacks outpace emissions (16.6M burned vs 6.1M staking issuance YTD)",
+     "status": "not-verified",
+     "date": "2026-09-23",
+     "note": "Secondary source (Alea Research). Same report says circulating supply ROSE 17.1% this year: unlocks dwarf the burn. Not checked on-chain here.",
+     "sources": [
+      "https://alearesearch.io/newsletters/derive-owns-onchain-options-the-room",
+      "https://www.bitbase.com/news/derive-87-9"
+     ]
+    },
+    {
+     "claim": "Buyback size vs market cap",
+     "status": "verified",
+     "date": "2026-10-19",
+     "note": "35% of trailing-1y DefiLlama revenue is ~0.3% of market cap per year: tiny vs unlocks.",
+     "sources": [
+      "https://defillama.com/protocol/derive"
+     ]
+    }
+   ],
+   "risks": [
+    "Buyback is tiny relative to market cap and unlocks",
+    "Price-to-revenue very high",
+    "Thin DEX liquidity (~$255K main pool)",
+    "V3 migration risk (Derive Chain shutdown)"
+   ],
+   "thesisBreak": [
+    "Weekly buyback reports stop",
+    "Circulating supply grows >15%/yr while revenue flat",
+    "Options market share falls below 60%"
+   ],
+   "sentimentSym": null,
+   "cgId": "derive",
+   "market": {
+    "price": 0.396462,
+    "mcap": 396460172,
+    "fdv": 594897709,
+    "circ": 999651282.5779791,
+    "total": 1500000000.0,
+    "max": 1500000000.0,
+    "circPct": 66.6,
+    "ath": 0.569299,
+    "athDate": "2026-10-09T15:40:00.000Z",
+    "athDDPct": -30.4,
+    "asOf": 1792430381547,
+    "src": "coingecko /coins"
+   },
+   "liquidity": {
+    "vol24h": 13069446,
+    "venues": 22,
+    "majors": [
+     "Coinbase Exchange",
+     "Kraken",
+     "Upbit",
+     "Gate",
+     "Hyperliquid"
+    ],
+    "cgTickersNote": "first page of CoinGecko tickers (up to 100)"
+   },
+   "unlocks": {
+    "note": "not in DefiLlama unlocks data",
+    "asOf": 1791713851850
+   },
+   "revenue": {
+    "fees": {
+     "asOf": "2026-10-19",
+     "d30": 615733,
+     "d90": 1684472,
+     "y1": 5851395,
+     "monthlyAvg1y": 487616
+    },
+    "revenue": {
+     "asOf": "2026-10-19",
+     "d30": 490834,
+     "d90": 1345684,
+     "y1": 4243910,
+     "monthlyAvg1y": 353659
+    },
+    "holdersRevenue": {
+     "asOf": "2026-10-19",
+     "d30": 0,
+     "d90": 0,
+     "y1": 0,
+     "monthlyAvg1y": 0
+    }
+   },
+   "priceToRevenue": {
+    "fees": 67.8,
+    "revenue": 93.4
+   },
+   "holdersYieldPct": null,
+   "derived": [
+    {
+     "what": "implied buyback = 35% of trailing-1y revenue (derived, not measured)",
+     "usd1y": 1485368,
+     "pctMcap": 0.37
+    }
+   ],
+   "price": {
+    "y1": {
+     "high": 0.5375729093462743,
+     "ddPct": -26.4,
+     "fullWindow": true
+    },
+    "y3": {
+     "high": 0.5375729093462743,
+     "ddPct": -26.4,
+     "fullWindow": false
+    },
+    "lastClose": 0.39586397734252216,
+    "lastDay": "2026-10-19",
+    "src": "coingecko 365d",
+    "sma200": 0.155322,
+    "xSma200": 2.549,
+    "zone": {
+     "buyBelow": 0.161272,
+     "inZone": false,
+     "quietNow": false,
+     "ruleFiresNow": false,
+     "distPct": -59.3
+    },
+    "trim": [
+     {
+      "mult": 1.8,
+      "price": 0.27958
+     },
+     {
+      "mult": 2.5,
+      "price": 0.388306
+     },
+     {
+      "mult": 3.5,
+      "price": 0.543628
+     }
+    ]
+   },
+   "netSupply": null,
+   "plan": {
+    "weeklyPctOfBudget": 0.061,
+    "weightPct": 3.2,
+    "split": "50% fixed weekly DCA; 50% saved and deployed only in weeks the accumulation rule fires (the \"half\" strategy in the backtest)"
+   }
+  },
+  {
+   "sym": "PUMP",
+   "name": "Pump.fun",
+   "theme": "buyback",
+   "bucket": "meme",
+   "capPct": 3,
+   "thesis": "Memecoin launchpad buying and burning PUMP with 50% of net revenue (locked for 1 year from Apr 2026) after burning 36% of supply.",
+   "claims": [
+    {
+     "claim": "50% of net revenue to open-market PUMP buys, all burned",
+     "status": "verified",
+     "date": "2026-04-28",
+     "note": "Policy locked ~1 year (to ~Apr 2027). DefiLlama tracks holdersRevenue daily.",
+     "sources": [
+      "https://pump.fun/pump-token",
+      "https://www.theblock.co/post/399288/pump-fun-burns-370-million-pump",
+      "https://defillama.com/protocol/pump"
+     ]
+    },
+    {
+     "claim": "One-off burn of ~36% of supply",
+     "status": "verified",
+     "date": "2026-04-29",
+     "note": "Replaced the earlier 'all revenue to buybacks' policy, which did not support price.",
+     "sources": [
+      "https://www.coindesk.com/markets/2026/04/29/pump-fun-burns-36-of-pump-supply-in-usd370-million-wipe-locks-50-revenue-into-ongoing-buybacks"
+     ]
+    }
+   ],
+   "risks": [
+    "Revenue tied to memecoin mania; collapses in a downturn",
+    "Large insider unlocks (DefiLlama unlocks: monthly insider cliffs)",
+    "Regulatory/legal exposure of the launchpad model",
+    "Policy has already changed once"
+   ],
+   "thesisBreak": [
+    "Buyback policy cut below 50% or ended early",
+    "30d revenue below 30% of its 1y monthly average",
+    "Counts toward the meme slice: exit if the meme slice exceeds its cap"
+   ],
+   "sentimentSym": null,
+   "cgId": "pump-fun",
+   "market": {
+    "price": 0.00445126,
+    "mcap": 2055043537,
+    "fdv": 3677269445,
+    "circ": 462240370063.9164,
+    "total": 827127191435.2709,
+    "max": 1000000000000.0,
+    "circPct": 46.2,
+    "ath": 0.00881908,
+    "athDate": "2025-09-14T08:42:40.000Z",
+    "athDDPct": -49.5,
+    "asOf": 1792430388835,
+    "src": "coingecko /coins"
+   },
+   "liquidity": {
+    "vol24h": 257464346,
+    "venues": 64,
+    "majors": [
+     "Binance",
+     "Coinbase Exchange",
+     "OKX",
+     "Bybit",
+     "Kraken",
+     "Upbit",
+     "Bitget",
+     "KuCoin",
+     "Gate",
+     "Hyperliquid",
+     "Raydium"
+    ],
+    "cgTickersNote": "first page of CoinGecko tickers (up to 100)"
+   },
+   "unlocks": {
+    "next": [
+     {
+      "date": "2026-10-12",
+      "tokens": 4166666666.6666665,
+      "category": "insiders"
+     },
+     {
+      "date": "2026-10-12",
+      "tokens": 2708333333.3333335,
+      "category": "insiders"
+     }
+    ],
+    "unlock30dPctCirc": 1.31,
+    "insider30dPctCirc": 1.31,
+    "llamaCirc": 526250000000,
+    "llamaMax": 1000000000000,
+    "asOf": 1791713851850,
+    "src": "defillama.com/unlocks (scraped by research/unlocks.py)"
+   },
+   "revenue": {
+    "fees": {
+     "asOf": "2026-10-18",
+     "d30": 193577697,
+     "d90": 462779773,
+     "y1": 1222366113,
+     "monthlyAvg1y": 101863843
+    },
+    "revenue": {
+     "asOf": "2026-10-18",
+     "d30": 67807056,
+     "d90": 167502143,
+     "y1": 486120103,
+     "monthlyAvg1y": 40510009
+    },
+    "holdersRevenue": {
+     "asOf": "2026-10-18",
+     "d30": 30372515,
+     "d90": 76245694,
+     "y1": 284560846,
+     "monthlyAvg1y": 23713404
+    }
+   },
+   "priceToRevenue": {
+    "fees": 1.7,
+    "revenue": 4.2,
+    "holdersRevenue": 7.2
+   },
+   "holdersYieldPct": 13.85,
+   "derived": [],
+   "price": {
+    "y1": {
+     "high": 0.006521,
+     "ddPct": -30.6,
+     "fullWindow": true
+    },
+    "y3": {
+     "high": 0.008627,
+     "ddPct": -47.5,
+     "fullWindow": false
+    },
+    "lastClose": 0.004525,
+    "lastDay": "2026-10-19",
+    "src": "binance daily (data/flatbase_series)",
+    "sma200": 0.002698,
+    "xSma200": 1.677,
+    "zone": {
+     "buyBelow": 0.001956,
+     "inZone": false,
+     "quietNow": false,
+     "ruleFiresNow": false,
+     "distPct": -56.8
+    },
+    "trim": [
+     {
+      "mult": 1.8,
+      "price": 0.004857
+     },
+     {
+      "mult": 2.5,
+      "price": 0.006746
+     },
+     {
+      "mult": 3.5,
+      "price": 0.009444
+     }
+    ]
+   },
+   "netSupply": {
+    "asOf": 1791972483660,
+    "circBasis": 463188950137.3236,
+    "basis": "DefiLlama holdersRevenue last-90d avg / daily price",
+    "unlockSource": "DefiLlama full schedule (lib/unlocks)",
+    "windows": {
+     "1m": {
+      "unlockPctCirc": 1.484,
+      "burnPctCirc": 1.562,
+      "netPctCirc": -0.078
+     },
+     "3m": {
+      "unlockPctCirc": 4.453,
+      "burnPctCirc": 4.739,
+      "netPctCirc": -0.286
+     },
+     "6m": {
+      "unlockPctCirc": 8.906,
+      "burnPctCirc": 9.478,
+      "netPctCirc": -0.572
+     },
+     "9m": {
+      "unlockPctCirc": 13.358,
+      "burnPctCirc": 14.217,
+      "netPctCirc": -0.859
+     },
+     "1y": {
+      "unlockPctCirc": 17.811,
+      "burnPctCirc": 19.008,
+      "netPctCirc": -1.197
+     },
+     "2y": {
+      "unlockPctCirc": 35.623,
+      "burnPctCirc": 38.017,
+      "netPctCirc": -2.394
+     },
+     "3y": {
+      "unlockPctCirc": 48.981,
+      "burnPctCirc": 57.025,
+      "netPctCirc": -8.044
+     }
+    }
+   },
+   "consistency": {
+    "asOf": "2026-10-11",
+    "frequency": "daily",
+    "uptime": 1.0,
+    "nGaps": 0,
+    "gaps": [],
+    "nEvents": 453
+   },
+   "plan": {
+    "weeklyPctOfBudget": 0.092,
+    "weightPct": 4.8,
+    "split": "50% fixed weekly DCA; 50% saved and deployed only in weeks the accumulation rule fires (the \"half\" strategy in the backtest)"
+   }
+  },
+  {
+   "sym": "UNI",
+   "name": "Uniswap",
+   "theme": "buyback",
+   "bucket": "core",
+   "capPct": 6,
+   "thesis": "Fee switch (UNIfication) live since Dec 2025: protocol fees can only be withdrawn by burning UNI (TokenJar/Firepit).",
+   "claims": [
+    {
+     "claim": "Protocol fees live; UNI burned via Firepit to access them",
+     "status": "verified",
+     "date": "2025-12",
+     "note": "DefiLlama holdersRevenue = revenue. v4 fees activated on selected pools in 2026.",
+     "sources": [
+      "https://blog.uniswap.org/unification",
+      "https://www.tally.xyz/gov/uniswap/proposal/93",
+      "https://developers.uniswap.org/docs/protocols/protocol-fee/overview.md",
+      "https://vote.uniswapfoundation.org/proposals/100"
+     ]
+    }
+   ],
+   "risks": [
+    "Fee capture is a small share of total Uniswap fees (most still go to LPs)",
+    "Fee tiers can be changed by governance",
+    "Competition (aggregators, other AMMs)"
+   ],
+   "thesisBreak": [
+    "Governance turns fees off or redirects them",
+    "30d holders revenue below 40% of its 1y monthly average"
+   ],
+   "sentimentSym": null,
+   "cgId": "uniswap",
+   "market": {
+    "price": 7.31,
+    "mcap": 4562737595,
+    "fdv": 6478116716,
+    "circ": 624716422.4808736,
+    "total": 886964418.7867086,
+    "max": 1000000000.0,
+    "circPct": 62.5,
+    "ath": 44.92,
+    "athDate": "2021-05-02T21:25:04.000Z",
+    "athDDPct": -83.7,
+    "asOf": 1792430396019,
+    "src": "coingecko /coins"
+   },
+   "liquidity": {
+    "vol24h": 396103258,
+    "venues": 75,
+    "majors": [
+     "Binance",
+     "Coinbase Exchange",
+     "OKX",
+     "Bybit",
+     "Kraken",
+     "Bitget",
+     "KuCoin",
+     "Gate",
+     "Uniswap V3 (Ethereum)"
+    ],
+    "cgTickersNote": "first page of CoinGecko tickers (up to 100)"
+   },
+   "unlocks": {
+    "next": [],
+    "unlock30dPctCirc": 0.0,
+    "insider30dPctCirc": 0.0,
+    "llamaCirc": 1005405781.5136375,
+    "llamaMax": 1005406430.8636374,
+    "asOf": 1791713851850,
+    "src": "defillama.com/unlocks (scraped by research/unlocks.py)"
+   },
+   "revenue": {
+    "fees": {
+     "asOf": "2026-10-19",
+     "d30": 108204185,
+     "d90": 404531848,
+     "y1": 941300151,
+     "monthlyAvg1y": 78441679
+    },
+    "revenue": {
+     "asOf": "2026-10-19",
+     "d30": 8801937,
+     "d90": 31260843,
+     "y1": 58038798,
+     "monthlyAvg1y": 4836566
+    },
+    "holdersRevenue": {
+     "asOf": "2026-10-19",
+     "d30": 8801937,
+     "d90": 31260843,
+     "y1": 58038798,
+     "monthlyAvg1y": 4836566
+    }
+   },
+   "priceToRevenue": {
+    "fees": 4.8,
+    "revenue": 78.6,
+    "holdersRevenue": 78.6
+   },
+   "holdersYieldPct": 1.27,
+   "derived": [],
+   "price": {
+    "y1": {
+     "high": 10.226,
+     "ddPct": -27.3,
+     "fullWindow": true
+    },
+    "y3": {
+     "high": 18.601,
+     "ddPct": -60.0,
+     "fullWindow": true
+    },
+    "lastClose": 7.433,
+    "lastDay": "2026-10-19",
+    "src": "binance daily (data/flatbase_series)",
+    "sma200": 4.480255,
+    "xSma200": 1.659,
+    "zone": {
+     "buyBelow": 3.0678,
+     "inZone": false,
+     "quietNow": false,
+     "ruleFiresNow": false,
+     "distPct": -58.7
+    },
+    "trim": [
+     {
+      "mult": 1.8,
+      "price": 8.064459
+     },
+     {
+      "mult": 2.5,
+      "price": 11.200638
+     },
+     {
+      "mult": 3.5,
+      "price": 15.680893
+     }
+    ]
+   },
+   "netSupply": {
+    "asOf": 1791972483660,
+    "circBasis": 624968422.4808736,
+    "basis": "DefiLlama holdersRevenue last-90d avg / daily price",
+    "unlockSource": "buy-burn worker trailing-rate estimate (DefiLlama has no forward schedule)",
+    "windows": {
+     "1m": {
+      "unlockPctCirc": 0.003,
+      "burnPctCirc": 0.299,
+      "netPctCirc": -0.296
+     },
+     "3m": {
+      "unlockPctCirc": 0.008,
+      "burnPctCirc": 0.907,
+      "netPctCirc": -0.899
+     },
+     "6m": {
+      "unlockPctCirc": 0.016,
+      "burnPctCirc": 1.813,
+      "netPctCirc": -1.797
+     },
+     "9m": {
+      "unlockPctCirc": 0.024,
+      "burnPctCirc": 2.72,
+      "netPctCirc": -2.696
+     },
+     "1y": {
+      "unlockPctCirc": 0.032,
+      "burnPctCirc": 3.637,
+      "netPctCirc": -3.605
+     },
+     "2y": {
+      "unlockPctCirc": 0.064,
+      "burnPctCirc": 7.273,
+      "netPctCirc": -7.209
+     },
+     "3y": {
+      "unlockPctCirc": 0.096,
+      "burnPctCirc": 10.91,
+      "netPctCirc": -10.814
+     }
+    }
+   },
+   "consistency": {
+    "asOf": "2026-10-11",
+    "frequency": "daily",
+    "uptime": 1.0,
+    "nGaps": 0,
+    "gaps": [],
+    "nEvents": 286
+   },
+   "plan": {
+    "weeklyPctOfBudget": 0.183,
+    "weightPct": 9.5,
+    "split": "50% fixed weekly DCA; 50% saved and deployed only in weeks the accumulation rule fires (the \"half\" strategy in the backtest)"
+   }
+  },
+  {
+   "sym": "SKY",
+   "name": "Sky",
+   "theme": "buyback",
+   "bucket": "core",
+   "capPct": 5,
+   "thesis": "USDS issuer with large real revenue; Smart Burn Engine buys SKY, but most is redistributed to stakers and only ~5% is burned.",
+   "claims": [
+    {
+     "claim": "Smart Burn Engine buybacks",
+     "status": "verified",
+     "date": "2025 onward",
+     "note": "Bought on market; DefiLlama holdersRevenue tracked.",
+     "sources": [
+      "https://financial.skyeco.com/capital/burn",
+      "https://defillama.com/protocol/sky"
+     ]
+    },
+    {
+     "claim": "Buybacks burn supply",
+     "status": "partly",
+     "date": "2026",
+     "note": "Stage 2 split: 22.5% SKY staking rewards, 22.5% USDS rewards, 5% buy-and-burn. Burns of 2.86M and 7.37M SKY reported (Sep/Oct 2026). Net supply change ~0 over 12 months.",
+     "sources": [
+      "https://insights.skyeco.com/insights/sky-ecosystem-august-financial-operational-update",
+      "https://www.tokenpost.com/news/technology/31664",
+      "https://netsupply.org/tokens/sky"
+     ]
+    }
+   ],
+   "risks": [
+    "Most 'buyback' is a staking subsidy, not a burn",
+    "USDS depends on RWA/crypto collateral yields",
+    "Complex governance; MKR->SKY migration history"
+   ],
+   "thesisBreak": [
+    "USDS supply falls >30% from peak",
+    "Burn share cut to 0"
+   ],
+   "sentimentSym": null,
+   "cgId": "sky",
+   "market": {
+    "price": 0.069385,
+    "mcap": 1625184682,
+    "fdv": 1626639216,
+    "circ": 23431460846.533165,
+    "total": 23452431915.605965,
+    "max": 23462665147.3,
+    "circPct": 99.9,
+    "ath": 0.10087,
+    "athDate": "2026-10-05T12:10:30.000Z",
+    "athDDPct": -31.2,
+    "asOf": 1792430404019,
+    "src": "coingecko /coins"
+   },
+   "liquidity": {
+    "vol24h": 6980678,
+    "venues": 57,
+    "majors": [
+     "Binance",
+     "Coinbase Exchange",
+     "OKX",
+     "Bybit",
+     "Kraken",
+     "Upbit",
+     "Bitget",
+     "KuCoin",
+     "Gate",
+     "Uniswap V3 (Ethereum)"
+    ],
+    "cgTickersNote": "first page of CoinGecko tickers (up to 100)"
+   },
+   "unlocks": {
+    "next": [],
+    "unlock30dPctCirc": 0.0,
+    "insider30dPctCirc": 0.0,
+    "llamaCirc": 23549872050.04825,
+    "llamaMax": 23549872050.04825,
+    "asOf": 1791713851850,
+    "src": "defillama.com/unlocks (scraped by research/unlocks.py)"
+   },
+   "revenue": {
+    "fees": {
+     "asOf": "2026-10-19",
+     "d30": 27076000,
+     "d90": 81811776,
+     "y1": 390605910,
+     "monthlyAvg1y": 32550492
+    },
+    "revenue": {
+     "asOf": "2026-10-19",
+     "d30": 13024296,
+     "d90": 40294135,
+     "y1": 197501950,
+     "monthlyAvg1y": 16458496
+    },
+    "holdersRevenue": {
+     "asOf": "2026-10-19",
+     "d30": 5628423,
+     "d90": 11379920,
+     "y1": 57845163,
+     "monthlyAvg1y": 4820430
+    }
+   },
+   "priceToRevenue": {
+    "fees": 4.2,
+    "revenue": 8.2,
+    "holdersRevenue": 28.1
+   },
+   "holdersYieldPct": 3.56,
+   "derived": [],
+   "price": {
+    "y1": {
+     "high": 0.09775,
+     "ddPct": -27.3,
+     "fullWindow": true
+    },
+    "y3": {
+     "high": 0.09775,
+     "ddPct": -27.3,
+     "fullWindow": false
+    },
+    "lastClose": 0.07103,
+    "lastDay": "2026-10-19",
+    "src": "binance daily (data/flatbase_series)",
+    "sma200": 0.067194,
+    "xSma200": 1.057,
+    "zone": {
+     "buyBelow": 0.029325,
+     "inZone": false,
+     "quietNow": false,
+     "ruleFiresNow": false,
+     "distPct": -58.7
+    },
+    "trim": [
+     {
+      "mult": 1.8,
+      "price": 0.12095
+     },
+     {
+      "mult": 2.5,
+      "price": 0.167986
+     },
+     {
+      "mult": 3.5,
+      "price": 0.23518
+     }
+    ]
+   },
+   "netSupply": {
+    "asOf": 1791972483660,
+    "circBasis": 23433248349.0524,
+    "basis": "bought back (NOT burned) last-90d avg",
+    "unlockSource": "DefiLlama full schedule (lib/unlocks)",
+    "windows": {
+     "1m": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     },
+     "3m": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     },
+     "6m": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     },
+     "9m": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     },
+     "1y": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     },
+     "2y": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     },
+     "3y": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     }
+    }
+   },
+   "consistency": {
+    "asOf": "2026-10-11",
+    "frequency": "daily (irregular)",
+    "uptime": 0.86734694,
+    "nGaps": 1,
+    "gaps": [
+     [
+      "2024-11-18",
+      98
+     ]
+    ],
+    "nEvents": 599
+   },
+   "plan": {
+    "weeklyPctOfBudget": 0.153,
+    "weightPct": 7.9,
+    "split": "50% fixed weekly DCA; 50% saved and deployed only in weeks the accumulation rule fires (the \"half\" strategy in the backtest)"
+   }
+  },
+  {
+   "sym": "RAY",
+   "name": "Raydium",
+   "theme": "buyback",
+   "bucket": "satellite",
+   "capPct": 3,
+   "thesis": "Solana AMM routing 12% of swap fees to open-market RAY buybacks for years; bought RAY is held, not burned.",
+   "claims": [
+    {
+     "claim": "12% of swap fees buy RAY",
+     "status": "verified",
+     "date": "2022 onward",
+     "note": "DefiLlama holdersRevenue tracked (one 286-day gap from 2024-07 in the terminal's study).",
+     "sources": [
+      "https://docs.raydium.io/ray/ray-buybacks",
+      "https://docs.raydium.io/ray/protocol-fees",
+      "https://defillama.com/protocol/raydium"
+     ]
+    },
+    {
+     "claim": "Buybacks reduce supply",
+     "status": "partly",
+     "date": "2026",
+     "note": "Held in a protocol wallet, not burned; governance could re-spend it.",
+     "sources": [
+      "https://docs.raydium.io/ray/ray-buybacks",
+      "https://solanacompass.com/news/raydium-has-bought-back-over-30-of-rays-circulating-supply-using-protocol"
+     ]
+    }
+   ],
+   "risks": [
+    "Bought RAY is not burned",
+    "Volume depends on Solana memecoin trading (PumpSwap competition)",
+    "Remaining unlocks (~22% of max per DefiLlama)"
+   ],
+   "thesisBreak": [
+    "Buyback wallet tokens sold or redistributed",
+    "Solana DEX share drops sharply"
+   ],
+   "sentimentSym": null,
+   "cgId": "raydium",
+   "market": {
+    "price": 1.89,
+    "mcap": 510266314,
+    "fdv": 1049022285,
+    "circ": 269963572.735355,
+    "total": 555000000.0,
+    "max": 555000000.0,
+    "circPct": 48.6,
+    "ath": 16.83,
+    "athDate": "2021-09-12T12:20:23.000Z",
+    "athDDPct": -88.8,
+    "asOf": 1792430411827,
+    "src": "coingecko /coins"
+   },
+   "liquidity": {
+    "vol24h": 42161207,
+    "venues": 60,
+    "majors": [
+     "Binance",
+     "Coinbase Exchange",
+     "OKX",
+     "Kraken",
+     "Bitget",
+     "KuCoin",
+     "Gate",
+     "Raydium"
+    ],
+    "cgTickersNote": "first page of CoinGecko tickers (up to 100)"
+   },
+   "unlocks": {
+    "next": [],
+    "unlock30dPctCirc": 0.0,
+    "insider30dPctCirc": 0.0,
+    "llamaCirc": 431872961.29367006,
+    "llamaMax": 555000000,
+    "asOf": 1791713851850,
+    "src": "defillama.com/unlocks (scraped by research/unlocks.py)"
+   },
+   "revenue": {
+    "fees": {
+     "asOf": "2026-10-19",
+     "d30": 27900654,
+     "d90": 65997877,
+     "y1": 170013656,
+     "monthlyAvg1y": 14167805
+    },
+    "revenue": {
+     "asOf": "2026-10-19",
+     "d30": 4613961,
+     "d90": 10677561,
+     "y1": 26527265,
+     "monthlyAvg1y": 2210605
+    },
+    "holdersRevenue": {
+     "asOf": "2026-10-19",
+     "d30": 2750692,
+     "d90": 6958391,
+     "y1": 18263508,
+     "monthlyAvg1y": 1521959
+    }
+   },
+   "priceToRevenue": {
+    "fees": 3.0,
+    "revenue": 19.2,
+    "holdersRevenue": 27.9
+   },
+   "holdersYieldPct": 3.58,
+   "derived": [],
+   "price": {
+    "y1": {
+     "high": 2.4678,
+     "ddPct": -20.9,
+     "fullWindow": true
+    },
+    "y3": {
+     "high": 8.104,
+     "ddPct": -75.9,
+     "fullWindow": true
+    },
+    "lastClose": 1.952,
+    "lastDay": "2026-10-19",
+    "src": "binance daily (data/flatbase_series)",
+    "sma200": 0.941063,
+    "xSma200": 2.074,
+    "zone": {
+     "buyBelow": 0.74034,
+     "inZone": false,
+     "quietNow": false,
+     "ruleFiresNow": false,
+     "distPct": -62.1
+    },
+    "trim": [
+     {
+      "mult": 1.8,
+      "price": 1.693913
+     },
+     {
+      "mult": 2.5,
+      "price": 2.352656
+     },
+     {
+      "mult": 3.5,
+      "price": 3.293719
+     }
+    ]
+   },
+   "netSupply": {
+    "asOf": 1791972483660,
+    "circBasis": 269863589.046313,
+    "basis": "bought back (NOT burned) last-90d avg",
+    "unlockSource": "DefiLlama full schedule (lib/unlocks)",
+    "windows": {
+     "1m": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     },
+     "3m": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     },
+     "6m": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     },
+     "9m": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     },
+     "1y": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     },
+     "2y": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     },
+     "3y": {
+      "unlockPctCirc": 0,
+      "burnPctCirc": 0,
+      "netPctCirc": 0
+     }
+    }
+   },
+   "consistency": {
+    "asOf": "2026-10-11",
+    "frequency": "daily (irregular)",
+    "uptime": 0.79591837,
+    "nGaps": 1,
+    "gaps": [
+     [
+      "2024-07-04",
+      286
+     ]
+    ],
+    "nEvents": 1093
+   },
+   "plan": {
+    "weeklyPctOfBudget": 0.092,
+    "weightPct": 4.8,
+    "split": "50% fixed weekly DCA; 50% saved and deployed only in weeks the accumulation rule fires (the \"half\" strategy in the backtest)"
+   }
+  },
+  {
+   "sym": "CAKE",
+   "name": "PancakeSwap",
+   "theme": "buyback",
+   "bucket": "satellite",
+   "capPct": 4,
+   "thesis": "Tokenomics 3.0: fee-funded weekly buy-and-burn beats emissions; 37 straight deflationary months to Sep 2026.",
+   "claims": [
+    {
+     "claim": "Weekly buy-and-burn exceeds emissions (net deflation)",
+     "status": "verified",
+     "date": "2026-09",
+     "note": "Sep 2026: 2.964M burned vs 0.653M minted (-0.70% supply). Target >=4%/yr reduction.",
+     "sources": [
+      "https://docs.pancakeswap.finance/protocol/cake-tokenomics",
+      "https://blog.pancakeswap.finance/articles/kitchen-report-september-2026",
+      "https://defillama.com/protocol/pancakeswap"
+     ]
+    }
+   ],
+   "risks": [
+    "BNB Chain concentration",
+    "Revenue falls with BSC memecoin volume",
+    "Emission policy is governance-set"
+   ],
+   "thesisBreak": [
+    "A month with net inflation",
+    "30d holders revenue below 40% of its 1y monthly average"
+   ],
+   "sentimentSym": "CAKE",
+   "cgId": "pancakeswap-token",
+   "market": {
+    "price": 2.17,
+    "mcap": 689263222,
+    "fdv": 714380575,
+    "circ": 317749540.5544227,
+    "total": 329328611.1101335,
+    "max": 400000000.0,
+    "circPct": 79.4,
+    "ath": 43.96,
+    "athDate": "2021-04-30T02:08:22.000Z",
+    "athDDPct": -95.1,
+    "asOf": 1792430419222,
+    "src": "coingecko /coins"
+   },
+   "liquidity": {
+    "vol24h": 49440194,
+    "venues": 69,
+    "majors": [
+     "Binance",
+     "Coinbase Exchange",
+     "Bybit",
+     "Kraken",
+     "Bitget",
+     "KuCoin",
+     "Gate",
+     "Uniswap V3 (Ethereum)",
+     "PancakeSwap (v3)"
+    ],
+    "cgTickersNote": "first page of CoinGecko tickers (up to 100)"
+   },
+   "unlocks": {
+    "next": [],
+    "unlock30dPctCirc": 0.0,
+    "insider30dPctCirc": 0.0,
+    "llamaCirc": 49343040.603733145,
+    "llamaMax": 49343040.603733145,
+    "asOf": 1791713851850,
+    "src": "defillama.com/unlocks (scraped by research/unlocks.py)"
+   },
+   "revenue": {
+    "fees": {
+     "asOf": "2026-10-19",
+     "d30": 13625963,
+     "d90": 51572517,
+     "y1": 196904484,
+     "monthlyAvg1y": 16408707
+    },
+    "revenue": {
+     "asOf": "2026-10-19",
+     "d30": 4515902,
+     "d90": 16947392,
+     "y1": 66268842,
+     "monthlyAvg1y": 5522404
+    },
+    "holdersRevenue": {
+     "asOf": "2026-10-19",
+     "d30": 2985700,
+     "d90": 11421265,
+     "y1": 43056235,
+     "monthlyAvg1y": 3588020
+    }
+   },
+   "priceToRevenue": {
+    "fees": 3.5,
+    "revenue": 10.4,
+    "holdersRevenue": 16.0
+   },
+   "holdersYieldPct": 6.25,
+   "derived": [],
+   "price": {
+    "y1": {
+     "high": 2.908,
+     "ddPct": -24.8,
+     "fullWindow": true
+    },
+    "y3": {
+     "high": 5.175,
+     "ddPct": -57.8,
+     "fullWindow": true
+    },
+    "lastClose": 2.186,
+    "lastDay": "2026-10-19",
+    "src": "binance daily (data/flatbase_series)",
+    "sma200": 1.67233,
+    "xSma200": 1.307,
+    "zone": {
+     "buyBelow": 0.8724,
+     "inZone": false,
+     "quietNow": false,
+     "ruleFiresNow": false,
+     "distPct": -60.1
+    },
+    "trim": [
+     {
+      "mult": 1.8,
+      "price": 3.010194
+     },
+     {
+      "mult": 2.5,
+      "price": 4.180825
+     },
+     {
+      "mult": 3.5,
+      "price": 5.853155
+     }
+    ]
+   },
+   "netSupply": {
+    "asOf": 1791972483660,
+    "circBasis": 357617116.3523936,
+    "basis": "DefiLlama holdersRevenue last-90d avg / daily price",
+    "unlockSource": "buy-burn worker trailing-rate estimate (DefiLlama has no forward schedule)",
+    "windows": {
+     "1m": {
+      "unlockPctCirc": 0.17,
+      "burnPctCirc": 0.559,
+      "netPctCirc": -0.389
+     },
+     "3m": {
+      "unlockPctCirc": 0.515,
+      "burnPctCirc": 1.696,
+      "netPctCirc": -1.181
+     },
+     "6m": {
+      "unlockPctCirc": 1.03,
+      "burnPctCirc": 3.392,
+      "netPctCirc": -2.361
+     },
+     "9m": {
+      "unlockPctCirc": 1.545,
+      "burnPctCirc": 5.087,
+      "netPctCirc": -3.542
+     },
+     "1y": {
+      "unlockPctCirc": 2.066,
+      "burnPctCirc": 6.802,
+      "netPctCirc": -4.736
+     },
+     "2y": {
+      "unlockPctCirc": 4.132,
+      "burnPctCirc": 13.604,
+      "netPctCirc": -9.472
+     },
+     "3y": {
+      "unlockPctCirc": 6.198,
+      "burnPctCirc": 20.405,
+      "netPctCirc": -14.207
+     }
+    }
+   },
+   "consistency": {
+    "asOf": "2026-10-11",
+    "frequency": "daily",
+    "uptime": 1.0,
+    "nGaps": 0,
+    "gaps": [],
+    "nEvents": 1996
+   },
+   "plan": {
+    "weeklyPctOfBudget": 0.122,
+    "weightPct": 6.3,
+    "split": "50% fixed weekly DCA; 50% saved and deployed only in weeks the accumulation rule fires (the \"half\" strategy in the backtest)"
+   }
+  }
+ ],
+ "rejected": [
+  {
+   "sym": "BTC",
+   "why": "Excluded by Martin's instruction."
+  },
+  {
+   "sym": "ETH",
+   "why": "Quantum: draft EIPs only (8141 etc.), L1 PQ 'could be completed by 2029'; roadmap-only. Buyback theme: EIP-1559 burn currently below issuance (terminal net_supply). Not a fit for either theme today.",
+   "sources": [
+    "https://qdaycountdown.com/crypto/"
+   ]
+  },
+  {
+   "sym": "APT",
+   "why": "SLH-DSA-SHA2-128s authenticator merged (PR #18300, Jan 2026) but feature flag 107 is not enabled on mainnet: code exists, nothing usable. Watch only.",
+   "sources": [
+    "https://github.com/aptos-labs/aptos-core/pull/18300"
+   ]
+  },
+  {
+   "sym": "ADA, XRP, SOL, HBAR",
+   "why": "Quantum: problem statements / research programs / opt-in vault programs only; no protocol-level PQ signatures on mainnet.",
+   "sources": [
+    "https://qdaycountdown.com/crypto/"
+   ]
+  },
+  {
+   "sym": "AAVE",
+   "why": "Buyback: DefiLlama holdersRevenue is $0 over the last 90 days (vs $17.5M over 1y): the program is paused or no longer tracked. Re-check before adding."
+  },
+  {
+   "sym": "JUP",
+   "why": "Buyback goes to a treasury ('litterbox'), not burned, and large future unlocks remain; weaker than RAY/CAKE on supply."
+  },
+  {
+   "sym": "LINK, LDO, ASTER",
+   "why": "Buybacks held in treasury/reserve (not burned) or irregular (ASTER 50% uptime in the terminal's study)."
+  },
+  {
+   "sym": "BNB, OKB, BGB, TRX",
+   "why": "Exchange/chain burns are real but centrally decided (quarterly announcements); OKB's program ended 2025-08. Not protocol-revenue buybacks in the DeFi sense."
+  }
+ ],
+ "sources": {},
+ "backtest": {
+  "rule": {
+   "key": "dd70",
+   "label": "drawdown from 1y high >= 70%",
+   "chosenBy": "max train (entries < 2023-01-01) median 1y forward return minus unconditional median, n>=30 and >=3 coins"
+  },
+  "universe": [
+   "ALGO",
+   "CAKE",
+   "NEAR",
+   "RAY",
+   "SUI",
+   "UNI",
+   "ZEC"
+  ],
+  "trainEnd": "2023-01-01",
+  "grid": [
+   {
+    "key": "sma20",
+    "label": "price >= 20% below 200d SMA",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 215,
+       "mean": -0.3206,
+       "median": -0.5834,
+       "pctPos": 0.107
+      },
+      "fwd2y": {
+       "n": 215,
+       "mean": 1.0139,
+       "median": -0.3776,
+       "pctPos": 0.395
+      },
+      "maxDD1y": {
+       "n": 215,
+       "mean": -0.6092,
+       "median": -0.6475,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 9
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 278,
+      "mean": 0.9725,
+      "median": 0.2893,
+      "pctPos": 0.626
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 22
+    }
+   },
+   {
+    "key": "sma20q",
+    "label": "price >= 20% below 200d SMA AND 30d vol <= 1y median (quiet)",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 137,
+       "mean": -0.5271,
+       "median": -0.6114,
+       "pctPos": 0.036
+      },
+      "fwd2y": {
+       "n": 137,
+       "mean": -0.0557,
+       "median": -0.4753,
+       "pctPos": 0.299
+      },
+      "maxDD1y": {
+       "n": 137,
+       "mean": -0.6594,
+       "median": -0.6681,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 9
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 161,
+      "mean": 1.0581,
+      "median": 0.3659,
+      "pctPos": 0.714
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 18
+    }
+   },
+   {
+    "key": "sma30",
+    "label": "price >= 30% below 200d SMA",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 181,
+       "mean": -0.3511,
+       "median": -0.5834,
+       "pctPos": 0.11
+      },
+      "fwd2y": {
+       "n": 181,
+       "mean": 1.197,
+       "median": -0.3257,
+       "pctPos": 0.414
+      },
+      "maxDD1y": {
+       "n": 181,
+       "mean": -0.613,
+       "median": -0.65,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 8
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 153,
+      "mean": 0.5914,
+      "median": 0.2542,
+      "pctPos": 0.588
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 17
+    }
+   },
+   {
+    "key": "sma30q",
+    "label": "price >= 30% below 200d SMA AND 30d vol <= 1y median (quiet)",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 117,
+       "mean": -0.5163,
+       "median": -0.6114,
+       "pctPos": 0.043
+      },
+      "fwd2y": {
+       "n": 117,
+       "mean": 0.0338,
+       "median": -0.3814,
+       "pctPos": 0.333
+      },
+      "maxDD1y": {
+       "n": 117,
+       "mean": -0.6587,
+       "median": -0.6627,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 9
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 82,
+      "mean": 0.5345,
+      "median": 0.2974,
+      "pctPos": 0.659
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 13
+    }
+   },
+   {
+    "key": "sma40",
+    "label": "price >= 40% below 200d SMA",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 135,
+       "mean": -0.2792,
+       "median": -0.5787,
+       "pctPos": 0.148
+      },
+      "fwd2y": {
+       "n": 135,
+       "mean": 1.7555,
+       "median": -0.0229,
+       "pctPos": 0.496
+      },
+      "maxDD1y": {
+       "n": 135,
+       "mean": -0.5986,
+       "median": -0.6362,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 7
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 70,
+      "mean": 0.6323,
+      "median": 0.2715,
+      "pctPos": 0.643
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 9
+    }
+   },
+   {
+    "key": "sma40q",
+    "label": "price >= 40% below 200d SMA AND 30d vol <= 1y median (quiet)",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 83,
+       "mean": -0.4888,
+       "median": -0.6101,
+       "pctPos": 0.06
+      },
+      "fwd2y": {
+       "n": 83,
+       "mean": 0.2415,
+       "median": -0.2533,
+       "pctPos": 0.41
+      },
+      "maxDD1y": {
+       "n": 83,
+       "mean": -0.6541,
+       "median": -0.6622,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 7
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 34,
+      "mean": 0.3232,
+      "median": 0.2845,
+      "pctPos": 0.706
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 8
+    }
+   },
+   {
+    "key": "sma50",
+    "label": "price >= 50% below 200d SMA",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 88,
+       "mean": -0.148,
+       "median": -0.5726,
+       "pctPos": 0.193
+      },
+      "fwd2y": {
+       "n": 88,
+       "mean": 2.7501,
+       "median": 0.3655,
+       "pctPos": 0.614
+      },
+      "maxDD1y": {
+       "n": 88,
+       "mean": -0.5773,
+       "median": -0.6228,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 6
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 18,
+      "mean": 1.6162,
+      "median": 0.6574,
+      "pctPos": 0.667
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 5
+    }
+   },
+   {
+    "key": "sma50q",
+    "label": "price >= 50% below 200d SMA AND 30d vol <= 1y median (quiet)",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 44,
+       "mean": -0.4324,
+       "median": -0.6048,
+       "pctPos": 0.068
+      },
+      "fwd2y": {
+       "n": 44,
+       "mean": 0.5654,
+       "median": 0.2906,
+       "pctPos": 0.591
+      },
+      "maxDD1y": {
+       "n": 44,
+       "mean": -0.6423,
+       "median": -0.6523,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 7
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 1,
+      "mean": 1.5226,
+      "median": 1.5226,
+      "pctPos": 1.0
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 1
+    }
+   },
+   {
+    "key": "dd50",
+    "label": "drawdown from 1y high >= 50%",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 325,
+       "mean": 0.0391,
+       "median": -0.5432,
+       "pctPos": 0.191
+      },
+      "fwd2y": {
+       "n": 325,
+       "mean": 0.6496,
+       "median": -0.338,
+       "pctPos": 0.397
+      },
+      "maxDD1y": {
+       "n": 325,
+       "mean": -0.5599,
+       "median": -0.6344,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 9
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 495,
+      "mean": 1.1238,
+      "median": 0.1289,
+      "pctPos": 0.562
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 17
+    }
+   },
+   {
+    "key": "dd50q",
+    "label": "drawdown from 1y high >= 50% AND 30d vol <= 1y median (quiet)",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 212,
+       "mean": -0.1056,
+       "median": -0.5891,
+       "pctPos": 0.142
+      },
+      "fwd2y": {
+       "n": 212,
+       "mean": -0.0921,
+       "median": -0.4465,
+       "pctPos": 0.335
+      },
+      "maxDD1y": {
+       "n": 212,
+       "mean": -0.5969,
+       "median": -0.6623,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 11
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 304,
+      "mean": 1.3473,
+      "median": 0.2683,
+      "pctPos": 0.628
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 19
+    }
+   },
+   {
+    "key": "dd60",
+    "label": "drawdown from 1y high >= 60%",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 272,
+       "mean": -0.075,
+       "median": -0.5294,
+       "pctPos": 0.162
+      },
+      "fwd2y": {
+       "n": 272,
+       "mean": 0.8681,
+       "median": -0.2735,
+       "pctPos": 0.426
+      },
+      "maxDD1y": {
+       "n": 272,
+       "mean": -0.5691,
+       "median": -0.6348,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 10
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 347,
+      "mean": 1.2473,
+      "median": 0.2089,
+      "pctPos": 0.594
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 17
+    }
+   },
+   {
+    "key": "dd60q",
+    "label": "drawdown from 1y high >= 60% AND 30d vol <= 1y median (quiet)",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 176,
+       "mean": -0.2317,
+       "median": -0.5895,
+       "pctPos": 0.102
+      },
+      "fwd2y": {
+       "n": 176,
+       "mean": -0.0146,
+       "median": -0.3795,
+       "pctPos": 0.352
+      },
+      "maxDD1y": {
+       "n": 176,
+       "mean": -0.6121,
+       "median": -0.666,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 12
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 229,
+      "mean": 1.5577,
+      "median": 0.3284,
+      "pctPos": 0.664
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 14
+    }
+   },
+   {
+    "key": "dd70",
+    "label": "drawdown from 1y high >= 70%",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 221,
+       "mean": -0.2189,
+       "median": -0.5133,
+       "pctPos": 0.145
+      },
+      "fwd2y": {
+       "n": 221,
+       "mean": 1.107,
+       "median": -0.1104,
+       "pctPos": 0.471
+      },
+      "maxDD1y": {
+       "n": 221,
+       "mean": -0.5714,
+       "median": -0.6289,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 9
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 186,
+      "mean": 2.0047,
+      "median": 0.3971,
+      "pctPos": 0.683
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 13
+    },
+    "test": {
+     "signal": {
+      "fwd1y": {
+       "n": 186,
+       "mean": 2.0047,
+       "median": 0.3971,
+       "pctPos": 0.683
+      },
+      "fwd2y": {
+       "n": 156,
+       "mean": 4.2976,
+       "median": 1.01,
+       "pctPos": 0.833
+      },
+      "maxDD1y": {
+       "n": 186,
+       "mean": -0.3678,
+       "median": -0.3777,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 953,
+       "mean": 1.1731,
+       "median": 0.0893,
+       "pctPos": 0.531
+      },
+      "fwd2y": {
+       "n": 589,
+       "mean": 2.7824,
+       "median": 0.0466,
+       "pctPos": 0.53
+      },
+      "maxDD1y": {
+       "n": 953,
+       "mean": -0.4183,
+       "median": -0.419,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "SUI",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 13
+    }
+   },
+   {
+    "key": "dd70q",
+    "label": "drawdown from 1y high >= 70% AND 30d vol <= 1y median (quiet)",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 143,
+       "mean": -0.3913,
+       "median": -0.5895,
+       "pctPos": 0.084
+      },
+      "fwd2y": {
+       "n": 143,
+       "mean": 0.0686,
+       "median": -0.3135,
+       "pctPos": 0.392
+      },
+      "maxDD1y": {
+       "n": 143,
+       "mean": -0.6148,
+       "median": -0.6624,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 9
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 135,
+      "mean": 2.2586,
+      "median": 0.568,
+      "pctPos": 0.726
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 10
+    }
+   },
+   {
+    "key": "dd80",
+    "label": "drawdown from 1y high >= 80%",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 133,
+       "mean": -0.2061,
+       "median": -0.5534,
+       "pctPos": 0.165
+      },
+      "fwd2y": {
+       "n": 133,
+       "mean": 1.7835,
+       "median": -0.1342,
+       "pctPos": 0.489
+      },
+      "maxDD1y": {
+       "n": 133,
+       "mean": -0.5715,
+       "median": -0.6285,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 7
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 52,
+      "mean": 3.2231,
+      "median": 2.4989,
+      "pctPos": 0.865
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 5
+    }
+   },
+   {
+    "key": "dd80q",
+    "label": "drawdown from 1y high >= 80% AND 30d vol <= 1y median (quiet)",
+    "train": {
+     "signal": {
+      "fwd1y": {
+       "n": 78,
+       "mean": -0.4065,
+       "median": -0.6361,
+       "pctPos": 0.09
+      },
+      "fwd2y": {
+       "n": 78,
+       "mean": 0.2248,
+       "median": -0.3786,
+       "pctPos": 0.385
+      },
+      "maxDD1y": {
+       "n": 78,
+       "mean": -0.6252,
+       "median": -0.666,
+       "pctPos": 0.0
+      }
+     },
+     "baseline": {
+      "fwd1y": {
+       "n": 478,
+       "mean": 0.0168,
+       "median": -0.5531,
+       "pctPos": 0.234
+      },
+      "fwd2y": {
+       "n": 478,
+       "mean": 0.2336,
+       "median": -0.5103,
+       "pctPos": 0.28
+      },
+      "maxDD1y": {
+       "n": 478,
+       "mean": -0.5647,
+       "median": -0.6357,
+       "pctPos": 0.0
+      }
+     },
+     "coins": [
+      "ALGO",
+      "CAKE",
+      "NEAR",
+      "RAY",
+      "UNI",
+      "ZEC"
+     ],
+     "episodes": 7
+    },
+    "testSummary": {
+     "fwd1y": {
+      "n": 35,
+      "mean": 3.1922,
+      "median": 2.314,
+      "pctPos": 0.886
+     },
+     "baseMedian1y": 0.0893,
+     "episodes": 4
+    }
+   }
+  ],
+  "chosen": {
+   "key": "dd70",
+   "label": "drawdown from 1y high >= 70%",
+   "train": {
+    "signal": {
+     "fwd1y": {
+      "n": 221,
+      "mean": -0.2189,
+      "median": -0.5133,
+      "pctPos": 0.145
+     },
+     "fwd2y": {
+      "n": 221,
+      "mean": 1.107,
+      "median": -0.1104,
+      "pctPos": 0.471
+     },
+     "maxDD1y": {
+      "n": 221,
+      "mean": -0.5714,
+      "median": -0.6289,
+      "pctPos": 0.0
+     }
+    },
+    "baseline": {
+     "fwd1y": {
+      "n": 478,
+      "mean": 0.0168,
+      "median": -0.5531,
+      "pctPos": 0.234
+     },
+     "fwd2y": {
+      "n": 478,
+      "mean": 0.2336,
+      "median": -0.5103,
+      "pctPos": 0.28
+     },
+     "maxDD1y": {
+      "n": 478,
+      "mean": -0.5647,
+      "median": -0.6357,
+      "pctPos": 0.0
+     }
+    },
+    "coins": [
+     "ALGO",
+     "CAKE",
+     "NEAR",
+     "RAY",
+     "UNI",
+     "ZEC"
+    ],
+    "episodes": 9
+   },
+   "testSummary": {
+    "fwd1y": {
+     "n": 186,
+     "mean": 2.0047,
+     "median": 0.3971,
+     "pctPos": 0.683
+    },
+    "baseMedian1y": 0.0893,
+    "episodes": 13
+   },
+   "test": {
+    "signal": {
+     "fwd1y": {
+      "n": 186,
+      "mean": 2.0047,
+      "median": 0.3971,
+      "pctPos": 0.683
+     },
+     "fwd2y": {
+      "n": 156,
+      "mean": 4.2976,
+      "median": 1.01,
+      "pctPos": 0.833
+     },
+     "maxDD1y": {
+      "n": 186,
+      "mean": -0.3678,
+      "median": -0.3777,
+      "pctPos": 0.0
+     }
+    },
+    "baseline": {
+     "fwd1y": {
+      "n": 953,
+      "mean": 1.1731,
+      "median": 0.0893,
+      "pctPos": 0.531
+     },
+     "fwd2y": {
+      "n": 589,
+      "mean": 2.7824,
+      "median": 0.0466,
+      "pctPos": 0.53
+     },
+     "maxDD1y": {
+      "n": 953,
+      "mean": -0.4183,
+      "median": -0.419,
+      "pctPos": 0.0
+     }
+    },
+    "coins": [
+     "ALGO",
+     "CAKE",
+     "NEAR",
+     "RAY",
+     "SUI",
+     "UNI",
+     "ZEC"
+    ],
+    "episodes": 13
+   }
+  },
+  "strength": "unproven (worked on these candidates 2023+, failed on the broad universe)",
+  "strengthNote": "candidates 2023+: median 1y +40% vs all-weeks +9% (n=186 weekly entries, 13 episodes); train edge +4 pts; broad Binance universe 2023+: -38% vs -30%",
+  "broad": {
+   "n_coins": 261,
+   "train": {
+    "signal": {
+     "fwd1y": {
+      "n": 9065,
+      "mean": 0.2415,
+      "median": -0.3351,
+      "pctPos": 0.261
+     },
+     "fwd2y": {
+      "n": 8812,
+      "mean": 0.6992,
+      "median": -0.1448,
+      "pctPos": 0.419
+     },
+     "maxDD1y": {
+      "n": 9065,
+      "mean": -0.4928,
+      "median": -0.5047,
+      "pctPos": 0.0
+     }
+    },
+    "baseline": {
+     "fwd1y": {
+      "n": 17559,
+      "mean": 1.2396,
+      "median": -0.369,
+      "pctPos": 0.306
+     },
+     "fwd2y": {
+      "n": 17065,
+      "mean": 0.7767,
+      "median": -0.3185,
+      "pctPos": 0.36
+     },
+     "maxDD1y": {
+      "n": 17559,
+      "mean": -0.5148,
+      "median": -0.5473,
+      "pctPos": 0.0
+     }
+    },
+    "coins": [
+     "1inch",
+     "aave",
+     "acm",
+     "ada",
+     "adx",
+     "agld",
+     "akro",
+     "alcx",
+     "algo",
+     "alice",
+     "alpha",
+     "amp",
+     "ankr",
+     "ar",
+     "ardr",
+     "arpa",
+     "asr",
+     "ata",
+     "atm",
+     "atom",
+     "auction",
+     "audio",
+     "ava",
+     "avax",
+     "axs",
+     "badger",
+     "bake",
+     "bal",
+     "band",
+     "bar",
+     "bat",
+     "bch",
+     "bel",
+     "bico",
+     "blz",
+     "bnb",
+     "bnt",
+     "c98",
+     "cake",
+     "celo",
+     "celr",
+     "cfx",
+     "chess",
+     "chr",
+     "chz",
+     "city",
+     "ckb",
+     "comp",
+     "cos",
+     "coti",
+     "crv",
+     "ctk",
+     "ctsi",
+     "ctxc",
+     "cvc",
+     "cvx",
+     "dash",
+     "data",
+     "dcr",
+     "dego",
+     "dent",
+     "dexe",
+     "df",
+     "dgb",
+     "dia",
+     "dock",
+     "dodo",
+     "doge",
+     "dot",
+     "drep",
+     "dusk",
+     "dydx",
+     "egld",
+     "enj",
+     "ens",
+     "eos",
+     "etc",
+     "eth",
+     "farm",
+     "fet",
+     "fida",
+     "fil",
+     "fio",
+     "firo",
+     "fis",
+     "flm",
+     "flow",
+     "flux",
+     "forth",
+     "ftm",
+     "fun",
+     "fxs",
+     "gala",
+     "gno",
+     "grt",
+     "gtc",
+     "hard",
+     "hbar",
+     "high",
+     "hive",
+     "hot",
+     "icp",
+     "icx",
+     "idex",
+     "ilv",
+     "inj",
+     "iost",
+     "iota",
+     "iotx",
+     "iris",
+     "jasmy",
+     "joe",
+     "jst",
+     "juv",
+     "kava",
+     "key",
+     "kmd",
+     "knc",
+     "ksm",
+     "lazio",
+     "lina",
+     "link",
+     "lit",
+     "lpt",
+     "lrc",
+     "lsk",
+     "ltc",
+     "lto",
+     "luna",
+     "mana",
+     "mask",
+     "matic",
+     "mbl",
+     "mbox",
+     "mdt",
+     "mina",
+     "mkr",
+     "mln",
+     "movr",
+     "mtl",
+     "near",
+     "neo",
+     "nkn",
+     "nmr",
+     "nuls",
+     "og",
+     "ogn",
+     "om",
+     "omg",
+     "one",
+     "ong",
+     "ont",
+     "orn",
+     "oxt",
+     "people",
+     "perl",
+     "perp",
+     "pha",
+     "pond",
+     "powr",
+     "psg",
+     "pundix",
+     "pyr",
+     "qi",
+     "qnt",
+     "qtum",
+     "rad",
+     "rare",
+     "ray",
+     "ren",
+     "req",
+     "rif",
+     "rlc",
+     "rose",
+     "rsr",
+     "rune",
+     "rvn",
+     "sand",
+     "santos",
+     "sc",
+     "sfp",
+     "shib",
+     "skl",
+     "slp",
+     "snx",
+     "sol",
+     "spell",
+     "stmx",
+     "storj",
+     "stpt",
+     "strax",
+     "stx",
+     "sun",
+     "super",
+     "sushi",
+     "sxp",
+     "sys",
+     "tfuel",
+     "theta",
+     "tko",
+     "tlm",
+     "tomo",
+     "trb",
+     "troy",
+     "tru",
+     "trx",
+     "uma",
+     "uni",
+     "utk",
+     "vet",
+     "vite",
+     "voxel",
+     "vtho",
+     "wan",
+     "waves",
+     "waxp",
+     "win",
+     "wing",
+     "wrx",
+     "xec",
+     "xlm",
+     "xrp",
+     "xtz",
+     "xvg",
+     "xvs",
+     "yfi",
+     "ygg",
+     "zec",
+     "zen",
+     "zil",
+     "zrx"
+    ],
+    "episodes": 331
+   },
+   "test": {
+    "signal": {
+     "fwd1y": {
+      "n": 7122,
+      "mean": -0.0019,
+      "median": -0.3761,
+      "pctPos": 0.326
+     },
+     "fwd2y": {
+      "n": 3438,
+      "mean": 0.4327,
+      "median": -0.3537,
+      "pctPos": 0.308
+     },
+     "maxDD1y": {
+      "n": 7122,
+      "mean": -0.5508,
+      "median": -0.5951,
+      "pctPos": 0.0
+     }
+    },
+    "baseline": {
+     "fwd1y": {
+      "n": 33342,
+      "mean": 0.0565,
+      "median": -0.2969,
+      "pctPos": 0.329
+     },
+     "fwd2y": {
+      "n": 20063,
+      "mean": -0.0522,
+      "median": -0.5533,
+      "pctPos": 0.211
+     },
+     "maxDD1y": {
+      "n": 33342,
+      "mean": -0.4893,
+      "median": -0.506,
+      "pctPos": 0.0
+     }
+    },
+    "coins": [
+     "1inch",
+     "aave",
+     "aca",
+     "ach",
+     "acm",
+     "ada",
+     "adx",
+     "agld",
+     "akro",
+     "alcx",
+     "algo",
+     "alice",
+     "alpha",
+     "alpine",
+     "amp",
+     "ankr",
+     "ape",
+     "api3",
+     "apt",
+     "ar",
+     "ardr",
+     "arpa",
+     "asr",
+     "astr",
+     "ata",
+     "atm",
+     "atom",
+     "auction",
+     "audio",
+     "ava",
+     "avax",
+     "axs",
+     "badger",
+     "bake",
+     "bal",
+     "band",
+     "bat",
+     "bch",
+     "bel",
+     "bico",
+     "blz",
+     "bnt",
+     "bttc",
+     "c98",
+     "cake",
+     "celo",
+     "celr",
+     "cfx",
+     "chess",
+     "chr",
+     "chz",
+     "city",
+     "ckb",
+     "comp",
+     "cos",
+     "coti",
+     "crv",
+     "ctk",
+     "ctsi",
+     "cvc",
+     "cvx",
+     "dash",
+     "data",
+     "dcr",
+     "dego",
+     "dent",
+     "dexe",
+     "dgb",
+     "dia",
+     "dock",
+     "dodo",
+     "dot",
+     "drep",
+     "dusk",
+     "dydx",
+     "egld",
+     "enj",
+     "ens",
+     "eos",
+     "farm",
+     "fet",
+     "fida",
+     "fil",
+     "fio",
+     "firo",
+     "fis",
+     "flm",
+     "flow",
+     "flux",
+     "ftm",
+     "ftt",
+     "fun",
+     "fxs",
+     "gala",
+     "ghst",
+     "glmr",
+     "gmt",
+     "gmx",
+     "gno",
+     "grt",
+     "gtc",
+     "hard",
+     "hbar",
+     "high",
+     "hive",
+     "hot",
+     "icp",
+     "icx",
+     "idex",
+     "ilv",
+     "imx",
+     "inj",
+     "iost",
+     "iota",
+     "iotx",
+     "iris",
+     "jasmy",
+     "joe",
+     "jst",
+     "juv",
+     "kava",
+     "kmd",
+     "knc",
+     "ksm",
+     "lazio",
+     "ldo",
+     "lina",
+     "link",
+     "lit",
+     "lpt",
+     "lrc",
+     "lsk",
+     "lto",
+     "luna",
+     "lunc",
+     "mana",
+     "mask",
+     "mbl",
+     "mbox",
+     "mdt",
+     "mina",
+     "mkr",
+     "mln",
+     "movr",
+     "mtl",
+     "near",
+     "neo",
+     "nkn",
+     "nmr",
+     "nuls",
+     "og",
+     "ogn",
+     "om",
+     "omg",
+     "one",
+     "ong",
+     "ont",
+     "op",
+     "orn",
+     "oxt",
+     "people",
+     "perp",
+     "pha",
+     "polyx",
+     "pond",
+     "porto",
+     "powr",
+     "pundix",
+     "pyr",
+     "qi",
+     "qtum",
+     "quick",
+     "rad",
+     "rare",
+     "ray",
+     "ren",
+     "req",
+     "rif",
+     "rlc",
+     "rose",
+     "rsr",
+     "rune",
+     "rvn",
+     "sand",
+     "santos",
+     "sc",
+     "scrt",
+     "sfp",
+     "shib",
+     "skl",
+     "slp",
+     "snx",
+     "sol",
+     "spell",
+     "steem",
+     "stg",
+     "stmx",
+     "storj",
+     "stpt",
+     "strax",
+     "stx",
+     "sun",
+     "super",
+     "sushi",
+     "sxp",
+     "sys",
+     "t",
+     "tfuel",
+     "theta",
+     "tko",
+     "tlm",
+     "trb",
+     "troy",
+     "tru",
+     "twt",
+     "uma",
+     "uni",
+     "utk",
+     "vet",
+     "vite",
+     "voxel",
+     "vtho",
+     "wan",
+     "waves",
+     "waxp",
+     "win",
+     "wing",
+     "woo",
+     "wrx",
+     "xec",
+     "xlm",
+     "xno",
+     "xtz",
+     "xvg",
+     "xvs",
+     "yfi",
+     "ygg",
+     "zec",
+     "zen",
+     "zil",
+     "zrx"
+    ],
+    "episodes": 513
+   },
+   "caveat": "survivor-biased: only coins still listed on Binance today"
+  },
+  "simulations": {
+   "NEAR": {
+    "full": {
+     "lumpSum": {
+      "multiple": 4.35,
+      "maxDD": -0.952
+     },
+     "dca": {
+      "multiple": 2.076,
+      "investedPct": 1.0,
+      "maxDD": -0.954
+     },
+     "ruleOnly": {
+      "multiple": 1.85,
+      "investedPct": 0.892,
+      "maxDD": -0.865
+     },
+     "half": {
+      "multiple": 1.963,
+      "investedPct": 0.946,
+      "maxDD": -0.926
+     },
+     "from": "2020-10-14",
+     "to": "2026-10-19",
+     "weeks": 314
+    },
+    "test": {
+     "lumpSum": {
+      "multiple": 3.984,
+      "maxDD": -0.891
+     },
+     "dca": {
+      "multiple": 2.284,
+      "investedPct": 1.0,
+      "maxDD": -0.92
+     },
+     "ruleOnly": {
+      "multiple": 2.235,
+      "investedPct": 0.829,
+      "maxDD": -0.878
+     },
+     "half": {
+      "multiple": 2.259,
+      "investedPct": 0.915,
+      "maxDD": -0.902
+     },
+     "from": "2023-01-01",
+     "to": "2026-10-19",
+     "weeks": 199
+    }
+   },
+   "ALGO": {
+    "full": {
+     "lumpSum": {
+      "multiple": 0.051,
+      "maxDD": -0.967
+     },
+     "dca": {
+      "multiple": 0.528,
+      "investedPct": 1.0,
+      "maxDD": -0.957
+     },
+     "ruleOnly": {
+      "multiple": 0.61,
+      "investedPct": 0.977,
+      "maxDD": -0.946
+     },
+     "half": {
+      "multiple": 0.569,
+      "investedPct": 0.988,
+      "maxDD": -0.952
+     },
+     "from": "2019-06-22",
+     "to": "2026-10-19",
+     "weeks": 383
+    },
+    "test": {
+     "lumpSum": {
+      "multiple": 0.631,
+      "maxDD": -0.848
+     },
+     "dca": {
+      "multiple": 0.761,
+      "investedPct": 1.0,
+      "maxDD": -0.85
+     },
+     "ruleOnly": {
+      "multiple": 0.875,
+      "investedPct": 0.955,
+      "maxDD": -0.732
+     },
+     "half": {
+      "multiple": 0.818,
+      "investedPct": 0.977,
+      "maxDD": -0.803
+     },
+     "from": "2023-01-01",
+     "to": "2026-10-19",
+     "weeks": 199
+    }
+   },
+   "ZEC": {
+    "full": {
+     "lumpSum": {
+      "multiple": 21.257,
+      "maxDD": -0.943
+     },
+     "dca": {
+      "multiple": 22.239,
+      "investedPct": 1.0,
+      "maxDD": -0.936
+     },
+     "ruleOnly": {
+      "multiple": 14.184,
+      "investedPct": 0.922,
+      "maxDD": -0.917
+     },
+     "half": {
+      "multiple": 18.211,
+      "investedPct": 0.961,
+      "maxDD": -0.927
+     },
+     "from": "2019-03-21",
+     "to": "2026-10-19",
+     "weeks": 396
+    },
+    "test": {
+     "lumpSum": {
+      "multiple": 31.508,
+      "maxDD": -0.718
+     },
+     "dca": {
+      "multiple": 26.861,
+      "investedPct": 1.0,
+      "maxDD": -0.741
+     },
+     "ruleOnly": {
+      "multiple": 7.496,
+      "investedPct": 0.839,
+      "maxDD": -0.538
+     },
+     "half": {
+      "multiple": 17.178,
+      "investedPct": 0.92,
+      "maxDD": -0.714
+     },
+     "from": "2023-01-01",
+     "to": "2026-10-19",
+     "weeks": 199
+    }
+   },
+   "SUI": {
+    "full": {
+     "lumpSum": {
+      "multiple": 0.722,
+      "maxDD": -0.877
+     },
+     "dca": {
+      "multiple": 0.919,
+      "investedPct": 1.0,
+      "maxDD": -0.903
+     },
+     "ruleOnly": {
+      "multiple": 1.137,
+      "investedPct": 0.983,
+      "maxDD": -0.892
+     },
+     "half": {
+      "multiple": 1.028,
+      "investedPct": 0.992,
+      "maxDD": -0.897
+     },
+     "from": "2023-05-03",
+     "to": "2026-10-19",
+     "weeks": 181
+    },
+    "test": {
+     "lumpSum": {
+      "multiple": 0.722,
+      "maxDD": -0.877
+     },
+     "dca": {
+      "multiple": 0.919,
+      "investedPct": 1.0,
+      "maxDD": -0.903
+     },
+     "ruleOnly": {
+      "multiple": 1.137,
+      "investedPct": 0.983,
+      "maxDD": -0.892
+     },
+     "half": {
+      "multiple": 1.028,
+      "investedPct": 0.992,
+      "maxDD": -0.897
+     },
+     "from": "2023-05-03",
+     "to": "2026-10-19",
+     "weeks": 181
+    }
+   },
+   "UNI": {
+    "full": {
+     "lumpSum": {
+      "multiple": 2.147,
+      "maxDD": -0.944
+     },
+     "dca": {
+      "multiple": 1.134,
+      "investedPct": 1.0,
+      "maxDD": -0.954
+     },
+     "ruleOnly": {
+      "multiple": 1.32,
+      "investedPct": 0.959,
+      "maxDD": -0.775
+     },
+     "half": {
+      "multiple": 1.227,
+      "investedPct": 0.98,
+      "maxDD": -0.91
+     },
+     "from": "2020-09-17",
+     "to": "2026-10-19",
+     "weeks": 318
+    },
+    "test": {
+     "lumpSum": {
+      "multiple": 1.416,
+      "maxDD": -0.871
+     },
+     "dca": {
+      "multiple": 1.266,
+      "investedPct": 1.0,
+      "maxDD": -0.864
+     },
+     "ruleOnly": {
+      "multiple": 1.566,
+      "investedPct": 0.955,
+      "maxDD": -0.776
+     },
+     "half": {
+      "multiple": 1.416,
+      "investedPct": 0.977,
+      "maxDD": -0.779
+     },
+     "from": "2023-01-01",
+     "to": "2026-10-19",
+     "weeks": 199
+    }
+   },
+   "RAY": {
+    "full": {
+     "lumpSum": {
+      "multiple": 0.465,
+      "maxDD": -0.992
+     },
+     "dca": {
+      "multiple": 3.057,
+      "investedPct": 1.0,
+      "maxDD": -0.943
+     },
+     "ruleOnly": {
+      "multiple": 3.165,
+      "investedPct": 0.978,
+      "maxDD": -0.939
+     },
+     "half": {
+      "multiple": 3.111,
+      "investedPct": 0.989,
+      "maxDD": -0.941
+     },
+     "from": "2021-08-10",
+     "to": "2026-10-19",
+     "weeks": 271
+    },
+    "test": {
+     "lumpSum": {
+      "multiple": 14.053,
+      "maxDD": -0.931
+     },
+     "dca": {
+      "multiple": 3.319,
+      "investedPct": 1.0,
+      "maxDD": -0.95
+     },
+     "ruleOnly": {
+      "multiple": 3.189,
+      "investedPct": 0.965,
+      "maxDD": -0.941
+     },
+     "half": {
+      "multiple": 3.254,
+      "investedPct": 0.982,
+      "maxDD": -0.946
+     },
+     "from": "2023-01-01",
+     "to": "2026-10-19",
+     "weeks": 199
+    }
+   },
+   "CAKE": {
+    "full": {
+     "lumpSum": {
+      "multiple": 0.115,
+      "maxDD": -0.975
+     },
+     "dca": {
+      "multiple": 0.834,
+      "investedPct": 1.0,
+      "maxDD": -0.915
+     },
+     "ruleOnly": {
+      "multiple": 1.175,
+      "investedPct": 0.936,
+      "maxDD": -0.73
+     },
+     "half": {
+      "multiple": 1.004,
+      "investedPct": 0.968,
+      "maxDD": -0.841
+     },
+     "from": "2021-02-19",
+     "to": "2026-10-19",
+     "weeks": 296
+    },
+    "test": {
+     "lumpSum": {
+      "multiple": 0.691,
+      "maxDD": -0.775
+     },
+     "dca": {
+      "multiple": 1.085,
+      "investedPct": 1.0,
+      "maxDD": -0.778
+     },
+     "ruleOnly": {
+      "multiple": 1.465,
+      "investedPct": 0.905,
+      "maxDD": -0.687
+     },
+     "half": {
+      "multiple": 1.275,
+      "investedPct": 0.952,
+      "maxDD": -0.731
+     },
+     "from": "2023-01-01",
+     "to": "2026-10-19",
+     "weeks": 199
+    }
+   }
+  },
+  "euphoria": [
+   {
+    "mult": 1.8,
+    "signal": {
+     "n": 126,
+     "mean": 0.5263,
+     "median": -0.462,
+     "pctPos": 0.294
+    },
+    "baseline": {
+     "n": 1431,
+     "mean": 0.7868,
+     "median": -0.2237,
+     "pctPos": 0.432
+    },
+    "episodes": 19
+   },
+   {
+    "mult": 2.5,
+    "signal": {
+     "n": 30,
+     "mean": 1.1998,
+     "median": -0.3869,
+     "pctPos": 0.367
+    },
+    "baseline": {
+     "n": 1431,
+     "mean": 0.7868,
+     "median": -0.2237,
+     "pctPos": 0.432
+    },
+    "episodes": 8
+   },
+   {
+    "mult": 3.5,
+    "signal": {
+     "n": 5,
+     "mean": 2.6754,
+     "median": 2.3611,
+     "pctPos": 0.8
+    },
+    "baseline": {
+     "n": 1431,
+     "mean": 0.7868,
+     "median": -0.2237,
+     "pctPos": 0.432
+    },
+    "episodes": 3
+   }
+  ],
+  "caveats": [
+   "Weekly entries overlap (52 per year share most of the same forward window): treat episodes, not weekly n, as the real sample size.",
+   "Survivorship: delisted coins are missing, which flatters every strategy.",
+   "Price only: no fees, slippage, taxes; cash earns 0%.",
+   "Rule-only leaves cash idle when no drawdown comes (investedPct < 100%); in a straight bull run it lags DCA and lump sum (see ZEC).",
+   "2023+ test period is a single market cycle."
+  ]
+ },
+ "portfolio": {
+  "capSumPct": 63,
+  "memeSliceMaxPct": 7,
+  "coreCapRangePct": [
+   5,
+   15
+  ],
+  "note": "capPct = max position as % of the whole portfolio. Meme slice (PUMP + any memecoins elsewhere) capped at 7% total; speculative names (QRL, DRV) 2% each."
+ }
+}

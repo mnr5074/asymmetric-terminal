@@ -913,6 +913,20 @@ routes['/api/rhscan'] = async () => {
   try { const m = fs.statSync(f).mtimeMs; if (m !== rhCache.m) rhCache = { m, v: JSON.parse(fs.readFileSync(f, 'utf8')) }; return rhCache.v; }
   catch { return { error: 'no Robinhood Chain scan yet (run research/rhscan/rh_scan.py)', items: [] }; }
 };
+// Long Book: long-term quantum-resistance + real buy-and-burn desk (research/longbook/longbook.py -> data/longbook.json, frozen
+// snapshot; rebuilt by hand, not by a collector). The route only merges the live sentiment oscillator for tracked symbols.
+let lbCache = { m: 0, v: null };
+routes['/api/longbook'] = async () => {
+  const f = path.join(DATA_DIR, 'longbook.json');
+  try { const m = fs.statSync(f).mtimeMs; if (m !== lbCache.m) lbCache = { m, v: JSON.parse(fs.readFileSync(f, 'utf8')) }; }
+  catch { return { error: 'no Long Book build yet (run research/longbook/longbook.py)', candidates: [] }; }
+  const out = { ...lbCache.v, candidates: lbCache.v.candidates.map((c) => {
+    if (!c.sentimentSym) return c;
+    let r = null; try { r = sentimentDesk.lookup({ sym: c.sentimentSym }); } catch {}
+    return { ...c, sentiment: r ? { oscillator: r.oscillator, zone: r.zone, asOf: r.velocity && r.velocity.asOf, suppressed: !!r.suppressed, lowSample: !!r.lowSample, quality: r.quality } : null };
+  }) };
+  return out;
+};
 // Trigger alerts: lib/rhalerts.js (ntfy, deduped forever per token+base, queued through quiet hours, HARD walk-away flags bypass them).
 const rhAlerts = require('./lib/rhalerts').createRhAlerts({ DATA_DIR, alerts, log: (m) => console.log('[rhscan] ' + m) });
 routes['/api/rhscan/alerts'] = async () => rhAlerts.status();

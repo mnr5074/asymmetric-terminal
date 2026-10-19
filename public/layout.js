@@ -23,7 +23,7 @@
   const list = owner.querySelector('.ownerlist');
   owner.querySelector('.ownerbtn').onclick = (e) => { e.stopPropagation(); list.classList.toggle('hidden'); };
   document.addEventListener('click', (e) => { if (!owner.contains(e.target)) list.classList.add('hidden'); });
-  const ORDER = { command: 0, terminal: 1, breakouts: 2, options: 3, research: 4, glossary: 5 };
+  const ORDER = { command: 0, terminal: 1, breakouts: 2, options: 3, research: 4, longbook: 4.5, glossary: 5 };
   function tidyNav() {
     for (const v of ['portfolio', 'tax', 'swap', 'airdrops']) { const b = nav.querySelector(`:scope > [data-v=${v}]`); if (b) list.appendChild(b); }
     for (const v of ['derive', 'accum']) { const b = nav.querySelector(`:scope > [data-v=${v}]`); if (b) { b.classList.add('hidden'); b.dataset.hiddenNav = '1'; } }
