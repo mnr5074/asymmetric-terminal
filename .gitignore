@@ -59,3 +59,4 @@ research/*.pdf
 
 # Robinhood Chain scanner raw API cache (research/rhscan/rh_scan.py)
 research/rhscan/cache/
+research/longbook/cache/
