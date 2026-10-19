@@ -1,0 +1,9 @@
+{
+ "_note": "Always-refreshed Robinhood Chain tokens (Martin's named list). Each pinned pool is fetched directly every run, whether or not it is on the GeckoTerminal pages the scanner reads, and is used for the token's 4h series. Tokens here bypass the liquidity floor and always get a card. Edit this file to add or remove tokens.",
+ "tokens": [
+  {"token": "0xedbf91223639800bcd5756815caf908df3b890be", "pool": "0xff7b3bd2db34d9ed8160e6dedf1d448777abaa1fa6fc8a31144930a1a656fd92", "label": "PRIORS (reference pattern)"},
+  {"token": "0x63ee32ac3077d1fbd8a77ebba2a6ed4b8e9c1e18", "pool": "0x7e271c400427ecb727f5fbb27dec69254bce7c4219e95e3535d0ed128f79648a", "label": "iNu"},
+  {"token": "0x18e674231a58c239dc7daedcffe15ec3a24cff5c", "pool": "0x590dcb6a87828bf688b48089a62239b693378f1fb64d2286e6a399ed8c005fdf", "label": "HOOKR (Hookr.fun)"},
+  {"token": "0xaa5751ff3fb61e613993b2eb4eab1fce017081fc", "pool": "0x2f509c6e2675a1a7945902c64ba4aefaef32b2fbf34245f12078a1d0573db170", "label": "HYDX (HyperDex)", "added": "2026-10-19", "why": "dropped out of the 2026-10-19 02:43 PT scan: its pools were not on the GeckoTerminal pages read"}
+ ]
+}

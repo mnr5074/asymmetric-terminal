@@ -33,12 +33,19 @@ GT = 'https://api.geckoterminal.com/api/v2'
 DS = 'https://api.dexscreener.com'
 NET = 'robinhood'
 PRIORS = '0xedbf91223639800bcd5756815caf908df3b890be'
-# Named by Martin: always included when present. Verified addresses (oldest / deepest pools on DexScreener 2026-10-18).
-FORCE = {
-    PRIORS: 'PRIORS (reference pattern)',
-    '0x63ee32ac3077d1fbd8a77ebba2a6ed4b8e9c1e18': 'iNu',
-    '0x18e674231a58c239dc7daedcffe15ec3a24cff5c': 'HOOKR (Hookr.fun)',
-}
+# Tracked list (research/rhscan/tracked.json): Martin's named tokens. Their pinned pools are fetched directly every run (not
+# only when they happen to be on the GeckoTerminal pages read), they bypass the liquidity floor and always get a card.
+TRACKED_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tracked.json')
+def load_tracked():
+    try: return [t for t in json.load(open(TRACKED_FILE)).get('tokens', []) if t.get('token')]
+    except Exception: return [{'token': PRIORS, 'label': 'PRIORS (reference pattern)'}]
+TRACKED = load_tracked()
+FORCE = {t['token'].lower(): t.get('label') or t['token'] for t in TRACKED}
+PINNED = {t['token'].lower(): t['pool'].lower() for t in TRACKED if t.get('pool')}
+# Sticky list (DATA_DIR/rh_sticky.json): every token that ever got a card. Each run re-fetches the pools of sticky tokens that
+# are not on the pages read, keeps them on the board, and flags (never silently drops) any that cannot be scored any more.
+STICKY_FILE = os.path.join(DATA, 'rh_sticky.json')
+MISSING_LOG = os.path.join(DATA, 'rh_missing.log')  # jsonl: one line each time a sticky token goes missing (or its reason changes)
 # Same-ticker copies seen in DexScreener search; flagged, never ranked.
 IMPOSTORS = {
     '0x98e670d2e53a9176dcf0084c80cf6a8df939ff5c': 'HOOKR copy "Hookr" created 2026-10-17 with ~$10.8M quoted liquidity and ~$5 volume: likely fake liquidity',
@@ -86,13 +93,47 @@ def cached(name, ttl, fn, use_cache=True):
         with open(p, 'w') as f: json.dump(v, f)
     return v
 
+def load_sticky():
+    try: return {k.lower(): v for k, v in json.load(open(STICKY_FILE)).get('tokens', {}).items()}
+    except Exception: return {}
+
+def update_sticky(sticky, out, best, toks, series, min_liq, now):
+    """Add every carded token to the sticky list; return (and log) sticky tokens that did not get a card this run, with why."""
+    shown = {x['token']: x for x in out}
+    for addr, x in shown.items():
+        e = sticky.setdefault(addr, {'symbol': x['symbol'], 'firstSeen': now})
+        e.update({'symbol': x['symbol'], 'pool': x['pool'], 'lastSeen': now, 'lastState': x['state']})
+        e.pop('missingSince', None); e.pop('missingReason', None)
+    for addr in FORCE: sticky.setdefault(addr, {'symbol': FORCE[addr], 'firstSeen': now})
+    missing = []
+    for addr, e in sticky.items():
+        if addr in shown: continue
+        p = best.get(addr)
+        why = ('no pool found on GeckoTerminal (delisted, or the pool fetch failed)' if not p else
+               'liquidity $%s is under the $%s floor' % (format(round(p['liq'] or 0), ','), format(round(min_liq), ',')) if addr not in toks else
+               'not enough 4h history or the OHLCV fetch failed' if addr not in series else 'scored but not carded (unexpected)')
+        newly = not e.get('missingSince') or e.get('missingReason') != why
+        e.setdefault('missingSince', now); e['missingReason'] = why
+        m = {'token': addr, 'symbol': e.get('symbol'), 'reason': why, 'missingSince': e['missingSince'], 'lastSeen': e.get('lastSeen'), 'lastState': e.get('lastState'), 'tracked': addr in FORCE}
+        missing.append(m)
+        if newly:
+            try:
+                with open(MISSING_LOG, 'a') as fh: fh.write(json.dumps({'t': now, **m}) + '\n')
+            except Exception: pass
+            print('rhscan: MISSING %s %s: %s' % (e.get('symbol'), addr, why), file=sys.stderr)
+    tmp = STICKY_FILE + '.tmp'
+    with open(tmp, 'w') as fh: json.dump({'v': 1, 'updatedAt': now, 'tokens': sticky}, fh, indent=1)
+    os.replace(tmp, STICKY_FILE)
+    return sorted(missing, key=lambda m: (not m['tracked'], m['symbol'] or ''))
+
 def num(x):
     try: return float(x)
     except Exception: return None
 
 # ---------- universe ----------
-def universe(pages, uc):
-    pools = {}
+POOL_TTL = 3.5 * 3600   # pool lists / pinned pools: < the 4h bar, so every 4h run sees a fresh bar
+def universe(pages, uc, sticky=(), sticky_fetched=None):
+    pools = {}; sticky_fetched = sticky_fetched if sticky_fetched is not None else set()
     def add(lst):
         for p in (lst or {}).get('data', []) or []:
             a = p['attributes']; rel = p.get('relationships', {})
@@ -107,9 +148,19 @@ def universe(pages, uc):
         add(cached(f'pools_{pg}.json', 6 * 3600, lambda pg=pg: get(f'{GT}/networks/{NET}/pools?page={pg}'), uc))
     for pg in range(1, 4):
         add(cached(f'trending_{pg}.json', 6 * 3600, lambda pg=pg: get(f'{GT}/networks/{NET}/trending_pools?page={pg}'), uc))
-    # forced tokens: their pools
+    # tracked tokens: the pinned pool directly (1 call), else the token's own pool list
     for addr in FORCE:
-        add(cached(f'tokpools_{addr}.json', 6 * 3600, lambda addr=addr: get(f'{GT}/networks/{NET}/tokens/{addr}/pools?page=1'), uc))
+        if addr in PINNED:
+            d = cached(f'pool_{PINNED[addr]}.json', POOL_TTL, lambda pl=PINNED[addr]: get(f'{GT}/networks/{NET}/pools/{pl}'), uc)
+            add({'data': [d['data']]} if d and isinstance(d.get('data'), dict) else None)
+        else:
+            add(cached(f'tokpools_{addr}.json', POOL_TTL, lambda addr=addr: get(f'{GT}/networks/{NET}/tokens/{addr}/pools?page=1'), uc))
+    # sticky tokens that are not on the pages read: fetch their own pool list so they do not drop out
+    seen = {p['base'] for p in pools.values()}
+    for addr in sticky:
+        if addr in seen or addr in FORCE: continue
+        add(cached(f'tokpools_{addr}.json', POOL_TTL, lambda addr=addr: get(f'{GT}/networks/{NET}/tokens/{addr}/pools?page=1'), uc))
+        sticky_fetched.add(addr)
     # best pool per base token (deepest liquidity), skip quote-like bases
     best = {}
     for p in pools.values():
@@ -117,12 +168,14 @@ def universe(pages, uc):
         if sym in QUOTES or not p['base']: continue
         p['symbol'] = sym
         b = best.get(p['base'])
+        if PINNED.get(p['base']) == p['pool'].lower(): p['pinned'] = True; best[p['base']] = p; continue
+        if b and b.get('pinned'): continue
         if not b or (p['liq'] or 0) > (b['liq'] or 0): best[p['base']] = p
     return best, len(pools)
 
 # ---------- OHLCV ----------
 def ohlcv(pool, uc):
-    d = cached(f'ohlcv4h_{pool.lower()}.json', 6 * 3600, lambda: get(f'{GT}/networks/{NET}/pools/{pool}/ohlcv/hour?aggregate=4&limit=1000&currency=usd'), uc)
+    d = cached(f'ohlcv4h_{pool.lower()}.json', POOL_TTL, lambda: get(f'{GT}/networks/{NET}/pools/{pool}/ohlcv/hour?aggregate=4&limit=1000&currency=usd'), uc)
     try: rows = sorted(d['data']['attributes']['ohlcv_list'])
     except Exception: return []
     return [{'t': int(r[0]), 'o': r[1], 'h': r[2], 'l': r[3], 'c': r[4], 'v': r[5]} for r in rows if r[4]]
@@ -298,7 +351,8 @@ def main():
     ap.add_argument('--min-liq', type=float, default=20000)
     a = ap.parse_args(); uc = not a.no_cache
     t0 = time.time()
-    best, npools = universe(a.pages, uc)
+    sticky = load_sticky(); sticky_fetched = set()
+    best, npools = universe(a.pages, uc, sticky, sticky_fetched)
     toks = {k: v for k, v in best.items() if (v['liq'] or 0) >= a.min_liq or k in FORCE}
     toks = {k: v for k, v in toks.items() if k not in IMPOSTORS}
     series = {}
@@ -320,7 +374,7 @@ def main():
         if f: f = {**f, 'volRise': vr, 'triggerNow': trig, 'setupBarUtc': time.strftime('%Y-%m-%d %H:%M', time.gmtime(b[f['j']]['t'])) if setup else None}
         rows.append((addr, sym, b, f, r))
     # enrich: anything in pullback zone or forced
-    focus = [x for x in rows if x[4].get('pullback') or x[0] in FORCE or x[0] in coil_now or (x[3] and 0.40 <= x[3].get('dd', 0) <= 0.75)]
+    focus = [x for x in rows if x[4].get('pullback') or x[0] in FORCE or x[0] in sticky or x[0] in coil_now or (x[3] and 0.40 <= x[3].get('dd', 0) <= 0.75)]
     dsx = ds_pairs([x[0] for x in focus], uc)
     out = []
     for addr, sym, b, f, r in focus:
@@ -349,12 +403,13 @@ def main():
                    ('contract: clean' if cc['clean'] else 'contract: ' + ('; '.join(cc['flags']) or 'unknown (GeckoTerminal has no holder/honeypot data)')),
                    ('utility evidence: ' + ', '.join(ut['keywords'][:4]) if ut['evidence'] else 'utility: not evidenced (no site/description or meme category)')]
         out.append({
-            'token': addr, 'symbol': sym, 'name': info.get('name') or sym, 'named': FORCE.get(addr), 'pool': p['pool'], 'state': state,
+            'token': addr, 'symbol': sym, 'name': info.get('name') or sym, 'named': FORCE.get(addr), 'tracked': addr in FORCE, 'sticky': addr in sticky,
+            'refetched': addr in sticky_fetched, 'pool': p['pool'], 'state': state,
             'checks': checks, 'passed': npass, 'of': len(checks), 'reasons': reasons,
             'price': price, 'priceAt': b[-1]['t'] * 1000, 'liqUsd': p['liq'], 'fdvUsd': p['fdv'], 'vol24Usd': p['vol24'],
             'ageDays': round((b[-1]['t'] - b[0]['t']) / 86400, 1), 'm': {k: (round(v, 6) if isinstance(v, float) else v) for k, v in f.items()},
             'contract': cc, 'utility': ut, 'basePosition': pos,
-            'plan': plan(sym, price, f, p['liq'], summ, state) if state != 'Fails' or addr in FORCE else None,
+            'plan': plan(sym, price, f, p['liq'], summ, state) if state != 'Fails' or addr in FORCE or addr in sticky else None,
             'dexscreener': f'https://dexscreener.com/robinhood/{p["pool"]}', 'strength': strg,
         })
     for x in out:
@@ -388,6 +443,7 @@ def main():
                'triggers': [{'barUtc': time.strftime('%Y-%m-%d %H:%M', time.gmtime(t)), 'close': c, **(o or {})} for t, c, o in hits][:12],
                'note': 'Rules were tuned on this one example (n=1), so PRIORS matching them proves nothing; the replay on other tokens is the test.'}
     now = int(time.time() * 1000)
+    missing = update_sticky(sticky, out, best, toks, series, a.min_liq, now)
     res = {
         'v': 1, 'generatedAt': now, 'dataAsOf': now, 'lastBarAt': max((x['priceAt'] for x in out), default=None), 'chain': 'Robinhood Chain (GeckoTerminal "robinhood", DexScreener "robinhood")',
         'sources': ['GeckoTerminal API v2 (free)', 'DexScreener API (free)'], 'calls': CALLS, 'elapsedSec': round(time.time() - t0),
@@ -409,10 +465,14 @@ def main():
                      'signals': sorted(sig, key=lambda s: -s['t'])[:60]},
         'strength': strg, 'strengthWhy': why, 'priorsCalibration': cal,
         'impostors': [{'token': k, 'why': v} for k, v in IMPOSTORS.items()],
+        'tracked': [{'token': t['token'].lower(), 'pool': t.get('pool'), 'label': t.get('label')} for t in TRACKED],
+        'sticky': {'count': len(sticky), 'refetched': sorted(sticky_fetched), 'file': 'data/rh_sticky.json',
+                   'note': 'every token that ever got a card stays on the board; ones the scanner can no longer score are listed under missing'},
+        'missing': missing,
         'items': out,
     }
     with open(os.path.join(DATA, 'rh_scan.json'), 'w') as fh: json.dump(res, fh, indent=1)
-    print(json.dumps({'coiled': {k: res['coiled'][k] for k in ('chosen', 'ship', 'shipWhy', 'candidates', 'splitUtc')}, 'universe': res['universe'], 'backtest': summ, 'baseline': bsumm, 'strength': strg, 'states': {s: sum(1 for x in out if x['state'] == s) for s in order}, 'calls': CALLS, 'priors': cal}, indent=1))
+    print(json.dumps({'coiled': {k: res['coiled'][k] for k in ('chosen', 'ship', 'shipWhy', 'candidates', 'splitUtc')}, 'universe': res['universe'], 'backtest': summ, 'baseline': bsumm, 'strength': strg, 'states': {s: sum(1 for x in out if x['state'] == s) for s in order}, 'missing': [(m['symbol'], m['reason']) for m in missing], 'calls': CALLS, 'priors': cal}, indent=1))
 
 if __name__ == '__main__':
     main()
