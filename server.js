@@ -913,9 +913,24 @@ routes['/api/rhscan'] = async () => {
   try { const m = fs.statSync(f).mtimeMs; if (m !== rhCache.m) rhCache = { m, v: JSON.parse(fs.readFileSync(f, 'utf8')) }; return rhCache.v; }
   catch { return { error: 'no Robinhood Chain scan yet (run research/rhscan/rh_scan.py)', items: [] }; }
 };
+// Trigger alerts: lib/rhalerts.js (ntfy, deduped forever per token+base, queued through quiet hours, HARD walk-away flags bypass them).
+const rhAlerts = require('./lib/rhalerts').createRhAlerts({ DATA_DIR, alerts, log: (m) => console.log('[rhscan] ' + m) });
+routes['/api/rhscan/alerts'] = async () => rhAlerts.status();
 if (!RENDER_LITE && process.env.RHSCAN !== 'off') {
-  const rhscan = () => { const ch = spawn('nice', ['-n', '10', 'python3', 'research/rhscan/rh_scan.py'], { cwd: __dirname, env: { ...process.env, DATA_DIR }, stdio: 'ignore' }); ch.on('error', () => {}); };
-  setTimeout(rhscan, 15 * 60e3).unref(); setInterval(rhscan, 6 * 3600e3).unref(); // ~130 GeckoTerminal calls cold, ~1-20 warm
+  let rhRunning = false;
+  const rhscan = () => {
+    if (rhRunning) return; rhRunning = true;
+    const ch = spawn('nice', ['-n', '10', 'python3', 'research/rhscan/rh_scan.py'], { cwd: __dirname, env: { ...process.env, DATA_DIR }, stdio: ['ignore', 'ignore', 'pipe'] });
+    ch.stderr.on('data', (d) => { for (const l of String(d).split('\n')) if (/MISSING/.test(l)) console.log('[rhscan] ' + l.trim()); });
+    ch.on('exit', (code) => { rhRunning = false; if (code === 0) rhAlerts.afterScan(); else console.log('[rhscan] scan exited ' + code); });
+    ch.on('error', () => { rhRunning = false; });
+  };
+  // Run 10 min after each 4h UTC bar close (00:10, 04:10, ... UTC) so a Trigger on a fresh bar is seen within ~15 min.
+  // Caches are 3.5h, so each run fetches the new bar: ~100-130 GeckoTerminal calls per run, ~6 runs/day (free tier).
+  const next4h = () => { const P = 4 * 3600e3, now = Date.now(); let t = Math.floor(now / P) * P + 10 * 60e3; if (t <= now + 60e3) t += P; return t - now; };
+  const loop = () => setTimeout(() => { rhscan(); loop(); }, next4h()).unref();
+  setTimeout(rhscan, 15 * 60e3).unref(); loop();
+  rhAlerts.start(); // flushes queued alerts every 5 min once quiet hours end (7 AM PT)
 }
 
 // Heavy Accumulation desk (lib/accumulation.js -> data/accumulation.json): scores tokens from data other desks already collected (0 credits).
