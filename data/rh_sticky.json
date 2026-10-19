@@ -1,0 +1,258 @@
+{
+ "v": 1,
+ "updatedAt": 1792406911718,
+ "tokens": {
+  "0xaa5751ff3fb61e613993b2eb4eab1fce017081fc": {
+   "symbol": "HYDX",
+   "firstSeen": 1792406911718,
+   "pool": "0x2f509c6e2675a1a7945902c64ba4aefaef32b2fbf34245f12078a1d0573db170",
+   "lastSeen": 1792406911718,
+   "lastState": "Setup"
+  },
+  "0x4f8eb44cd1a5290d12d5729bc53f3f2bcee78684": {
+   "symbol": "LEVEE",
+   "firstSeen": 1792406911718,
+   "pool": "0x6d6e58aa4a22beb6067913776fe0e4899818081623d991564578b7ee0efabc63",
+   "lastSeen": 1792406911718,
+   "lastState": "Setup"
+  },
+  "0x020bfc650a365f8bb26819deaabf3e21291018b4": {
+   "symbol": "CASHCAT",
+   "firstSeen": 1792406911718,
+   "pool": "0xa70fc67c9f69da90b63a0e4c05d229954574e313",
+   "lastSeen": 1792406911718,
+   "lastState": "Watch"
+  },
+  "0x0339f5459fc690ac85f1782e15782a151b4a9e1b": {
+   "symbol": "WALLET",
+   "firstSeen": 1792406911718,
+   "pool": "0x9501a20bedb8bea0798fe5d4c411f5e270965d49",
+   "lastSeen": 1792406911718,
+   "lastState": "Watch"
+  },
+  "0xe8ffd7e24187f72afb08d75b1bb13088a989a791": {
+   "symbol": "DELTA",
+   "firstSeen": 1792406911718,
+   "pool": "0xd64fbda67e1015df43fa5e49f02ca844729e5f94",
+   "lastSeen": 1792406911718,
+   "lastState": "Watch"
+  },
+  "0x42afa2124ca5a2b83898e46b2da9a190995b1e18": {
+   "symbol": "SCHIFFY",
+   "firstSeen": 1792406911718,
+   "pool": "0xc749412e31087a6e6f9210af575bc9100159fbc9f45da3ca8b26b31f3bf5777e",
+   "lastSeen": 1792406911718,
+   "lastState": "Watch"
+  },
+  "0xc60ba256b44334a0cd2c7242e98b88f031abb006": {
+   "symbol": "V4",
+   "firstSeen": 1792406911718,
+   "pool": "0x3df16f271060e4941c0386047def159f42e629dc0455db623c5b363eeacbcc1d",
+   "lastSeen": 1792406911718,
+   "lastState": "Watch"
+  },
+  "0x94641b97010608c3827fb058074889f19868ff33": {
+   "symbol": "VRAX",
+   "firstSeen": 1792406911718,
+   "pool": "0x435ea42b2792a22de296bee4e8013f4fa102f0cc04983443ff79549f847db577",
+   "lastSeen": 1792406911718,
+   "lastState": "Watch"
+  },
+  "0xf0568863195770965a6d8abb0aa87f4314b80320": {
+   "symbol": "SLIPPY",
+   "firstSeen": 1792406911718,
+   "pool": "0x4e2d19ece3b24abc30ec935a3a5fadd69cc6b976983548a5e53d514b475850a4",
+   "lastSeen": 1792406911718,
+   "lastState": "Watch"
+  },
+  "0x9f4ba41f91a59a34e17ee8c9eb3a51363b11abd5": {
+   "symbol": "GRIFT",
+   "firstSeen": 1792406911718,
+   "pool": "0xd23635812197b00b0ea0fd0e36021740c7951fb34ff1ca79260052b47e9769bc",
+   "lastSeen": 1792406911718,
+   "lastState": "Watch"
+  },
+  "0x5173b8ea6923c2d40267890d45c46a3480954773": {
+   "symbol": "WIF",
+   "firstSeen": 1792406911718,
+   "pool": "0x71ef4106340f0a3b9c19ec994eef4fc44a1d2513f38faac39d7636b156548c79",
+   "lastSeen": 1792406911718,
+   "lastState": "Watch"
+  },
+  "0x3f9108a3beca998c14c6dda822a7e8eaeb88e20d": {
+   "symbol": "HEDGE",
+   "firstSeen": 1792406911718,
+   "pool": "0xc5c73a17f81e15c4d9b076601476bbf751e0ab51a6eb7262da1b58e2913723be",
+   "lastSeen": 1792406911718,
+   "lastState": "Watch"
+  },
+  "0x19dcb63c4d2f29a6f077f094a4f858fc790145e1": {
+   "symbol": "CRAWLSCAN",
+   "firstSeen": 1792406911718,
+   "pool": "0x835f8dfd0065bb0538b3944f286baafd70a779d433cb76a8a27e6ad0a4517892",
+   "lastSeen": 1792406911718,
+   "lastState": "Watch"
+  },
+  "0xa62f748f8d16009cb19366da8d1160fb29de428f": {
+   "symbol": "GOLD",
+   "firstSeen": 1792406911718,
+   "pool": "0x759a3bf6f931becca073a4065cfbdfc1c23eecc96646697db5ba765f4b59a8d5",
+   "lastSeen": 1792406911718,
+   "lastState": "Watch"
+  },
+  "0xf5cd1235da2fd37fa948658746b57cef19a8d09e": {
+   "symbol": "BOTCOIN",
+   "firstSeen": 1792406911718,
+   "pool": "0x0d0828e07afed1b34fe100f1e39dd9c3d5b806aaf69a73370d517b083f6f537e",
+   "lastSeen": 1792406911718,
+   "lastState": "Watch"
+  },
+  "0x000050e18ffa3f8f7ad170eb9cef160eb3ed1111": {
+   "symbol": "TORCH",
+   "firstSeen": 1792406911718,
+   "pool": "0x1649550af1e3363b4c25236434530af7e6886b183e1f574a98fdd1d04d287a2d",
+   "lastSeen": 1792406911718,
+   "lastState": "Extended"
+  },
+  "0xedbf91223639800bcd5756815caf908df3b890be": {
+   "symbol": "PRIORS",
+   "firstSeen": 1792406911718,
+   "pool": "0xff7b3bd2db34d9ed8160e6dedf1d448777abaa1fa6fc8a31144930a1a656fd92",
+   "lastSeen": 1792406911718,
+   "lastState": "Extended"
+  },
+  "0x3ba500f1ababbcf0f0247d06d1c56fd7e6c4c09d": {
+   "symbol": "WORM",
+   "firstSeen": 1792406911718,
+   "pool": "0xf49ee5b66c4e7163026e5d25e6a1f93cff46dca4d3752f712d181d9392c1d567",
+   "lastSeen": 1792406911718,
+   "lastState": "Broke base"
+  },
+  "0x96f455a90a80dcf0c2df6703ea4ba3bedf286e43": {
+   "symbol": "VERDEX",
+   "firstSeen": 1792406911718,
+   "pool": "0xfd3020c84a9ab445186b3c7f4b30afdf7cb6d0ab2c720972511f8607d6e646d3",
+   "lastSeen": 1792406911718,
+   "lastState": "Broke base"
+  },
+  "0x2e8c31162b855a2ffa90f6f8634643ad6f111e18": {
+   "symbol": "AI",
+   "firstSeen": 1792406911718,
+   "pool": "0xcbdfea90430a30ee4469c9902e120a77e7c7e4711d5643671c1d1957f2f1ce27",
+   "lastSeen": 1792406911718,
+   "lastState": "Broke base"
+  },
+  "0x98096d17e191b3da1d5f99a6d7b3584351b11e18": {
+   "symbol": "BONER",
+   "firstSeen": 1792406911718,
+   "pool": "0x9c89b04303dfa76f3f6fb02c2b77be0e8a00ab8fa00d507119acd54ab3e8640d",
+   "lastSeen": 1792406911718,
+   "lastState": "Broke base"
+  },
+  "0xdee52f2ab639b6942b0d0f0565400b93b7a0fbe5": {
+   "symbol": "HARMONIC",
+   "firstSeen": 1792406911718,
+   "pool": "0x77ea11bbfb8f1259c702cb0ebc2105b7c007db89cf30c2f1a8776886a4467c07",
+   "lastSeen": 1792406911718,
+   "lastState": "Broke base"
+  },
+  "0xe1838f0dff03a9327dea87b2a2285850791297ec": {
+   "symbol": "SURPLUS",
+   "firstSeen": 1792406911718,
+   "pool": "0xf179149396b6c6bb79694ba0935ce0862ddd0bb844283f566993f1e6303c33d4",
+   "lastSeen": 1792406911718,
+   "lastState": "Broke base"
+  },
+  "0xc9675fe679c7d4e1b94416f66d61c96127eb964a": {
+   "symbol": "GIGATENEV",
+   "firstSeen": 1792406911718,
+   "pool": "0xe96c99be1ffcc204714ebce32870ab12b8b362308fa50b9352c03b2486a5d448",
+   "lastSeen": 1792406911718,
+   "lastState": "Broke base"
+  },
+  "0x4898891604a8d11798af0551766d7e100e5e1ede": {
+   "symbol": "REALM",
+   "firstSeen": 1792406911718,
+   "pool": "0x79d24fa76221e39c307f8bdda032a8e05f9a94ea1293df6f616dea83a531be3e",
+   "lastSeen": 1792406911718,
+   "lastState": "Broke base"
+  },
+  "0x39dbed3a2bd333467115de45665cc57f813c4571": {
+   "symbol": "PONS",
+   "firstSeen": 1792406911718,
+   "pool": "0x10cc6bd38112cac182db90b6a71d8bb5939526ba",
+   "lastSeen": 1792406911718,
+   "lastState": "Broke base"
+  },
+  "0xaa07a0e9209e16ac99708c3ec70159c6ef3128a3": {
+   "symbol": "ORBIO",
+   "firstSeen": 1792406911718,
+   "pool": "0xea9f200e13055b82f175f44f592c4c13dd8c9d9320a66487d3c5cd90d68550ef",
+   "lastSeen": 1792406911718,
+   "lastState": "Broke base"
+  },
+  "0x47569d49471bdbabfaf5531c0f74d9f2de82a11a": {
+   "symbol": "PROPHET",
+   "firstSeen": 1792406911718,
+   "pool": "0x5917962addf0bb723ace5cb94c65ed49978c3a77dec774cf191f36e61b92ec3e",
+   "lastSeen": 1792406911718,
+   "lastState": "Broke base"
+  },
+  "0xa5c8cc9fbe4b41b383edb70348d28dd287c63e18": {
+   "symbol": "LM",
+   "firstSeen": 1792406911718,
+   "pool": "0xddc30709002e268d820bda2b6f8b59675e7e9b2f42c3bc5c80caa123f77336f3",
+   "lastSeen": 1792406911718,
+   "lastState": "Broke base"
+  },
+  "0x07ebb29a38fbcb41563817e5e19f2cec619c90d2": {
+   "symbol": "BUN",
+   "firstSeen": 1792406911718,
+   "pool": "0x06e308b77bdafd691d179645296ce8c40e33c6af4a879a913efc7eedc402581c",
+   "lastSeen": 1792406911718,
+   "lastState": "Fails"
+  },
+  "0x4db7374e966097be94c6680d49156d580f097bbf": {
+   "symbol": "TIBBIR",
+   "firstSeen": 1792406911718,
+   "pool": "0xbf7dc545ff6d3b0e23f6264f7c23d4fa16a0f3bb1b26eda350593bd63a94da97",
+   "lastSeen": 1792406911718,
+   "lastState": "Fails"
+  },
+  "0x5d102d1e69e77591d486aa4f663b3645151bbdf6": {
+   "symbol": "VOLT",
+   "firstSeen": 1792406911718,
+   "pool": "0x02d356acd227e12a9573f0499f133c6e3b0af1c9",
+   "lastSeen": 1792406911718,
+   "lastState": "Fails"
+  },
+  "0x6a08b947170a5d44d3e1358df49bdbca8ba92527": {
+   "symbol": "INCOME",
+   "firstSeen": 1792406911718,
+   "pool": "0x9b8df8ce919cc80f38088172d5f9597679325d0dbb5d6ad5258858efae465607",
+   "lastSeen": 1792406911718,
+   "lastState": "Fails"
+  },
+  "0x18e674231a58c239dc7daedcffe15ec3a24cff5c": {
+   "symbol": "HOOKR",
+   "firstSeen": 1792406911718,
+   "pool": "0x590dcb6a87828bf688b48089a62239b693378f1fb64d2286e6a399ed8c005fdf",
+   "lastSeen": 1792406911718,
+   "lastState": "Fails"
+  },
+  "0x63ee32ac3077d1fbd8a77ebba2a6ed4b8e9c1e18": {
+   "symbol": "INU",
+   "firstSeen": 1792406911718,
+   "pool": "0x7e271c400427ecb727f5fbb27dec69254bce7c4219e95e3535d0ed128f79648a",
+   "lastSeen": 1792406911718,
+   "lastState": "Fails"
+  },
+  "0x6adb9cd443f4653572101e2f91b35ea1ed5f6b69": {
+   "symbol": "SEED",
+   "firstSeen": 1792406911718,
+   "pool": "0x574596ca78e0ec91044f9c72d3a07c952892ee3219e6a2fb0f85d4e424d62237",
+   "lastSeen": 1792406911718,
+   "lastState": "Fails"
+  }
+ }
+}

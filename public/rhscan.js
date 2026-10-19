@@ -14,7 +14,8 @@
     p.innerHTML = `<div class="phead"><h2>Robinhood Chain: PRIORS-pattern scanner</h2><span id="rhMeta" class="muted small"></span></div>
       <div class="bkintro muted">Utility tokens on Robinhood Chain that pulled back 45-70% from their high, went quiet for 2 days, then saw volume return with a close above that quiet base, which is how PRIORS set up before its ~10x from Sep 28. <b>Trigger</b> = every check passes now · <b>Setup</b> = base intact, waiting for volume · <b>Watch</b> = pattern OK but no utility evidence · <b>Extended / Broke base</b> = too late or failed. Sources: GeckoTerminal + DexScreener (free).</div>
       <div id="rhStr" class="bkintro"></div>
-      <div class="bkfilters" id="rhF"><button data-f="act" class="on">Trigger / Setup / Watch</button><button data-f="named">iNu · HOOKR · PRIORS</button><button data-f="all">All scanned</button></div>
+      <div id="rhMiss" class="bkintro" style="display:none;border-left:3px solid var(--red,#d55);padding-left:8px"></div>
+      <div class="bkfilters" id="rhF"><button data-f="act" class="on">Trigger / Setup / Watch</button><button data-f="named" id="rhNamedBtn">Tracked</button><button data-f="all">All scanned</button></div>
       <div id="rhOut" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;padding:6px 14px 14px"></div>
       <details class="more" id="rhCoilBox" style="margin:0 14px 6px"><summary id="rhCoilSum">Early tier: Coiled</summary><div id="rhCoil" class="bkhow"></div></details>
       <details class="more" style="margin:0 14px 14px"><summary>Rules, replay and caveats</summary><div id="rhHow" class="bkhow"></div></details>`;
@@ -29,11 +30,11 @@
       <b>Entry:</b> ${E(pl.entry)}<br><b>Size:</b> ${E(pl.size)}<br><b>Sell:</b><ul>${pl.sells.map((s) => `<li>${E(s)}</li>`).join('')}</ul><b>Walk away:</b><ul>${pl.walkAway.map((s) => `<li>${E(s)}</li>`).join('')}</ul></div></details>`; };
   const card = (x) => {
     const pl = x.plan; const ck = Object.entries(x.checks).map(([k, v]) => `<span style="color:${v ? 'var(--grn)' : 'var(--mut)'}">${v ? '✓' : '✗'} ${E(k)}</span>`).join(' ');
-    return `<div class="bk ${cls(x.state)}"><div class="h"><b>${E(x.symbol)}</b><span class="lbl">${E(x.state)}</span>${x.named ? `<span class="muted small">${E(x.named)}</span>` : ''}<span class="sc num" style="font-size:1em">${x.passed}/${x.of}</span></div>
+    return `<div class="bk ${cls(x.state)}"><div class="h"><b>${E(x.symbol)}</b><span class="lbl">${E(x.state)}</span>${x.tracked ? '<span class="muted small" title="always refreshed (research/rhscan/tracked.json)">📌</span>' : ''}${x.named ? `<span class="muted small">${E(x.named)}</span>` : ''}<span class="sc num" style="font-size:1em">${x.passed}/${x.of}</span></div>
       <div class="muted small">${E(x.name)} · price ${px(x.price)} · liq ${usd(x.liqUsd)} · FDV ${usd(x.fdvUsd)} · 24h vol ${usd(x.vol24Usd)} · ${x.ageDays}d old</div>
       <div class="f">${ck}</div>
       <ul>${x.reasons.map((r) => `<li>${E(r)}</li>`).join('')}</ul>
-      ${pl ? `<details class="more" ${x.state === 'Trigger' || x.state === 'Setup' ? 'open' : ''}><summary>Plan${pl.monitorOnly ? ' (monitor only)' : ''}</summary><div class="small" style="line-height:1.55">
+      ${pl ? `<details class="more" ${x.state === 'Trigger' || x.state === 'Setup' ? 'open' : ''}><summary>${x.state === 'Setup' && pl.entryTrigger ? 'Conditional plan: only if the volume trigger fires' : 'Plan'}${pl.monitorOnly ? ' (monitor only)' : ''}</summary><div class="small" style="line-height:1.55">
         <b>Entry:</b> ${E(pl.entry)}<br><b>Size:</b> ${E(pl.size)}<br>${pl.sells && pl.sells.length ? `<b>Sell:</b><ul>${pl.sells.map((s) => `<li>${E(s)}</li>`).join('')}</ul>` : ''}
         <b>Walk away:</b><ul>${pl.walkAway.map((s) => `<li>${E(s)}</li>`).join('')}</ul>${pl.backtestNote ? `<span class="muted">${E(pl.backtestNote)}</span>` : ''}</div></details>` : ''}${coilPlan(x)}
       <div class="f"><span>strength <span class="str ${E(x.strength)}">${E(x.strength)}</span></span><span>price bar ${PT(x.priceAt)}</span><span>contract: ${x.contract.clean ? 'clean (GT)' : E(x.contract.flags.join('; ') || 'unknown')}</span><a href="${E(x.dexscreener)}" target="_blank" rel="noopener">DexScreener ↗</a></div>
@@ -49,7 +50,12 @@
     try { const r = await fetch('/api/rhscan'); D = await r.json(); if (D.error) throw new Error(D.error); } catch (e) { Q('#rhOut').innerHTML = `<div class="muted" style="padding:10px">Robinhood scan unavailable: ${E(e.message)}</div>`; return; }
     const c = (s) => D.items.filter((x) => x.state === s).length; const bt = D.backtest, bl = D.baseline || {};
     Q('#rhMeta').textContent = `scanned ${PT(D.generatedAt)} · ${c('Trigger')} trigger · ${c('Setup')} setup · ${c('Watch')} watch · ${D.universe.withHistory} tokens with 3d+ history of ${D.universe.tokens} seen`;
-    Q('#rhStr').innerHTML = `Signal strength: <span class="str ${E(D.strength)}">${E(D.strength)}</span> ${E(D.strengthWhy)}.`;
+    const tr = (D.tracked || []).map((t) => (t.label || '').split(' ')[0]).filter(Boolean);
+    if (tr.length) Q('#rhNamedBtn').textContent = 'Tracked: ' + tr.join(' · ');
+    const ms = D.missing || [];
+    Q('#rhMiss').style.display = ms.length ? '' : 'none';
+    Q('#rhMiss').innerHTML = ms.length ? `<b>⚠ ${ms.length} previously scanned token${ms.length > 1 ? 's' : ''} could not be scored this run</b> (kept on the sticky list, not silently dropped): ${ms.map((m) => `<b>${E(m.symbol)}</b>${m.tracked ? ' 📌' : ''}: ${E(m.reason)} (missing since ${PT(m.missingSince)}${m.lastState ? ', last state ' + E(m.lastState) : ''})`).join('; ')}` : '';
+    Q('#rhStr').innerHTML = `Trigger alerts: phone push (ntfy) once per token per base, queued during quiet hours (11 PM–7 AM PT) and sent at 7 AM; walk-away/rug flags on alerted tokens push immediately.<br>Signal strength: <span class="str ${E(D.strength)}">${E(D.strength)}</span> ${E(D.strengthWhy)}.`;
     Q('#rhHow').innerHTML = `<table><tr><th>Rule</th><th>Definition</th></tr>${Object.entries(D.rules).map(([k, v]) => `<tr><td>${E(k)}</td><td>${E(v)}</td></tr>`).join('')}</table>
       <p><b>Replay</b> (price/volume rules only, ${E(bt.forward)}; win = ${E(bt.win)}): triggers n=${bt.n} on ${bt.tokens} tokens, ${bt.hit2xBeforeStop} wins (${bt.hit2xBeforeStopPct}%), ${bt.stoppedFirst} hit -30% first (${bt.stoppedFirstPct}%), median best ${bt.medianBest7d}x, median 7-day end ${bt.medianEnd7d}x.
       Baseline (${E(bl.what)}): n=${bl.n}, ${bl.hit2xBeforeStopPct}% wins, ${bl.stoppedFirstPct}% hit -30% first, median best ${bl.medianBest7d}x.</p>
