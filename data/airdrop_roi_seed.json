@@ -1472,6 +1472,137 @@
     "stop": "Stop if TVL keeps falling (DefiLlama) or there is no token news by mid-2027.",
     "claim": "Sell most at claim; small-cap DEX tokens often bleed after launch."
    }
+  },
+  {
+   "key": "townsquare",
+   "name": "TownSquare (TOWN)",
+   "chain": "Monad / Base / BNB Chain",
+   "cat": "lending + RWA yield vaults",
+   "url": "https://app.townsq.xyz/ranking",
+   "status": "token confirmed (public sale closed Jul 27 2026, tokenomics published); airdrop to points holders NOT confirmed; TGE date not announced",
+   "status_src": "https://www.townesquare.xyz/introducing-town-tokenomics",
+   "us": "allowed",
+   "us_src": "https://www.townsq.xyz/terms",
+   "us_note": "app terms bar sanctioned regions only (Cuba, Iran, N. Korea, Russia-occupied Ukraine...), not the US; the airdrop terms are unpublished and could still exclude US persons",
+   "farming": {
+    "by": "Martin",
+    "rank": 250,
+    "reported": "2026-10-20",
+    "note": "Martin reports ~rank 250 on the Season 01 leaderboard; points and capital not reported"
+   },
+   "model": "rank_share",
+   "x_key": "townsquare",
+   "p_token": {
+    "lo": 0.35,
+    "base": 0.65,
+    "hi": 0.85,
+    "kind": "assumed",
+    "note": "token itself is near-certain (sale buyers are owed tokens at launch, sourced); this is P(points holders get a meaningful TGE drop AND US persons can claim). Docs: points carry 'no right to any token distribution', tokenomics: a portion of the community pool 'becomes available early to reward existing users'.",
+    "src": "https://docs.townsq.xyz/incentives-and-points/townsquare-points-and-partner-points"
+   },
+   "fdv": {
+    "lo": 100000000,
+    "base": 200000000,
+    "hi": 270000000,
+    "kind": "derived",
+    "note": "base = upper Sonar sale tier $200M (sourced); hi = pre-market ~$270M (secondary, BingX on Aspecta, unverified); lo = assumed 1/3 below the $150M lower tier (launches below sale price happen)",
+    "src": "https://www.townesquare.xyz/"
+   },
+   "comm_pct": {
+    "lo": 0.5,
+    "base": 1.0,
+    "hi": 1.86,
+    "kind": "assumed",
+    "note": "share of supply going to points holders at TGE. Ceiling 1.86% = the whole day-one community unlock (5.83% of the 31.84% pool = 185.6M TOWN, sourced); how much of it goes to Season 01 points is unpublished",
+    "src": "https://www.townesquare.xyz/introducing-town-tokenomics"
+   },
+   "rank": {
+    "lo": 250,
+    "base": 250,
+    "hi": 250,
+    "kind": "sourced",
+    "note": "reported by Martin (app.townsq.xyz/ranking, Oct 20 2026)"
+   },
+   "participants": {
+    "lo": 7287,
+    "base": 7287,
+    "hi": 7287,
+    "kind": "sourced",
+    "note": "mainnet accounts from the same public endpoint the ranking page uses (total-users?is_mainnet=1), Oct 20 2026. Not all have points. 204,008 is the all-environments count incl. testnet",
+    "src": "https://action-link-stage.townesquare.xyz/api/users/total-users?is_mainnet=1"
+   },
+   "zipf_s": {
+    "lo": 1.2,
+    "base": 1.0,
+    "hi": 0.8,
+    "kind": "assumed",
+    "note": "points concentration (Zipf exponent): share(rank r) = r^-s / sum(k^-s). Total points and top-wallet points are not published; s=1 means the top 100 hold ~55% of points. Give us your points and the #1/#100 points to replace this"
+   },
+   "weeks_left": {
+    "lo": 4,
+    "base": 10,
+    "hi": 16,
+    "kind": "assumed",
+    "note": "TGE 'Q4 2026 (estimated)' per third-party calendars; no official date"
+   },
+   "k": {
+    "lo": 1,
+    "base": 1,
+    "hi": 1,
+    "kind": "assumed",
+    "note": "rank already reflects your boosts"
+   },
+   "capital": {
+    "lo": 2000,
+    "base": 5000,
+    "hi": 10000,
+    "kind": "assumed",
+    "note": "your deposit is unknown; only affects the cost side (risk), not the EV"
+   },
+   "capital_is_yielding": true,
+   "weekly_cost": {
+    "lo": 0,
+    "base": 1,
+    "hi": 3,
+    "kind": "assumed",
+    "note": "gas on Base/BNB/Monad"
+   },
+   "hours_week": {
+    "lo": 0.1,
+    "base": 0.25,
+    "hi": 0.5,
+    "kind": "assumed"
+   },
+   "risk_yr": {
+    "base": 0.05,
+    "kind": "assumed",
+    "note": "small lending protocol: DefiLlama TVL ~$0.17M (peak $4.1M Jan 2026), plus RWA/private-credit vault credit risk if used"
+   },
+   "funding": {
+    "usd": 17570000,
+    "kind": "sourced",
+    "note": "Series A $16.25M (May 2026: World Liberty Financial, OKX Ventures, Amber, Animoca, Arcane, Aptos...) + $1.32M Sonar public sale at $150M/$200M FDV",
+    "src": "https://defillama.com/protocol/townsquare"
+   },
+   "plan": {
+    "actions": [
+     "Keep what is already deposited; points already earned are sunk and rank 250 is top ~3.4% of 7,287 mainnet accounts.",
+     "Prefer plain stablecoin lending (USDC on Base, USD1/U on BNB, which earn partner 2x points) over loops, borrowing and RWA/private-credit vaults.",
+     "If not already: use a partner 'boosted wallet' (+20% points, 2,300 users use it) and set your referral code. Both are free.",
+     "Each week, write your points and rank into My Farms (townsquare) so dilution shows up; only use app.townsq.xyz, never a link from DMs."
+    ],
+    "budget_cap": "no new capital beyond what is in now (max +$2,000 if you want a buffer against dilution)",
+    "time": "~15 min/week",
+    "stop": "Withdraw if: TOWN airdrop terms exclude US persons, an exploit or depeg, TVL keeps bleeding on DefiLlama, or no TGE date by end of Q1 2027. Do not chase top 100 (see the card).",
+    "claim": "Claim only via a link posted on @TownSquarexyz and app.townsq.xyz. At TGE sell 50-75% in the first days (thin float: 7.62% circulating, team/investors unlock after 12 months); keep the rest only if veTOWN emissions make staking worthwhile."
+   },
+   "weeks_elapsed": {
+    "base": 47,
+    "kind": "derived",
+    "note": "Monad lending live since Nov 23 2025 (first DefiLlama TVL point); Season 01's official start date is not published",
+    "src": "https://defillama.com/protocol/townsquare"
+   },
+   "confirmed": false
   }
  ],
  "rejected": [

@@ -143,6 +143,28 @@ def rng(d, s):
     return d.get(s, d.get('base'))
 
 
+def rank_share(rank, n, z):
+    h = sum(r ** -z for r in range(1, int(n) + 1))
+    return rank ** -z / h
+
+
+def rank_ladder(c):
+    """What moving up the leaderboard is worth (base FDV/comm/P), and the points multiple it needs."""
+    n = c['participants']['base']; out = []
+    pool = c['p_token']['base'] * c['fdv']['base'] * c['comm_pct']['base'] / 100
+    me = c['rank']['base']
+    for r in (1000, 500, me, 100, 50, 10):
+        row = {'rank': r}
+        for s, z in (('steep', c['zipf_s']['lo']), ('mid', c['zipf_s']['base']), ('flat', c['zipf_s']['hi'])):
+            row['ev_' + s] = round(pool * rank_share(r, n, z), 2)
+            row['pts_x_' + s] = round((me / r) ** z, 2)
+        # weekly points rate needed for the rest of the season vs your average so far: (pts_x - 1) x weeks elapsed / weeks left + 1
+        el, wl = c.get('weeks_elapsed', {}).get('base'), c['weeks_left']['base']
+        row['rate_x_mid'] = round((row['pts_x_mid'] - 1) * el / wl + 1, 1) if (el and r < me) else None
+        out.append(row)
+    return {'pool_base_usd': pool, 'rows': out, 'weeks_elapsed': c.get('weeks_elapsed'), 'note': 'Base pool (P x FDV x community %) split by a Zipf curve; steep/mid/flat = s 1.2/1.0/0.8. pts_x = total points needed vs yours now; rate_x = weekly points rate needed for the rest of the season vs your average so far (others standing still, so a floor).'}
+
+
 def model(c, cal, you, live):
     out = {'inputs': {}, 'ev': {}, 'cost': {}, 'roi': {}, 'net': {}}
     inv = {'lo': 'hi', 'base': 'base', 'hi': 'lo'}  # pessimistic scenario uses the 'hi' end of crowd/cost inputs
@@ -159,6 +181,10 @@ def model(c, cal, you, live):
             if tvl:
                 share = rng(c['deposit'], 'base') / tvl * min(1, wk / rng(c['window_weeks'], s)) * k
                 ev = p * rng(c['fdv'], s) * rng(c['comm_pct'], s) / 100 * rng(c['window_share'], s) * share
+        elif m == 'rank_share':  # leaderboard rank -> share of points under a Zipf curve (total points unpublished)
+            share = rank_share(rng(c['rank'], s), rng(c['participants'], s), rng(c['zipf_s'], s))
+            ev = p * rng(c['fdv'], s) * rng(c['comm_pct'], s) / 100 * share * k
+            out['share'] = out.get('share', {}); out['share'][s] = share
         elif m == 'per_wallet':
             parts = rng(c['participants'], inv[s])
             ev = p * rng(c['fdv'], s) * rng(c['comm_pct'], s) / 100 / parts * k
@@ -181,7 +207,8 @@ def model(c, cal, you, live):
         out['roi'][s] = round(ev / cost, 2) if (ev is not None and cost >= 10) else None  # cost under $10: ROI not meaningful, use EV
         out['net'][s] = round(ev - cost, 2) if ev is not None else None
         out['ev'][s] = round(ev, 2) if ev is not None else None
-    out.setdefault('ev_method', {'weekly_pool': 'your points (weeks left x weekly pool x your weight / active accounts) / total points x pool $', 'capital_share': 'deposit / TVL x share of the remaining window x multiplier x window allocation x pool $', 'per_wallet': 'pool $ / participants x your weight'}.get(c['model'], 'unknown (no calibration bucket available)'))
+    out['share'] = out.get('share')
+    out.setdefault('ev_method', {'weekly_pool': 'your points (weeks left x weekly pool x your weight / active accounts) / total points x pool $', 'capital_share': 'deposit / TVL x share of the remaining window x multiplier x window allocation x pool $', 'per_wallet': 'pool $ / participants x your weight', 'rank_share': 'pool $ x your share of points implied by your leaderboard rank (Zipf curve over all accounts, since total points are unpublished)'}.get(c['model'], 'unknown (no calibration bucket available)'))
     return out
 
 
@@ -237,7 +264,7 @@ def main():
         x = xc.get('counts', {}).get(c.get('x_key') or '')
         sat = saturation(c, x)
         inputs = {k: c[k] for k in ('p_token', 'fdv', 'comm_pct', 'participants', 'total_points', 'weekly_pool', 'points_left', 'weeks_left', 'k', 'deposit', 'window_share',
-                                    'capital', 'weekly_cost', 'hours_week', 'risk_yr', 'funding', 'pool_tokens') if k in c}
+                                    'capital', 'weekly_cost', 'hours_week', 'risk_yr', 'funding', 'pool_tokens', 'rank', 'zipf_s') if k in c}
         kinds = [v.get('kind') for v in inputs.values() if isinstance(v, dict)]
         n_src = sum(1 for k in kinds if k in ('sourced', 'derived')); n_all = len(kinds)
         tier = ('allowed' if c['us'] == 'allowed' else 'unknown' if c['us'] == 'unknown' else 'restricted') if home == 'US' else 'allowed'
@@ -246,13 +273,15 @@ def main():
         if c.get('pool_gecko') and live['price'].get(c['pool_gecko']) and c.get('pool_tokens'):
             extra['pool_usd_live'] = round(c['pool_tokens']['base'] * live['price'][c['pool_gecko']])
             extra['pool_note'] = f"{c['pool_tokens']['base']:,.0f} tokens x live price ${live['price'][c['pool_gecko']]:.3f} (DefiLlama coins)"
+        if c['model'] == 'rank_share':
+            extra['ladder'] = rank_ladder(c); extra['share'] = m.get('share')
         if c.get('tvl_live') and live['tvl'].get(c['tvl_live']):
             extra['tvl_usd'] = round(live['tvl'][c['tvl_live']])
         out.append({'key': c['key'], 'name': c['name'], 'chain': c['chain'], 'cat': c['cat'], 'url': c['url'], 'status': c['status'], 'status_src': c['status_src'],
-                    'confirmed': c['status'].startswith('token confirmed') or 'confirmed' in c['status'] and 'not confirmed' not in c['status'] and 'no token' not in c['status'],
+                    'confirmed': c.get('confirmed', 'confirmed' in c['status'].lower() and 'not confirmed' not in c['status'].lower() and 'no token' not in c['status'].lower()),
                     'us': c['us'], 'tier': tier, 'us_src': c.get('us_src'), 'us_note': c.get('us_note'), 'eligible_for_you': eligible,
                     'model': c['model'], 'inputs': inputs, 'ev': m['ev'], 'cost': m['cost'], 'roi': m['roi'], 'net': m['net'], 'ev_method': m['ev_method'],
-                    'saturation': sat, 'x': x, 'extra': extra, 'plan': c['plan'],
+                    'saturation': sat, 'x': x, 'extra': extra, 'plan': c['plan'], 'farming': c.get('farming'),
                     'strength': f"unproven (model estimate; {n_src} of {n_all} inputs sourced/derived, rest assumed)",
                     'inputs_sourced': n_src, 'inputs_total': n_all})
     # rank: eligible first, then base net EV (EV minus all costs), ROI shown alongside
