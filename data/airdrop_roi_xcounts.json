@@ -1,0 +1,90 @@
+{
+ "fetchedAt": "2026-10-20T08:21:00Z",
+ "source": "X API v2 recent counts via free x MCP (14 reads)",
+ "counts": {
+  "variational": {
+   "query": "Variational (airdrop OR points OR VAR OR TGE) -is:retweet",
+   "posts7d": 1081,
+   "from": "2026-10-13T08:20:53.000Z",
+   "to": "2026-10-20T08:20:53.000Z"
+  },
+  "polymarket": {
+   "query": "Polymarket (airdrop OR POLY token OR TGE) -is:retweet",
+   "posts7d": 871,
+   "from": "2026-10-13T08:20:55.000Z",
+   "to": "2026-10-20T08:20:55.000Z"
+  },
+  "metamask": {
+   "query": "MetaMask (airdrop OR MASK token OR TGE) -is:retweet",
+   "posts7d": 212,
+   "from": "2026-10-13T08:20:56.000Z",
+   "to": "2026-10-20T08:20:56.000Z"
+  },
+  "base": {
+   "query": "(\"Base token\" OR \"Base airdrop\") -is:retweet",
+   "posts7d": 507,
+   "from": "2026-10-13T08:20:58.000Z",
+   "to": "2026-10-20T08:20:58.000Z"
+  },
+  "opensea": {
+   "query": "OpenSea (airdrop OR SEA token OR TGE) -is:retweet",
+   "posts7d": 609,
+   "from": "2026-10-13T08:20:59.000Z",
+   "to": "2026-10-20T08:20:59.000Z"
+  },
+  "extended": {
+   "query": "(\"Extended exchange\" OR @extendedapp OR \"Extended points\") -is:retweet",
+   "posts7d": 827,
+   "from": "2026-10-13T08:21:01.000Z",
+   "to": "2026-10-20T08:21:01.000Z"
+  },
+  "pacifica": {
+   "query": "Pacifica (points OR airdrop OR perps) -is:retweet",
+   "posts7d": 84,
+   "from": "2026-10-13T08:21:02.000Z",
+   "to": "2026-10-20T08:21:02.000Z"
+  },
+  "risex": {
+   "query": "(RISEx OR \"RISE chain\") (points OR airdrop) -is:retweet",
+   "posts7d": 270,
+   "from": "2026-10-13T08:21:04.000Z",
+   "to": "2026-10-20T08:21:04.000Z"
+  },
+  "ink": {
+   "query": "(\"Ink points\" OR \"INK token\" OR \"INK airdrop\" OR Nado) -is:retweet",
+   "posts7d": 4874,
+   "from": "2026-10-13T08:21:14.000Z",
+   "to": "2026-10-20T08:21:14.000Z"
+  },
+  "lighter-rh": {
+   "query": "Lighter Robinhood (points OR LIT) -is:retweet",
+   "posts7d": 2039,
+   "from": "2026-10-13T08:21:14.000Z",
+   "to": "2026-10-20T08:21:14.000Z"
+  },
+  "n1": {
+   "query": "(\"N1 points\" OR \"N1 exchange\" OR @n1chain) -is:retweet",
+   "posts7d": 426,
+   "from": "2026-10-13T08:21:16.000Z",
+   "to": "2026-10-20T08:21:16.000Z"
+  },
+  "perpl": {
+   "query": "(Perpl OR @perpltrade) (points OR Monad) -is:retweet",
+   "posts7d": 269,
+   "from": "2026-10-13T08:21:18.000Z",
+   "to": "2026-10-20T08:21:18.000Z"
+  },
+  "ethereal": {
+   "query": "Ethereal (points OR airdrop OR Ethena) -is:retweet",
+   "posts7d": 34,
+   "from": "2026-10-13T08:21:19.000Z",
+   "to": "2026-10-20T08:21:19.000Z"
+  },
+  "kuru": {
+   "query": "Kuru (points OR Monad OR airdrop) -is:retweet",
+   "posts7d": 57,
+   "from": "2026-10-13T08:21:20.000Z",
+   "to": "2026-10-20T08:21:20.000Z"
+  }
+ }
+}

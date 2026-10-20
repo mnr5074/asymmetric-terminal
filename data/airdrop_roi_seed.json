@@ -1,0 +1,1509 @@
+{
+ "_note": "Airdrop ROI seed (hand-curated, Oct 20 2026). Every input is {lo, base, hi, kind, note, src}. kind: sourced (a page says it), derived (computed from sourced numbers), assumed (my assumption, stated). research/airdrops_roi.py turns this into data/airdrop_roi.json. Edit 'you' to change Martin's assumptions. No keys, no wallets: plans are steps Martin does himself.",
+ "reviewed": "2026-10-20",
+ "you": {
+  "jurisdiction": "US",
+  "jurisdiction_note": "assumed from the America/Los_Angeles timezone; programs that exclude US persons are ranked as not farmable. Never use a VPN to get around a geo-block (it breaks the terms and gets allocations voided).",
+  "hourly_value_usd": {
+   "lo": 25,
+   "base": 40,
+   "hi": 75,
+   "kind": "assumed",
+   "note": "value of Martin's time per hour"
+  },
+  "opportunity_rate_yr": {
+   "lo": 0.04,
+   "base": 0.05,
+   "hi": 0.08,
+   "kind": "assumed",
+   "note": "what parked capital could earn elsewhere (T-bill-like)"
+  },
+  "survivor_haircut": {
+   "lo": 0.1,
+   "base": 0.25,
+   "hi": 0.5,
+   "kind": "assumed",
+   "note": "calibration drops are famous successes (survivorship); EVs that fall back on them are scaled down by this. Many points programs paid little or nothing, which the sample cannot show."
+  }
+ },
+ "calibration": [
+  {
+   "sym": "ARB",
+   "gecko": "arbitrum",
+   "tge": "2023-03-23",
+   "tokens": 1162000000,
+   "wallets": 625143,
+   "src": "https://docs.arbitrum.foundation/airdrop-eligibility-distribution",
+   "note": "points system, 625-10,250 ARB per wallet"
+  },
+  {
+   "sym": "JUP",
+   "gecko": "jupiter-exchange-solana",
+   "tge": "2024-01-31",
+   "tokens": 1000000000,
+   "wallets": 955000,
+   "src": "https://decrypt.co/214841/jupiter-airdrop-what-you-need-know-about-solana-jup-token-launch",
+   "note": "Jupuary round 1"
+  },
+  {
+   "sym": "JTO",
+   "gecko": "jito-governance-token",
+   "tge": "2023-12-07",
+   "tge_kind": "assumed",
+   "tokens": 80000000,
+   "wallets": 9852,
+   "src": "https://www.jito.network/blog/jto-airdrop-eligibility-and-allocation-specifications/",
+   "note": "JitoSOL points-holder portion only (80M of 90M)"
+  },
+  {
+   "sym": "TIA",
+   "gecko": "celestia",
+   "tge": "2023-10-31",
+   "tge_kind": "assumed",
+   "tokens": 60000000,
+   "wallets": 584232,
+   "src": "https://blog.celestia.org/genesis-drop/",
+   "note": "eligible count; only 191,391 claimed, unclaimed TIA was reallocated to claimers (per-claimer value ~3x higher)"
+  },
+  {
+   "sym": "STRK",
+   "gecko": "starknet",
+   "tge": "2024-02-20",
+   "tokens": 726000000,
+   "wallets": 1297738,
+   "src": "https://www.starknet.io/faqs/",
+   "note": "Provisions program"
+  },
+  {
+   "sym": "ZK",
+   "gecko": "zksync",
+   "tge": "2024-06-17",
+   "tokens": 3675000000,
+   "wallets": 695232,
+   "src": "https://docs.zknation.io/zk-token/zk-airdrop",
+   "note": "17.5% of supply"
+  },
+  {
+   "sym": "EIGEN",
+   "gecko": "eigenlayer",
+   "tge": "2024-10-01",
+   "tokens": 112970000,
+   "wallets": 280000,
+   "src": "https://blog.eigenfoundation.org/eigen-community-update/",
+   "note": "Season 1 stakedrop 6.75% of 1.674B; 'more than 280,000'; transferable Oct 1 2024"
+  },
+  {
+   "sym": "HYPE",
+   "gecko": "hyperliquid",
+   "tge": "2024-11-29",
+   "tokens": 310000000,
+   "wallets": 94000,
+   "src": "https://eco.com/support/en/articles/15039718-hyperliquid-airdrop-hype-genesis-facts-and-season-2-status",
+   "note": "31% genesis drop"
+  },
+  {
+   "sym": "W",
+   "gecko": "wormhole",
+   "tge": "2024-04-03",
+   "tge_kind": "assumed",
+   "tokens": 678823000,
+   "wallets": 400000,
+   "src": "https://wormhole.com/blog/from-eligibility-to-sybil-detection-a-deep-dive-into-wormholes-multichain",
+   "note": "'more than 400,000'"
+  },
+  {
+   "sym": "LINEA",
+   "gecko": "linea",
+   "tge": "2025-09-10",
+   "tge_kind": "assumed",
+   "tokens": 9361298700,
+   "wallets": 749662,
+   "src": "https://www.theblock.co/news/ecosystems/2025-09-03-linea-airdrop-checker-goes-live-369254",
+   "note": "LXP/LXP-L based"
+  },
+  {
+   "sym": "PYTH",
+   "gecko": "pyth-network",
+   "tge": "2023-11-20",
+   "tokens": 255000000,
+   "wallets": 90000,
+   "src": "https://www.coindesk.com/business/2023/11/16/255m-pyth-tokens-to-be-airdropped-to-90k-wallets-next-week",
+   "note": "retrospective phase 1"
+  },
+  {
+   "sym": "ZRO",
+   "gecko": "layerzero",
+   "tge": "2024-06-20",
+   "tokens": 85000000,
+   "wallets": 1280000,
+   "src": "https://www.theblock.co/news/ecosystems/2024-06-20-layerzero-foundation-to-begin-zro-token-airdrop-claims-today-300951",
+   "note": "claimable 85M; proof-of-donation fee to claim"
+  },
+  {
+   "sym": "MON",
+   "gecko": "monad",
+   "tge": "2025-11-24",
+   "tge_kind": "assumed",
+   "tokens": 4730000000,
+   "wallets": 289000,
+   "src": "https://monad.xyz/blog/the-mon-airdrop-results",
+   "note": "allocated; 70.4% claimed"
+  },
+  {
+   "sym": "ENA",
+   "gecko": "ethena",
+   "tge": "2024-04-02",
+   "tge_kind": "assumed",
+   "tokens": 750000000,
+   "wallets": 90000,
+   "src": "https://paragraph.com/@ethena-labs/ena-token-launch",
+   "note": "Season 1, 'more than 90,000'"
+  },
+  {
+   "sym": "DRIFT",
+   "gecko": "drift-protocol",
+   "tge": "2024-05-16",
+   "tge_kind": "assumed",
+   "tokens": 120000000,
+   "wallets": 150000,
+   "src": "https://www.drift.trade/governance/announcing-the-details-of-the-drift-launch-airdrop",
+   "note": "'approximately 150,000'"
+  }
+ ],
+ "candidates": [
+  {
+   "key": "variational",
+   "name": "Variational (Omni)",
+   "chain": "Arbitrum",
+   "cat": "perp DEX",
+   "url": "https://omni.variational.io",
+   "status": "token confirmed",
+   "status_src": "https://www.panews.io/articles/01a0d112-1a42-712b-83f2-510955095514",
+   "us": "restricted",
+   "us_src": "https://docs.variational.io/legal/restricted-persons",
+   "x_key": "variational",
+   "model": "weekly_pool",
+   "funding": {
+    "usd": 61800000,
+    "kind": "sourced",
+    "note": "incl. $50M Series A",
+    "src": "https://www.panews.io/articles/01a0d112-1a42-712b-83f2-510955095514"
+   },
+   "p_token": {
+    "lo": 0.85,
+    "base": 0.93,
+    "hi": 0.98,
+    "kind": "assumed",
+    "note": "TGE confirmed for Q4 2026 (sourced); residual delay/cancel risk assumed"
+   },
+   "fdv": {
+    "lo": 800000000,
+    "base": 1530000000,
+    "hi": 1850000000,
+    "kind": "sourced",
+    "note": "base/hi = pre-market estimates $1.53B-$1.85B; lo assumed (~50% haircut)",
+    "src": "https://www.kucoin.com/news/flash/variational-reveals-airdrop-details-var-token-valuation-estimated-at-1-53b-1-85b"
+   },
+   "comm_pct": {
+    "lo": 32,
+    "base": 32,
+    "hi": 32,
+    "kind": "sourced",
+    "note": "genesis airdrop 32% of supply, pro rata to points",
+    "src": "https://www.panews.io/articles/01a0d112-1a42-712b-83f2-510955095514"
+   },
+   "total_points": {
+    "lo": 9300000,
+    "base": 10400000,
+    "hi": 11500000,
+    "kind": "sourced",
+    "note": "9.3M-11.5M expected by TGE",
+    "src": "https://www.panews.io/articles/01a0d112-1a42-712b-83f2-510955095514"
+   },
+   "weekly_pool": {
+    "lo": 150000,
+    "base": 150000,
+    "hi": 150000,
+    "kind": "sourced",
+    "src": "https://twiscan.com/en/x/variational_io/2098202322782601602"
+   },
+   "participants": {
+    "lo": 25662,
+    "base": 30358,
+    "hi": 36000,
+    "kind": "sourced",
+    "note": "accounts receiving points: 25,662 (wk 39), 30,358 (wk 41); hi assumed growth",
+    "src": "https://twiscan.com/en/x/variational_io/2098202322782601602"
+   },
+   "weeks_left": {
+    "lo": 3,
+    "base": 6,
+    "hi": 10,
+    "kind": "assumed",
+    "note": "TGE 'Q4 2026', no date"
+   },
+   "k": {
+    "lo": 0.25,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed",
+    "note": "your weekly points vs the average account (points are heavily skewed to whales)"
+   },
+   "capital": {
+    "lo": 1000,
+    "base": 2000,
+    "hi": 5000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 20,
+    "base": 50,
+    "hi": 100,
+    "kind": "assumed",
+    "note": "spread/funding on genuine trading; Omni charges no fees"
+   },
+   "hours_week": {
+    "lo": 1,
+    "base": 2,
+    "hi": 3,
+    "kind": "assumed"
+   },
+   "risk_yr": {
+    "base": 0.02,
+    "kind": "assumed",
+    "note": "venue/contract loss"
+   },
+   "plan": {
+    "actions": [
+     "Not farmable from the US (terms exclude US persons). Skip unless you are outside the US."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   }
+  },
+  {
+   "key": "lighter-rh",
+   "name": "Lighter on Robinhood Chain",
+   "chain": "Robinhood Chain",
+   "cat": "perp DEX (token live)",
+   "url": "https://docs.lighter.xyz/points-program/lighter-on-robinhood-chain-points",
+   "status": "pool confirmed (LIT live)",
+   "status_src": "https://robinhood.com/us/en/newsroom/robinhood-accelerates-global-expansion-robinhood-chain-mainnet-stock-tokens-agentic-trading/",
+   "us": "restricted",
+   "us_src": "https://docs.lighter.xyz/points-program/lighter-on-robinhood-chain-points",
+   "x_key": "lighter-rh",
+   "model": "calibration",
+   "pool_tokens": {
+    "base": 11000000,
+    "kind": "sourced",
+    "note": "11M LIT allocation to the Robinhood community (newsroom); Lighter's own terms page does not state the conversion",
+    "src": "https://robinhood.com/us/en/newsroom/robinhood-accelerates-global-expansion-robinhood-chain-mainnet-stock-tokens-agentic-trading/"
+   },
+   "pool_gecko": "lighter",
+   "p_token": {
+    "lo": 0.6,
+    "base": 0.8,
+    "hi": 0.9,
+    "kind": "assumed"
+   },
+   "participants": {
+    "kind": "unknown",
+    "note": "no published participant count"
+   },
+   "bucket": "small",
+   "k": {
+    "lo": 0.25,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed"
+   },
+   "capital": {
+    "lo": 500,
+    "base": 1000,
+    "hi": 3000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 0,
+    "base": 10,
+    "hi": 40,
+    "kind": "assumed",
+    "note": "0% fees on Standard; spread/funding"
+   },
+   "hours_week": {
+    "lo": 1,
+    "base": 1.5,
+    "hi": 3,
+    "kind": "assumed"
+   },
+   "weeks_left": {
+    "lo": 8,
+    "base": 10,
+    "hi": 10,
+    "kind": "derived",
+    "note": "third-party schedule runs to Jan 1 2027",
+    "src": "https://www.hyperleaf.finance/app/lighter/"
+   },
+   "risk_yr": {
+    "base": 0.02,
+    "kind": "assumed"
+   },
+   "plan": {
+    "actions": [
+     "US, UK and Canada are restricted for both trading and points: not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   }
+  },
+  {
+   "key": "extended",
+   "name": "Extended",
+   "chain": "Starknet",
+   "cat": "perp DEX",
+   "url": "https://extended.exchange",
+   "status": "points; 30% of future supply stated",
+   "status_src": "https://usethebitcoin.com/airdrop/extended/",
+   "us": "restricted",
+   "us_src": "https://docs.extended.exchange/extended-resources/legal/restricted-countries",
+   "x_key": "extended",
+   "model": "weekly_pool",
+   "funding": {
+    "usd": 19000000,
+    "kind": "sourced",
+    "src": "https://thecoinformer.com/news/extended-teases-tge-amid-190b-trading-volume"
+   },
+   "p_token": {
+    "lo": 0.6,
+    "base": 0.75,
+    "hi": 0.85,
+    "kind": "assumed",
+    "note": "TGE teased, not dated"
+   },
+   "fdv": {
+    "lo": 203000000,
+    "base": 640000000,
+    "hi": 1835000000,
+    "kind": "derived",
+    "note": "raised $19M x FDV/raised of past drops (small comps 10.7x / geometric mid / big-drop median 96.6x, from the Airdrop Desk comparables)"
+   },
+   "comm_pct": {
+    "lo": 30,
+    "base": 30,
+    "hi": 30,
+    "kind": "sourced",
+    "src": "https://usethebitcoin.com/airdrop/extended/"
+   },
+   "total_points": {
+    "lo": 70000000,
+    "base": 70000000,
+    "hi": 70000000,
+    "kind": "sourced",
+    "note": "final points capped at 70M",
+    "src": "https://perpdexguide.com/airdrops/"
+   },
+   "points_left": {
+    "lo": 0,
+    "base": 0,
+    "hi": 2800000,
+    "kind": "derived",
+    "note": "67,225,227 distributed by Sep 8 2026 at up to 600K/week: the 70M cap is reached or nearly reached",
+    "src": "https://perpdexguide.com/airdrops/"
+   },
+   "weekly_pool": {
+    "lo": 600000,
+    "base": 600000,
+    "hi": 600000,
+    "kind": "sourced",
+    "src": "https://perpdexguide.com/airdrops/"
+   },
+   "participants": {
+    "lo": 4200,
+    "base": 8000,
+    "hi": 15000,
+    "kind": "assumed",
+    "note": "only a Jan 2026 figure of 4,200 daily active users exists (secondary)",
+    "src": "https://www.gate.com/news/detail/17471134"
+   },
+   "weeks_left": {
+    "lo": 0,
+    "base": 0,
+    "hi": 5,
+    "kind": "derived"
+   },
+   "k": {
+    "lo": 0.25,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed"
+   },
+   "capital": {
+    "lo": 1000,
+    "base": 2000,
+    "hi": 5000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 20,
+    "base": 50,
+    "hi": 100,
+    "kind": "assumed"
+   },
+   "hours_week": {
+    "lo": 1,
+    "base": 2,
+    "hi": 3,
+    "kind": "assumed"
+   },
+   "risk_yr": {
+    "base": 0.02,
+    "kind": "assumed"
+   },
+   "plan": {
+    "actions": [
+     "US restricted. Also too late: the 70M point cap is (nearly) used up."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   }
+  },
+  {
+   "key": "n1",
+   "name": "N1",
+   "chain": "N1 (own L1)",
+   "cat": "perp DEX",
+   "url": "https://docs.n1.xyz/trading/points",
+   "status": "points only; no token confirmed",
+   "status_src": "https://airdrops.io/blog/best-crypto-airdrops/",
+   "us": "restricted",
+   "us_src": "https://n.exchange/legal/terms",
+   "x_key": "n1",
+   "model": "weekly_pool",
+   "funding": {
+    "usd": 7000000,
+    "kind": "sourced",
+    "note": "$5M seed (2023) + $2M private sale at a reported $25M FDV (May 2025)",
+    "src": "https://sourcechain.org/project/N1/"
+   },
+   "p_token": {
+    "lo": 0.3,
+    "base": 0.5,
+    "hi": 0.7,
+    "kind": "assumed"
+   },
+   "fdv": {
+    "lo": 25000000,
+    "base": 37500000,
+    "hi": 75000000,
+    "kind": "derived",
+    "note": "last reported valuation $25M x1 / 1.5 / 3 (desk rule)"
+   },
+   "comm_pct": {
+    "lo": 6.19,
+    "base": 7.75,
+    "hi": 9.63,
+    "kind": "derived",
+    "note": "p25/median/p75 airdrop % of past drops (Airdrop Desk comparables, n=10)"
+   },
+   "total_points": {
+    "lo": 1987000000,
+    "base": 1987000000,
+    "hi": 1987000000,
+    "kind": "sourced",
+    "note": "Season 1 fixed total",
+    "src": "https://airdrops.io/blog/best-crypto-airdrops/"
+   },
+   "weekly_pool": {
+    "lo": 75000000,
+    "base": 75000000,
+    "hi": 75000000,
+    "kind": "sourced",
+    "src": "https://airdrops.io/blog/best-crypto-airdrops/"
+   },
+   "participants": {
+    "lo": 1407,
+    "base": 3000,
+    "hi": 8000,
+    "kind": "assumed",
+    "note": "only sourced count: 1,407 users in week 3; growth since then assumed",
+    "src": "https://docs.n1.xyz/trading/points"
+   },
+   "weeks_left": {
+    "lo": 14,
+    "base": 16,
+    "hi": 16,
+    "kind": "derived",
+    "note": "26 live weeks from Aug 10 2026"
+   },
+   "k": {
+    "lo": 0.25,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed"
+   },
+   "capital": {
+    "lo": 500,
+    "base": 1000,
+    "hi": 3000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 10,
+    "base": 30,
+    "hi": 60,
+    "kind": "assumed"
+   },
+   "hours_week": {
+    "lo": 1,
+    "base": 1.5,
+    "hi": 3,
+    "kind": "assumed"
+   },
+   "risk_yr": {
+    "base": 0.03,
+    "kind": "assumed",
+    "note": "young venue"
+   },
+   "plan": {
+    "actions": [
+     "US persons prohibited by the terms: not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   }
+  },
+  {
+   "key": "risex",
+   "name": "RISEx",
+   "chain": "RISE Chain",
+   "cat": "perp DEX",
+   "url": "https://docs.risechain.com/docs/risex/rewards/points",
+   "status": "points only; no token announced",
+   "status_src": "https://airdrops.io/blog/best-crypto-airdrops/",
+   "us": "restricted",
+   "us_src": "https://perpsatlas.com/perp-dex/reports/perp-dex-restricted-countries/",
+   "x_key": "risex",
+   "model": "calibration",
+   "funding": {
+    "usd": 7200000,
+    "kind": "sourced",
+    "note": "community round reported at a $200M valuation",
+    "src": "https://financefeeds.com/risex-token-does-the-platform-have-a-crypto/"
+   },
+   "p_token": {
+    "lo": 0.3,
+    "base": 0.5,
+    "hi": 0.7,
+    "kind": "assumed"
+   },
+   "participants": {
+    "kind": "unknown"
+   },
+   "bucket": "small",
+   "k": {
+    "lo": 0.25,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed"
+   },
+   "capital": {
+    "lo": 500,
+    "base": 1000,
+    "hi": 3000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 10,
+    "base": 30,
+    "hi": 60,
+    "kind": "assumed"
+   },
+   "hours_week": {
+    "lo": 1,
+    "base": 1.5,
+    "hi": 3,
+    "kind": "assumed"
+   },
+   "weeks_left": {
+    "lo": 20,
+    "base": 26,
+    "hi": 32,
+    "kind": "assumed",
+    "note": "season ends no later than Q2 2027"
+   },
+   "risk_yr": {
+    "base": 0.03,
+    "kind": "assumed"
+   },
+   "plan": {
+    "actions": [
+     "US restricted: not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   }
+  },
+  {
+   "key": "perpl",
+   "name": "Perpl",
+   "chain": "Monad",
+   "cat": "perp DEX",
+   "url": "https://docs.perpl.xyz/exchange/points",
+   "status": "points; Season One may end Oct 28",
+   "status_src": "https://tradercomps.com/airdrops",
+   "us": "restricted",
+   "us_src": "https://perpl.xyz/terms-of-use",
+   "x_key": "perpl",
+   "model": "calibration",
+   "funding": {
+    "usd": 9250000,
+    "kind": "sourced",
+    "src": "https://blog.perpl.xyz/announcing-our-9-25m-funding-led-by-dragonfly-capital/"
+   },
+   "p_token": {
+    "lo": 0.35,
+    "base": 0.55,
+    "hi": 0.7,
+    "kind": "assumed"
+   },
+   "participants": {
+    "kind": "unknown"
+   },
+   "bucket": "small",
+   "k": {
+    "lo": 0.25,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed"
+   },
+   "capital": {
+    "lo": 500,
+    "base": 1000,
+    "hi": 3000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 10,
+    "base": 30,
+    "hi": 60,
+    "kind": "assumed"
+   },
+   "hours_week": {
+    "lo": 1,
+    "base": 1.5,
+    "hi": 3,
+    "kind": "assumed"
+   },
+   "weeks_left": {
+    "lo": 1,
+    "base": 1,
+    "hi": 8,
+    "kind": "sourced",
+    "note": "Season One listed as ending Oct 28 2026",
+    "src": "https://tradercomps.com/airdrops"
+   },
+   "risk_yr": {
+    "base": 0.03,
+    "kind": "assumed"
+   },
+   "plan": {
+    "actions": [
+     "US restricted: not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   }
+  },
+  {
+   "key": "pacifica",
+   "name": "Pacifica",
+   "chain": "Solana",
+   "cat": "perp DEX",
+   "url": "https://docs.pacifica.fi/programs/points-program",
+   "status": "points only; no token announced",
+   "status_src": "https://docs.pacifica.fi/programs/points-program",
+   "us": "restricted",
+   "us_src": "https://app.pacifica.fi/term",
+   "x_key": "pacifica",
+   "model": "calibration",
+   "funding": {
+    "usd": null,
+    "kind": "sourced",
+    "note": "self-funded, no disclosed round",
+    "src": "https://docs.pacifica.fi/programs/points-program"
+   },
+   "p_token": {
+    "lo": 0.35,
+    "base": 0.5,
+    "hi": 0.7,
+    "kind": "assumed"
+   },
+   "participants": {
+    "base": 41000,
+    "kind": "sourced",
+    "note": "41,000+ active users (Apr 2026, secondary)",
+    "src": "https://phemex.com/news/article/pacifica-trading-volume-surpasses-136-billion-amidst-new-milestones-66258"
+   },
+   "bucket": "small",
+   "k": {
+    "lo": 0.25,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed"
+   },
+   "capital": {
+    "lo": 500,
+    "base": 1000,
+    "hi": 3000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 10,
+    "base": 30,
+    "hi": 60,
+    "kind": "assumed"
+   },
+   "hours_week": {
+    "lo": 1,
+    "base": 1.5,
+    "hi": 3,
+    "kind": "assumed"
+   },
+   "weeks_left": {
+    "lo": 8,
+    "base": 16,
+    "hi": 30,
+    "kind": "assumed"
+   },
+   "risk_yr": {
+    "base": 0.02,
+    "kind": "assumed"
+   },
+   "plan": {
+    "actions": [
+     "US residents restricted (IP-blocked; VPN use prohibited): not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   }
+  },
+  {
+   "key": "ethereal",
+   "name": "Ethereal (Ethena perps)",
+   "chain": "Ethereal (Ethena)",
+   "cat": "perp DEX",
+   "url": "https://app.ethereal.trade/points",
+   "status": "points; 15% of any token committed to ENA holders",
+   "status_src": "https://www.airdropsea.app/guides/ethereal-airdrop-guide",
+   "us": "restricted",
+   "us_src": "https://app.ethereal.trade/terms",
+   "x_key": "ethereal",
+   "model": "calibration",
+   "funding": {
+    "usd": null,
+    "kind": "unknown"
+   },
+   "p_token": {
+    "lo": 0.35,
+    "base": 0.55,
+    "hi": 0.7,
+    "kind": "assumed"
+   },
+   "participants": {
+    "base": 16289,
+    "kind": "sourced",
+    "note": "16,289 wallets, 4.9B points (third-party tracker)",
+    "src": "https://chainhelm.com/en/ethereal-airdrop-points/"
+   },
+   "bucket": "small",
+   "k": {
+    "lo": 0.25,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed"
+   },
+   "capital": {
+    "lo": 500,
+    "base": 1000,
+    "hi": 3000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 10,
+    "base": 30,
+    "hi": 60,
+    "kind": "assumed"
+   },
+   "hours_week": {
+    "lo": 1,
+    "base": 1.5,
+    "hi": 3,
+    "kind": "assumed"
+   },
+   "weeks_left": {
+    "lo": 8,
+    "base": 16,
+    "hi": 30,
+    "kind": "assumed"
+   },
+   "risk_yr": {
+    "base": 0.02,
+    "kind": "assumed"
+   },
+   "plan": {
+    "actions": [
+     "US users prohibited by the terms: not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   }
+  },
+  {
+   "key": "infinifi",
+   "name": "infiniFi (INFI)",
+   "chain": "Ethereum / Base",
+   "cat": "stablecoin yield",
+   "url": "https://app.infinifi.xyz/points",
+   "status": "token confirmed (TGE Q4 2026, tokenomics Oct 13)",
+   "status_src": "https://tge.infinifi.xyz/",
+   "us": "allowed",
+   "us_src": "https://app.infinifi.xyz/terms",
+   "us_note": "terms restrict sanctioned jurisdictions, not US residents (per search summary; re-read before depositing)",
+   "x_key": null,
+   "model": "capital_share",
+   "funding": {
+    "usd": 6000000,
+    "kind": "sourced",
+    "src": "https://defillama.com/protocol/infinifi"
+   },
+   "p_token": {
+    "lo": 0.85,
+    "base": 0.92,
+    "hi": 0.97,
+    "kind": "assumed",
+    "note": "TGE timeline published by the team (sourced); residual slip risk assumed"
+   },
+   "fdv": {
+    "lo": 64000000,
+    "base": 194000000,
+    "hi": 580000000,
+    "kind": "derived",
+    "note": "raised $6M x FDV/raised of past drops (10.7x / geometric mid 32x / 96.6x)"
+   },
+   "comm_pct": {
+    "lo": 5,
+    "base": 8,
+    "hi": 12,
+    "kind": "assumed",
+    "note": "airdrop comes out of the 45% Ecosystem allocation (sourced); its size is unpublished",
+    "src": "https://peoplelikecrypto.com/airdrops/infinifi-infi/"
+   },
+   "window_share": {
+    "lo": 0.2,
+    "base": 0.33,
+    "hi": 0.5,
+    "kind": "assumed",
+    "note": "share of the airdrop that goes to the Aug 26 -> TGE fixed allocation (sourced that it exists, size unpublished)",
+    "src": "https://www.odaily.news/en/newsflash/512860"
+   },
+   "window_weeks": {
+    "lo": 16,
+    "base": 16,
+    "hi": 16,
+    "kind": "derived",
+    "note": "Aug 26 to mid-Dec"
+   },
+   "tvl_live": "infinifi",
+   "deposit": {
+    "lo": 2000,
+    "base": 5000,
+    "hi": 10000,
+    "kind": "assumed",
+    "note": "your stablecoin deposit (you also earn the vault yield)"
+   },
+   "k": {
+    "lo": 1.0,
+    "base": 1.5,
+    "hi": 2.5,
+    "kind": "assumed",
+    "note": "staking/locking multipliers (siUSD / liUSD) vs plain iUSD"
+   },
+   "weeks_left": {
+    "lo": 3,
+    "base": 6,
+    "hi": 10,
+    "kind": "assumed"
+   },
+   "capital_is_yielding": true,
+   "capital": {
+    "lo": 2000,
+    "base": 5000,
+    "hi": 10000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 0,
+    "base": 2,
+    "hi": 5,
+    "kind": "assumed",
+    "note": "gas spread over the period (Base is cheap; mainnet costs more)"
+   },
+   "hours_week": {
+    "lo": 0.1,
+    "base": 0.25,
+    "hi": 0.5,
+    "kind": "assumed"
+   },
+   "risk_yr": {
+    "base": 0.03,
+    "kind": "assumed",
+    "note": "smart-contract + stablecoin depeg risk"
+   },
+   "plan": {
+    "actions": [
+     "Read the terms on app.infinifi.xyz once (confirm US access).",
+     "Mint iUSD with USDC on Base (cheaper gas) and stake to siUSD; lock to liUSD only for a lock you would accept losing access to for its full term.",
+     "Check points weekly on app.infinifi.xyz/points; do nothing else (no loops, no leverage)."
+    ],
+    "budget_cap": 5000,
+    "time": "~15 min/week",
+    "stop": "Stop if TGE slips past Q1 2027, if the points page shows the window allocation is small, or on any depeg/exploit news.",
+    "claim": "At TGE: claim, sell 50-75% in the first days, keep the rest only if the vault stays useful."
+   }
+  },
+  {
+   "key": "opensea",
+   "name": "OpenSea (SEA)",
+   "chain": "Ethereum + multichain",
+   "cat": "NFT / token marketplace",
+   "url": "https://opensea.io",
+   "status": "token committed, undated (March 2026 TGE postponed)",
+   "status_src": "https://peoplelikecrypto.com/airdrops/opensea-sea/",
+   "us": "allowed",
+   "us_src": "https://www.coindesk.com/markets/2025/02/13/opensea-confirms-upcoming-token-airdrop-expands-to-crypto-trading",
+   "us_note": "OpenSea Foundation: 'US users welcome'",
+   "x_key": "opensea",
+   "model": "per_wallet",
+   "funding": {
+    "usd": 427000000,
+    "kind": "sourced",
+    "note": "last priced: $13.3B (Series C, Jan 2022)",
+    "src": "https://sacra.com/c/opensea/"
+   },
+   "p_token": {
+    "lo": 0.5,
+    "base": 0.7,
+    "hi": 0.85,
+    "kind": "assumed",
+    "note": "committed, but already postponed once"
+   },
+   "fdv": {
+    "lo": 1330000000,
+    "base": 2660000000,
+    "hi": 5320000000,
+    "kind": "assumed",
+    "note": "2022 $13.3B valuation (sourced) x 0.1 / 0.2 / 0.4 haircut (assumed)"
+   },
+   "comm_pct": {
+    "lo": 10,
+    "base": 15,
+    "hi": 25,
+    "kind": "assumed",
+    "note": "50% of supply to community, split between the initial airdrop and ongoing rewards (sourced); the initial share is unpublished"
+   },
+   "participants": {
+    "lo": 500000,
+    "base": 1000000,
+    "hi": 2000000,
+    "kind": "assumed",
+    "note": "no published eligible count; 'historical usage' counts, so expect a very large crowd"
+   },
+   "k": {
+    "lo": 0.3,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed",
+    "note": "new activity vs an average historical wallet; higher if you already have OpenSea history"
+   },
+   "weeks_left": {
+    "lo": 12,
+    "base": 26,
+    "hi": 52,
+    "kind": "assumed",
+    "note": "undated"
+   },
+   "capital": {
+    "lo": 0,
+    "base": 300,
+    "hi": 1000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 2,
+    "base": 5,
+    "hi": 15,
+    "kind": "assumed",
+    "note": "marketplace fees/gas on genuine trades"
+   },
+   "hours_week": {
+    "lo": 0.1,
+    "base": 0.25,
+    "hi": 0.5,
+    "kind": "assumed"
+   },
+   "risk_yr": {
+    "base": 0.0,
+    "kind": "assumed"
+   },
+   "plan": {
+    "actions": [
+     "Check whether your existing wallets already have OpenSea history (that is what counts most).",
+     "If you trade NFTs or tokens anyway, route a few of those trades through OpenSea each month; do not wash-trade.",
+     "Do not spend extra money just to farm: crowded drop."
+    ],
+    "budget_cap": 300,
+    "time": "~15 min/week",
+    "stop": "Stop new spending if no TGE date by Q2 2027.",
+    "claim": "Claim and sell most at TGE: mega-crowd drops usually sold off after launch (see calibration)."
+   }
+  },
+  {
+   "key": "ink",
+   "name": "Ink (INK) via Kraken Pro Ink Points",
+   "chain": "Ink (Kraken L2)",
+   "cat": "L2 / CEX points",
+   "url": "https://blog.kraken.com/product/pro/introducing-ink-points",
+   "status": "INK token confirmed, no date; points not confirmed to convert",
+   "status_src": "https://peoplelikecrypto.com/airdrops/ink/",
+   "us": "allowed",
+   "us_src": "https://blog.kraken.com/product/pro/introducing-ink-points",
+   "us_note": "Kraken Pro Ink Points: US allowed; Nado (Ink perps) is view-only in the US",
+   "x_key": "ink",
+   "model": "calibration",
+   "funding": {
+    "usd": null,
+    "kind": "unknown",
+    "note": "Kraken-backed; no INK valuation disclosed"
+   },
+   "p_token": {
+    "lo": 0.25,
+    "base": 0.45,
+    "hi": 0.65,
+    "kind": "assumed",
+    "note": "token confirmed, conversion of points not confirmed"
+   },
+   "participants": {
+    "kind": "unknown"
+   },
+   "bucket": "mid",
+   "k": {
+    "lo": 0.25,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed"
+   },
+   "capital": {
+    "lo": 0,
+    "base": 500,
+    "hi": 2000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 0,
+    "base": 5,
+    "hi": 20,
+    "kind": "assumed",
+    "note": "trading fees on trades you would do anyway"
+   },
+   "hours_week": {
+    "lo": 0.1,
+    "base": 0.25,
+    "hi": 0.5,
+    "kind": "assumed"
+   },
+   "weeks_left": {
+    "lo": 12,
+    "base": 26,
+    "hi": 52,
+    "kind": "assumed"
+   },
+   "risk_yr": {
+    "base": 0.005,
+    "kind": "assumed",
+    "note": "regulated CEX"
+   },
+   "plan": {
+    "actions": [
+     "If you already trade on Kraken, use Kraken Pro for those trades and opt in to Ink Points.",
+     "Bridge a small amount to Ink and use one or two Ink apps that allow US users (not Nado)."
+    ],
+    "budget_cap": 500,
+    "time": "~15 min/week",
+    "stop": "Stop if Kraken states Ink Points will not convert, or no INK date by mid-2027.",
+    "claim": "Claim via Kraken Drops; sell most at launch unless INK has real fee capture."
+   }
+  },
+  {
+   "key": "polymarket",
+   "name": "Polymarket",
+   "chain": "Polygon",
+   "cat": "prediction market",
+   "url": "https://polymarket.com",
+   "status": "no token announced (FAQ: rewards are pUSD)",
+   "status_src": "https://help.polymarket.com/en/articles/13364250-does-polymarket-have-a-token",
+   "us": "restricted",
+   "us_src": "https://help.polymarket.com/en/articles/13364250-does-polymarket-have-a-token",
+   "us_note": "international site blocks US users; the regulated Polymarket US app has no token program",
+   "x_key": "polymarket",
+   "model": "per_wallet",
+   "funding": {
+    "usd": 1000000000,
+    "kind": "sourced",
+    "note": "latest round $1B at $21B post-money (Aug 2026)",
+    "src": "https://www.bloomberg.com/news/articles/2026-08-31/polymarket-funding-round-led-by-1789-values-firm-at-21-billion"
+   },
+   "p_token": {
+    "lo": 0.1,
+    "base": 0.25,
+    "hi": 0.45,
+    "kind": "assumed",
+    "note": "CEO floated an on-chain asset; FAQ says no token; equity/IPO path also discussed"
+   },
+   "fdv": {
+    "lo": 10000000000,
+    "base": 21000000000,
+    "hi": 30000000000,
+    "kind": "derived",
+    "note": "anchored to the sourced $21B valuation"
+   },
+   "comm_pct": {
+    "lo": 6.19,
+    "base": 7.75,
+    "hi": 9.63,
+    "kind": "derived",
+    "note": "comparables p25/median/p75"
+   },
+   "participants": {
+    "lo": 750000,
+    "base": 1500000,
+    "hi": 3000000,
+    "kind": "assumed",
+    "note": "750K monthly active traders (Sep 2026, secondary); eligible set likely larger",
+    "src": "https://fintechbyte.com/articles/prediction-markets/2026-09-10/polymarket-polymarket-us-and-kalshi-volume-monthly-the-block/"
+   },
+   "k": {
+    "lo": 0.3,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed"
+   },
+   "weeks_left": {
+    "lo": 26,
+    "base": 52,
+    "hi": 104,
+    "kind": "assumed"
+   },
+   "capital": {
+    "lo": 200,
+    "base": 500,
+    "hi": 2000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 2,
+    "base": 10,
+    "hi": 30,
+    "kind": "assumed",
+    "note": "spread on positions"
+   },
+   "hours_week": {
+    "lo": 0.25,
+    "base": 0.5,
+    "hi": 1,
+    "kind": "assumed"
+   },
+   "risk_yr": {
+    "base": 0.01,
+    "kind": "assumed"
+   },
+   "plan": {
+    "actions": [
+     "International Polymarket blocks US users: not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   }
+  },
+  {
+   "key": "metamask",
+   "name": "MetaMask (MASK)",
+   "chain": "multichain wallet",
+   "cat": "wallet",
+   "url": "https://metamask.io/news/introducing-metamask-rewards",
+   "status": "no immediate token plans; Rewards S1 ended Jan 22 2026",
+   "status_src": "https://in-crypto.app/news/metamask-mask-token-not-planned",
+   "us": "allowed",
+   "us_src": "https://support.metamask.io/manage-crypto/metamask-rewards/how-to-participate-in-rewards/",
+   "x_key": "metamask",
+   "model": "calibration",
+   "funding": {
+    "usd": null,
+    "kind": "unknown"
+   },
+   "p_token": {
+    "lo": 0.03,
+    "base": 0.08,
+    "hi": 0.15,
+    "kind": "assumed",
+    "note": "team says no immediate plans (sourced)"
+   },
+   "participants": {
+    "kind": "unknown",
+    "note": "tens of millions of wallet users; no eligible count"
+   },
+   "bucket": "mega",
+   "k": {
+    "lo": 0.3,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed"
+   },
+   "capital": {
+    "lo": 0,
+    "base": 0,
+    "hi": 500,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 0,
+    "base": 3,
+    "hi": 10,
+    "kind": "assumed",
+    "note": "MetaMask swap fee on swaps you'd do anyway"
+   },
+   "hours_week": {
+    "lo": 0,
+    "base": 0.1,
+    "hi": 0.25,
+    "kind": "assumed"
+   },
+   "weeks_left": {
+    "lo": 26,
+    "base": 52,
+    "hi": 104,
+    "kind": "assumed"
+   },
+   "risk_yr": {
+    "base": 0.0,
+    "kind": "assumed"
+   },
+   "plan": {
+    "actions": [
+     "Only route swaps you would make anyway through MetaMask; spend nothing extra."
+    ],
+    "budget_cap": 0,
+    "time": "0",
+    "stop": "Already effectively stopped: the team says no token plans.",
+    "claim": "If it ever drops: sell at claim."
+   }
+  },
+  {
+   "key": "base",
+   "name": "Base (network token)",
+   "chain": "Base",
+   "cat": "L2",
+   "url": "https://blog.base.org/the-state-of-base-at-basecamp-2025",
+   "status": "'exploring' a token since Sep 2025; nothing announced",
+   "status_src": "https://99airdrops.com/base-airdrops/",
+   "us": "allowed",
+   "us_src": "https://blog.base.org/the-state-of-base-at-basecamp-2025",
+   "us_note": "Coinbase-built; any US eligibility unknown until announced",
+   "x_key": "base",
+   "model": "calibration",
+   "funding": {
+    "usd": null,
+    "kind": "unknown"
+   },
+   "p_token": {
+    "lo": 0.1,
+    "base": 0.2,
+    "hi": 0.35,
+    "kind": "assumed"
+   },
+   "participants": {
+    "kind": "unknown",
+    "note": "millions of active addresses"
+   },
+   "bucket": "mega",
+   "k": {
+    "lo": 0.3,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed"
+   },
+   "capital": {
+    "lo": 0,
+    "base": 200,
+    "hi": 1000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 0,
+    "base": 2,
+    "hi": 5,
+    "kind": "assumed",
+    "note": "Base gas is cents"
+   },
+   "hours_week": {
+    "lo": 0.1,
+    "base": 0.25,
+    "hi": 0.5,
+    "kind": "assumed"
+   },
+   "weeks_left": {
+    "lo": 26,
+    "base": 52,
+    "hi": 104,
+    "kind": "assumed"
+   },
+   "risk_yr": {
+    "base": 0.01,
+    "kind": "assumed"
+   },
+   "plan": {
+    "actions": [
+     "Keep normal, organic Base usage on one wallet (e.g. the infiniFi deposit on Base doubles as Base activity).",
+     "Do not spend anything specifically for a Base drop."
+    ],
+    "budget_cap": 0,
+    "time": "0 extra",
+    "stop": "n/a",
+    "claim": "If it drops: sell most at claim (mega-crowd)."
+   }
+  },
+  {
+   "key": "kuru",
+   "name": "Kuru",
+   "chain": "Monad",
+   "cat": "CLOB DEX",
+   "url": "https://defillama.com/protocol/kuru",
+   "status": "points live; no token promise",
+   "status_src": "https://medium.com/@kuruexchange_protocol/kuru-clob-points-rewards-apy-dashboard-95a482abe448",
+   "us": "unknown",
+   "us_src": null,
+   "us_note": "no terms found; check the site's terms before using",
+   "x_key": "kuru",
+   "model": "calibration",
+   "funding": {
+    "usd": 13600000,
+    "kind": "sourced",
+    "src": "https://defillama.com/protocol/kuru"
+   },
+   "p_token": {
+    "lo": 0.3,
+    "base": 0.45,
+    "hi": 0.6,
+    "kind": "assumed"
+   },
+   "participants": {
+    "kind": "unknown"
+   },
+   "bucket": "small",
+   "k": {
+    "lo": 0.25,
+    "base": 0.5,
+    "hi": 1.0,
+    "kind": "assumed"
+   },
+   "capital": {
+    "lo": 300,
+    "base": 1000,
+    "hi": 3000,
+    "kind": "assumed"
+   },
+   "weekly_cost": {
+    "lo": 2,
+    "base": 10,
+    "hi": 30,
+    "kind": "assumed"
+   },
+   "hours_week": {
+    "lo": 0.25,
+    "base": 0.5,
+    "hi": 1,
+    "kind": "assumed"
+   },
+   "weeks_left": {
+    "lo": 12,
+    "base": 26,
+    "hi": 52,
+    "kind": "assumed"
+   },
+   "risk_yr": {
+    "base": 0.04,
+    "kind": "assumed",
+    "note": "young DEX on a young chain"
+   },
+   "plan": {
+    "actions": [
+     "First read Kuru's terms; skip if US persons are excluded.",
+     "If allowed: provide a small amount of MON/USDC liquidity or place resting limit orders; trade only what you would anyway."
+    ],
+    "budget_cap": 1000,
+    "time": "~30 min/week",
+    "stop": "Stop if TVL keeps falling (DefiLlama) or there is no token news by mid-2027.",
+    "claim": "Sell most at claim; small-cap DEX tokens often bleed after launch."
+   }
+  }
+ ],
+ "rejected": [
+  {
+   "name": "Hyperbeat",
+   "why": "BEAT airdrop terms signing ended Dec 5 2025 (token already distributed) and US residents are prohibited.",
+   "src": "https://www.hyperbeatfoundation.org/airdrop-terms"
+  },
+  {
+   "name": "Paradex",
+   "why": "DIME launched Mar 5 2026 (25% airdropped); XP Season 3 has no token promise.",
+   "src": "https://www.paradex.foundation/blog/dime-genesis"
+  },
+  {
+   "name": "MegaETH, Monad, Lighter (main), GRVT, edgeX, Hyperliquid",
+   "why": "Tokens already launched; no announced new season with a stated pool for new users.",
+   "src": "https://cipher-intelligence.io/blog/perp-dex-airdrops-2026/"
+  },
+  {
+   "name": "NUVA",
+   "why": "Season 0 ended Oct 1 2026; Season 1 has no start date, so points are paused.",
+   "src": "https://nuva.finance/docs/nuva-ecosystem-roadmap"
+  },
+  {
+   "name": "Exponent",
+   "why": "Rewards page shows no active campaign.",
+   "src": "https://app.exponent.finance/en/rewards"
+  },
+  {
+   "name": "Arcus",
+   "why": "Season 1 terms explicitly deny token entitlement and exclude restricted persons; too new to size.",
+   "src": "https://www.farmdash.one/guides/what-to-farm-october-2026"
+  }
+ ]
+}

@@ -1,0 +1,2779 @@
+{
+ "generatedAt": 1792485081770,
+ "reviewed": "2026-10-20",
+ "you": {
+  "jurisdiction": "US",
+  "jurisdiction_note": "assumed from the America/Los_Angeles timezone; programs that exclude US persons are ranked as not farmable. Never use a VPN to get around a geo-block (it breaks the terms and gets allocations voided).",
+  "hourly_value_usd": {
+   "lo": 25,
+   "base": 40,
+   "hi": 75,
+   "kind": "assumed",
+   "note": "value of Martin's time per hour"
+  },
+  "opportunity_rate_yr": {
+   "lo": 0.04,
+   "base": 0.05,
+   "hi": 0.08,
+   "kind": "assumed",
+   "note": "what parked capital could earn elsewhere (T-bill-like)"
+  },
+  "survivor_haircut": {
+   "lo": 0.1,
+   "base": 0.25,
+   "hi": 0.5,
+   "kind": "assumed",
+   "note": "calibration drops are famous successes (survivorship); EVs that fall back on them are scaled down by this. Many points programs paid little or nothing, which the sample cannot show."
+  }
+ },
+ "candidates": [
+  {
+   "key": "infinifi",
+   "name": "infiniFi (INFI)",
+   "chain": "Ethereum / Base",
+   "cat": "stablecoin yield",
+   "url": "https://app.infinifi.xyz/points",
+   "status": "token confirmed (TGE Q4 2026, tokenomics Oct 13)",
+   "status_src": "https://tge.infinifi.xyz/",
+   "confirmed": true,
+   "us": "allowed",
+   "tier": "allowed",
+   "us_src": "https://app.infinifi.xyz/terms",
+   "us_note": "terms restrict sanctioned jurisdictions, not US residents (per search summary; re-read before depositing)",
+   "eligible_for_you": true,
+   "model": "capital_share",
+   "inputs": {
+    "p_token": {
+     "lo": 0.85,
+     "base": 0.92,
+     "hi": 0.97,
+     "kind": "assumed",
+     "note": "TGE timeline published by the team (sourced); residual slip risk assumed"
+    },
+    "fdv": {
+     "lo": 64000000,
+     "base": 194000000,
+     "hi": 580000000,
+     "kind": "derived",
+     "note": "raised $6M x FDV/raised of past drops (10.7x / geometric mid 32x / 96.6x)"
+    },
+    "comm_pct": {
+     "lo": 5,
+     "base": 8,
+     "hi": 12,
+     "kind": "assumed",
+     "note": "airdrop comes out of the 45% Ecosystem allocation (sourced); its size is unpublished",
+     "src": "https://peoplelikecrypto.com/airdrops/infinifi-infi/"
+    },
+    "weeks_left": {
+     "lo": 3,
+     "base": 6,
+     "hi": 10,
+     "kind": "assumed"
+    },
+    "k": {
+     "lo": 1.0,
+     "base": 1.5,
+     "hi": 2.5,
+     "kind": "assumed",
+     "note": "staking/locking multipliers (siUSD / liUSD) vs plain iUSD"
+    },
+    "deposit": {
+     "lo": 2000,
+     "base": 5000,
+     "hi": 10000,
+     "kind": "assumed",
+     "note": "your stablecoin deposit (you also earn the vault yield)"
+    },
+    "window_share": {
+     "lo": 0.2,
+     "base": 0.33,
+     "hi": 0.5,
+     "kind": "assumed",
+     "note": "share of the airdrop that goes to the Aug 26 -> TGE fixed allocation (sourced that it exists, size unpublished)",
+     "src": "https://www.odaily.news/en/newsflash/512860"
+    },
+    "capital": {
+     "lo": 2000,
+     "base": 5000,
+     "hi": 10000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 0,
+     "base": 2,
+     "hi": 5,
+     "kind": "assumed",
+     "note": "gas spread over the period (Base is cheap; mainnet costs more)"
+    },
+    "hours_week": {
+     "lo": 0.1,
+     "base": 0.25,
+     "hi": 0.5,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.03,
+     "kind": "assumed",
+     "note": "smart-contract + stablecoin depeg risk"
+    },
+    "funding": {
+     "usd": 6000000,
+     "kind": "sourced",
+     "src": "https://defillama.com/protocol/infinifi"
+    }
+   },
+   "ev": {
+    "lo": 7.47,
+    "base": 194.16,
+    "hi": 3863.81
+   },
+   "cost": {
+    "lo": {
+     "total": 83.65,
+     "time": 60.0,
+     "direct": 15,
+     "opportunity": 0,
+     "risk": 8.65,
+     "weeks": 3
+    },
+    "base": {
+     "total": 89.31,
+     "time": 60.0,
+     "direct": 12,
+     "opportunity": 0,
+     "risk": 17.31,
+     "weeks": 6
+    },
+    "hi": {
+     "total": 68.85,
+     "time": 40.0,
+     "direct": 0,
+     "opportunity": 0,
+     "risk": 28.85,
+     "weeks": 10
+    }
+   },
+   "roi": {
+    "lo": 0.09,
+    "base": 2.17,
+    "hi": 56.12
+   },
+   "net": {
+    "lo": -76.18,
+    "base": 104.85,
+    "hi": 3794.96
+   },
+   "ev_method": "deposit / TVL x share of the remaining window x multiplier x window allocation x pool $",
+   "saturation": {
+    "score": 50.0,
+    "expected_pool_usd": 14278400.0,
+    "remaining_fraction": null,
+    "remaining_pool_usd": 14278400.0,
+    "pool_per_participant_usd": null,
+    "participants_base": null,
+    "x_posts7d": null,
+    "parts": {
+     "pool_per_head": null,
+     "crowd": 0.5,
+     "quiet_on_x": null
+    }
+   },
+   "x": null,
+   "extra": {
+    "tvl_usd": 68253594
+   },
+   "plan": {
+    "actions": [
+     "Read the terms on app.infinifi.xyz once (confirm US access).",
+     "Mint iUSD with USDC on Base (cheaper gas) and stake to siUSD; lock to liUSD only for a lock you would accept losing access to for its full term.",
+     "Check points weekly on app.infinifi.xyz/points; do nothing else (no loops, no leverage)."
+    ],
+    "budget_cap": 5000,
+    "time": "~15 min/week",
+    "stop": "Stop if TGE slips past Q1 2027, if the points page shows the window allocation is small, or on any depeg/exploit news.",
+    "claim": "At TGE: claim, sell 50-75% in the first days, keep the rest only if the vault stays useful."
+   },
+   "strength": "unproven (model estimate; 2 of 12 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 2,
+   "inputs_total": 12,
+   "rank": 1,
+   "rank_if_eligible": 3
+  },
+  {
+   "key": "opensea",
+   "name": "OpenSea (SEA)",
+   "chain": "Ethereum + multichain",
+   "cat": "NFT / token marketplace",
+   "url": "https://opensea.io",
+   "status": "token committed, undated (March 2026 TGE postponed)",
+   "status_src": "https://peoplelikecrypto.com/airdrops/opensea-sea/",
+   "confirmed": false,
+   "us": "allowed",
+   "tier": "allowed",
+   "us_src": "https://www.coindesk.com/markets/2025/02/13/opensea-confirms-upcoming-token-airdrop-expands-to-crypto-trading",
+   "us_note": "OpenSea Foundation: 'US users welcome'",
+   "eligible_for_you": true,
+   "model": "per_wallet",
+   "inputs": {
+    "p_token": {
+     "lo": 0.5,
+     "base": 0.7,
+     "hi": 0.85,
+     "kind": "assumed",
+     "note": "committed, but already postponed once"
+    },
+    "fdv": {
+     "lo": 1330000000,
+     "base": 2660000000,
+     "hi": 5320000000,
+     "kind": "assumed",
+     "note": "2022 $13.3B valuation (sourced) x 0.1 / 0.2 / 0.4 haircut (assumed)"
+    },
+    "comm_pct": {
+     "lo": 10,
+     "base": 15,
+     "hi": 25,
+     "kind": "assumed",
+     "note": "50% of supply to community, split between the initial airdrop and ongoing rewards (sourced); the initial share is unpublished"
+    },
+    "participants": {
+     "lo": 500000,
+     "base": 1000000,
+     "hi": 2000000,
+     "kind": "assumed",
+     "note": "no published eligible count; 'historical usage' counts, so expect a very large crowd"
+    },
+    "weeks_left": {
+     "lo": 12,
+     "base": 26,
+     "hi": 52,
+     "kind": "assumed",
+     "note": "undated"
+    },
+    "k": {
+     "lo": 0.3,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed",
+     "note": "new activity vs an average historical wallet; higher if you already have OpenSea history"
+    },
+    "capital": {
+     "lo": 0,
+     "base": 300,
+     "hi": 1000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 2,
+     "base": 5,
+     "hi": 15,
+     "kind": "assumed",
+     "note": "marketplace fees/gas on genuine trades"
+    },
+    "hours_week": {
+     "lo": 0.1,
+     "base": 0.25,
+     "hi": 0.5,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.0,
+     "kind": "assumed"
+    },
+    "funding": {
+     "usd": 427000000,
+     "kind": "sourced",
+     "note": "last priced: $13.3B (Series C, Jan 2022)",
+     "src": "https://sacra.com/c/opensea/"
+    }
+   },
+   "ev": {
+    "lo": 9.97,
+    "base": 139.65,
+    "hi": 2261.0
+   },
+   "cost": {
+    "lo": {
+     "total": 423.46,
+     "time": 240.0,
+     "direct": 180,
+     "opportunity": 3.46,
+     "risk": 0.0,
+     "weeks": 12
+    },
+    "base": {
+     "total": 397.5,
+     "time": 260.0,
+     "direct": 130,
+     "opportunity": 7.5,
+     "risk": 0.0,
+     "weeks": 26
+    },
+    "hi": {
+     "total": 327.0,
+     "time": 208.0,
+     "direct": 104,
+     "opportunity": 15.0,
+     "risk": 0.0,
+     "weeks": 52
+    }
+   },
+   "roi": {
+    "lo": 0.02,
+    "base": 0.35,
+    "hi": 6.91
+   },
+   "net": {
+    "lo": -413.49,
+    "base": -257.85,
+    "hi": 1934.0
+   },
+   "ev_method": "pool $ / participants x your weight",
+   "saturation": {
+    "score": 32.8,
+    "expected_pool_usd": 279300000.0,
+    "remaining_fraction": null,
+    "remaining_pool_usd": 279300000.0,
+    "pool_per_participant_usd": 279.3,
+    "participants_base": 1000000,
+    "x_posts7d": 609,
+    "parts": {
+     "pool_per_head": 0.4820236452336683,
+     "crowd": 0.1428571428571429,
+     "quiet_on_x": 0.3038456768417812
+    }
+   },
+   "x": {
+    "query": "OpenSea (airdrop OR SEA token OR TGE) -is:retweet",
+    "posts7d": 609,
+    "from": "2026-10-13T08:20:59.000Z",
+    "to": "2026-10-20T08:20:59.000Z"
+   },
+   "extra": {},
+   "plan": {
+    "actions": [
+     "Check whether your existing wallets already have OpenSea history (that is what counts most).",
+     "If you trade NFTs or tokens anyway, route a few of those trades through OpenSea each month; do not wash-trade.",
+     "Do not spend extra money just to farm: crowded drop."
+    ],
+    "budget_cap": 300,
+    "time": "~15 min/week",
+    "stop": "Stop new spending if no TGE date by Q2 2027.",
+    "claim": "Claim and sell most at TGE: mega-crowd drops usually sold off after launch (see calibration)."
+   },
+   "strength": "unproven (model estimate; 1 of 11 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 1,
+   "inputs_total": 11,
+   "rank": 2,
+   "rank_if_eligible": 7
+  },
+  {
+   "key": "metamask",
+   "name": "MetaMask (MASK)",
+   "chain": "multichain wallet",
+   "cat": "wallet",
+   "url": "https://metamask.io/news/introducing-metamask-rewards",
+   "status": "no immediate token plans; Rewards S1 ended Jan 22 2026",
+   "status_src": "https://in-crypto.app/news/metamask-mask-token-not-planned",
+   "confirmed": false,
+   "us": "allowed",
+   "tier": "allowed",
+   "us_src": "https://support.metamask.io/manage-crypto/metamask-rewards/how-to-participate-in-rewards/",
+   "us_note": null,
+   "eligible_for_you": true,
+   "model": "calibration",
+   "inputs": {
+    "p_token": {
+     "lo": 0.03,
+     "base": 0.08,
+     "hi": 0.15,
+     "kind": "assumed",
+     "note": "team says no immediate plans (sourced)"
+    },
+    "participants": {
+     "kind": "unknown",
+     "note": "tens of millions of wallet users; no eligible count"
+    },
+    "weeks_left": {
+     "lo": 26,
+     "base": 52,
+     "hi": 104,
+     "kind": "assumed"
+    },
+    "k": {
+     "lo": 0.3,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed"
+    },
+    "capital": {
+     "lo": 0,
+     "base": 0,
+     "hi": 500,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 0,
+     "base": 3,
+     "hi": 10,
+     "kind": "assumed",
+     "note": "MetaMask swap fee on swaps you'd do anyway"
+    },
+    "hours_week": {
+     "lo": 0,
+     "base": 0.1,
+     "hi": 0.25,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.0,
+     "kind": "assumed"
+    },
+    "funding": {
+     "usd": null,
+     "kind": "unknown"
+    }
+   },
+   "ev": {
+    "lo": 0.36,
+    "base": 8.92,
+    "hi": 83.92
+   },
+   "cost": {
+    "lo": {
+     "total": 520.0,
+     "time": 260.0,
+     "direct": 260,
+     "opportunity": 0.0,
+     "risk": 0.0,
+     "weeks": 26
+    },
+    "base": {
+     "total": 364.0,
+     "time": 208.0,
+     "direct": 156,
+     "opportunity": 0.0,
+     "risk": 0.0,
+     "weeks": 52
+    },
+    "hi": {
+     "total": 0.0,
+     "time": 0,
+     "direct": 0,
+     "opportunity": 0.0,
+     "risk": 0.0,
+     "weeks": 104
+    }
+   },
+   "roi": {
+    "lo": 0.0,
+    "base": 0.02,
+    "hi": null
+   },
+   "net": {
+    "lo": -519.64,
+    "base": -355.08,
+    "hi": 83.92
+   },
+   "ev_method": "calibration: mega-crowd past drops (ARB, JUP, STRK, ZK, LINEA, ZRO) per-wallet p25/median/p75 x P(token) x your weight x survivor haircut",
+   "saturation": {
+    "score": 18.4,
+    "expected_pool_usd": null,
+    "remaining_fraction": null,
+    "remaining_pool_usd": null,
+    "pool_per_participant_usd": null,
+    "participants_base": null,
+    "x_posts7d": 212,
+    "parts": {
+     "pool_per_head": null,
+     "crowd": 0.05,
+     "quiet_on_x": 0.4184160347678121
+    }
+   },
+   "x": {
+    "query": "MetaMask (airdrop OR MASK token OR TGE) -is:retweet",
+    "posts7d": 212,
+    "from": "2026-10-13T08:20:56.000Z",
+    "to": "2026-10-20T08:20:56.000Z"
+   },
+   "extra": {},
+   "plan": {
+    "actions": [
+     "Only route swaps you would make anyway through MetaMask; spend nothing extra."
+    ],
+    "budget_cap": 0,
+    "time": "0",
+    "stop": "Already effectively stopped: the team says no token plans.",
+    "claim": "If it ever drops: sell at claim."
+   },
+   "strength": "unproven (model estimate; 0 of 9 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 0,
+   "inputs_total": 9,
+   "rank": 3,
+   "rank_if_eligible": 8
+  },
+  {
+   "key": "ink",
+   "name": "Ink (INK) via Kraken Pro Ink Points",
+   "chain": "Ink (Kraken L2)",
+   "cat": "L2 / CEX points",
+   "url": "https://blog.kraken.com/product/pro/introducing-ink-points",
+   "status": "INK token confirmed, no date; points not confirmed to convert",
+   "status_src": "https://peoplelikecrypto.com/airdrops/ink/",
+   "confirmed": false,
+   "us": "allowed",
+   "tier": "allowed",
+   "us_src": "https://blog.kraken.com/product/pro/introducing-ink-points",
+   "us_note": "Kraken Pro Ink Points: US allowed; Nado (Ink perps) is view-only in the US",
+   "eligible_for_you": true,
+   "model": "calibration",
+   "inputs": {
+    "p_token": {
+     "lo": 0.25,
+     "base": 0.45,
+     "hi": 0.65,
+     "kind": "assumed",
+     "note": "token confirmed, conversion of points not confirmed"
+    },
+    "participants": {
+     "kind": "unknown"
+    },
+    "weeks_left": {
+     "lo": 12,
+     "base": 26,
+     "hi": 52,
+     "kind": "assumed"
+    },
+    "k": {
+     "lo": 0.25,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed"
+    },
+    "capital": {
+     "lo": 0,
+     "base": 500,
+     "hi": 2000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 0,
+     "base": 5,
+     "hi": 20,
+     "kind": "assumed",
+     "note": "trading fees on trades you would do anyway"
+    },
+    "hours_week": {
+     "lo": 0.1,
+     "base": 0.25,
+     "hi": 0.5,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.005,
+     "kind": "assumed",
+     "note": "regulated CEX"
+    },
+    "funding": {
+     "usd": null,
+     "kind": "unknown",
+     "note": "Kraken-backed; no INK valuation disclosed"
+    }
+   },
+   "ev": {
+    "lo": 1.48,
+    "base": 27.87,
+    "hi": 523.19
+   },
+   "cost": {
+    "lo": {
+     "total": 486.35,
+     "time": 240.0,
+     "direct": 240,
+     "opportunity": 5.77,
+     "risk": 0.58,
+     "weeks": 12
+    },
+    "base": {
+     "total": 403.75,
+     "time": 260.0,
+     "direct": 130,
+     "opportunity": 12.5,
+     "risk": 1.25,
+     "weeks": 26
+    },
+    "hi": {
+     "total": 235.5,
+     "time": 208.0,
+     "direct": 0,
+     "opportunity": 25.0,
+     "risk": 2.5,
+     "weeks": 52
+    }
+   },
+   "roi": {
+    "lo": 0.0,
+    "base": 0.07,
+    "hi": 2.22
+   },
+   "net": {
+    "lo": -484.87,
+    "base": -375.88,
+    "hi": 287.69
+   },
+   "ev_method": "calibration: mid-crowd past drops (TIA, EIGEN, W, MON, DRIFT) per-wallet p25/median/p75 x P(token) x your weight x survivor haircut",
+   "saturation": {
+    "score": 28.3,
+    "expected_pool_usd": null,
+    "remaining_fraction": null,
+    "remaining_pool_usd": null,
+    "pool_per_participant_usd": null,
+    "participants_base": null,
+    "x_posts7d": 4874,
+    "parts": {
+     "pool_per_head": null,
+     "crowd": 0.4,
+     "quiet_on_x": 0.07802861878782363
+    }
+   },
+   "x": {
+    "query": "(\"Ink points\" OR \"INK token\" OR \"INK airdrop\" OR Nado) -is:retweet",
+    "posts7d": 4874,
+    "from": "2026-10-13T08:21:14.000Z",
+    "to": "2026-10-20T08:21:14.000Z"
+   },
+   "extra": {},
+   "plan": {
+    "actions": [
+     "If you already trade on Kraken, use Kraken Pro for those trades and opt in to Ink Points.",
+     "Bridge a small amount to Ink and use one or two Ink apps that allow US users (not Nado)."
+    ],
+    "budget_cap": 500,
+    "time": "~15 min/week",
+    "stop": "Stop if Kraken states Ink Points will not convert, or no INK date by mid-2027.",
+    "claim": "Claim via Kraken Drops; sell most at launch unless INK has real fee capture."
+   },
+   "strength": "unproven (model estimate; 0 of 9 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 0,
+   "inputs_total": 9,
+   "rank": 4,
+   "rank_if_eligible": 9
+  },
+  {
+   "key": "base",
+   "name": "Base (network token)",
+   "chain": "Base",
+   "cat": "L2",
+   "url": "https://blog.base.org/the-state-of-base-at-basecamp-2025",
+   "status": "'exploring' a token since Sep 2025; nothing announced",
+   "status_src": "https://99airdrops.com/base-airdrops/",
+   "confirmed": false,
+   "us": "allowed",
+   "tier": "allowed",
+   "us_src": "https://blog.base.org/the-state-of-base-at-basecamp-2025",
+   "us_note": "Coinbase-built; any US eligibility unknown until announced",
+   "eligible_for_you": true,
+   "model": "calibration",
+   "inputs": {
+    "p_token": {
+     "lo": 0.1,
+     "base": 0.2,
+     "hi": 0.35,
+     "kind": "assumed"
+    },
+    "participants": {
+     "kind": "unknown",
+     "note": "millions of active addresses"
+    },
+    "weeks_left": {
+     "lo": 26,
+     "base": 52,
+     "hi": 104,
+     "kind": "assumed"
+    },
+    "k": {
+     "lo": 0.3,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed"
+    },
+    "capital": {
+     "lo": 0,
+     "base": 200,
+     "hi": 1000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 0,
+     "base": 2,
+     "hi": 5,
+     "kind": "assumed",
+     "note": "Base gas is cents"
+    },
+    "hours_week": {
+     "lo": 0.1,
+     "base": 0.25,
+     "hi": 0.5,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.01,
+     "kind": "assumed"
+    },
+    "funding": {
+     "usd": null,
+     "kind": "unknown"
+    }
+   },
+   "ev": {
+    "lo": 1.19,
+    "base": 22.29,
+    "hi": 195.8
+   },
+   "cost": {
+    "lo": {
+     "total": 656.0,
+     "time": 520.0,
+     "direct": 130,
+     "opportunity": 5.0,
+     "risk": 1.0,
+     "weeks": 26
+    },
+    "base": {
+     "total": 636.0,
+     "time": 520.0,
+     "direct": 104,
+     "opportunity": 10.0,
+     "risk": 2.0,
+     "weeks": 52
+    },
+    "hi": {
+     "total": 440.0,
+     "time": 416.0,
+     "direct": 0,
+     "opportunity": 20.0,
+     "risk": 4.0,
+     "weeks": 104
+    }
+   },
+   "roi": {
+    "lo": 0.0,
+    "base": 0.04,
+    "hi": 0.45
+   },
+   "net": {
+    "lo": -654.81,
+    "base": -613.71,
+    "hi": -244.2
+   },
+   "ev_method": "calibration: mega-crowd past drops (ARB, JUP, STRK, ZK, LINEA, ZRO) per-wallet p25/median/p75 x P(token) x your weight x survivor haircut",
+   "saturation": {
+    "score": 15.0,
+    "expected_pool_usd": null,
+    "remaining_fraction": null,
+    "remaining_pool_usd": null,
+    "pool_per_participant_usd": null,
+    "participants_base": null,
+    "x_posts7d": 507,
+    "parts": {
+     "pool_per_head": null,
+     "crowd": 0.05,
+     "quiet_on_x": 0.323748010166666
+    }
+   },
+   "x": {
+    "query": "(\"Base token\" OR \"Base airdrop\") -is:retweet",
+    "posts7d": 507,
+    "from": "2026-10-13T08:20:58.000Z",
+    "to": "2026-10-20T08:20:58.000Z"
+   },
+   "extra": {},
+   "plan": {
+    "actions": [
+     "Keep normal, organic Base usage on one wallet (e.g. the infiniFi deposit on Base doubles as Base activity).",
+     "Do not spend anything specifically for a Base drop."
+    ],
+    "budget_cap": 0,
+    "time": "0 extra",
+    "stop": "n/a",
+    "claim": "If it drops: sell most at claim (mega-crowd)."
+   },
+   "strength": "unproven (model estimate; 0 of 9 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 0,
+   "inputs_total": 9,
+   "rank": 5,
+   "rank_if_eligible": 11
+  },
+  {
+   "key": "kuru",
+   "name": "Kuru",
+   "chain": "Monad",
+   "cat": "CLOB DEX",
+   "url": "https://defillama.com/protocol/kuru",
+   "status": "points live; no token promise",
+   "status_src": "https://medium.com/@kuruexchange_protocol/kuru-clob-points-rewards-apy-dashboard-95a482abe448",
+   "confirmed": false,
+   "us": "unknown",
+   "tier": "unknown",
+   "us_src": null,
+   "us_note": "no terms found; check the site's terms before using",
+   "eligible_for_you": false,
+   "model": "calibration",
+   "inputs": {
+    "p_token": {
+     "lo": 0.3,
+     "base": 0.45,
+     "hi": 0.6,
+     "kind": "assumed"
+    },
+    "participants": {
+     "kind": "unknown"
+    },
+    "weeks_left": {
+     "lo": 12,
+     "base": 26,
+     "hi": 52,
+     "kind": "assumed"
+    },
+    "k": {
+     "lo": 0.25,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed"
+    },
+    "capital": {
+     "lo": 300,
+     "base": 1000,
+     "hi": 3000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 2,
+     "base": 10,
+     "hi": 30,
+     "kind": "assumed"
+    },
+    "hours_week": {
+     "lo": 0.25,
+     "base": 0.5,
+     "hi": 1,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.04,
+     "kind": "assumed",
+     "note": "young DEX on a young chain"
+    },
+    "funding": {
+     "usd": 13600000,
+     "kind": "sourced",
+     "src": "https://defillama.com/protocol/kuru"
+    }
+   },
+   "ev": {
+    "lo": 38.12,
+    "base": 731.25,
+    "hi": 5995.08
+   },
+   "cost": {
+    "lo": {
+     "total": 860.77,
+     "time": 480,
+     "direct": 360,
+     "opportunity": 11.54,
+     "risk": 9.23,
+     "weeks": 12
+    },
+    "base": {
+     "total": 825.0,
+     "time": 520.0,
+     "direct": 260,
+     "opportunity": 25.0,
+     "risk": 20.0,
+     "weeks": 26
+    },
+    "hi": {
+     "total": 714.0,
+     "time": 520.0,
+     "direct": 104,
+     "opportunity": 50.0,
+     "risk": 40.0,
+     "weeks": 52
+    }
+   },
+   "roi": {
+    "lo": 0.04,
+    "base": 0.89,
+    "hi": 8.4
+   },
+   "net": {
+    "lo": -822.65,
+    "base": -93.75,
+    "hi": 5281.08
+   },
+   "ev_method": "calibration: small-crowd past drops (JTO, HYPE, PYTH, ENA) per-wallet p25/median/p75 x P(token) x your weight x survivor haircut",
+   "saturation": {
+    "score": 64.9,
+    "expected_pool_usd": null,
+    "remaining_fraction": null,
+    "remaining_pool_usd": null,
+    "pool_per_participant_usd": null,
+    "participants_base": null,
+    "x_posts7d": 57,
+    "parts": {
+     "pool_per_head": null,
+     "crowd": 0.7,
+     "quiet_on_x": 0.5610312860818771
+    }
+   },
+   "x": {
+    "query": "Kuru (points OR Monad OR airdrop) -is:retweet",
+    "posts7d": 57,
+    "from": "2026-10-13T08:21:20.000Z",
+    "to": "2026-10-20T08:21:20.000Z"
+   },
+   "extra": {},
+   "plan": {
+    "actions": [
+     "First read Kuru's terms; skip if US persons are excluded.",
+     "If allowed: provide a small amount of MON/USDC liquidity or place resting limit orders; trade only what you would anyway."
+    ],
+    "budget_cap": 1000,
+    "time": "~30 min/week",
+    "stop": "Stop if TVL keeps falling (DefiLlama) or there is no token news by mid-2027.",
+    "claim": "Sell most at claim; small-cap DEX tokens often bleed after launch."
+   },
+   "strength": "unproven (model estimate; 1 of 9 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 1,
+   "inputs_total": 9,
+   "rank": 6,
+   "rank_if_eligible": 5
+  },
+  {
+   "key": "perpl",
+   "name": "Perpl",
+   "chain": "Monad",
+   "cat": "perp DEX",
+   "url": "https://docs.perpl.xyz/exchange/points",
+   "status": "points; Season One may end Oct 28",
+   "status_src": "https://tradercomps.com/airdrops",
+   "confirmed": false,
+   "us": "restricted",
+   "tier": "restricted",
+   "us_src": "https://perpl.xyz/terms-of-use",
+   "us_note": null,
+   "eligible_for_you": false,
+   "model": "calibration",
+   "inputs": {
+    "p_token": {
+     "lo": 0.35,
+     "base": 0.55,
+     "hi": 0.7,
+     "kind": "assumed"
+    },
+    "participants": {
+     "kind": "unknown"
+    },
+    "weeks_left": {
+     "lo": 1,
+     "base": 1,
+     "hi": 8,
+     "kind": "sourced",
+     "note": "Season One listed as ending Oct 28 2026",
+     "src": "https://tradercomps.com/airdrops"
+    },
+    "k": {
+     "lo": 0.25,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed"
+    },
+    "capital": {
+     "lo": 500,
+     "base": 1000,
+     "hi": 3000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 10,
+     "base": 30,
+     "hi": 60,
+     "kind": "assumed"
+    },
+    "hours_week": {
+     "lo": 1,
+     "base": 1.5,
+     "hi": 3,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.03,
+     "kind": "assumed"
+    },
+    "funding": {
+     "usd": 9250000,
+     "kind": "sourced",
+     "src": "https://blog.perpl.xyz/announcing-our-9-25m-funding-led-by-dragonfly-capital/"
+    }
+   },
+   "ev": {
+    "lo": 44.48,
+    "base": 893.75,
+    "hi": 6994.26
+   },
+   "cost": {
+    "lo": {
+     "total": 181.54,
+     "time": 120,
+     "direct": 60,
+     "opportunity": 0.96,
+     "risk": 0.58,
+     "weeks": 1
+    },
+    "base": {
+     "total": 91.54,
+     "time": 60.0,
+     "direct": 30,
+     "opportunity": 0.96,
+     "risk": 0.58,
+     "weeks": 1
+    },
+    "hi": {
+     "total": 412.31,
+     "time": 320,
+     "direct": 80,
+     "opportunity": 7.69,
+     "risk": 4.62,
+     "weeks": 8
+    }
+   },
+   "roi": {
+    "lo": 0.24,
+    "base": 9.76,
+    "hi": 16.96
+   },
+   "net": {
+    "lo": -137.06,
+    "base": 802.21,
+    "hi": 6581.96
+   },
+   "ev_method": "calibration: small-crowd past drops (JTO, HYPE, PYTH, ENA) per-wallet p25/median/p75 x P(token) x your weight x survivor haircut",
+   "saturation": {
+    "score": 58.8,
+    "expected_pool_usd": null,
+    "remaining_fraction": null,
+    "remaining_pool_usd": null,
+    "pool_per_participant_usd": null,
+    "participants_base": null,
+    "x_posts7d": 269,
+    "parts": {
+     "pool_per_head": null,
+     "crowd": 0.7,
+     "quiet_on_x": 0.392561929999398
+    }
+   },
+   "x": {
+    "query": "(Perpl OR @perpltrade) (points OR Monad) -is:retweet",
+    "posts7d": 269,
+    "from": "2026-10-13T08:21:18.000Z",
+    "to": "2026-10-20T08:21:18.000Z"
+   },
+   "extra": {},
+   "plan": {
+    "actions": [
+     "US restricted: not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   },
+   "strength": "unproven (model estimate; 2 of 9 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 2,
+   "inputs_total": 9,
+   "rank": 7,
+   "rank_if_eligible": 1
+  },
+  {
+   "key": "lighter-rh",
+   "name": "Lighter on Robinhood Chain",
+   "chain": "Robinhood Chain",
+   "cat": "perp DEX (token live)",
+   "url": "https://docs.lighter.xyz/points-program/lighter-on-robinhood-chain-points",
+   "status": "pool confirmed (LIT live)",
+   "status_src": "https://robinhood.com/us/en/newsroom/robinhood-accelerates-global-expansion-robinhood-chain-mainnet-stock-tokens-agentic-trading/",
+   "confirmed": true,
+   "us": "restricted",
+   "tier": "restricted",
+   "us_src": "https://docs.lighter.xyz/points-program/lighter-on-robinhood-chain-points",
+   "us_note": null,
+   "eligible_for_you": false,
+   "model": "calibration",
+   "inputs": {
+    "p_token": {
+     "lo": 0.6,
+     "base": 0.8,
+     "hi": 0.9,
+     "kind": "assumed"
+    },
+    "participants": {
+     "kind": "unknown",
+     "note": "no published participant count"
+    },
+    "weeks_left": {
+     "lo": 8,
+     "base": 10,
+     "hi": 10,
+     "kind": "derived",
+     "note": "third-party schedule runs to Jan 1 2027",
+     "src": "https://www.hyperleaf.finance/app/lighter/"
+    },
+    "k": {
+     "lo": 0.25,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed"
+    },
+    "capital": {
+     "lo": 500,
+     "base": 1000,
+     "hi": 3000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 0,
+     "base": 10,
+     "hi": 40,
+     "kind": "assumed",
+     "note": "0% fees on Standard; spread/funding"
+    },
+    "hours_week": {
+     "lo": 1,
+     "base": 1.5,
+     "hi": 3,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.02,
+     "kind": "assumed"
+    },
+    "pool_tokens": {
+     "base": 11000000,
+     "kind": "sourced",
+     "note": "11M LIT allocation to the Robinhood community (newsroom); Lighter's own terms page does not state the conversion",
+     "src": "https://robinhood.com/us/en/newsroom/robinhood-accelerates-global-expansion-robinhood-chain-mainnet-stock-tokens-agentic-trading/"
+    }
+   },
+   "ev": {
+    "lo": 76.25,
+    "base": 1300.0,
+    "hi": 8992.62
+   },
+   "cost": {
+    "lo": {
+     "total": 1290.77,
+     "time": 960,
+     "direct": 320,
+     "opportunity": 7.69,
+     "risk": 3.08,
+     "weeks": 8
+    },
+    "base": {
+     "total": 713.46,
+     "time": 600.0,
+     "direct": 100,
+     "opportunity": 9.62,
+     "risk": 3.85,
+     "weeks": 10
+    },
+    "hi": {
+     "total": 413.46,
+     "time": 400,
+     "direct": 0,
+     "opportunity": 9.62,
+     "risk": 3.85,
+     "weeks": 10
+    }
+   },
+   "roi": {
+    "lo": 0.06,
+    "base": 1.82,
+    "hi": 21.75
+   },
+   "net": {
+    "lo": -1214.52,
+    "base": 586.54,
+    "hi": 8579.16
+   },
+   "ev_method": "calibration: small-crowd past drops (JTO, HYPE, PYTH, ENA) per-wallet p25/median/p75 x P(token) x your weight x survivor haircut",
+   "saturation": {
+    "score": 50.8,
+    "expected_pool_usd": null,
+    "remaining_fraction": null,
+    "remaining_pool_usd": null,
+    "pool_per_participant_usd": null,
+    "participants_base": null,
+    "x_posts7d": 2039,
+    "parts": {
+     "pool_per_head": null,
+     "crowd": 0.7,
+     "quiet_on_x": 0.172645693555465
+    }
+   },
+   "x": {
+    "query": "Lighter Robinhood (points OR LIT) -is:retweet",
+    "posts7d": 2039,
+    "from": "2026-10-13T08:21:14.000Z",
+    "to": "2026-10-20T08:21:14.000Z"
+   },
+   "extra": {
+    "pool_usd_live": 34791695,
+    "pool_note": "11,000,000 tokens x live price $3.163 (DefiLlama coins)"
+   },
+   "plan": {
+    "actions": [
+     "US, UK and Canada are restricted for both trading and points: not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   },
+   "strength": "unproven (model estimate; 2 of 9 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 2,
+   "inputs_total": 9,
+   "rank": 8,
+   "rank_if_eligible": 2
+  },
+  {
+   "key": "extended",
+   "name": "Extended",
+   "chain": "Starknet",
+   "cat": "perp DEX",
+   "url": "https://extended.exchange",
+   "status": "points; 30% of future supply stated",
+   "status_src": "https://usethebitcoin.com/airdrop/extended/",
+   "confirmed": false,
+   "us": "restricted",
+   "tier": "restricted",
+   "us_src": "https://docs.extended.exchange/extended-resources/legal/restricted-countries",
+   "us_note": null,
+   "eligible_for_you": false,
+   "model": "weekly_pool",
+   "inputs": {
+    "p_token": {
+     "lo": 0.6,
+     "base": 0.75,
+     "hi": 0.85,
+     "kind": "assumed",
+     "note": "TGE teased, not dated"
+    },
+    "fdv": {
+     "lo": 203000000,
+     "base": 640000000,
+     "hi": 1835000000,
+     "kind": "derived",
+     "note": "raised $19M x FDV/raised of past drops (small comps 10.7x / geometric mid / big-drop median 96.6x, from the Airdrop Desk comparables)"
+    },
+    "comm_pct": {
+     "lo": 30,
+     "base": 30,
+     "hi": 30,
+     "kind": "sourced",
+     "src": "https://usethebitcoin.com/airdrop/extended/"
+    },
+    "participants": {
+     "lo": 4200,
+     "base": 8000,
+     "hi": 15000,
+     "kind": "assumed",
+     "note": "only a Jan 2026 figure of 4,200 daily active users exists (secondary)",
+     "src": "https://www.gate.com/news/detail/17471134"
+    },
+    "total_points": {
+     "lo": 70000000,
+     "base": 70000000,
+     "hi": 70000000,
+     "kind": "sourced",
+     "note": "final points capped at 70M",
+     "src": "https://perpdexguide.com/airdrops/"
+    },
+    "weekly_pool": {
+     "lo": 600000,
+     "base": 600000,
+     "hi": 600000,
+     "kind": "sourced",
+     "src": "https://perpdexguide.com/airdrops/"
+    },
+    "points_left": {
+     "lo": 0,
+     "base": 0,
+     "hi": 2800000,
+     "kind": "derived",
+     "note": "67,225,227 distributed by Sep 8 2026 at up to 600K/week: the 70M cap is reached or nearly reached",
+     "src": "https://perpdexguide.com/airdrops/"
+    },
+    "weeks_left": {
+     "lo": 0,
+     "base": 0,
+     "hi": 5,
+     "kind": "derived"
+    },
+    "k": {
+     "lo": 0.25,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed"
+    },
+    "capital": {
+     "lo": 1000,
+     "base": 2000,
+     "hi": 5000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 20,
+     "base": 50,
+     "hi": 100,
+     "kind": "assumed"
+    },
+    "hours_week": {
+     "lo": 1,
+     "base": 2,
+     "hi": 3,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.02,
+     "kind": "assumed"
+    },
+    "funding": {
+     "usd": 19000000,
+     "kind": "sourced",
+     "src": "https://thecoinformer.com/news/extended-teases-tge-amid-190b-trading-volume"
+    }
+   },
+   "ev": {
+    "lo": 0.0,
+    "base": 0.0,
+    "hi": 4456.43
+   },
+   "cost": {
+    "lo": {
+     "total": 0.0,
+     "time": 0,
+     "direct": 0,
+     "opportunity": 0.0,
+     "risk": 0.0,
+     "weeks": 0
+    },
+    "base": {
+     "total": 0.0,
+     "time": 0,
+     "direct": 0,
+     "opportunity": 0.0,
+     "risk": 0.0,
+     "weeks": 0
+    },
+    "hi": {
+     "total": 313.46,
+     "time": 200,
+     "direct": 100,
+     "opportunity": 9.62,
+     "risk": 3.85,
+     "weeks": 5
+    }
+   },
+   "roi": {
+    "lo": null,
+    "base": null,
+    "hi": 14.22
+   },
+   "net": {
+    "lo": 0.0,
+    "base": 0.0,
+    "hi": 4142.97
+   },
+   "ev_method": "your points (weeks left x weekly pool x your weight / active accounts) / total points x pool $",
+   "saturation": {
+    "score": 31.4,
+    "expected_pool_usd": 144000000.0,
+    "remaining_fraction": 0.0,
+    "remaining_pool_usd": 0.0,
+    "pool_per_participant_usd": 0,
+    "participants_base": 8000,
+    "x_posts7d": 827,
+    "parts": {
+     "pool_per_head": 0,
+     "crowd": 0.7419742894308732,
+     "quiet_on_x": 0.27062362261186335
+    }
+   },
+   "x": {
+    "query": "(\"Extended exchange\" OR @extendedapp OR \"Extended points\") -is:retweet",
+    "posts7d": 827,
+    "from": "2026-10-13T08:21:01.000Z",
+    "to": "2026-10-20T08:21:01.000Z"
+   },
+   "extra": {},
+   "plan": {
+    "actions": [
+     "US restricted. Also too late: the 70M point cap is (nearly) used up."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   },
+   "strength": "unproven (model estimate; 7 of 14 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 7,
+   "inputs_total": 14,
+   "rank": 9,
+   "rank_if_eligible": 4
+  },
+  {
+   "key": "variational",
+   "name": "Variational (Omni)",
+   "chain": "Arbitrum",
+   "cat": "perp DEX",
+   "url": "https://omni.variational.io",
+   "status": "token confirmed",
+   "status_src": "https://www.panews.io/articles/01a0d112-1a42-712b-83f2-510955095514",
+   "confirmed": true,
+   "us": "restricted",
+   "tier": "restricted",
+   "us_src": "https://docs.variational.io/legal/restricted-persons",
+   "us_note": null,
+   "eligible_for_you": false,
+   "model": "weekly_pool",
+   "inputs": {
+    "p_token": {
+     "lo": 0.85,
+     "base": 0.93,
+     "hi": 0.98,
+     "kind": "assumed",
+     "note": "TGE confirmed for Q4 2026 (sourced); residual delay/cancel risk assumed"
+    },
+    "fdv": {
+     "lo": 800000000,
+     "base": 1530000000,
+     "hi": 1850000000,
+     "kind": "sourced",
+     "note": "base/hi = pre-market estimates $1.53B-$1.85B; lo assumed (~50% haircut)",
+     "src": "https://www.kucoin.com/news/flash/variational-reveals-airdrop-details-var-token-valuation-estimated-at-1-53b-1-85b"
+    },
+    "comm_pct": {
+     "lo": 32,
+     "base": 32,
+     "hi": 32,
+     "kind": "sourced",
+     "note": "genesis airdrop 32% of supply, pro rata to points",
+     "src": "https://www.panews.io/articles/01a0d112-1a42-712b-83f2-510955095514"
+    },
+    "participants": {
+     "lo": 25662,
+     "base": 30358,
+     "hi": 36000,
+     "kind": "sourced",
+     "note": "accounts receiving points: 25,662 (wk 39), 30,358 (wk 41); hi assumed growth",
+     "src": "https://twiscan.com/en/x/variational_io/2098202322782601602"
+    },
+    "total_points": {
+     "lo": 9300000,
+     "base": 10400000,
+     "hi": 11500000,
+     "kind": "sourced",
+     "note": "9.3M-11.5M expected by TGE",
+     "src": "https://www.panews.io/articles/01a0d112-1a42-712b-83f2-510955095514"
+    },
+    "weekly_pool": {
+     "lo": 150000,
+     "base": 150000,
+     "hi": 150000,
+     "kind": "sourced",
+     "src": "https://twiscan.com/en/x/variational_io/2098202322782601602"
+    },
+    "weeks_left": {
+     "lo": 3,
+     "base": 6,
+     "hi": 10,
+     "kind": "assumed",
+     "note": "TGE 'Q4 2026', no date"
+    },
+    "k": {
+     "lo": 0.25,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed",
+     "note": "your weekly points vs the average account (points are heavily skewed to whales)"
+    },
+    "capital": {
+     "lo": 1000,
+     "base": 2000,
+     "hi": 5000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 20,
+     "base": 50,
+     "hi": 100,
+     "kind": "assumed",
+     "note": "spread/funding on genuine trading; Omni charges no fees"
+    },
+    "hours_week": {
+     "lo": 1,
+     "base": 2,
+     "hi": 3,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.02,
+     "kind": "assumed",
+     "note": "venue/contract loss"
+    },
+    "funding": {
+     "usd": 61800000,
+     "kind": "sourced",
+     "note": "incl. $50M Series A",
+     "src": "https://www.panews.io/articles/01a0d112-1a42-712b-83f2-510955095514"
+    }
+   },
+   "ev": {
+    "lo": 59.13,
+    "base": 648.98,
+    "hi": 3646.41
+   },
+   "cost": {
+    "lo": {
+     "total": 668.08,
+     "time": 360,
+     "direct": 300,
+     "opportunity": 5.77,
+     "risk": 2.31,
+     "weeks": 3
+    },
+    "base": {
+     "total": 796.15,
+     "time": 480,
+     "direct": 300,
+     "opportunity": 11.54,
+     "risk": 4.62,
+     "weeks": 6
+    },
+    "hi": {
+     "total": 626.92,
+     "time": 400,
+     "direct": 200,
+     "opportunity": 19.23,
+     "risk": 7.69,
+     "weeks": 10
+    }
+   },
+   "roi": {
+    "lo": 0.09,
+    "base": 0.82,
+    "hi": 5.82
+   },
+   "net": {
+    "lo": -608.95,
+    "base": -147.18,
+    "hi": 3019.49
+   },
+   "ev_method": "your points (weeks left x weekly pool x your weight / active accounts) / total points x pool $",
+   "saturation": {
+    "score": 56.7,
+    "expected_pool_usd": 455328000.0,
+    "remaining_fraction": 0.08653846153846154,
+    "remaining_pool_usd": 39403384.615384616,
+    "pool_per_participant_usd": 1297.95719795061,
+    "participants_base": 30358,
+    "x_posts7d": 1081,
+    "parts": {
+     "pool_per_head": 0.7044201237335314,
+     "crowd": 0.5764933838196029,
+     "quiet_on_x": 0.24154357651167246
+    }
+   },
+   "x": {
+    "query": "Variational (airdrop OR points OR VAR OR TGE) -is:retweet",
+    "posts7d": 1081,
+    "from": "2026-10-13T08:20:53.000Z",
+    "to": "2026-10-20T08:20:53.000Z"
+   },
+   "extra": {},
+   "plan": {
+    "actions": [
+     "Not farmable from the US (terms exclude US persons). Skip unless you are outside the US."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   },
+   "strength": "unproven (model estimate; 6 of 13 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 6,
+   "inputs_total": 13,
+   "rank": 10,
+   "rank_if_eligible": 6
+  },
+  {
+   "key": "ethereal",
+   "name": "Ethereal (Ethena perps)",
+   "chain": "Ethereal (Ethena)",
+   "cat": "perp DEX",
+   "url": "https://app.ethereal.trade/points",
+   "status": "points; 15% of any token committed to ENA holders",
+   "status_src": "https://www.airdropsea.app/guides/ethereal-airdrop-guide",
+   "confirmed": false,
+   "us": "restricted",
+   "tier": "restricted",
+   "us_src": "https://app.ethereal.trade/terms",
+   "us_note": null,
+   "eligible_for_you": false,
+   "model": "calibration",
+   "inputs": {
+    "p_token": {
+     "lo": 0.35,
+     "base": 0.55,
+     "hi": 0.7,
+     "kind": "assumed"
+    },
+    "participants": {
+     "base": 16289,
+     "kind": "sourced",
+     "note": "16,289 wallets, 4.9B points (third-party tracker)",
+     "src": "https://chainhelm.com/en/ethereal-airdrop-points/"
+    },
+    "weeks_left": {
+     "lo": 8,
+     "base": 16,
+     "hi": 30,
+     "kind": "assumed"
+    },
+    "k": {
+     "lo": 0.25,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed"
+    },
+    "capital": {
+     "lo": 500,
+     "base": 1000,
+     "hi": 3000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 10,
+     "base": 30,
+     "hi": 60,
+     "kind": "assumed"
+    },
+    "hours_week": {
+     "lo": 1,
+     "base": 1.5,
+     "hi": 3,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.02,
+     "kind": "assumed"
+    },
+    "funding": {
+     "usd": null,
+     "kind": "unknown"
+    }
+   },
+   "ev": {
+    "lo": 44.48,
+    "base": 893.75,
+    "hi": 6994.26
+   },
+   "cost": {
+    "lo": {
+     "total": 1450.77,
+     "time": 960,
+     "direct": 480,
+     "opportunity": 7.69,
+     "risk": 3.08,
+     "weeks": 8
+    },
+    "base": {
+     "total": 1461.54,
+     "time": 960.0,
+     "direct": 480,
+     "opportunity": 15.38,
+     "risk": 6.15,
+     "weeks": 16
+    },
+    "hi": {
+     "total": 1540.38,
+     "time": 1200,
+     "direct": 300,
+     "opportunity": 28.85,
+     "risk": 11.54,
+     "weeks": 30
+    }
+   },
+   "roi": {
+    "lo": 0.03,
+    "base": 0.61,
+    "hi": 4.54
+   },
+   "net": {
+    "lo": -1406.29,
+    "base": -567.79,
+    "hi": 5453.88
+   },
+   "ev_method": "calibration: small-crowd past drops (JTO, HYPE, PYTH, ENA) per-wallet p25/median/p75 x P(token) x your weight x survivor haircut",
+   "saturation": {
+    "score": 64.0,
+    "expected_pool_usd": null,
+    "remaining_fraction": null,
+    "remaining_pool_usd": null,
+    "pool_per_participant_usd": null,
+    "participants_base": 16289,
+    "x_posts7d": 34,
+    "parts": {
+     "pool_per_head": null,
+     "crowd": 0.6537444504854322,
+     "quiet_on_x": 0.6171302707394362
+    }
+   },
+   "x": {
+    "query": "Ethereal (points OR airdrop OR Ethena) -is:retweet",
+    "posts7d": 34,
+    "from": "2026-10-13T08:21:19.000Z",
+    "to": "2026-10-20T08:21:19.000Z"
+   },
+   "extra": {},
+   "plan": {
+    "actions": [
+     "US users prohibited by the terms: not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   },
+   "strength": "unproven (model estimate; 1 of 9 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 1,
+   "inputs_total": 9,
+   "rank": 11,
+   "rank_if_eligible": 10
+  },
+  {
+   "key": "pacifica",
+   "name": "Pacifica",
+   "chain": "Solana",
+   "cat": "perp DEX",
+   "url": "https://docs.pacifica.fi/programs/points-program",
+   "status": "points only; no token announced",
+   "status_src": "https://docs.pacifica.fi/programs/points-program",
+   "confirmed": false,
+   "us": "restricted",
+   "tier": "restricted",
+   "us_src": "https://app.pacifica.fi/term",
+   "us_note": null,
+   "eligible_for_you": false,
+   "model": "calibration",
+   "inputs": {
+    "p_token": {
+     "lo": 0.35,
+     "base": 0.5,
+     "hi": 0.7,
+     "kind": "assumed"
+    },
+    "participants": {
+     "base": 41000,
+     "kind": "sourced",
+     "note": "41,000+ active users (Apr 2026, secondary)",
+     "src": "https://phemex.com/news/article/pacifica-trading-volume-surpasses-136-billion-amidst-new-milestones-66258"
+    },
+    "weeks_left": {
+     "lo": 8,
+     "base": 16,
+     "hi": 30,
+     "kind": "assumed"
+    },
+    "k": {
+     "lo": 0.25,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed"
+    },
+    "capital": {
+     "lo": 500,
+     "base": 1000,
+     "hi": 3000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 10,
+     "base": 30,
+     "hi": 60,
+     "kind": "assumed"
+    },
+    "hours_week": {
+     "lo": 1,
+     "base": 1.5,
+     "hi": 3,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.02,
+     "kind": "assumed"
+    },
+    "funding": {
+     "usd": null,
+     "kind": "sourced",
+     "note": "self-funded, no disclosed round",
+     "src": "https://docs.pacifica.fi/programs/points-program"
+    }
+   },
+   "ev": {
+    "lo": 44.48,
+    "base": 812.5,
+    "hi": 6994.26
+   },
+   "cost": {
+    "lo": {
+     "total": 1450.77,
+     "time": 960,
+     "direct": 480,
+     "opportunity": 7.69,
+     "risk": 3.08,
+     "weeks": 8
+    },
+    "base": {
+     "total": 1461.54,
+     "time": 960.0,
+     "direct": 480,
+     "opportunity": 15.38,
+     "risk": 6.15,
+     "weeks": 16
+    },
+    "hi": {
+     "total": 1540.38,
+     "time": 1200,
+     "direct": 300,
+     "opportunity": 28.85,
+     "risk": 11.54,
+     "weeks": 30
+    }
+   },
+   "roi": {
+    "lo": 0.03,
+    "base": 0.56,
+    "hi": 4.54
+   },
+   "net": {
+    "lo": -1406.29,
+    "base": -649.04,
+    "hi": 5453.88
+   },
+   "ev_method": "calibration: small-crowd past drops (JTO, HYPE, PYTH, ENA) per-wallet p25/median/p75 x P(token) x your weight x survivor haircut",
+   "saturation": {
+    "score": 53.2,
+    "expected_pool_usd": null,
+    "remaining_fraction": null,
+    "remaining_pool_usd": null,
+    "pool_per_participant_usd": null,
+    "participants_base": 41000,
+    "x_posts7d": 84,
+    "parts": {
+     "pool_per_head": null,
+     "crowd": 0.5392046123657899,
+     "quiet_on_x": 0.5189301784845296
+    }
+   },
+   "x": {
+    "query": "Pacifica (points OR airdrop OR perps) -is:retweet",
+    "posts7d": 84,
+    "from": "2026-10-13T08:21:02.000Z",
+    "to": "2026-10-20T08:21:02.000Z"
+   },
+   "extra": {},
+   "plan": {
+    "actions": [
+     "US residents restricted (IP-blocked; VPN use prohibited): not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   },
+   "strength": "unproven (model estimate; 2 of 9 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 2,
+   "inputs_total": 9,
+   "rank": 12,
+   "rank_if_eligible": 12
+  },
+  {
+   "key": "n1",
+   "name": "N1",
+   "chain": "N1 (own L1)",
+   "cat": "perp DEX",
+   "url": "https://docs.n1.xyz/trading/points",
+   "status": "points only; no token confirmed",
+   "status_src": "https://airdrops.io/blog/best-crypto-airdrops/",
+   "confirmed": false,
+   "us": "restricted",
+   "tier": "restricted",
+   "us_src": "https://n.exchange/legal/terms",
+   "us_note": null,
+   "eligible_for_you": false,
+   "model": "weekly_pool",
+   "inputs": {
+    "p_token": {
+     "lo": 0.3,
+     "base": 0.5,
+     "hi": 0.7,
+     "kind": "assumed"
+    },
+    "fdv": {
+     "lo": 25000000,
+     "base": 37500000,
+     "hi": 75000000,
+     "kind": "derived",
+     "note": "last reported valuation $25M x1 / 1.5 / 3 (desk rule)"
+    },
+    "comm_pct": {
+     "lo": 6.19,
+     "base": 7.75,
+     "hi": 9.63,
+     "kind": "derived",
+     "note": "p25/median/p75 airdrop % of past drops (Airdrop Desk comparables, n=10)"
+    },
+    "participants": {
+     "lo": 1407,
+     "base": 3000,
+     "hi": 8000,
+     "kind": "assumed",
+     "note": "only sourced count: 1,407 users in week 3; growth since then assumed",
+     "src": "https://docs.n1.xyz/trading/points"
+    },
+    "total_points": {
+     "lo": 1987000000,
+     "base": 1987000000,
+     "hi": 1987000000,
+     "kind": "sourced",
+     "note": "Season 1 fixed total",
+     "src": "https://airdrops.io/blog/best-crypto-airdrops/"
+    },
+    "weekly_pool": {
+     "lo": 75000000,
+     "base": 75000000,
+     "hi": 75000000,
+     "kind": "sourced",
+     "src": "https://airdrops.io/blog/best-crypto-airdrops/"
+    },
+    "weeks_left": {
+     "lo": 14,
+     "base": 16,
+     "hi": 16,
+     "kind": "derived",
+     "note": "26 live weeks from Aug 10 2026"
+    },
+    "k": {
+     "lo": 0.25,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed"
+    },
+    "capital": {
+     "lo": 500,
+     "base": 1000,
+     "hi": 3000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 10,
+     "base": 30,
+     "hi": 60,
+     "kind": "assumed"
+    },
+    "hours_week": {
+     "lo": 1,
+     "base": 1.5,
+     "hi": 3,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.03,
+     "kind": "assumed",
+     "note": "young venue"
+    },
+    "funding": {
+     "usd": 7000000,
+     "kind": "sourced",
+     "note": "$5M seed (2023) + $2M private sale at a reported $25M FDV (May 2025)",
+     "src": "https://sourcechain.org/project/N1/"
+    }
+   },
+   "ev": {
+    "lo": 7.67,
+    "base": 146.26,
+    "hi": 2170.08
+   },
+   "cost": {
+    "lo": {
+     "total": 2541.54,
+     "time": 1680,
+     "direct": 840,
+     "opportunity": 13.46,
+     "risk": 8.08,
+     "weeks": 14
+    },
+    "base": {
+     "total": 1464.62,
+     "time": 960.0,
+     "direct": 480,
+     "opportunity": 15.38,
+     "risk": 9.23,
+     "weeks": 16
+    },
+    "hi": {
+     "total": 824.62,
+     "time": 640,
+     "direct": 160,
+     "opportunity": 15.38,
+     "risk": 9.23,
+     "weeks": 16
+    }
+   },
+   "roi": {
+    "lo": 0.0,
+    "base": 0.1,
+    "hi": 2.63
+   },
+   "net": {
+    "lo": -2533.87,
+    "base": -1318.35,
+    "hi": 1345.46
+   },
+   "ev_method": "your points (weeks left x weekly pool x your weight / active accounts) / total points x pool $",
+   "saturation": {
+    "score": 59.1,
+    "expected_pool_usd": 1453125.0,
+    "remaining_fraction": 0.6039255158530448,
+    "remaining_pool_usd": 877579.2652239557,
+    "pool_per_participant_usd": 292.5264217413186,
+    "participants_base": 3000,
+    "x_posts7d": 426,
+    "parts": {
+     "pool_per_head": 0.48872169959606504,
+     "crowd": 0.8636796415086678,
+     "quiet_on_x": 0.3426476002243203
+    }
+   },
+   "x": {
+    "query": "(\"N1 points\" OR \"N1 exchange\" OR @n1chain) -is:retweet",
+    "posts7d": 426,
+    "from": "2026-10-13T08:21:16.000Z",
+    "to": "2026-10-20T08:21:16.000Z"
+   },
+   "extra": {},
+   "plan": {
+    "actions": [
+     "US persons prohibited by the terms: not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   },
+   "strength": "unproven (model estimate; 6 of 13 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 6,
+   "inputs_total": 13,
+   "rank": 13,
+   "rank_if_eligible": 13
+  },
+  {
+   "key": "polymarket",
+   "name": "Polymarket",
+   "chain": "Polygon",
+   "cat": "prediction market",
+   "url": "https://polymarket.com",
+   "status": "no token announced (FAQ: rewards are pUSD)",
+   "status_src": "https://help.polymarket.com/en/articles/13364250-does-polymarket-have-a-token",
+   "confirmed": false,
+   "us": "restricted",
+   "tier": "restricted",
+   "us_src": "https://help.polymarket.com/en/articles/13364250-does-polymarket-have-a-token",
+   "us_note": "international site blocks US users; the regulated Polymarket US app has no token program",
+   "eligible_for_you": false,
+   "model": "per_wallet",
+   "inputs": {
+    "p_token": {
+     "lo": 0.1,
+     "base": 0.25,
+     "hi": 0.45,
+     "kind": "assumed",
+     "note": "CEO floated an on-chain asset; FAQ says no token; equity/IPO path also discussed"
+    },
+    "fdv": {
+     "lo": 10000000000,
+     "base": 21000000000,
+     "hi": 30000000000,
+     "kind": "derived",
+     "note": "anchored to the sourced $21B valuation"
+    },
+    "comm_pct": {
+     "lo": 6.19,
+     "base": 7.75,
+     "hi": 9.63,
+     "kind": "derived",
+     "note": "comparables p25/median/p75"
+    },
+    "participants": {
+     "lo": 750000,
+     "base": 1500000,
+     "hi": 3000000,
+     "kind": "assumed",
+     "note": "750K monthly active traders (Sep 2026, secondary); eligible set likely larger",
+     "src": "https://fintechbyte.com/articles/prediction-markets/2026-09-10/polymarket-polymarket-us-and-kalshi-volume-monthly-the-block/"
+    },
+    "weeks_left": {
+     "lo": 26,
+     "base": 52,
+     "hi": 104,
+     "kind": "assumed"
+    },
+    "k": {
+     "lo": 0.3,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed"
+    },
+    "capital": {
+     "lo": 200,
+     "base": 500,
+     "hi": 2000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 2,
+     "base": 10,
+     "hi": 30,
+     "kind": "assumed",
+     "note": "spread on positions"
+    },
+    "hours_week": {
+     "lo": 0.25,
+     "base": 0.5,
+     "hi": 1,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.01,
+     "kind": "assumed"
+    },
+    "funding": {
+     "usd": 1000000000,
+     "kind": "sourced",
+     "note": "latest round $1B at $21B post-money (Aug 2026)",
+     "src": "https://www.bloomberg.com/news/articles/2026-08-31/polymarket-funding-round-led-by-1789-values-firm-at-21-billion"
+    }
+   },
+   "ev": {
+    "lo": 6.19,
+    "base": 135.62,
+    "hi": 1733.4
+   },
+   "cost": {
+    "lo": {
+     "total": 1835.0,
+     "time": 1040,
+     "direct": 780,
+     "opportunity": 12.5,
+     "risk": 2.5,
+     "weeks": 26
+    },
+    "base": {
+     "total": 1590.0,
+     "time": 1040.0,
+     "direct": 520,
+     "opportunity": 25.0,
+     "risk": 5.0,
+     "weeks": 52
+    },
+    "hi": {
+     "total": 1308.0,
+     "time": 1040.0,
+     "direct": 208,
+     "opportunity": 50.0,
+     "risk": 10.0,
+     "weeks": 104
+    }
+   },
+   "roi": {
+    "lo": 0.0,
+    "base": 0.09,
+    "hi": 1.33
+   },
+   "net": {
+    "lo": -1828.81,
+    "base": -1454.38,
+    "hi": 425.4
+   },
+   "ev_method": "pool $ / participants x your weight",
+   "saturation": {
+    "score": 30.0,
+    "expected_pool_usd": 406875000.0,
+    "remaining_fraction": null,
+    "remaining_pool_usd": 406875000.0,
+    "pool_per_participant_usd": 271.25,
+    "participants_base": 1500000,
+    "x_posts7d": 871,
+    "parts": {
+     "pool_per_head": 0.4777899156188619,
+     "crowd": 0.0925453545555196,
+     "quiet_on_x": 0.26499546124808415
+    }
+   },
+   "x": {
+    "query": "Polymarket (airdrop OR POLY token OR TGE) -is:retweet",
+    "posts7d": 871,
+    "from": "2026-10-13T08:20:55.000Z",
+    "to": "2026-10-20T08:20:55.000Z"
+   },
+   "extra": {},
+   "plan": {
+    "actions": [
+     "International Polymarket blocks US users: not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   },
+   "strength": "unproven (model estimate; 3 of 11 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 3,
+   "inputs_total": 11,
+   "rank": 14,
+   "rank_if_eligible": 14
+  },
+  {
+   "key": "risex",
+   "name": "RISEx",
+   "chain": "RISE Chain",
+   "cat": "perp DEX",
+   "url": "https://docs.risechain.com/docs/risex/rewards/points",
+   "status": "points only; no token announced",
+   "status_src": "https://airdrops.io/blog/best-crypto-airdrops/",
+   "confirmed": false,
+   "us": "restricted",
+   "tier": "restricted",
+   "us_src": "https://perpsatlas.com/perp-dex/reports/perp-dex-restricted-countries/",
+   "us_note": null,
+   "eligible_for_you": false,
+   "model": "calibration",
+   "inputs": {
+    "p_token": {
+     "lo": 0.3,
+     "base": 0.5,
+     "hi": 0.7,
+     "kind": "assumed"
+    },
+    "participants": {
+     "kind": "unknown"
+    },
+    "weeks_left": {
+     "lo": 20,
+     "base": 26,
+     "hi": 32,
+     "kind": "assumed",
+     "note": "season ends no later than Q2 2027"
+    },
+    "k": {
+     "lo": 0.25,
+     "base": 0.5,
+     "hi": 1.0,
+     "kind": "assumed"
+    },
+    "capital": {
+     "lo": 500,
+     "base": 1000,
+     "hi": 3000,
+     "kind": "assumed"
+    },
+    "weekly_cost": {
+     "lo": 10,
+     "base": 30,
+     "hi": 60,
+     "kind": "assumed"
+    },
+    "hours_week": {
+     "lo": 1,
+     "base": 1.5,
+     "hi": 3,
+     "kind": "assumed"
+    },
+    "risk_yr": {
+     "base": 0.03,
+     "kind": "assumed"
+    },
+    "funding": {
+     "usd": 7200000,
+     "kind": "sourced",
+     "note": "community round reported at a $200M valuation",
+     "src": "https://financefeeds.com/risex-token-does-the-platform-have-a-crypto/"
+    }
+   },
+   "ev": {
+    "lo": 38.12,
+    "base": 812.5,
+    "hi": 6994.26
+   },
+   "cost": {
+    "lo": {
+     "total": 3630.77,
+     "time": 2400,
+     "direct": 1200,
+     "opportunity": 19.23,
+     "risk": 11.54,
+     "weeks": 20
+    },
+    "base": {
+     "total": 2380.0,
+     "time": 1560.0,
+     "direct": 780,
+     "opportunity": 25.0,
+     "risk": 15.0,
+     "weeks": 26
+    },
+    "hi": {
+     "total": 1649.23,
+     "time": 1280,
+     "direct": 320,
+     "opportunity": 30.77,
+     "risk": 18.46,
+     "weeks": 32
+    }
+   },
+   "roi": {
+    "lo": 0.01,
+    "base": 0.34,
+    "hi": 4.24
+   },
+   "net": {
+    "lo": -3592.65,
+    "base": -1567.5,
+    "hi": 5345.03
+   },
+   "ev_method": "calibration: small-crowd past drops (JTO, HYPE, PYTH, ENA) per-wallet p25/median/p75 x P(token) x your weight x survivor haircut",
+   "saturation": {
+    "score": 58.8,
+    "expected_pool_usd": null,
+    "remaining_fraction": null,
+    "remaining_pool_usd": null,
+    "pool_per_participant_usd": null,
+    "participants_base": null,
+    "x_posts7d": 270,
+    "parts": {
+     "pool_per_head": null,
+     "crowd": 0.7,
+     "quiet_on_x": 0.39215905896025316
+    }
+   },
+   "x": {
+    "query": "(RISEx OR \"RISE chain\") (points OR airdrop) -is:retweet",
+    "posts7d": 270,
+    "from": "2026-10-13T08:21:04.000Z",
+    "to": "2026-10-20T08:21:04.000Z"
+   },
+   "extra": {},
+   "plan": {
+    "actions": [
+     "US restricted: not farmable for you."
+    ],
+    "budget_cap": 0,
+    "stop": "Not started: US persons are excluded by the terms.",
+    "claim": "n/a (not farmable from the US)",
+    "time": "0 (US persons excluded; the numbers show what it would be worth where eligible)"
+   },
+   "strength": "unproven (model estimate; 1 of 9 inputs sourced/derived, rest assumed)",
+   "inputs_sourced": 1,
+   "inputs_total": 9,
+   "rank": 15,
+   "rank_if_eligible": 15
+  }
+ ],
+ "calibration": {
+  "rows": [
+   {
+    "sym": "ARB",
+    "tge": "2023-03-23",
+    "tokens": 1162000000,
+    "wallets": 625143,
+    "src": "https://docs.arbitrum.foundation/airdrop-eligibility-distribution",
+    "note": "points system, 625-10,250 ARB per wallet",
+    "tge_kind": null,
+    "price_day": "2023-03-24",
+    "price0": 1.34,
+    "pool_usd": 1557080000.0,
+    "per_wallet_usd": 2490.7581145433924,
+    "ret30": 0.09701492537313428,
+    "ret90": -0.14925373134328357,
+    "per_wallet_90d_usd": 2119.0031720742295,
+    "bucket": "mega"
+   },
+   {
+    "sym": "JUP",
+    "tge": "2024-01-31",
+    "tokens": 1000000000,
+    "wallets": 955000,
+    "src": "https://decrypt.co/214841/jupiter-airdrop-what-you-need-know-about-solana-jup-token-launch",
+    "note": "Jupuary round 1",
+    "tge_kind": null,
+    "price_day": "2024-02-01",
+    "price0": 0.6627487237353885,
+    "pool_usd": 662748723.7353885,
+    "per_wallet_usd": 693.9777211888885,
+    "ret30": -0.06967003040782016,
+    "ret90": 0.3885081434987647,
+    "per_wallet_90d_usd": 963.593717277487,
+    "bucket": "mega"
+   },
+   {
+    "sym": "JTO",
+    "tge": "2023-12-07",
+    "tokens": 80000000,
+    "wallets": 9852,
+    "src": "https://www.jito.network/blog/jto-airdrop-eligibility-and-allocation-specifications/",
+    "note": "JitoSOL points-holder portion only (80M of 90M)",
+    "tge_kind": "assumed",
+    "price_day": "2023-12-08",
+    "price0": 2.4,
+    "pool_usd": 192000000.0,
+    "per_wallet_usd": 19488.4287454324,
+    "ret30": -0.2728730921589111,
+    "ret90": 0.10000000000000009,
+    "per_wallet_90d_usd": 21437.271619975643,
+    "bucket": "small"
+   },
+   {
+    "sym": "TIA",
+    "tge": "2023-10-31",
+    "tokens": 60000000,
+    "wallets": 584232,
+    "src": "https://blog.celestia.org/genesis-drop/",
+    "note": "eligible count; only 191,391 claimed, unclaimed TIA was reallocated to claimers (per-claimer value ~3x higher)",
+    "tge_kind": "assumed",
+    "price_day": "2023-10-31",
+    "price0": 2.3010702964706886,
+    "pool_usd": 138064217.78824133,
+    "per_wallet_usd": 236.3174522933378,
+    "ret30": 1.7552395986007459,
+    "ret90": 6.810628177975977,
+    "per_wallet_90d_usd": 1845.787751829838,
+    "bucket": "mid"
+   },
+   {
+    "sym": "STRK",
+    "tge": "2024-02-20",
+    "tokens": 726000000,
+    "wallets": 1297738,
+    "src": "https://www.starknet.io/faqs/",
+    "note": "Provisions program",
+    "tge_kind": null,
+    "price_day": "2024-02-20",
+    "price0": 1.9470100168256899,
+    "pool_usd": 1413529272.2154508,
+    "per_wallet_usd": 1089.2254616998584,
+    "ret30": 0.07344080510044515,
+    "ret90": -0.3785342707313212,
+    "per_wallet_90d_usd": 676.9162958933159,
+    "bucket": "mega"
+   },
+   {
+    "sym": "ZK",
+    "tge": "2024-06-17",
+    "tokens": 3675000000,
+    "wallets": 695232,
+    "src": "https://docs.zknation.io/zk-token/zk-airdrop",
+    "note": "17.5% of supply",
+    "tge_kind": null,
+    "price_day": "2024-06-18",
+    "price0": 0.213536,
+    "pool_usd": 784744800.0,
+    "per_wallet_usd": 1128.7524164595416,
+    "ret30": -0.21976153903791396,
+    "ret90": -0.48781938408511916,
+    "per_wallet_90d_usd": 578.125107877658,
+    "bucket": "mega"
+   },
+   {
+    "sym": "EIGEN",
+    "tge": "2024-10-01",
+    "tokens": 112970000,
+    "wallets": 280000,
+    "src": "https://blog.eigenfoundation.org/eigen-community-update/",
+    "note": "Season 1 stakedrop 6.75% of 1.674B; 'more than 280,000'; transferable Oct 1 2024",
+    "tge_kind": null,
+    "price_day": "2024-10-02",
+    "price0": 3.99,
+    "pool_usd": 450750300.0,
+    "per_wallet_usd": 1609.8225,
+    "ret30": -0.31328320802005016,
+    "ret90": -0.08020050125313294,
+    "per_wallet_90d_usd": 1480.7139285714284,
+    "bucket": "mid"
+   },
+   {
+    "sym": "HYPE",
+    "tge": "2024-11-29",
+    "tokens": 310000000,
+    "wallets": 94000,
+    "src": "https://eco.com/support/en/articles/15039718-hyperliquid-airdrop-hype-genesis-facts-and-season-2-status",
+    "note": "31% genesis drop",
+    "tge_kind": null,
+    "price_day": "2024-11-29",
+    "price0": 6.51,
+    "pool_usd": 2018100000.0,
+    "per_wallet_usd": 21469.14893617021,
+    "ret30": 3.2288786482334872,
+    "ret90": 2.205837173579109,
+    "per_wallet_90d_usd": 68826.59574468085,
+    "bucket": "small"
+   },
+   {
+    "sym": "W",
+    "tge": "2024-04-03",
+    "tokens": 678823000,
+    "wallets": 400000,
+    "src": "https://wormhole.com/blog/from-eligibility-to-sybil-detection-a-deep-dive-into-wormholes-multichain",
+    "note": "'more than 400,000'",
+    "tge_kind": "assumed",
+    "price_day": "2024-04-04",
+    "price0": 1.32,
+    "pool_usd": 896046360.0,
+    "per_wallet_usd": 2240.1159,
+    "ret30": -0.44133314783174993,
+    "ret90": -0.7239431818181818,
+    "per_wallet_90d_usd": 618.3992677125,
+    "bucket": "mid"
+   },
+   {
+    "sym": "LINEA",
+    "tge": "2025-09-10",
+    "tokens": 9361298700,
+    "wallets": 749662,
+    "src": "https://www.theblock.co/news/ecosystems/2025-09-03-linea-airdrop-checker-goes-live-369254",
+    "note": "LXP/LXP-L based",
+    "tge_kind": "assumed",
+    "price_day": "2025-09-10",
+    "price0": 0.0236608,
+    "pool_usd": 221495816.28096,
+    "per_wallet_usd": 295.4609094244606,
+    "ret30": -0.24940709842349562,
+    "ret90": -0.659044270860027,
+    "per_wallet_90d_usd": 100.7390898051765,
+    "bucket": "mega"
+   },
+   {
+    "sym": "PYTH",
+    "tge": "2023-11-20",
+    "tokens": 255000000,
+    "wallets": 90000,
+    "src": "https://www.coindesk.com/business/2023/11/16/255m-pyth-tokens-to-be-airdropped-to-90k-wallets-next-week",
+    "note": "retrospective phase 1",
+    "tge_kind": null,
+    "price_day": "2023-11-20",
+    "price0": 0.281465,
+    "pool_usd": 71773575.0,
+    "per_wallet_usd": 797.4841666666666,
+    "ret30": 0.21821896150498277,
+    "ret90": 1.179258522374007,
+    "per_wallet_90d_usd": 1737.9241666666662,
+    "bucket": "small"
+   },
+   {
+    "sym": "ZRO",
+    "tge": "2024-06-20",
+    "tokens": 85000000,
+    "wallets": 1280000,
+    "src": "https://www.theblock.co/news/ecosystems/2024-06-20-layerzero-foundation-to-begin-zro-token-airdrop-claims-today-300951",
+    "note": "claimable 85M; proof-of-donation fee to claim",
+    "tge_kind": null,
+    "price_day": "2024-06-21",
+    "price0": 3.441133810827752,
+    "pool_usd": 292496373.9203589,
+    "per_wallet_usd": 228.51279212528038,
+    "ret30": 0.5423949282063301,
+    "ret90": 0.23505804587636137,
+    "per_wallet_90d_usd": 282.2265625,
+    "bucket": "mega"
+   },
+   {
+    "sym": "MON",
+    "tge": "2025-11-24",
+    "tokens": 4730000000,
+    "wallets": 289000,
+    "src": "https://monad.xyz/blog/the-mon-airdrop-results",
+    "note": "allocated; 70.4% claimed",
+    "tge_kind": "assumed",
+    "price_day": "2025-11-25",
+    "price0": 0.030268305001900656,
+    "pool_usd": 143169082.65899011,
+    "per_wallet_usd": 495.3947496850869,
+    "ret30": -0.281383207264029,
+    "ret90": -0.34350331657206745,
+    "per_wallet_90d_usd": 325.22501015587034,
+    "bucket": "mid"
+   },
+   {
+    "sym": "ENA",
+    "tge": "2024-04-02",
+    "tokens": 750000000,
+    "wallets": 90000,
+    "src": "https://paragraph.com/@ethena-labs/ena-token-launch",
+    "note": "Season 1, 'more than 90,000'",
+    "tge_kind": "assumed",
+    "price_day": "2024-04-03",
+    "price0": 0.781382,
+    "pool_usd": 586036500.0,
+    "per_wallet_usd": 6511.516666666666,
+    "ret30": 0.019909465085783618,
+    "ret90": -0.3539267605345401,
+    "per_wallet_90d_usd": 4206.916666666667,
+    "bucket": "small"
+   },
+   {
+    "sym": "DRIFT",
+    "tge": "2024-05-16",
+    "tokens": 120000000,
+    "wallets": 150000,
+    "src": "https://www.drift.trade/governance/announcing-the-details-of-the-drift-launch-airdrop",
+    "note": "'approximately 150,000'",
+    "tge_kind": "assumed",
+    "price_day": "2024-05-17",
+    "price0": 0.276511,
+    "pool_usd": 33181320.0,
+    "per_wallet_usd": 221.2088,
+    "ret30": 0.6204852609841922,
+    "ret90": 0.16665159794727868,
+    "per_wallet_90d_usd": 258.0736,
+    "bucket": "mid"
+   }
+  ],
+  "buckets": {
+   "small": {
+    "n": 4,
+    "names": [
+     "JTO",
+     "HYPE",
+     "PYTH",
+     "ENA"
+    ],
+    "per_wallet_p25": 5083.008541666666,
+    "per_wallet_median": 12999.972706049533,
+    "per_wallet_p75": 19983.60879311685,
+    "per_wallet_90d_median": 12822.094143321156,
+    "ret90_median": 0.6396292611870036,
+    "ret30_median": 0.11906421329538319
+   },
+   "mid": {
+    "n": 5,
+    "names": [
+     "TIA",
+     "EIGEN",
+     "W",
+     "MON",
+     "DRIFT"
+    ],
+    "per_wallet_p25": 236.3174522933378,
+    "per_wallet_median": 495.3947496850869,
+    "per_wallet_p75": 1609.8225,
+    "per_wallet_90d_median": 618.3992677125,
+    "ret90_median": -0.08020050125313294,
+    "ret30_median": -0.281383207264029
+   },
+   "mega": {
+    "n": 6,
+    "names": [
+     "ARB",
+     "JUP",
+     "STRK",
+     "ZK",
+     "LINEA",
+     "ZRO"
+    ],
+    "per_wallet_p25": 395.0901123655676,
+    "per_wallet_median": 891.6015914443735,
+    "per_wallet_p75": 1118.8706777696207,
+    "per_wallet_90d_median": 627.5207018854869,
+    "ret90_median": -0.2638940010373024,
+    "ret30_median": 0.0018853873463124948
+   }
+  },
+  "rho_wallets_perwallet": -0.458,
+  "rho_wallets_pool": 0.331,
+  "rho_wallets_ret90": -0.25,
+  "rho_pool_perwallet": 0.632,
+  "n": 15,
+  "critical_rho": 0.52,
+  "verdict": [
+   "More wallets -> lower $ per wallet: Spearman rho = -0.458 (n=15); not significant at ~5% (critical |rho| ~0.52).",
+   "Bigger crowds did NOT come with proportionally bigger pools: rho(wallets, pool $) = 0.331.",
+   "Crowd size vs 90-day price change after TGE: rho = -0.25 (n=15)."
+  ],
+  "strength": "unproven (n=15)",
+  "caveats": [
+   "Wallet counts are eligible (not claimed) addresses; TIA had only 191k claimers, so its per-claimer value was ~3x the per-eligible figure.",
+   "Per-wallet is a mean; distributions are tiered/skewed, so a typical wallet got less than the mean.",
+   "These are famous drops (survivorship): many points programs never paid at all, which no sample here captures.",
+   "Price = first DefiLlama daily price on/after the claim date; some TGE dates are approximate (marked assumed).",
+   "Hype is proxied only by crowd size; there is no free historical hype measure for these launches."
+  ]
+ },
+ "rejected": [
+  {
+   "name": "Hyperbeat",
+   "why": "BEAT airdrop terms signing ended Dec 5 2025 (token already distributed) and US residents are prohibited.",
+   "src": "https://www.hyperbeatfoundation.org/airdrop-terms"
+  },
+  {
+   "name": "Paradex",
+   "why": "DIME launched Mar 5 2026 (25% airdropped); XP Season 3 has no token promise.",
+   "src": "https://www.paradex.foundation/blog/dime-genesis"
+  },
+  {
+   "name": "MegaETH, Monad, Lighter (main), GRVT, edgeX, Hyperliquid",
+   "why": "Tokens already launched; no announced new season with a stated pool for new users.",
+   "src": "https://cipher-intelligence.io/blog/perp-dex-airdrops-2026/"
+  },
+  {
+   "name": "NUVA",
+   "why": "Season 0 ended Oct 1 2026; Season 1 has no start date, so points are paused.",
+   "src": "https://nuva.finance/docs/nuva-ecosystem-roadmap"
+  },
+  {
+   "name": "Exponent",
+   "why": "Rewards page shows no active campaign.",
+   "src": "https://app.exponent.finance/en/rewards"
+  },
+  {
+   "name": "Arcus",
+   "why": "Season 1 terms explicitly deny token entitlement and exclude restricted persons; too new to size.",
+   "src": "https://www.farmdash.one/guides/what-to-farm-october-2026"
+  }
+ ],
+ "x_counts_asof": "2026-10-20T08:21:00Z",
+ "x_counts_source": "X API v2 recent counts via free x MCP (14 reads)",
+ "live": {
+  "tvl": {
+   "infinifi": 68253594.43818787
+  },
+  "price": {
+   "lighter": 3.162881360675614
+  }
+ },
+ "method": {
+  "rank": "Tiers by your jurisdiction (seed.you): allowed, then terms unknown (check before farming), then restricted (never use a VPN), then base-case net EV = EV - (time + fees + opportunity cost + expected loss). ROI = EV / cost.",
+  "scenarios": "lo = pessimistic end of every input (incl. larger crowd and higher costs), hi = optimistic end; base = middle. They are not probabilities.",
+  "saturation": "Score 0-100 (higher = less crowded): 45% expected pool $ per participant (log, $10 -> 0, $10k -> 1), 35% crowd size (log, 1k -> 1, ~3M -> 0; bucket default when unknown), 20% quiet on X (7-day post count, log). Renormalised over available parts.",
+  "refresh": "Weekly: scripts/airdrop_roi_weekly.sh (prices, TVL, calibration). Seed facts and X counts are re-checked by hand (dates shown)."
+ }
+}
