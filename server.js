@@ -753,6 +753,7 @@ if (LIVE !== 'off' && process.env.NO_AUTO_REFRESH !== '1') {
     if (fileAge('unlocks_calendar.json') > 6 * 3600e3) py('unlocks.py');
     if (fileAge('airdrops.json') > 6 * 3600e3) py('airdrops.py');
     if (fileAge('airdrop_desk.json') > 6 * 3600e3) py('airdrops_v2.py');
+    if (fileAge('airdrop_roi.json') > 7 * 86400e3) py('airdrops_roi.py');
     if (fileAge('regradar.json') > 6 * 3600e3) py('regradar.py', ['live'], 'regradar.py:live');
     if (fileAge('stables.json') > 6 * 3600e3) py('stables.py');
   }, 30 * 60e3).unref();
@@ -776,6 +777,7 @@ if (LIVE !== 'off' && process.env.NO_AUTO_REFRESH !== '1') {
     if (usEquityOpen() && fileAge('options.json') > 30 * 60e3) py('options.py');
     if (fileAge('airdrops.json') > 6 * 3600e3) py('airdrops.py');
     if (fileAge('airdrop_desk.json') > 6 * 3600e3) py('airdrops_v2.py');
+    if (fileAge('airdrop_roi.json') > 7 * 86400e3) py('airdrops_roi.py');
     if (fileAge('regradar.json') > 6 * 3600e3) py('regradar.py', ['live'], 'regradar.py:live');
     if (fileAge('seasonality_live.json') > 24 * 3600e3) py('seasonality.py');
     if (fileAge('vcwatch_live.json') > 2 * 3600e3) py('vcwatch.py', ['monitor'], 'vcwatch.py:monitor');

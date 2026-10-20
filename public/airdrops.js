@@ -1,5 +1,5 @@
 // ASYMMETRIC·TERMINAL Airdrop Desk v2 (additive panel inside the Airdrops view).
-// Tabs: Classic ranker (views.js) · Tracker · Under-farmed · My Farms · Value · Speculation.
+// Tabs: ROI ranking (/api/airdrops/roi, research/airdrops_roi.py) · Classic ranker (views.js) · Tracker · Under-farmed · My Farms · Value · Speculation.
 // Data: /api/airdrops/desk (research/airdrops_v2.py), /api/airdrops/farm(s) (lib/airdrops.js). Read-only: a public address is all it ever asks for.
 // Every figure is pulled from a public source or typed by you; estimates are ranges with the method shown. Not financial advice.
 'use strict';
@@ -27,6 +27,9 @@
     a2_rank: ['Rank change', 'Places gained (+) or lost (−) on the leaderboard between snapshots. Losing places while your points rise means others are farming faster.', null, 'Airdrops'],
     a2_conf: ['Confirmed vs unconfirmed', 'Confirmed = stated by the team (docs, blog, official post) or an on-chain/funding fact. Unconfirmed = expectations: news speculation, airdrop-site listings, pre-market prices, third-party calendars.', null, 'Airdrops'],
     a2_auto: ['Automated vs manual', 'Automated = we read it from a public API with just your address. Manual = the protocol hides it behind a wallet-signature login, so you copy the number from its site. We never ask you to sign anything here.', null, 'Airdrops'],
+    a2_roi: ['Airdrop ROI', 'Expected value per wallet = chance a token happens × launch valuation (FDV) × share for the community × your slice. Your slice comes from published points totals, your deposit vs TVL, or the crowd size; when those are unknown we fall back on what past drops with a similar crowd paid per wallet, cut by a survivor haircut. ROI = that value ÷ everything it costs you: fees, your time at an hourly rate, what the capital could earn elsewhere, and the chance of losing it. Low/base/high are the pessimistic/middle/optimistic ends of every input, not probabilities.', null, 'Airdrops'],
+    a2_sat: ['Saturation score', '0–100, higher = less crowded. 45%: expected airdrop dollars still to be handed out per participant. 35%: how many people farm it (fewer is better). 20%: how quiet it is on X (7-day post count, a noisy proxy). Crowded, hyped campaigns split the same pool among more wallets.', null, 'Airdrops'],
+    a2_kind: ['Sourced / derived / assumed', 'Sourced = a number published by the team, its docs, DefiLlama or a dashboard (link given). Derived = computed from sourced numbers. Assumed = our estimate, shown so you can disagree. Unknown = no data; the model falls back to the calibration set.', null, 'Airdrops'],
     a2_comps: ['Comparables', 'Past airdrops used as yardsticks: % of supply given to users, launch valuation (price at the end of launch day × supply), dollar value of the drop, and airdrop $ per $1 of TVL at launch. Prices: DefiLlama coins API; TVL: DefiLlama.', null, 'Airdrops'],
   });
 
@@ -44,7 +47,7 @@
   const panel = Q('#viewAirdrops .adleft');
   if (!panel || !Q('#adOut')) return;
   const bar = document.createElement('div'); bar.className = 'a2tabs';
-  bar.innerHTML = [['classic', 'Classic ranker'], ['tracker', 'Tracker'], ['under', 'Under-farmed'], ['farms', 'My Farms'], ['value', 'Value calc'], ['spec', 'Speculation']].map(([k, t]) => `<button class="btn mini2 ${k === tab ? 'on' : ''}" data-a2="${k}">${t}</button>`).join('');
+  bar.innerHTML = [['roi', 'ROI ranking'], ['classic', 'Classic ranker'], ['tracker', 'Tracker'], ['under', 'Under-farmed'], ['farms', 'My Farms'], ['value', 'Value calc'], ['spec', 'Speculation']].map(([k, t]) => `<button class="btn mini2 ${k === tab ? 'on' : ''}" data-a2="${k}">${t}</button>`).join('');
   const out = document.createElement('div'); out.id = 'ad2Out'; out.style.display = 'none';
   Q('#adOut').before(bar); Q('#adOut').after(out);
   bar.addEventListener('click', (e) => { const b = e.target.closest('button[data-a2]'); if (b) setTab(b.dataset.a2); });
@@ -61,6 +64,7 @@
     D = await api('/api/airdrops/desk'); return D;
   }
   async function render() {
+    if (tab === 'roi') return roiTab();
     try { await load(); } catch (e) { out.innerHTML = `<div class="empty">${esc(e.message)}</div>`; return; }
     ({ tracker, under, farms: farmsTab, value, spec })[tab]();
   }
@@ -204,5 +208,61 @@
           <div class="small"><b>Community signals</b>${com.length ? `<ul class="a2ev">${com.map((e) => `<li>${conf(e.confirmed)}${chip(e.kind, 'mut')} ${esc(e.t || '')} ${esc(e.text)} ${link(e.url, 'source')}</li>`).join('')}</ul>` : ''}${it.news.length ? `<ul class="a2ev">${it.news.slice(0, 6).map((n) => `<li>${n.confirmed_kw ? chip('token-launch wording', 'ok') : n.spec_kw ? chip('speculation', 'warn') : chip('news', 'mut')} ${esc(n.t)} ${link(n.url, n.title.slice(0, 110))}</li>`).join('')}</ul>` : ' <span class="muted">no headlines</span>'}</div>
           ${it.flags?.length ? `<div class="a2warn">⚠ ${it.flags.map(esc).join(' · ')}</div>` : ''}</details>`; }).join('');
   }
+  // ---------------- ROI ranking ----------------
+  let R = null, roiAll = false;
+  const mu = (x) => (x == null || isNaN(x) ? '—' : (x < 0 ? '−' : '') + (Math.abs(x) < 10 ? '$' + Math.abs(x).toFixed(2) : fUsd(Math.abs(x))));
+  const kchip = (k) => chip(k || 'unknown', k === 'sourced' ? 'ok' : k === 'derived' ? 'ok' : k === 'assumed' ? 'warn' : 'mut');
+  const rngTxt = (o, f) => (o ? `${f(o.lo)} / <b>${f(o.base)}</b> / ${f(o.hi)}` : '—');
+  const xr = (x) => (x == null ? 'n/m' : x.toFixed(2) + '×');
+  const pt = (ms) => new Date(ms).toLocaleString('en-US', { timeZone: 'America/Los_Angeles', dateStyle: 'medium', timeStyle: 'short' }) + ' PT';
+  const tierChip = (t) => (t === 'allowed' ? chip('US OK', 'ok') : t === 'unknown' ? chip('US terms unknown', 'warn') : chip('US restricted', 'bad'));
+  const IN = { p_token: ['P(token)', (v) => pcu(v, 0)], fdv: ['FDV', mu], comm_pct: ['Community %', (v) => v + '%'], participants: ['Participants', n0], total_points: ['Total points', n0], weekly_pool: ['Weekly points', n0], points_left: ['Points left', n0], weeks_left: ['Weeks left', n0], k: ['Your weight', (v) => v + '×'], deposit: ['Deposit', mu], window_share: ['Window share', (v) => pcu(v, 0)], capital: ['Capital', mu], weekly_cost: ['Fees/week', mu], hours_week: ['Hours/week', (v) => v], risk_yr: ['Loss risk/yr', (v) => pcu(v, 0)], pool_tokens: ['Pool tokens', n0] };
+  function inputsTbl(inp) {
+    return `<table class="a2tbl small"><tr><th>input</th><th>low / base / high</th><th>label</th><th>note / source</th></tr>${Object.entries(inp).map(([k, v]) => {
+      if (k === 'funding') return `<tr><td>Funding</td><td>${v.usd != null ? mu(v.usd) : 'unknown'}${v.valuation ? ' · val ' + mu(v.valuation) : ''}</td><td>${kchip(v.kind)}</td><td>${esc(v.note || '')} ${link(v.src, 'source')}</td></tr>`;
+      const [lab, f] = IN[k] || [k, n0];
+      const val = v.kind === 'unknown' ? 'unknown' : v.lo == null ? f(v.base) : `${f(v.lo)} / <b>${f(v.base)}</b> / ${f(v.hi)}`;
+      return `<tr><td>${esc(lab)}</td><td>${val}</td><td>${kchip(v.kind)}</td><td>${esc(v.note || '')} ${link(v.src, 'source')}</td></tr>`; }).join('')}</table>`;
+  }
+  function roiCard(c) {
+    const s = c.saturation || {}, cb = c.cost.base || {};
+    return `<details class="a2card"><summary><b>#${c.rank} ${esc(c.name)}</b> ${tierChip(c.tier)} ${c.confirmed ? chip('token/points confirmed', 'ok') : chip('speculative', 'warn')} <span class="muted small">${esc(c.chain)} · ${esc(c.cat)}</span><br>
+      <span class="small">EV ${rngTxt(c.ev, mu)} · cost <b>${mu(cb.total)}</b> · ROI ${rngTxt(c.roi, xr)} · net base <b>${mu(c.net.base)}</b> · saturation <b>${s.score ?? '—'}</b></span></summary>
+      <p class="small">${esc(c.status)} ${link(c.status_src, 'source')} · US: ${esc(c.us)}${c.us_note ? ' (' + esc(c.us_note) + ')' : ''} ${link(c.us_src, 'terms')}</p>
+      ${c.tier === 'restricted' ? '<div class="a2warn">⚠ Excludes US persons. Shown for comparison only; do not farm it through a VPN (breaks the terms; allocations get voided).</div>' : ''}
+      ${c.tier === 'unknown' ? '<div class="a2warn">⚠ Read the terms for US eligibility before doing anything.</div>' : ''}
+      <div class="a2grid"><div><span>EV / wallet (low/base/high)</span>${rngTxt(c.ev, mu)}</div><div><span>Cost base: time + fees + opp. + risk</span>${mu(cb.time)} + ${mu(cb.direct)} + ${mu(cb.opportunity)} + ${mu(cb.risk)} over ${cb.weeks} wk</div>
+      <div><span>ROI (EV ÷ cost)</span>${rngTxt(c.roi, xr)}</div><div><span>Saturation ${ix2('a2_sat')}</span>${s.score ?? '—'} ${parts(s.parts && Object.fromEntries(Object.entries(s.parts).filter(([, v]) => v != null)))}</div>
+      <div><span>Expected pool (base)</span>${mu(s.expected_pool_usd)}${s.remaining_fraction != null ? ` · ${pcu(s.remaining_fraction, 0)} still to distribute` : ''}</div><div><span>Pool $ left per participant</span>${s.pool_per_participant_usd != null ? mu(s.pool_per_participant_usd) : 'unknown'}</div>
+      <div><span>X posts, 7 days (weak hype proxy)</span>${s.x_posts7d ?? 'not measured'}</div>${c.extra?.tvl_usd ? `<div><span>TVL now (DefiLlama)</span>${mu(c.extra.tvl_usd)}</div>` : ''}${c.extra?.pool_usd_live ? `<div><span>Pool at live price</span>${mu(c.extra.pool_usd_live)}<br><span>${esc(c.extra.pool_note)}</span></div>` : ''}</div>
+      <div class="small"><b>Method:</b> ${esc(c.ev_method)}</div>
+      <div class="small"><b>What to do</b> (you do it yourself; nothing here signs or trades) · budget cap <b>${mu(c.plan.budget_cap)}</b> · time ${esc(c.plan.time)}<ol class="a2ev">${c.plan.actions.map((a) => `<li>${esc(a)}</li>`).join('')}</ol>
+      <b>When to stop:</b> ${esc(c.plan.stop)}<br><b>Claim / sell:</b> ${esc(c.plan.claim)}</div>
+      <details><summary class="small">Inputs ${ix2('a2_kind')} (${c.inputs_sourced}/${c.inputs_total} sourced or derived)</summary>${inputsTbl(c.inputs)}</details>
+      <div class="muted small">Signal strength: ${esc(c.strength)} · data as of ${pt(R.generatedAt)} · seed reviewed ${esc(R.reviewed)}</div></details>`;
+  }
+  async function roiTab() {
+    if (!R) { out.innerHTML = '<div class="empty"><span class="spin"></span> loading Airdrop ROI…</div>'; try { R = await api('/api/airdrops/roi'); } catch (e) { out.innerHTML = `<div class="empty">${esc(e.message)}</div>`; return; } }
+    const cs = roiAll ? R.candidates.slice().sort((a, b) => a.rank_if_eligible - b.rank_if_eligible) : R.candidates;
+    const cal = R.calibration, B = cal.buckets;
+    out.innerHTML = `<div class="muted small pad">Airdrop ROI ${ix2('a2_roi')} · ranks where your time and money earn the most, not what is most hyped · data as of ${pt(R.generatedAt)} · X counts as of ${R.x_counts_asof ? pt(Date.parse(R.x_counts_asof)) : 'unknown'} · strength: unproven (model), calibration ${esc(cal.strength)} · estimates, not advice</div>
+      <div class="a2form small"><label><input type="checkbox" id="roiAll" style="width:auto;display:inline" ${roiAll ? 'checked' : ''}> rank everything as if eligible (comparison only)</label> <span class="muted">Home jurisdiction: ${esc(R.you.jurisdiction)} (${esc(R.you.jurisdiction_note)})</span> <button class="btn mini2" data-a2go="under">Discovery: Under-farmed tab →</button></div>
+      <table class="a2tbl small"><tr><th>#</th><th>Program</th><th>US</th><th>EV/wallet lo/base/hi</th><th>Cost (base)</th><th>ROI lo/base/hi</th><th>Net (base)</th><th>Saturation</th><th>Inputs sourced</th></tr>
+      ${cs.map((c, i) => `<tr><td>${roiAll ? c.rank_if_eligible : c.rank}</td><td>${esc(c.name)}</td><td>${tierChip(c.tier)}</td><td>${rngTxt(c.ev, mu)}</td><td>${mu(c.cost.base.total)}</td><td>${rngTxt(c.roi, xr)}</td><td>${mu(c.net.base)}</td><td>${c.saturation.score ?? '—'}</td><td>${c.inputs_sourced}/${c.inputs_total}</td></tr>`).join('')}</table>
+      <div class="muted small pad">${esc(R.method.rank)} ${esc(R.method.scenarios)} ROI "n/m" = costs under $10, so use EV. Click a card for inputs, farm plan, stop rule and claim plan.</div>
+      ${cs.map(roiCard).join('')}
+      <details class="a2card" open><summary><b>Calibration: does crowding cut per-wallet value?</b> ${chip(cal.strength, 'warn')}</summary>
+        <ul class="a2ev small">${cal.verdict.map((v) => `<li>${esc(v)}</li>`).join('')}</ul>
+        <table class="a2tbl small"><tr><th>Crowd</th><th>n</th><th>Drops</th><th>$/wallet p25 / median / p75 at TGE</th><th>Median price change +30d / +90d</th></tr>
+        ${['small', 'mid', 'mega'].map((b) => `<tr><td>${b}${b === 'small' ? ' (<150k)' : b === 'mid' ? ' (150–600k)' : ' (>600k)'}</td><td>${B[b].n}</td><td>${B[b].names.join(', ')}</td><td>${mu(B[b].per_wallet_p25)} / <b>${mu(B[b].per_wallet_median)}</b> / ${mu(B[b].per_wallet_p75)}</td><td>${pc(B[b].ret30_median)} / ${pc(B[b].ret90_median)}</td></tr>`).join('')}</table>
+        <table class="a2tbl small"><tr><th>Drop</th><th>TGE</th><th>Wallets</th><th>Pool $ at TGE</th><th>$/wallet</th><th>+30d</th><th>+90d</th><th>source</th></tr>
+        ${cal.rows.map((r) => `<tr><td>${esc(r.sym)}</td><td>${esc(r.tge)}${r.tge_kind === 'assumed' ? ' ' + chip('date assumed', 'warn') : ''}</td><td>${n0(r.wallets)}</td><td>${mu(r.pool_usd)}</td><td>${mu(r.per_wallet_usd)}</td><td>${pc(r.ret30)}</td><td>${pc(r.ret90)}</td><td>${link(r.src, 'source')}</td></tr>`).join('')}</table>
+        <ul class="a2ev small muted">${cal.caveats.map((c) => `<li>${esc(c)}</li>`).join('')}</ul></details>
+      <details class="a2card"><summary><b>Checked and rejected (${R.rejected.length})</b></summary><ul class="a2ev small">${R.rejected.map((r) => `<li><b>${esc(r.name)}</b>: ${esc(r.why)} ${link(r.src, 'source')}</li>`).join('')}</ul></details>
+      <div class="muted small pad">${esc(R.method.saturation)} ${esc(R.method.refresh)}</div>`;
+    Q('#roiAll', out).onchange = (e) => { roiAll = e.target.checked; roiTab(); };
+    Q('[data-a2go]', out).onclick = (e) => setTab(e.target.dataset.a2go);
+  }
+  setTab('roi');
   window.ad2Show = setTab;
 })();
