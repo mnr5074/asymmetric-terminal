@@ -50,6 +50,13 @@ check(M.model(c2, cal, you, {})['ev']['base'] < m['ev']['base'], 'crowding lower
 check(M.saturation(c2, {'posts7d': 100})['score'] < M.saturation(c, {'posts7d': 100})['score'], 'crowding lowers saturation score')
 check(M.saturation(c, {'posts7d': 5000})['score'] < M.saturation(c, {'posts7d': 50})['score'], 'hype lowers saturation score')
 
+# rank_share: shares over all ranks sum to 1, decrease with rank; ladder points multiple at own rank = 1
+check(abs(sum(M.rank_share(r, 500, 1.0) for r in range(1, 501)) - 1) < 1e-9, 'rank shares sum to 1')
+check(M.rank_share(100, 7287, 1.0) > M.rank_share(250, 7287, 1.0), 'higher rank, bigger share')
+ts = [r for r in out['candidates'] if r['key'] == 'townsquare'][0]
+check(ts['farming']['rank'] == 250 and ts['inputs']['rank']['kind'] == 'sourced', 'townsquare farming flag')
+check([x for x in ts['extra']['ladder']['rows'] if x['rank'] == 250][0]['pts_x_mid'] == 1.0, 'ladder anchored at own rank')
+
 # spearman sanity
 check(M.spearman([1, 2, 3, 4, 5], [5, 4, 3, 2, 1])[0] == -1.0, 'spearman -1')
 
