@@ -65,3 +65,6 @@ research/cache_airdrop_roi/
 # Waking Up scanner raw API cache (research/waking/fetch.py, waking.py)
 research/waking/cache/
 data/waking_alerts_state.json
+
+# Martin's Calls scorer raw API cache (research/mycalls/score.py)
+research/mycalls/cache/

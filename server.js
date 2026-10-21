@@ -882,7 +882,7 @@ const server = http.createServer(async (req, res) => {
     if (p === '/index.html') buf = Buffer.from(versionAssets(String(buf)));
     if (req.authRole === 'guest' && p === '/index.html') { // guest login: hide owner-only nav (portfolio, swap, tax, wallet viewer, settings); APIs are 403'd in lib/auth.js
       res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' });
-      return res.end(String(buf).replace('</head>', `<style>#viewNav [data-v=portfolio],#viewNav [data-v=swap],#viewNav [data-v=tax],#lowerTabs [data-t=wallet],#lowerWallet,#settingsBtn,#ownerMenu{display:none!important}</style>
+      return res.end(String(buf).replace('</head>', `<style>#viewNav [data-v=portfolio],#viewNav [data-v=swap],#viewNav [data-v=tax],#viewNav [data-v=mycalls],#viewMycalls,#lowerTabs [data-t=wallet],#lowerWallet,#settingsBtn,#ownerMenu{display:none!important}</style>
 <script>window.ST_ROLE='guest';addEventListener('DOMContentLoaded',()=>{const b=document.querySelector('#lowerTabs [data-t=moon]');b&&b.click();const o=new MutationObserver(()=>document.querySelectorAll('#viewNav [data-v=portfolio],#viewNav [data-v=swap],#viewNav [data-v=tax]').forEach((x)=>x.remove()));o.observe(document.body,{childList:true,subtree:true});});</script></head>`));
     }
     const ct = MIME[path.extname(f)] || 'application/octet-stream';
@@ -929,6 +929,11 @@ routes['/api/longbook'] = async () => {
   }) };
   return out;
 };
+// Martin's Calls (owner only; lib/auth.js 403s guests): his gut calls scored vs the chain median and vs Gibi's verdict at the time.
+// research/mycalls/score.py -> data/martin_calls_scored.json; re-scored after each RH 4h scan and each Waking Up scan (existing schedule).
+const myCalls = require('./lib/mycalls').createMyCalls({ DATA_DIR, root: __dirname, log: (m) => console.log('[mycalls] ' + m) });
+routes['/api/mycalls'] = async () => myCalls.api();
+if (!RENDER_LITE) myCalls.start();
 // Trigger alerts: lib/rhalerts.js (ntfy, deduped forever per token+base, queued through quiet hours, HARD walk-away flags bypass them).
 const rhAlerts = require('./lib/rhalerts').createRhAlerts({ DATA_DIR, alerts, log: (m) => console.log('[rhscan] ' + m) });
 routes['/api/rhscan/alerts'] = async () => rhAlerts.status();
@@ -938,7 +943,7 @@ if (!RENDER_LITE && process.env.RHSCAN !== 'off') {
     if (rhRunning) return; rhRunning = true;
     const ch = spawn('nice', ['-n', '10', 'python3', 'research/rhscan/rh_scan.py'], { cwd: __dirname, env: { ...process.env, DATA_DIR }, stdio: ['ignore', 'ignore', 'pipe'] });
     ch.stderr.on('data', (d) => { for (const l of String(d).split('\n')) if (/MISSING/.test(l)) console.log('[rhscan] ' + l.trim()); });
-    ch.on('exit', (code) => { rhRunning = false; if (code === 0) rhAlerts.afterScan(); else console.log('[rhscan] scan exited ' + code); });
+    ch.on('exit', (code) => { rhRunning = false; myCalls.run('after RH 4h scan'); if (code === 0) rhAlerts.afterScan(); else console.log('[rhscan] scan exited ' + code); });
     ch.on('error', () => { rhRunning = false; });
   };
   // Run 10 min after each 4h UTC bar close (00:10, 04:10, ... UTC) so a Trigger on a fresh bar is seen within ~15 min.
@@ -960,7 +965,7 @@ if (!RENDER_LITE && process.env.WAKING !== 'off') {
     const env = { ...process.env, DATA_DIR };
     const a = spawn('nice', ['-n', '10', 'python3', 'research/waking/fetch.py', '--min-liq', '20000'], { cwd: __dirname, env, stdio: 'ignore' }); // 20h cache: ~1 refetch/day
     const next = () => { const b = spawn('nice', ['-n', '10', 'python3', 'research/waking/waking.py'], { cwd: __dirname, env, stdio: 'ignore' });
-      b.on('exit', (code) => { wkRunning = false; if (code === 0) waking.afterScan(); else console.log('[waking] scan exited ' + code); }); b.on('error', () => { wkRunning = false; }); };
+      b.on('exit', (code) => { wkRunning = false; myCalls.run('after Waking Up scan'); if (code === 0) waking.afterScan(); else console.log('[waking] scan exited ' + code); }); b.on('error', () => { wkRunning = false; }); };
     a.on('exit', next); a.on('error', () => { wkRunning = false; });
   };
   setTimeout(wk, 25 * 60e3).unref(); setInterval(wk, 6 * 3600e3).unref(); // after the RH scan has refreshed its 4h bars
