@@ -1,0 +1,86 @@
+{
+ "version": 1,
+ "calls": [
+  {
+   "id": "2026-10-21-cyphercat",
+   "symbol": "CYPHERCAT",
+   "chain": "solana",
+   "contract": "6AUURRdHb9TrfPHv9AMofa8NEVoZDXcsbWKcUBpFSRXs",
+   "pool": null,
+   "calledAt": 1792572360000,
+   "calledAtPT": "Oct 21, 2026 1:46 AM PT",
+   "call": "looking like it's waking up",
+   "thesis": "looking like it's waking up",
+   "priceAtCall": {
+    "usd": 0.00085,
+    "how": "reported",
+    "label": "about $0.00085 quoted at call time (Jupiter $0.000837, CoinGecko $0.000851, DexScreener $0.000878 at 1:47-1:53 AM PT)",
+    "quotes": [
+     {
+      "src": "Jupiter",
+      "usd": 0.000837
+     },
+     {
+      "src": "CoinGecko",
+      "usd": 0.000851
+     },
+     {
+      "src": "DexScreener",
+      "usd": 0.000878
+     }
+    ],
+    "at": 1792572360000
+   },
+   "gibi": {
+    "verdict": "stay out",
+    "why": "ZEC-driven bounce, average volume, few buyers",
+    "entryTrigger": {
+     "tf": "4h",
+     "closeAbove": 0.001
+    }
+   },
+   "notes": [
+    "Seeded Oct 21, 2026 from chat. Pool CYPHERCAT/CYPH (CYPH is a tokenized stock), so candles are USD-rebuilt via CYPH."
+   ],
+   "addedAt": 1792616473319,
+   "addedVia": "scripts/log_call.py"
+  },
+  {
+   "id": "2026-10-21-microduck",
+   "symbol": "MICRODUCK",
+   "chain": "robinhood",
+   "contract": "0xd5f1afea47b1a9eab414d2ee740cf1d6d039e725",
+   "pool": "0xcde4d35e341901bc0308c2ffc789448ccd0f238a59597fe702e6710484b9c370",
+   "calledAt": 1792610160000,
+   "calledAtPT": "Oct 21, 2026 12:16 PM PT",
+   "call": "looks like it's waking up",
+   "thesis": "looks like it's waking up",
+   "priceAtCall": {
+    "usd": 0.003015,
+    "how": "reported",
+    "label": "about $0.00300-0.00303 quoted 12:17-12:20 PM PT (midpoint used)",
+    "quotes": [],
+    "at": 1792610160000
+   },
+   "gibi": {
+    "verdict": "stay out",
+    "why": "one-off news spike (Jensen Huang GTC keynote), sellers outnumber buyers",
+    "entryTrigger": {
+     "tf": "4h",
+     "closeAbove": 0.0041
+    },
+    "walkAway": {
+     "tf": "1d",
+     "closeBelow": 0.0016
+    }
+   },
+   "notes": [
+    "Martin says he spotted it earlier than his message; the time logged is the message time, 12:16 PM PT, and the price at call is from then (honest record, no earlier entry assumed).",
+    "It had already spiked to about $0.00625 around 4 AM PT on the Jensen Huang GTC keynote before the call.",
+    "Main pool Uniswap v4 microduck/NVDA (NVDA = tokenized stock), so candles are USD-rebuilt via NVDA."
+   ],
+   "addedAt": 1792616473367,
+   "addedVia": "scripts/log_call.py"
+  }
+ ]
+}

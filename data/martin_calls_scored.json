@@ -1,0 +1,360 @@
+{
+ "generatedAt": 1792617078000,
+ "scorecard": {
+  "calls": 2,
+  "d1": {
+   "n": 0,
+   "nBaseline": 0,
+   "gutMedian": null,
+   "baselineMedian": null,
+   "gibiMedian": null,
+   "excessMedian": null,
+   "beatBaseline": 0,
+   "hit2x": 0,
+   "drop50": 0,
+   "gutWins": 0,
+   "gibiWins": 0,
+   "ties": 0
+  },
+  "d7": {
+   "n": 0,
+   "nBaseline": 0,
+   "gutMedian": null,
+   "baselineMedian": null,
+   "gibiMedian": null,
+   "excessMedian": null,
+   "beatBaseline": 0,
+   "hit2x": 0,
+   "drop50": 0,
+   "gutWins": 0,
+   "gibiWins": 0,
+   "ties": 0
+  },
+  "d30": {
+   "n": 0,
+   "nBaseline": 0,
+   "gutMedian": null,
+   "baselineMedian": null,
+   "gibiMedian": null,
+   "excessMedian": null,
+   "beatBaseline": 0,
+   "hit2x": 0,
+   "drop50": 0,
+   "gutWins": 0,
+   "gibiWins": 0,
+   "ties": 0
+  },
+  "minScored": 20,
+  "hitRate": null,
+  "hitRateDef": "share of calls whose 7d return beat the chain median token over the same 7 days",
+  "strength": "too few",
+  "strengthNote": "Too few calls to judge: 0 of 20 calls have a scored 7-day result. Until then the numbers are anecdotes, good or bad.",
+  "gutBet": {
+   "pct": 0.25,
+   "edgeProven": false,
+   "rule": "Gut bet: 0.25% of portfolio per call until the scorecard proves an edge (20+ scored calls labelled backtested). Display only: nothing is traded automatically.",
+   "status": "Stays at 0.25%: no proven edge yet."
+  }
+ },
+ "items": [
+  {
+   "id": "2026-10-21-microduck",
+   "symbol": "MICRODUCK",
+   "chain": "robinhood",
+   "contract": "0xd5f1afea47b1a9eab414d2ee740cf1d6d039e725",
+   "call": "looks like it's waking up",
+   "thesis": "looks like it's waking up",
+   "notes": [
+    "Martin says he spotted it earlier than his message; the time logged is the message time, 12:16 PM PT, and the price at call is from then (honest record, no earlier entry assumed).",
+    "It had already spiked to about $0.00625 around 4 AM PT on the Jensen Huang GTC keynote before the call.",
+    "Main pool Uniswap v4 microduck/NVDA (NVDA = tokenized stock), so candles are USD-rebuilt via NVDA."
+   ],
+   "priceAtCall": {
+    "usd": 0.003015,
+    "how": "reported",
+    "label": "about $0.00300-0.00303 quoted 12:17-12:20 PM PT (midpoint used)",
+    "quotes": [],
+    "at": 1792610160000
+   },
+   "addedVia": "scripts/log_call.py",
+   "gibiDef": {
+    "verdict": "stay out",
+    "why": "one-off news spike (Jensen Huang GTC keynote), sellers outnumber buyers",
+    "entryTrigger": {
+     "tf": "4h",
+     "closeAbove": 0.0041
+    },
+    "walkAway": {
+     "tf": "1d",
+     "closeBelow": 0.0016
+    }
+   },
+   "calledAt": 1792610160000,
+   "calledAtPT": "Oct 21, 2026 12:16 PM PT",
+   "lk": "d:robinhood:0xd5f1afea47b1a9eab414d2ee740cf1d6d039e725",
+   "defHash": "c5f6b1dbf95f",
+   "series": {
+    "how": "USD rebuilt hourly: microduck / NVDA candles in NVDA x NVDA / USDG 0.05% USD close (bad-USD guard for non-SOL/USDC quotes)",
+    "pool": "0xcde4d35e341901bc0308c2ffc789448ccd0f238a59597fe702e6710484b9c370",
+    "poolName": "microduck / NVDA",
+    "guard": {
+     "quotePool": "0xd4eb21209c4d6093f80b5b84f5c45cc093ea14a3",
+     "quotePoolName": "NVDA / USDG 0.05%",
+     "gtUsdMaxDiffLast48hPct": 2.2,
+     "gtUsdFlatHoursLast24": 0
+    },
+    "fetchedAt": 1792616527000,
+    "lastBarAt": 1792616400000
+   },
+   "candleAtCall": {
+    "usd": 0.0031766497716633336,
+    "closeAt": 1792609200000,
+    "how": "hourly candle close nearest the call time (cross-check, USD rebuilt via quote token)",
+    "vsPriceAtCallPct": 5.4
+   },
+   "h": {
+    "1d": {
+     "done": false,
+     "endAt": 1792696560,
+     "asOf": 1792616527,
+     "endPx": 0.0030141951234293495,
+     "ret": -0.0002669574032008182,
+     "maxGain": -0.0002669574032008182,
+     "maxDD": -0.0002669574032008182,
+     "hit2x": false,
+     "drop50": false,
+     "bars": 1
+    },
+    "7d": {
+     "done": false,
+     "endAt": 1793214960,
+     "asOf": 1792616527,
+     "endPx": 0.0030141951234293495,
+     "ret": -0.0002669574032008182,
+     "maxGain": -0.0002669574032008182,
+     "maxDD": -0.0002669574032008182,
+     "hit2x": false,
+     "drop50": false,
+     "bars": 1
+    },
+    "30d": {
+     "done": false,
+     "endAt": 1795202160,
+     "asOf": 1792616527,
+     "endPx": 0.0030141951234293495,
+     "ret": -0.0002669574032008182,
+     "maxGain": -0.0002669574032008182,
+     "maxDD": -0.0002669574032008182,
+     "hit2x": false,
+     "drop50": false,
+     "bars": 1
+    }
+   },
+   "gibi": {
+    "1d": {
+     "done": false,
+     "entered": false,
+     "ret": 0.0,
+     "why": "stayed out: entry trigger did not fire"
+    },
+    "7d": {
+     "done": false,
+     "entered": false,
+     "ret": 0.0,
+     "why": "stayed out: entry trigger did not fire"
+    },
+    "30d": {
+     "done": false,
+     "entered": false,
+     "ret": 0.0,
+     "why": "stayed out: entry trigger did not fire"
+    }
+   },
+   "h2h": {},
+   "final": false,
+   "lastCandle": {
+    "usd": 0.002987255310796813,
+    "closeAt": 1792620000000
+   },
+   "nowAtScore": {
+    "usd": 0.002971,
+    "src": "DexScreener",
+    "pair": "0xcde4d35e341901bc0308c2ffc789448ccd0f238a59597fe702e6710484b9c370",
+    "liqUsd": 149714,
+    "at": 1792617078000
+   }
+  },
+  {
+   "id": "2026-10-21-cyphercat",
+   "symbol": "CYPHERCAT",
+   "chain": "solana",
+   "contract": "6AUURRdHb9TrfPHv9AMofa8NEVoZDXcsbWKcUBpFSRXs",
+   "call": "looking like it's waking up",
+   "thesis": "looking like it's waking up",
+   "notes": [
+    "Seeded Oct 21, 2026 from chat. Pool CYPHERCAT/CYPH (CYPH is a tokenized stock), so candles are USD-rebuilt via CYPH."
+   ],
+   "priceAtCall": {
+    "usd": 0.00085,
+    "how": "reported",
+    "label": "about $0.00085 quoted at call time (Jupiter $0.000837, CoinGecko $0.000851, DexScreener $0.000878 at 1:47-1:53 AM PT)",
+    "quotes": [
+     {
+      "src": "Jupiter",
+      "usd": 0.000837
+     },
+     {
+      "src": "CoinGecko",
+      "usd": 0.000851
+     },
+     {
+      "src": "DexScreener",
+      "usd": 0.000878
+     }
+    ],
+    "at": 1792572360000
+   },
+   "addedVia": "scripts/log_call.py",
+   "gibiDef": {
+    "verdict": "stay out",
+    "why": "ZEC-driven bounce, average volume, few buyers",
+    "entryTrigger": {
+     "tf": "4h",
+     "closeAbove": 0.001
+    }
+   },
+   "calledAt": 1792572360000,
+   "calledAtPT": "Oct 21, 2026 1:46 AM PT",
+   "lk": "d:solana:6AUURRdHb9TrfPHv9AMofa8NEVoZDXcsbWKcUBpFSRXs",
+   "defHash": "58dfc744f5cb",
+   "series": {
+    "how": "USD rebuilt hourly: CYPHERCAT / CYPH candles in CYPH x CYPH / USDC USD close (bad-USD guard for non-SOL/USDC quotes)",
+    "pool": "4csHMs7d6ZYghbq6mS2o56BQ528eLjugQeFVhDjyWNS5",
+    "poolName": "CYPHERCAT / CYPH",
+    "guard": {
+     "quotePool": "EBDpWPpaxdwD29DRhJaEvUJ8pcXLxLCWuggaWWkUdT9i",
+     "quotePoolName": "CYPH / USDC",
+     "gtUsdMaxDiffLast48hPct": 38.2,
+     "gtUsdFlatHoursLast24": 5
+    },
+    "fetchedAt": 1792616516000,
+    "lastBarAt": 1792612800000
+   },
+   "candleAtCall": {
+    "usd": 0.0008554483674136524,
+    "closeAt": 1792569600000,
+    "how": "hourly candle close nearest the call time (cross-check, USD rebuilt via quote token)",
+    "vsPriceAtCallPct": 0.6
+   },
+   "h": {
+    "1d": {
+     "done": false,
+     "endAt": 1792658760,
+     "asOf": 1792616516,
+     "endPx": 0.001033794285887429,
+     "ret": 0.21622857163226938,
+     "maxGain": 0.34800209523031844,
+     "maxDD": -0.013362388689573623,
+     "hit2x": false,
+     "drop50": false,
+     "bars": 12
+    },
+    "7d": {
+     "done": false,
+     "endAt": 1793177160,
+     "asOf": 1792616516,
+     "endPx": 0.001033794285887429,
+     "ret": 0.21622857163226938,
+     "maxGain": 0.34800209523031844,
+     "maxDD": -0.013362388689573623,
+     "hit2x": false,
+     "drop50": false,
+     "bars": 12
+    },
+    "30d": {
+     "done": false,
+     "endAt": 1795164360,
+     "asOf": 1792616516,
+     "endPx": 0.001033794285887429,
+     "ret": 0.21622857163226938,
+     "maxGain": 0.34800209523031844,
+     "maxDD": -0.013362388689573623,
+     "hit2x": false,
+     "drop50": false,
+     "bars": 12
+    }
+   },
+   "gibi": {
+    "1d": {
+     "done": false,
+     "entered": true,
+     "entryAt": 1792598400,
+     "entryPx": 0.0010498189351174476,
+     "entryHow": "4h close above 0.001",
+     "exitAt": 1792616516,
+     "exitPx": 0.001033794285887429,
+     "exitWhy": "so far",
+     "ret": -0.015264202896307921
+    },
+    "7d": {
+     "done": false,
+     "entered": true,
+     "entryAt": 1792598400,
+     "entryPx": 0.0010498189351174476,
+     "entryHow": "4h close above 0.001",
+     "exitAt": 1792616516,
+     "exitPx": 0.001033794285887429,
+     "exitWhy": "so far",
+     "ret": -0.015264202896307921
+    },
+    "30d": {
+     "done": false,
+     "entered": true,
+     "entryAt": 1792598400,
+     "entryPx": 0.0010498189351174476,
+     "entryHow": "4h close above 0.001",
+     "exitAt": 1792616516,
+     "exitPx": 0.001033794285887429,
+     "exitWhy": "so far",
+     "ret": -0.015264202896307921
+    }
+   },
+   "h2h": {},
+   "final": false,
+   "lastCandle": {
+    "usd": 0.001033794285887429,
+    "closeAt": 1792616400000
+   },
+   "nowAtScore": {
+    "usd": 0.001056,
+    "src": "DexScreener",
+    "pair": "4csHMs7d6ZYghbq6mS2o56BQ528eLjugQeFVhDjyWNS5",
+    "liqUsd": 101848,
+    "at": 1792617078000
+   }
+  }
+ ],
+ "baselinePool": {
+  "robinhood": {
+   "tokens": 83,
+   "lastCompleteDayUtc": "2026-10-20"
+  },
+  "solana": {
+   "tokens": 155,
+   "lastCompleteDayUtc": "2026-10-20"
+  }
+ },
+ "method": {
+  "gut": "buy at the price at call, hold; returns on hourly closes after the call",
+  "baseline": "median token of the same chain (Waking Up backtest pool, tradable: 30-day mean volume >= $5K), daily closes from the last UTC close before the call",
+  "gibi": "Gibi's verdict at the time: 'stay out' = 0% unless Gibi's own entry trigger fired in the window (then entry at that close, exit at walk-away or horizon end)",
+  "hit": "hit = 7d return beat the chain median",
+  "strength": "too few calls to judge until 20 scored 7d calls; then sign test vs the chain median: backtested (p<0.05, median excess > 0) / unproven / weak (median excess <= 0)"
+ },
+ "fetch": {
+  "gt": 0,
+  "ds": 2,
+  "cache": 10,
+  "fail": 0
+ }
+}
