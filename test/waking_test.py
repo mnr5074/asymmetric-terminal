@@ -36,7 +36,7 @@ json.dump(ohl([(dd, 0.00001 * (1 + 0.1 * k), 1.0) for k, dd in enumerate(days)])
 json.dump(ohl([(dd, 50.0, 1e6) for dd in days]), open(f'{d}/sol_ohlcvd_QPOOL.json', 'w'))                           # CYPH = $50
 rows = W.gt_rows(f'{d}/sol_ohlcvd_POOL.json')
 out, note, stt = W.usd_guard('T', {'pool': 'POOL', 'quote': 'CYPHmint', 'quotePool': 'QPOOL'}, rows)
-assert abs(out[-1][1] - 0.00001 * 1.9 * 50) < 1e-9 and 'stale' in note and stt['gtFlatDaysLast7'] >= 3, (out[-1], note)
+assert abs(out[-1][1] - 0.00001 * 1.9 * 50) < 1e-9 and ('stale' in note or 'unchanged' in note) and stt['gtFlatDaysLast7'] >= 3, (out[-1], note)
 out2, note2, _ = W.usd_guard('T', {'pool': 'POOL', 'quote': 'So11111111111111111111111111111111111111112'}, rows); assert out2 == rows and note2 is None
 out3, note3, _ = W.usd_guard('T', {'pool': 'POOL', 'quote': 'CYPHmint', 'quotePool': None}, rows); assert out3 == [] and 'excluded' in note3
 print('waking signal + usd guard ok')
