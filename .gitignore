@@ -61,3 +61,7 @@ research/*.pdf
 research/rhscan/cache/
 research/longbook/cache/
 research/cache_airdrop_roi/
+
+# Waking Up scanner raw API cache (research/waking/fetch.py, waking.py)
+research/waking/cache/
+data/waking_alerts_state.json

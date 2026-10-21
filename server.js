@@ -949,6 +949,24 @@ if (!RENDER_LITE && process.env.RHSCAN !== 'off') {
   rhAlerts.start(); // flushes queued alerts every 5 min once quiet hours end (7 AM PT)
 }
 
+// Waking Up desk (research/waking/fetch.py + waking.py -> data/waking.json): revival signs BEFORE a breakout. Pre-declared test in
+// research/waking/PREDECLARED.md; ntfy alerts only for pools that beat random out-of-sample (alertsOn in the file), else none.
+const waking = require('./lib/waking').createWaking({ DATA_DIR, alerts, log: (m) => console.log('[waking] ' + m) });
+routes['/api/waking'] = async (q) => waking.api(q);
+if (!RENDER_LITE && process.env.WAKING !== 'off') {
+  let wkRunning = false;
+  const wk = () => {
+    if (wkRunning) return; wkRunning = true;
+    const env = { ...process.env, DATA_DIR };
+    const a = spawn('nice', ['-n', '10', 'python3', 'research/waking/fetch.py', '--min-liq', '20000'], { cwd: __dirname, env, stdio: 'ignore' }); // 20h cache: ~1 refetch/day
+    const next = () => { const b = spawn('nice', ['-n', '10', 'python3', 'research/waking/waking.py'], { cwd: __dirname, env, stdio: 'ignore' });
+      b.on('exit', (code) => { wkRunning = false; if (code === 0) waking.afterScan(); else console.log('[waking] scan exited ' + code); }); b.on('error', () => { wkRunning = false; }); };
+    a.on('exit', next); a.on('error', () => { wkRunning = false; });
+  };
+  setTimeout(wk, 25 * 60e3).unref(); setInterval(wk, 6 * 3600e3).unref(); // after the RH scan has refreshed its 4h bars
+  waking.start();
+}
+
 // Heavy Accumulation desk (lib/accumulation.js -> data/accumulation.json): scores tokens from data other desks already collected (0 credits).
 const accumulation = require('./lib/accumulation').createAccumulation({ DATA_DIR, log: L });
 routes['/api/accumulation'] = async () => accumulation.api();
