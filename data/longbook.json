@@ -4417,5 +4417,105 @@
    15
   ],
   "note": "capPct = max position as % of the whole portfolio. Meme slice (PUMP + any memecoins elsewhere) capped at 7% total; speculative names (QRL, DRV) 2% each."
- }
+ },
+ "watchlist": [
+  {
+   "sym": "VVV",
+   "name": "Venice Token",
+   "theme": "buyback",
+   "status": "watchlist",
+   "action": "WATCHLIST ONLY: no buy, no DCA, no capPct. Revisit only if the Long Book entry rule fires.",
+   "chain": "base",
+   "contract": "0xacfE6019Ed1A7Dc6f7B508C02d1b04ec88cC21bf",
+   "contractVerified": "CoinGecko /coins/base/contract (id venice-token) + DexScreener (top pool Aerodrome VVV/WETH, Base) + docs.venice.ai/overview/vvv-diem, all on 2026-10-21",
+   "cg": "venice-token",
+   "llama": "venice",
+   "dataDate": "2026-10-21",
+   "asOf": [
+    {
+     "what": "CoinGecko market data",
+     "t": "2026-10-22T01:35:41Z"
+    },
+    {
+     "what": "DefiLlama venice holders revenue (burns) fetch",
+     "t": "2026-10-22T01:40:19Z"
+    }
+   ],
+   "thesis": "Real value accrual: Venice buys VVV on the open market and burns it (per-subscription burns $2 Pro / $5 Pro+ / $10 Max, plus $5 of every $100 of API credits since 2026-07-17, plus discretionary buybacks). Staking VVV -> sVVV earns emissions and can be locked to mint DIEM; each staked DIEM = $1/day of Venice API credit.",
+   "snapshot": {
+    "price": 27.75,
+    "mcap": 1347802101,
+    "fdv": 2251998752,
+    "circ": 48574433.5,
+    "total": 81161443.2,
+    "ath": 34.53,
+    "athDate": "2026-09-21",
+    "athDDPct": -19.6,
+    "vol24h": 56326169,
+    "burns30d": 985346,
+    "burns24h": 21575,
+    "burnsAnnualized": 11988376,
+    "mcapToBurns": 112.4,
+    "emissionsPerYear": 2000000,
+    "emissionsPctCirc": 4.1,
+    "emissionsUsdPerYear": 55500000,
+    "burnTokensPerYearAtPrice": 432014,
+    "ruleBuyBelow": 10.36,
+    "src": "CoinGecko /coins/venice-token; DefiLlama /summary/fees/venice dailyHoldersRevenue (= on-chain buy-and-burn only); derived figures computed from those two"
+   },
+   "claims": [
+    {
+     "claim": "On-chain VVV buy-and-burn ~$985K in the last 30 days (~$12M/yr annualized)",
+     "status": "verified",
+     "date": "2026-10-21",
+     "note": "DefiLlama holders revenue 30d $985,346; annualized x365/30 = $11.99M. DefiLlama counts only the on-chain burn; subscription/API/DIEM revenue settles off-chain and is excluded.",
+     "sources": [
+      "https://defillama.com/protocol/venice",
+      "https://venice.ai/blog/tokenomics-update-credit-burns-and-diem-supply-expansion"
+     ]
+    },
+    {
+     "claim": "Stake VVV -> sVVV -> lock to mint DIEM; 1 staked DIEM = $1/day API credit",
+     "status": "shipped",
+     "date": "2026",
+     "note": "Credit refreshes 00:00 UTC, no rollover; DIEM supply target raised 38,000 -> 40,000 (Aug-Sep 2026). DIEM contract 0xF4d97F2da56e8c3098f3a8D538DB630A2606a024; staking 0x321b7ff75154472B18EDb199033fF4D116F340Ff.",
+     "sources": [
+      "https://docs.venice.ai/overview/vvv-diem"
+     ]
+    },
+    {
+     "claim": "Emissions cut to 2M VVV/yr (from 14M at Jan 2025 TGE)",
+     "status": "shipped",
+     "date": "2026-10-01",
+     "note": "2M/yr = 4.1% of circulating, ~$55.5M/yr at $27.75 vs ~$12M/yr burned (~432K VVV at today's price): still net inflationary. 100% of emissions go to stakers.",
+     "sources": [
+      "https://venice.ai/blog/tokenomics-update-credit-burns-and-diem-supply-expansion",
+      "https://cryptobriefing.com/venice-cuts-vvv-emissions-2-million/"
+     ]
+    },
+    {
+     "claim": "Venice $100M+ annualized revenue reaches token holders",
+     "status": "marketing",
+     "date": "2026-08-17",
+     "note": "The $100M+ ARR (Aug 2026; founder claims >$150M Oct 14) belongs to Venice the company, which raised equity separately ($65M Series A at a $1B valuation). Equity and token are separate: holders get only the burn (~$12M/yr), not the revenue.",
+     "sources": [
+      "https://cryptobriefing.com/venice-ai-100m-annualized-revenue/",
+      "https://www.banyan-vc.com/insights/why-banyan-fund-ii-invested-in-venice-ai-14m-to-100m-annualized-revenue-in-seven-months-with-a-team-of-33"
+     ]
+    }
+   ],
+   "whyNotYet": "Market cap is ~112x annualized on-chain burns. Price is only ~20% off the ATH ($34.53, 2026-09-21); the Long Book entry rule wants a 70% drawdown from the 1y high (buy-zone ~$10.36 at today's 1y high) and that rule is itself unproven out-of-sample. No entry yet.",
+   "risks": [
+    "Holders get the burn only, not the company's revenue (equity and token separate)",
+    "Emissions (2M/yr) still exceed burns in token terms",
+    "Terminal rug scan 2026-10-21: watch 40/100: mint authority live, 58% of supply in staking/vesting/lock contracts, creator/dev wallet flagged by scanner",
+    "Burn rate depends on Venice keeping its discretionary/programmatic burn policy"
+   ],
+   "revisitIf": [
+    "Daily close at or below the Long Book buy-zone (70% under the 1y high)",
+    "Annualized on-chain burns rise enough that mcap / burns falls well below today's ~112x",
+    "Burns exceed emissions (net deflationary in tokens)"
+   ]
+  }
+ ]
 }

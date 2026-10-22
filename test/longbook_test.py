@@ -72,6 +72,23 @@ def test_output_integrity():
         assert bad not in txt, bad
 
 
+
+def test_watchlist():
+    # watchlist entries are tracked, never bought: no capPct / plan, dated, verified contract, sourced claims
+    d = json.load(open(os.path.join(ROOT, 'data', 'longbook.json')))
+    cfg = json.load(open(os.path.join(ROOT, 'research', 'longbook', 'candidates.json')))
+    assert d.get('watchlist') == cfg.get('watchlist')
+    syms = {c['sym'] for c in d['candidates']}
+    for w in d['watchlist']:
+        assert w['status'] == 'watchlist' and 'capPct' not in w and 'plan' not in w, w['sym']
+        assert w['sym'] not in syms, w['sym']
+        assert w['dataDate'] and w['contractVerified']
+        for cl in w['claims']:
+            assert cl['status'] in ALLOWED and cl['sources'] and all(u.startswith('https://') for u in cl['sources']), w['sym']
+    vvv = next(w for w in d['watchlist'] if w['sym'] == 'VVV')
+    assert vvv['contract'].lower() == '0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf' and vvv['chain'] == 'base'
+
+
 if __name__ == '__main__':
     n = 0
     for k, v in list(globals().items()):
