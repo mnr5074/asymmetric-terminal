@@ -323,7 +323,9 @@ def main():
     unl_at = unl.get('generatedAt')
     sent_path = os.path.join(DATA, 'zec_shielded.json')
     out = {'generatedAt': int(time.time() * 1000), 'reviewedAt': cfg['reviewedAt'], 'candidates': [],
-           'rejected': cfg['rejected'], 'sources': {}}
+           'rejected': cfg['rejected'], 'sources': {},
+           # watchlist = names we track but do NOT buy (no capPct, no DCA plan); passed through as hand-curated, dated snapshots
+           'watchlist': cfg.get('watchlist', [])}
 
     # price series (Binance preferred: longest; HL for HYPE; CG 365d fallback)
     series = {}

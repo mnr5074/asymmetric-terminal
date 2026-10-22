@@ -21,6 +21,7 @@
     <div id="lbRule" class="bkintro"></div>
     <div class="bkfilters" id="lbF"><button data-f="all" class="on">All</button><button data-f="quantum">Quantum</button><button data-f="buyback">Buyback</button></div>
     <div id="lbOut" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px;padding:6px 14px 14px"></div>
+    <div id="lbWatch" style="padding:0 14px 14px"></div>
     <details class="more" style="margin:0 14px 6px"><summary>Backtest: accumulate in a deep drawdown vs DCA vs lump sum</summary><div id="lbBt" class="bkhow"></div></details>
     <details class="more" style="margin:0 14px 14px"><summary>Rejected candidates (and why)</summary><div id="lbRej" class="bkhow"></div></details></div>`;
   (Q('#viewCommand') || document.body).after(sec);
@@ -70,6 +71,32 @@
       <details class="more"><summary>Thesis-break exits &amp; risks</summary><div class="small" style="line-height:1.55"><b>Exit all if:</b><ul>${c.thesisBreak.map((x) => `<li>${E(x)}</li>`).join('')}</ul><b>Risks:</b><ul>${c.risks.map((x) => `<li>${E(x)}</li>`).join('')}</ul></div></details>
       <div class="f"><span>signal <span class="str unproven">${E((D.backtest.strength || '').split(' ')[0])}</span></span><span>market ${PT(m.asOf)} (${fresh})</span><span>claims reviewed ${E(D.reviewedAt)}</span></div></div>`;
   }
+  // Watchlist: tracked, NOT bought (no capPct, no DCA). Hand-curated dated snapshot from candidates.json.
+  const wnum = (x) => (x == null ? '—' : Number(x).toLocaleString('en-US', { maximumFractionDigits: 1 }));
+  function wcard(w) {
+    const s = w.snapshot || {};
+    const asof = (w.asOf || []).map((a) => `${E(a.what)} ${PT(a.t)}`).join(' · ');
+    return `<div class="bk w" style="box-shadow:inset 3px 0 0 var(--amb)"><div class="h"><b>${E(w.sym)}</b><span class="chip" style="color:var(--amb)">WATCHLIST · not a buy</span><span class="chip">${E(w.theme)}</span><span class="muted small">${E(w.name || '')}</span><span style="margin-left:auto" class="num">${px(s.price)}</span></div>
+      <div class="small"><b>${E(w.action)}</b></div>
+      <div class="kv"><span>Contract</span><span class="num" style="word-break:break-all">${E(w.chain)}: ${E(w.contract)}</span><span>Verified</span><span class="muted small">${E(w.contractVerified)}</span></div>
+      <div><b>Thesis:</b> ${E(w.thesis)}</div>
+      <div class="kv">
+        <span>Market cap / FDV</span><span>${usd(s.mcap)} / ${usd(s.fdv)} · 24h vol ${usd(s.vol24h)}</span>
+        <span>vs ATH</span><span>${s.athDDPct}% (ATH ${px(s.ath)} on ${E(s.athDate)})</span>
+        <span>On-chain burns</span><span>30d ${usd(s.burns30d)} · ~${usd(s.burnsAnnualized)}/yr annualized</span>
+        <span>Mcap / burns</span><span><b>~${s.mcapToBurns}x</b></span>
+        <span>Emissions</span><span>${wnum(s.emissionsPerYear)} VVV/yr (${s.emissionsPctCirc}% of circ, ~${usd(s.emissionsUsdPerYear)}/yr) vs ~${wnum(s.burnTokensPerYearAtPrice)} VVV/yr burned at today's price</span>
+        <span>Entry rule</span><span>buy zone below ~${px(s.ruleBuyBelow)} (70% off 1y high) · not in zone</span>
+      </div>
+      <div><b>Why no entry yet:</b> ${E(w.whyNotYet)}</div>
+      <details class="more" open><summary>Claims checklist</summary><ul>${(w.claims || []).map(claim).join('')}</ul></details>
+      <details class="more"><summary>Risks &amp; revisit triggers</summary><div class="small" style="line-height:1.55"><b>Revisit if:</b><ul>${(w.revisitIf || []).map((x) => `<li>${E(x)}</li>`).join('')}</ul><b>Risks:</b><ul>${(w.risks || []).map((x) => `<li>${E(x)}</li>`).join('')}</ul></div></details>
+      <div class="f"><span>data date ${E(w.dataDate)}</span><span>${asof}</span><span class="muted">${E(s.src || '')}</span></div></div>`;
+  }
+  function renderWatch() {
+    const W = (D && D.watchlist) || [];
+    Q('#lbWatch').innerHTML = W.length ? `<h3 style="margin:6px 0 8px">Watchlist (tracked, not bought) · ${W.length}</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px">${W.map(wcard).join('')}</div>` : '';
+  }
   function render() {
     if (!D) return;
     const it = D.candidates.filter((c) => F === 'all' || c.theme === F);
@@ -93,8 +120,8 @@
   }
   async function load() {
     try { const r = await fetch('/api/longbook'); D = await r.json(); if (D.error) throw new Error(D.error); } catch (e) { Q('#lbOut').innerHTML = `<div class="muted" style="padding:10px">Long Book unavailable: ${E(e.message)}</div>`; return; }
-    Q('#lbMeta').textContent = `built ${PT(D.generatedAt)} · ${D.candidates.length} candidates · claims reviewed ${D.reviewedAt}`;
-    renderBt(); render();
+    Q('#lbMeta').textContent = `built ${PT(D.generatedAt)} · ${D.candidates.length} candidates${(D.watchlist || []).length ? ' + ' + D.watchlist.length + ' watchlist' : ''} · claims reviewed ${D.reviewedAt}`;
+    renderBt(); render(); renderWatch();
   }
   Q('#lbF').addEventListener('click', (e) => { const b = e.target.closest('button[data-f]'); if (!b) return; F = b.dataset.f; Q('#lbF').querySelectorAll('button').forEach((x) => x.classList.toggle('on', x === b)); render(); });
   nav && nav.addEventListener('click', (e) => { const b = e.target.closest('button[data-v]'); if (b && b.dataset.v === 'longbook') load(); });
